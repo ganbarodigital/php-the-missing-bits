@@ -10,10 +10,14 @@ pageflow_next_text: Contributing
 
 ## develop branch
 
+### New
+
+* Added [`GetPrintableType`](types/GetPrintableType.html)
+
 ## v1.0.0
 
 Released Sunday 17th April 2016.
 
 ### New
 
-* Added [`vnsprint()`](string-functions/vnsprintf.html)
+* Added [`vnsprint()`](strings/vnsprintf.html)

@@ -1,5 +1,5 @@
 ---
-currentSection: stringfunctions
+currentSection: strings
 currentItem: vnsprintf
 pageflow_prev_url: index.html
 pageflow_prev_text: String Functions

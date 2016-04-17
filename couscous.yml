@@ -48,14 +48,26 @@ menu:
                 text: Authors
                 relativeUrl: authors.html
 
-    stringfunctions:
-        text: String Functions
-        relativeUrl: string-functions/index.html
+    strings:
+        text: Strings
+        relativeUrl: strings/index.html
 
         items:
             home:
-                text: String Functions
-                relativeUrl: string-functions/index.html
+                text: String Functions and Classes
+                relativeUrl: strings/index.html
             vnsprintf:
                 text: vnsprintf
-                relativeUrl: string-functions/vnsprintf.html
+                relativeUrl: strings/vnsprintf.html
+
+    types:
+        text: Types
+        relativeUrl: types/index.html
+
+        items:
+            home:
+                text: Type Functions and Classes
+                relativeUrl: types/index.html
+            GetPrintableType:
+                text: GetPrintableType
+                relativeUrl: types/GetPrintableType.html

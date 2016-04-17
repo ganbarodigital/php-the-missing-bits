@@ -1,5 +1,5 @@
 ---
-currentSection: stringfunctions
+currentSection: strings
 currentItem: index
 pageflow_next_url: vnsprintf.html
 pageflow_next_text: vnsprintf()
@@ -9,7 +9,7 @@ pageflow_next_text: vnsprintf()
 
 ## Introduction
 
-Here's a list of the missing string functions that we feel are missing from PHP itself.
+Here's a list of what we find is missing from PHP's built-in support for string handling and manipulation.
 
 ## Available Functions
 
