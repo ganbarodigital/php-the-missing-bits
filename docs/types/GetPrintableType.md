@@ -19,7 +19,7 @@ It is designed for use in error logging and exception messages. It is a replacem
 
 ```php
 // how to import
-use GanbaroDigital\ExceptionHelpers\V1\Types\Inspectors\GetPrintableType;
+use GanbaroDigital\MissingBits\TypeInspectors\GetPrintableType;
 
 // call directly
 //
@@ -50,8 +50,13 @@ Flag | Behaviour
 `GetPrintableType::FLAG_NONE` | no extra information required (default behaviour)
 `GetPrintableType::FLAG_CLASSNAME` | add the `class` or `interface` name if `$data` is a PHP object
 `GetPrintableType::FLAG_CALLABLE_DETAILS` | add the `class` (if present) and function or method name of the callable
+`GetPrintableType::FLAG_SCALAR_VALUE` | adds the value of $data if `$data` is a boolean, double, integer or string
 
-If `$flags` is not provided, it defaults to `GetPrintableType::FLAG_DEFAULTS`.
+If `$flags` is not provided, it defaults to `GetPrintableType::FLAG_DEFAULTS`. This contains the following flag(s):
+
+* `GetPrintableType::FLAG_CLASSNAME`
+* `GetPrintableType::FLAG_CALLABLE_DETAILS`
+* `GetPrintableType::FLAG_SCALAR_VALUE`
 
 ## Return Value
 
@@ -59,13 +64,13 @@ If `$flags` is not provided, it defaults to `GetPrintableType::FLAG_DEFAULTS`.
 
 * `NULL`
 * `array`
-* `boolean`
-* `callable`
-* `double`
-* `integer`
-* `object`
+* `boolean` or `boolean<true>` or `boolean<false>`
+* `callable` or `callable<function>` or `callable<classname::method>`
+* `double` or `double<value>`
+* `integer` or `integer<value>`
+* `object` or `object<classname>`
 * `resource`
-* `string`
+* `string` or `string<value>`
 
 <div class="callout info" markdown="1">
 #### Callables over Arrays
