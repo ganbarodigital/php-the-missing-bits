@@ -53,8 +53,9 @@ class GetPrintableType
     const FLAG_NONE = 0;
     const FLAG_CLASSNAME = 1;
     const FLAG_CALLABLE_DETAILS = 2;
+    const FLAG_SCALAR_VALUE = 4;
 
-    const FLAG_DEFAULTS = 3;
+    const FLAG_DEFAULTS = 7;
 
     /**
      * what PHP type is $data?
@@ -89,6 +90,10 @@ class GetPrintableType
 
         if (is_callable($data)) {
             return self::returnCallableType($data, $flags);
+        }
+
+        if (is_scalar($data)) {
+            return self::returnScalarType($data, $flags);
         }
 
         return gettype($data);
@@ -149,5 +154,34 @@ class GetPrintableType
 
         // if we get here, then a plain 'object' will suffice
         return "object";
+    }
+
+    /**
+     * extract the details about a PHP scalar value
+     *
+     * @param  boolean|double|int|string $data
+     *         the data to examine
+     * @param  int $flags
+     *         options to change what we put in the return value
+     * @return string
+     *         the data type of $data
+     */
+    private static function returnScalarType($data, $flags)
+    {
+        // user doesn't want the details
+        if (!($flags & static::FLAG_SCALAR_VALUE)) {
+            return gettype($data);
+        }
+
+        // special case - boolean values
+        if (is_bool($data)) {
+            if ($data) {
+                return "boolean<true>";
+            }
+            return "boolean<false>";
+        }
+
+        // general case
+        return gettype($data) . "<{$data}>";
     }
 }
