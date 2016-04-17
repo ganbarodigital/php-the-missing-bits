@@ -10,7 +10,7 @@
 
 ## Introduction
 
-_PHP: The Missing Bits_ is a collection of basic functions and classes that we wish were part of PHP itself. You can drop into your own project to save you time and effort.
+_PHP: The Missing Bits_ is a collection of basic functions that we wish were part of PHP itself. You can drop this package into your own project to save you time and effort.
 
 ## Installation
 
