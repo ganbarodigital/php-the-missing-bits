@@ -35,8 +35,8 @@
                                                         <header role="subnav">
                         <nav class="navbar">
                             <ul>
-                                                                    <li class="current">
-                                        <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/index.html">Home</a>
+                                                                    <li class="">
+                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/index.html">Home</a>
                                     </li>
                                                                     <li class="">
                                         <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/license.html">License</a>
@@ -47,8 +47,8 @@
                                                                     <li class="">
                                         <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/changelog.html">Changelog</a>
                                     </li>
-                                                                    <li class="">
-                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/contributing.html">Contributing</a>
+                                                                    <li class="current">
+                                        <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/contributing.html">Contributing</a>
                                     </li>
                                                                     <li class="">
                                         <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/code-of-conduct.html">Code Of Conduct</a>
@@ -62,32 +62,74 @@
                                                                 <main role="main">
                         <nav class="pageflow">
               <ul>
-                                    <li></li>
-                                                      <li><a href="license.html">Next: License</a></li>
+                                    <li><a href="changelog.html">Prev: Changelog</a></li>
+                                                      <li><a href="code-of-conduct.html">Next: Code Of Conduct</a></li>
                                 </ul>
             </nav>
             
             <article>
-                <h1 id="introduction">Introduction</h1>
-<h2 id="what-is-php-the-missing-bits">What Is PHP: The Missing Bits?</h2>
-<p>Ganbaro Digital's <em>PHP: The Missing Bits</em> provides functions that we wish were built into PHP itself.</p>
-<h2 id="goals">Goals</h2>
-<p><em>PHP: The Missing Bits</em>'s purpose is to provide a home for all the single functions that we find ourselves duplicating in different libraries. These are small functions that aren't worth putting into their own packages. They're also really handly functions that we want to be available to any Composer package.</p>
-<h2 id="design-constraints">Design Constraints</h2>
-<p>The library's design is guided by the following constraint(s):</p>
-<ul>
-<li>Every function has to be a standalone unit.</li>
-<li>No external dependencies.</li>
-</ul>
-<p>We want this library to feel like an extension to PHP itself, and to be something that any other Composer package could reliably depend upon.</p>
-<h2 id="questions">Questions?</h2>
-<p>This package was created by <a href="http://www.stuartherbert.com">Stuart Herbert</a> for <a href="http://ganbarodigital.com">Ganbaro Digital Ltd</a>. Follow <a href="https://twitter.com/ganbarodigital">@ganbarodigital</a> or <a href="https://twitter.com/stuherbert">@stuherbert</a> for updates.</p>
+                <h1 id="contributing">Contributing</h1>
+<p>This library is open-source software from <a href="https://ganbarodigital.com">Ganbaro Digital</a>, released under <a href="license.html">the BSD license</a>. We welcome all contributions that further <a href="index.html#goals">the goals</a> that we have for this library.</p>
+<p>Before contributing, please read our <a href="code-of-conduct.html">code of conduct</a>. Please also make sure that you have the necessary legal authority to contribute - for example, that you own the work that you are submitting, or that your employer has authorised you to contribute work that they own.</p>
+<p>All contributions must be licensed under <a href="license.html">the BSD license</a>.</p>
+<h2 id="how-to-contribute-via-github">How To Contribute Via Github</h2>
+<p>This library uses the <a href="http://datasift.github.io/gitflow/">Gitflow</a> model for managing branches in our Git repository:</p>
+<table>
+<thead>
+<tr>
+<th>Branch</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>master</code></td>
+<td>latest tagged release</td>
+</tr>
+<tr>
+<td><code>develop</code></td>
+<td>completed features and fixes waiting for final testing and release</td>
+</tr>
+<tr>
+<td><code>feature/XXX</code></td>
+<td>work in progress, to be merged into <code>develop</code> when completed</td>
+</tr>
+<tr>
+<td><code>release/XXX</code></td>
+<td>a release that is undergoing final testing, to be merged into <code>master</code> and <code>develop</code> when completed</td>
+</tr>
+<tr>
+<td><code>hotfix/XXX</code></td>
+<td>emergency bug fixes in progress, to be merged into <code>master</code> and released when completed</td>
+</tr>
+</tbody>
+</table>
+<p>Don't worry if you're not used to Gitflow. Follow these steps for your features or fixes:</p>
+<ol>
+<li>if you don't have one already, create an account on Github</li>
+<li>on Github, fork our project</li>
+<li>clone your fork to your local computer</li>
+<li>create a new branch on your local computer: <code>git checkout -b feature/&lt;my-feature&gt; develop</code></li>
+<li>work on your feature</li>
+</ol>
+<p>When you're ready to submit your pull request, please make sure it's a pull request against our <code>develop</code> branch.</p>
+<p>We'll check your pull request for the following:</p>
+<ol>
+<li>does the pull request apply cleanly against our <code>develop</code> branch?</li>
+<li>does it fit <a href="index.html#goals">our goals for the library</a>?</li>
+<li>does it fit our coding style?</li>
+<li>does it come will 100% unit test coverage?</li>
+<li>does the pull request include updated docs showing how the new feature works?</li>
+</ol>
+<p>If the answer is 'no' to any of those, we'll respond and let you know what we need you to do before we can accept your pull request.</p>
+<h2 id="accepted-contributions">Accepted Contributions</h2>
+<p>If we accept your pull request, we'll add your details to our <a href="authors.html">authors</a> page, so that your contribution is acknowledged. We'll also add details of your change to our <a href="changelog.html">Changelog</a> page.</p>
             </article>
 
                         <nav class="pageflow">
               <ul>
-                                    <li></li>
-                                                      <li><a href="license.html">Next: License</a></li>
+                                    <li><a href="changelog.html">Prev: Changelog</a></li>
+                                                      <li><a href="code-of-conduct.html">Next: Code Of Conduct</a></li>
                                 </ul>
             </nav>
                     </main>
