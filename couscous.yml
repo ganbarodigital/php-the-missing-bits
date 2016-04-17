@@ -18,7 +18,7 @@ github:
     repo: php-the-missing-bits
 
 title: "PHP: The Missing Bits"
-subTitle: Functions and classes that we miss from PHP
+subTitle: Functions that we wish came with PHP
 
 menu:
     overview:
@@ -39,6 +39,14 @@ menu:
                 text: Changelog
                 relativeUrl: changelog.html
 
-    usage:
-        text: Usage
-        relativeUrl: V1/index.html
+    stringfunctions:
+        text: String Functions
+        relativeUrl: string-functions/index.html
+
+        items:
+            home:
+                text: String Functions
+                relativeUrl: string-functions/index.html
+            vnsprintf:
+                text: vnsprintf
+                relativeUrl: string-functions/vnsprintf.html
