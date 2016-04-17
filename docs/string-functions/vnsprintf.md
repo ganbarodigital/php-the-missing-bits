@@ -7,6 +7,10 @@ pageflow_prev_text: String Functions
 
 # vnsprintf()
 
+<div class="callout info" markdown="1">
+Since version 1.0.0.
+</div>
+
 ## Description
 
 `vnsprintf()` - PHP's `vsprintf()` with added support for _named arguments_.
