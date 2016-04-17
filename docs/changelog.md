@@ -10,6 +10,10 @@ pageflow_next_text: Contributing
 
 ## develop branch
 
+## v1.1.0
+
+Released Sunday 17th April 2016.
+
 ### New
 
 * Added [`GetPrintableType`](types/GetPrintableType.html)
