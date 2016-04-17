@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!--[if lt IE 9]>
+            <script src="assets/html5shiv.js"></script>
+            <script src="assets/html5printshiv.js"></script>
+        <![endif]-->
+        <meta charset="utf-8"/>
+        <title>PHP: The Missing Bits from Ganbaro Digital</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="http://ganbarodigital.github.io/php-the-missing-bits/assets/docs.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="http://ganbarodigital.github.io/php-the-missing-bits/assets/prism.css">
+        <script src="http://ganbarodigital.github.io/php-the-missing-bits/assets/prism.js"></script>
+    </head>
+    <body data-ishi-anchors="1">
+        <header role="banner">
+            <div>
+                <p style="font-size: 34px; padding-top: 10px">PHP: The Missing Bits</p>
+                <p style="font-size: 18px; border-bottom: 1px solid; padding-bottom: 10px">Functions that we wish came with PHP</p>
+            </div>
+            <!--<a href="http://ganbarodigital.github.io/php-the-missing-bits/index.html">
+                <img src="http://ganbarodigital.github.io/php-the-missing-bits/assets/ganbarodigital.svg" width="60" height="60" style="vertical-align: middle; float: left; margin-right: 15px">
+            </a>-->
+            <nav class="navbar topbar">
+                <ul>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/index.html">Overview</a>
+                        </li>
+                                            <li class="current">
+                            <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/string-functions/index.html">String Functions</a>
+                        </li>
+                                    </ul>
+            </nav>
+        </header>
+                                                                            <header role="subnav">
+                        <nav class="navbar">
+                            <ul>
+                                                                    <li class="">
+                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/string-functions/index.html">String Functions</a>
+                                    </li>
+                                                                    <li class="current">
+                                        <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/string-functions/vnsprintf.html">vnsprintf</a>
+                                    </li>
+                                                            </ul>
+                        </nav>
+                    </header>
+                                            <main role="main">
+                        <nav class="pageflow">
+              <ul>
+                                    <li><a href="index.html">Prev: String Functions</a></li>
+                                                      <li></li>
+                                </ul>
+            </nav>
+            
+            <article>
+                <h1 id="vnsprintf">vnsprintf()</h1>
+<h2 id="description">Description</h2>
+<p><code>vnsprintf()</code> - PHP's <code>vsprintf()</code> with added support for <em>named arguments</em>.</p>
+<pre><code class="language-php">string vnsprintf(string $format, array $args);</code></pre>
+<h2 id="parameters">Parameters</h2>
+<p><code>vnsprintf()</code> takes two parameters:</p>
+<ul>
+<li><code>$format</code> (string) - a <a href="http://php.net/manual/en/function.sprintf.php">sprintf()-compatible</a> format string, which may also contained <em>named parameters</em></li>
+<li><code>$args</code> (array) - a list of data values for <code>sprintf()</code> to use when <code>$format</code> is expanded</li>
+</ul>
+<p>PHP's built-in <code>sprintf()</code> already supports <em>positional parameters</em>:</p>
+<pre><code class="language-php">echo vsprintf("The %1\$s sat on the %2\$s", ['cat', 'mat']) . PHP_EOL;
+// output: The cat sat on the mat</code></pre>
+<p><code>vnsprintf()</code> adds support for using <em>named parameters</em> too:</p>
+<pre><code class="language-php">$args = [
+    'animal' =&gt; 'cat',
+    'place' =&gt; 'mat'
+];
+echo vnsprintf("The %animal\$s sat on the %place\$s", $args) . PHP_EOL;
+// output: The cat sat on the mat</code></pre>
+<h2 id="return-values">Return Values</h2>
+<p><code>vnsprintf()</code> returns a string: the result of expanding <code>$format</code> using the data in <code>$args</code>.</p>
+<h2 id="throws">Throws</h2>
+<p><code>vnsprintf()</code> throws the following exception(s):</p>
+<ul>
+<li><code>InvalidArgumentException</code> - if you use a <em>named parameter</em> that can't be found in <code>$args</code></li>
+</ul>
+<h2 id="constraints">Constraints</h2>
+<p>Internally, <code>vnsprintf()</code> converts <code>$format</code> into a <code>sprintf()</code>-compatible format string. As a result, <code>$format</code> must be one of the following:</p>
+<ul>
+<li>100%-compatible with <code>sprintf()</code>, or</li>
+<li>use only <em>named parameters</em>, or</li>
+<li>use a mix of <em>named parameters</em> and <em>positional parameters</em></li>
+</ul>
+<p>You <strong>cannot</strong> do the following:</p>
+<ul>
+<li>use a mix of <em>named parameters</em> and normal (non-position) parameters in <code>$format</code></li>
+<li>use a mix of <em>positional parameters</em> and normal (non-positional) parameters in <code>$format</code></li>
+</ul>
+<p>If you do so, you'll get an error message from PHP.</p>
+            </article>
+
+                        <nav class="pageflow">
+              <ul>
+                                    <li><a href="index.html">Prev: String Functions</a></li>
+                                                      <li></li>
+                                </ul>
+            </nav>
+                    </main>
+
+        <aside class="sidebar">
+            <h2>This Page</h2>
+            <nav class="toc" data-type="ishi-toc" data-max-depth="3">
+            </nav>
+        </aside>
+        <footer>
+            <div class="strapline">
+                <p>Copyright &copy; 2015 <a href="http://ganbarodigital.com">Ganbaro Digital Ltd</a>. Released under the <a href="http://ganbarodigital.github.io/php-the-missing-bits/license.html">New BSD</a> license.
+                                            Find PHP: The Missing Bits on <a href="https://github.com/ganbarodigital/php-the-missing-bits">GitHub</a>.
+                                        Built with <a href="http://couscous.io/">Couscous</a>.
+                </p>
+            </div>
+        </footer>
+    <script src="http://ganbarodigital.github.io/php-the-missing-bits/assets/laroux.js"></script>
+    <script src="http://ganbarodigital.github.io/php-the-missing-bits/assets/ishi.js"></script>
+    </body>
+</html>
