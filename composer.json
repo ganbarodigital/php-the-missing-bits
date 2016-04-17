@@ -13,8 +13,12 @@
         "couscous/couscous": "^1.5"
     },
     "autoload": {
+        "psr-4": {
+            "GanbaroDigital\\MissingBits\\": "src"
+        },
         "files": [
-            "src/string-functions.php"
+            "src/string-functions.php",
+            "src/type-functions.php"
         ]
     }
 }
