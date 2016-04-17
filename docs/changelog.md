@@ -3,6 +3,8 @@ currentSection: overview
 currentItem: changelog
 pageflow_prev_url: installation.html
 pageflow_prev_text: Installation
+pageflow_next_url: contributing.html
+pageflow_next_text: Contributing
 ---
 # CHANGELOG
 

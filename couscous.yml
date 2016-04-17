@@ -38,6 +38,15 @@ menu:
             changelog:
                 text: Changelog
                 relativeUrl: changelog.html
+            contributing:
+                text: Contributing
+                relativeUrl: contributing.html
+            codeofconduct:
+                text: Code Of Conduct
+                relativeUrl: code-of-conduct.html
+            authors:
+                text: Authors
+                relativeUrl: authors.html
 
     stringfunctions:
         text: String Functions
