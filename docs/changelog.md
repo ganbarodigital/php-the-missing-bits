@@ -8,6 +8,10 @@ pageflow_prev_text: Installation
 
 ## develop branch
 
+## v1.0.0
+
+Released Sunday 17th April 2016.
+
 ### New
 
 * Added [`vnsprint()`](string-functions/vnsprintf.html)
