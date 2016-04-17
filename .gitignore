@@ -3,3 +3,4 @@ composer.lock
 review/
 vendor/
 **/.tags*
+**/.DS_Store
