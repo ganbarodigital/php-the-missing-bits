@@ -13,7 +13,7 @@ Ganbaro Digital's _PHP: The Missing Bits_ provides functionality that we wish wa
 
 ## Goals
 
-_PHP: The Missing Bits_'s purpose is to provide a home for all the single functions that we find ourselves duplicating in different libraries. These are small functions that aren't worth putting into their own packages.
+_PHP: The Missing Bits_'s purpose is to provide a home for all the single functions that we find ourselves duplicating in different libraries. These are small functions that aren't worth putting into their own packages, and which make sense as a collection like this.
 
 ## Design Constraints
 

@@ -1,6 +1,6 @@
 ---
 currentSection: strings
-currentItem: index
+currentItem: home
 pageflow_next_url: vnsprintf.html
 pageflow_next_text: vnsprintf()
 ---

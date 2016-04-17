@@ -1,6 +1,6 @@
 ---
 currentSection: types
-currentItem: index
+currentItem: home
 pageflow_next_url: GetPrintableType.html
 pageflow_next_text: GetPrintableType
 ---
@@ -15,4 +15,4 @@ Here's a list of what we find is missing from PHP's built-in support for data ty
 
 Function | Purpose
 ---------|--------
-[GetPrintableType](GetPrintableType.html) | A more usable `gettype()`
+[GetPrintableType](GetPrintableType.html) | `gettype()` for error logging / exception messages

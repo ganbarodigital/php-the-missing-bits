@@ -17,7 +17,7 @@ _PHP: The Missing Bits_ is available via Packagist:
 
 ## From Github
 
-The source code for _PHP: The Missing Bits_ is available from [Github](https://github.com):
+The [source code for _PHP: The Missing Bits_](https://github.com/ganbarodigital/php-the-missing-bits/) is available from [Github](https://github.com):
 
     git clone https://github.com/ganbarodigital/php-the-missing-bits.git
 

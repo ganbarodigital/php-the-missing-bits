@@ -73,11 +73,13 @@ If `$flags` is not provided, it defaults to `GetPrintableType::FLAG_DEFAULTS`. T
 * `string` or `string<value>`
 
 <div class="callout info" markdown="1">
-#### Callables over Arrays
+#### Callables over Arrays and Strings
 
 If you pass in an array that is also a valid `callable`, `GetPrintableType` will return `callable`.
 
+The same goes for strings. If you pass in a string that is also a valid `callable`, `GetPrintableType` will return `callable`.
 </div>
+
 <div class="callout info" markdown="1">
 #### Callables over Closure
 
