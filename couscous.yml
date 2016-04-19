@@ -1,6 +1,6 @@
 ---
 template:
-    directory: docs-new-template
+    url: https://github.com/ganbarodigital/couscous-gd-docs
 
 include:
     - docs

@@ -10,6 +10,15 @@ pageflow_next_text: Contributing
 
 ## develop branch
 
+## v1.1.1
+
+Released Tuesday 19th April 2016.
+
+### Docs
+
+- Switched to downloading template from Github
+- Switched to Stuart's fork of Couscous
+
 ## v1.1.0
 
 Released Sunday 17th April 2016.
