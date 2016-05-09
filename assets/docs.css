@@ -633,6 +633,12 @@ iframe {
     white-space: pre-wrap;
     line-height: 19px; }
 
+  a code {
+    color: inherit;
+    border-bottom: inherit;
+    padding-bottom: 0px;
+    border-radius: 0; }
+
   kbd {
     font-family: inherit;
     font-size: 12.75px;
@@ -713,7 +719,7 @@ iframe {
     cursor: pointer;
     display: inline-block;
     -webkit-transition-property: background-color, color;
-    transition-property: background-color, color;
+            transition-property: background-color, color;
     -webkit-transition-duration: 0.25s;
             transition-duration: 0.25s;
     -webkit-transition-timing-function: ease-out;
@@ -724,7 +730,7 @@ iframe {
 
   a.calltoaction.outline:hover {
     -webkit-transition-property: background-color, color;
-    transition-property: background-color, color;
+            transition-property: background-color, color;
     -webkit-transition-duration: 0.25s;
             transition-duration: 0.25s;
     -webkit-transition-timing-function: ease-out;
@@ -1770,6 +1776,12 @@ iframe {
     white-space: pre-wrap;
     line-height: 20px; }
 
+  a code {
+    color: inherit;
+    border-bottom: inherit;
+    padding-bottom: 0px;
+    border-radius: 0; }
+
   kbd {
     font-family: inherit;
     font-size: 13.6px;
@@ -1850,7 +1862,7 @@ iframe {
     cursor: pointer;
     display: inline-block;
     -webkit-transition-property: background-color, color;
-    transition-property: background-color, color;
+            transition-property: background-color, color;
     -webkit-transition-duration: 0.25s;
             transition-duration: 0.25s;
     -webkit-transition-timing-function: ease-out;
@@ -1861,7 +1873,7 @@ iframe {
 
   a.calltoaction.outline:hover {
     -webkit-transition-property: background-color, color;
-    transition-property: background-color, color;
+            transition-property: background-color, color;
     -webkit-transition-duration: 0.25s;
             transition-duration: 0.25s;
     -webkit-transition-timing-function: ease-out;
@@ -2936,6 +2948,12 @@ iframe {
     white-space: pre-wrap;
     line-height: 22px; }
 
+  a code {
+    color: inherit;
+    border-bottom: inherit;
+    padding-bottom: 0px;
+    border-radius: 0; }
+
   kbd {
     font-family: inherit;
     font-size: 15.3px;
@@ -3016,7 +3034,7 @@ iframe {
     cursor: pointer;
     display: inline-block;
     -webkit-transition-property: background-color, color;
-    transition-property: background-color, color;
+            transition-property: background-color, color;
     -webkit-transition-duration: 0.25s;
             transition-duration: 0.25s;
     -webkit-transition-timing-function: ease-out;
@@ -3027,7 +3045,7 @@ iframe {
 
   a.calltoaction.outline:hover {
     -webkit-transition-property: background-color, color;
-    transition-property: background-color, color;
+            transition-property: background-color, color;
     -webkit-transition-duration: 0.25s;
             transition-duration: 0.25s;
     -webkit-transition-timing-function: ease-out;
@@ -4112,6 +4130,12 @@ iframe {
     white-space: pre-wrap;
     line-height: 20px; }
 
+  a code {
+    color: inherit;
+    border-bottom: inherit;
+    padding-bottom: 0px;
+    border-radius: 0; }
+
   kbd {
     font-family: inherit;
     font-size: 13.6px;
@@ -4192,7 +4216,7 @@ iframe {
     cursor: pointer;
     display: inline-block;
     -webkit-transition-property: background-color, color;
-    transition-property: background-color, color;
+            transition-property: background-color, color;
     -webkit-transition-duration: 0.25s;
             transition-duration: 0.25s;
     -webkit-transition-timing-function: ease-out;
@@ -4203,7 +4227,7 @@ iframe {
 
   a.calltoaction.outline:hover {
     -webkit-transition-property: background-color, color;
-    transition-property: background-color, color;
+            transition-property: background-color, color;
     -webkit-transition-duration: 0.25s;
             transition-duration: 0.25s;
     -webkit-transition-timing-function: ease-out;
