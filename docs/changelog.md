@@ -16,6 +16,7 @@ pageflow_next_text: Contributing
   - Added `ReadOnlyException`
   - Added `WriteProtectableEntity` interface
   - Added `WriteProtectedEntity` interface
+  - Added `WriteProtectTab` trait
 
 ## v1.1.1
 
