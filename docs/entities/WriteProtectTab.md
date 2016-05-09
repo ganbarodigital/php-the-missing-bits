@@ -7,8 +7,8 @@ pageflow_prev_text: WriteProtectedEntity interface
 
 # WriteProtectTab
 
-<div class="callout warning">
-Not yet in a tagged release
+<div class="callout info">
+Since v1.2.0
 </div>
 
 ## Description
