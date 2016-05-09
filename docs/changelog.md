@@ -10,6 +10,18 @@ pageflow_next_text: Contributing
 
 ## develop branch
 
+## v1.2.0
+
+Released Monday 9th May 2016.
+
+### New
+
+* Added support for entities that can switch between a read-only mode and read-write
+  - Added `ReadOnlyException`
+  - Added `WriteProtectableEntity` interface
+  - Added `WriteProtectedEntity` interface
+  - Added `WriteProtectTab` trait
+
 ## v1.1.1
 
 Released Tuesday 19th April 2016.

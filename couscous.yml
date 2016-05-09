@@ -48,6 +48,27 @@ menu:
                 text: Authors
                 relativeUrl: authors.html
 
+    entities:
+        text: Entities
+        relativeUrl: entities/index.html
+
+        items:
+            home:
+                text: Entities Classes and Interfaces
+                relativeUrl: entities/index.html
+            ReadOnlyException:
+                text: ReadOnlyException
+                relativeUrl: entities/ReadOnlyException.html
+            WriteProtectableEntity:
+                text: WriteProtectableEntity
+                relativeUrl: entities/WriteProtectableEntity.html
+            WriteProtectedEntity:
+                text: WriteProtectedEntity
+                relativeUrl: entities/WriteProtectedEntity.html
+            WriteProtectTab:
+                text: WriteProtectTab
+                relativeUrl: entities/WriteProtectTab.html
+
     strings:
         text: Strings
         relativeUrl: strings/index.html
