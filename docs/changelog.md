@@ -10,6 +10,10 @@ pageflow_next_text: Contributing
 
 ## develop branch
 
+## v1.2.0
+
+Released Monday 9th May 2016.
+
 ### New
 
 * Added support for entities that can switch between a read-only mode and read-write
