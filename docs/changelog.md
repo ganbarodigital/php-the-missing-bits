@@ -15,6 +15,7 @@ pageflow_next_text: Contributing
 * Added support for entities that can switch between a read-only mode and read-write
   - Added `ReadOnlyException`
   - Added `WriteProtectableEntity` interface
+  - Added `WriteProtectedEntity` interface
 
 ## v1.1.1
 
