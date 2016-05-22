@@ -246,41 +246,109 @@ class GetStringTypesTest extends PHPUnit_Framework_TestCase
     public function provideCallableStringsToTest()
     {
         return [
-            [ 'gettype', [ 'callable', 'string' ] ],
+            [
+                'gettype',
+                [
+                    'callable' => 'callable',
+                    'string' => 'string',
+                ]
+            ],
         ];
     }
 
     public function provideNumericStringsToTest()
     {
         return [
-            [ "0.0", [ "double", "string" ] ],
-            [ "3.1415927", [ "double", "string" ] ],
+            [
+                "0.0",
+                [
+                    "double" => "double",
+                    "string" => "string",
+                ]
+            ],
+            [
+                "3.1415927",
+                [
+                    "double" => "double",
+                    "string" => "string",
+                ]
+            ],
 
             // examples from the PHP manual
-            [ "1337e0", [ "double", "string" ] ],
+            [
+                "1337e0",
+                [
+                    "double" => "double",
+                    "string" => "string",
+                ]
+            ],
 
-            [ "0", [ "integer", "string" ] ],
-            [ "100", [ "integer", "string" ] ],
+            [
+                "0",
+                [
+                    "integer" => "integer",
+                    "string" => "string",
+                ]
+            ],
+            [
+                "100",
+                [
+                    "integer" => "integer",
+                    "string" => "string",
+                ]
+            ],
 
             // examples from the PHP manual
-            [ "42", [ "integer", "string" ] ],
-            [ "02471", [ "integer", "string" ] ],
+            [
+                "42",
+                [
+                    "integer" => "integer",
+                    "string" => "string",
+                ]
+            ],
+            [
+                "02471",
+                [
+                    "integer" => "integer",
+                    "string" => "string",
+                ]
+            ],
         ];
     }
 
     public function provideRealStringsToTest()
     {
         return [
-            [ 'hello, world!', [ 'string' ] ],
-            [ ArrayObject::class, [ 'string' ] ],
-            [ Traversable::class, [ 'string' ] ],
+            [
+                'hello, world!',
+                [
+                    'string' => 'string',
+                ]
+            ],
+            [
+                ArrayObject::class,
+                [
+                    'string' => 'string',
+                ]
+            ],
+            [
+                Traversable::class,
+                [
+                    'string' => 'string',
+                ]
+            ],
         ];
     }
 
     public function provideStringyObjectsToTest()
     {
         return [
-            [ new GetStringTypesTest_StringTarget, [ 'string'] ],
+            [
+                new GetStringTypesTest_StringTarget,
+                [
+                    'string' => 'string',
+                ]
+            ],
         ];
     }
 

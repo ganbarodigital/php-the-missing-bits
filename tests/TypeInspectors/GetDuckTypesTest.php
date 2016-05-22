@@ -149,37 +149,203 @@ class GetDuckTypesTest extends PHPUnit_Framework_TestCase
     public function provideDataToTest()
     {
         $retval = [
-            [ null,  [ 'NULL' ] ],
-            [ [ 1,2,3 ], [ 'Traversable', 'array' ] ],
-            [ [ GetDuckTypes::class, 'from'], [ 'callable', 'Traversable', 'array'] ],
-            [ 'gettype', [ 'callable', 'string' ] ],
-            [ true, [ 'boolean' ] ],
-            [ false, [ 'boolean' ] ],
-            [ 0.0, [ 'double' ] ],
-            [ 0, [ 'integer' ] ],
-            [ 1, [ 'integer' ] ],
-            [ new ArrayObject(), [ ArrayObject::class, 'IteratorAggregate', 'Traversable', 'ArrayAccess', 'Serializable', 'Countable', 'object' ] ],
-            [ new GetDuckTypes(), [ GetDuckTypes::class, 'callable', 'object' ] ],
-            [ (object)[ 'name' => 'test data'], [ 'stdClass', 'Traversable', 'object' ] ],
-            [ STDIN, [ 'resource'] ],
-            [ "0.0", [ "double", "string" ] ],
-            [ "3.1415927", [ "double", "string" ] ],
-            [ "1337e0", [ "double", "string" ] ],
-            [ "0", [ "integer", "string" ] ],
-            [ "100", [ "integer", "string" ] ],
-            [ "42", [ "integer", "string" ] ],
-            [ "02471", [ "integer", "string" ] ],
-            [ ArrayObject::class, [ ArrayObject::class, 'IteratorAggregate', 'Traversable', 'ArrayAccess', 'Serializable', 'Countable', 'class', 'string' ] ],
-            [ Traversable::class, [ Traversable::class, 'interface', 'string' ] ],
+            [
+                null,
+                [
+                    'NULL' => 'NULL',
+                ]
+            ],
+            [
+                [ 1,2,3 ],
+                [
+                    'Traversable' => 'Traversable',
+                    'array' => 'array',
+                ]
+            ],
+            [
+                [ GetDuckTypes::class, 'from'],
+                [
+                    'callable' => 'callable',
+                    'Traversable' => 'Traversable',
+                    'array' => 'array',
+                ]
+            ],
+            [
+                'gettype',
+                [
+                    'callable' => 'callable',
+                    'string' => 'string',
+                ]
+            ],
+            [
+                true,
+                [
+                    'boolean' => 'boolean',
+                ]
+            ],
+            [
+                false,
+                [
+                    'boolean' => 'boolean',
+                ]
+            ],
+            [
+                0.0,
+                [
+                    'double' => 'double',
+                ]
+            ],
+            [
+                3.1415927,
+                [
+                    'double' => 'double',
+                ]
+            ],
+            [
+                0,
+                [
+                    'integer' => 'integer',
+                ]
+            ],
+            [
+                100,
+                [
+                    'integer' => 'integer'
+                ]
+            ],
+            [
+                -100,
+                [
+                    'integer' => 'integer'
+                ]
+            ],
+            [
+                new ArrayObject(),
+                [
+                    ArrayObject::class => ArrayObject::class,
+                    'IteratorAggregate' => 'IteratorAggregate',
+                    'Traversable' => 'Traversable',
+                    'ArrayAccess' => 'ArrayAccess',
+                    'Serializable' => 'Serializable',
+                    'Countable' => 'Countable',
+                    'object' => 'object',
+                ]
+            ],
+            [
+                new GetDuckTypes(),
+                [
+                    GetDuckTypes::class => GetDuckTypes::class,
+                    'callable' => 'callable',
+                    'object' => 'object',
+                ]
+            ],
+            [
+                (object)[ 'name' => 'test data'],
+                [
+                    'stdClass' => 'stdClass',
+                    'Traversable' => 'Traversable',
+                    'object' => 'object',
+                ]
+            ],
+            [
+                STDIN,
+                [
+                    'resource' => 'resource',
+                ]
+            ],
+            [
+                "0.0",
+                [
+                    "double" => "double",
+                    "string" => "string",
+                ]
+            ],
+            [
+                "3.1415927",
+                [
+                    "double" => "double",
+                    "string" => "string",
+                ]
+            ],
+            [
+                "1337e0",
+                [
+                    "double" => "double",
+                    "string" => "string",
+                ]
+            ],
+            [
+                "0",
+                [
+                    "integer" => "integer",
+                    "string" => "string",
+                ]
+            ],
+            [ "100",
+                [
+                    "integer" => "integer",
+                    "string" => "string",
+                ]
+            ],
+            [
+                "42",
+                [
+                    "integer" => "integer",
+                    "string" => "string",
+                ]
+            ],
+            [
+                "02471",
+                [
+                    "integer" => "integer",
+                    "string" => "string",
+                ]
+            ],
+            [
+                ArrayObject::class,
+                [
+                    ArrayObject::class => ArrayObject::class,
+                    'IteratorAggregate' => 'IteratorAggregate',
+                    'Traversable' => 'Traversable',
+                    'ArrayAccess' => 'ArrayAccess',
+                    'Serializable' => 'Serializable',
+                    'Countable' => 'Countable',
+                    'class' => 'class',
+                    'string' => 'string',
+                ]
+            ],
+            [
+                Traversable::class,
+                [
+                    Traversable::class => Traversable::class,
+                    'interface' => 'interface',
+                    'string' => 'string',
+                ]
+            ],
         ];
 
         if (interface_exists('Throwable')) {
             // PHP 7.0
-            $retval[] = [ new Exception(__FILE__), [ 'Exception', 'Throwable', 'string', 'object' ] ];
+            $retval[] = [
+                new Exception(__FILE__),
+                [
+                    'Exception' => 'Exception',
+                    'Throwable' => 'Throwable',
+                    'string' => 'string',
+                    'object' => 'object'
+                ]
+            ];
         }
         else {
             // PHP 5.x
-            $retval[] = [ new Exception(__FILE__), [ 'Exception', 'string', 'object' ] ];
+            $retval[] = [
+                new Exception(__FILE__),
+                [
+                    'Exception' => 'Exception',
+                    'string' => 'string',
+                    'object' => 'object'
+                ]
+            ];
         }
 
         return $retval;
@@ -215,37 +381,37 @@ class GetDuckTypesTest extends PHPUnit_Framework_TestCase
             [
                 new GetDuckTypesTest_Target1,
                 [
-                    GetDuckTypesTest_Target1::class,
-                    GetDuckTypesTest_Interface1::class,
-                    'object',
+                    GetDuckTypesTest_Target1::class => GetDuckTypesTest_Target1::class,
+                    GetDuckTypesTest_Interface1::class => GetDuckTypesTest_Interface1::class,
+                    'object' => 'object',
                 ]
             ],
             [
                 new GetDuckTypesTest_Target2,
                 [
-                    GetDuckTypesTest_Target2::class,
-                    GetDuckTypesTest_Interface2::class,
-                    'object',
+                    GetDuckTypesTest_Target2::class => GetDuckTypesTest_Target2::class,
+                    GetDuckTypesTest_Interface2::class => GetDuckTypesTest_Interface2::class,
+                    'object' => 'object',
                 ]
             ],
             [
                 new GetDuckTypesTest_Target1_3,
                 [
-                    GetDuckTypesTest_Target1_3::class,
-                    GetDuckTypesTest_Target1::class,
-                    GetDuckTypesTest_Interface1::class,
-                    GetDuckTypesTest_Interface3::class,
-                    'object',
+                    GetDuckTypesTest_Target1_3::class => GetDuckTypesTest_Target1_3::class,
+                    GetDuckTypesTest_Target1::class => GetDuckTypesTest_Target1::class,
+                    GetDuckTypesTest_Interface1::class => GetDuckTypesTest_Interface1::class,
+                    GetDuckTypesTest_Interface3::class => GetDuckTypesTest_Interface3::class,
+                    'object' => 'object',
                 ]
             ],
             [
                 new GetDuckTypesTest_Target2_3,
                 [
-                    GetDuckTypesTest_Target2_3::class,
-                    GetDuckTypesTest_Target2::class,
-                    GetDuckTypesTest_Interface2::class,
-                    GetDuckTypesTest_Interface3::class,
-                    'object',
+                    GetDuckTypesTest_Target2_3::class => GetDuckTypesTest_Target2_3::class,
+                    GetDuckTypesTest_Target2::class => GetDuckTypesTest_Target2::class,
+                    GetDuckTypesTest_Interface2::class => GetDuckTypesTest_Interface2::class,
+                    GetDuckTypesTest_Interface3::class => GetDuckTypesTest_Interface3::class,
+                    'object' => 'object',
                 ]
             ],
         ];
@@ -261,9 +427,9 @@ class GetDuckTypesTest extends PHPUnit_Framework_TestCase
 
         $data = [ GetDuckTypes::class, 'from' ];
         $expectedResult = [
-            'callable',
-            'Traversable',
-            'array',
+            'callable' => 'callable',
+            'Traversable' => 'Traversable',
+            'array' => 'array',
         ];
 
         // ----------------------------------------------------------------
@@ -287,9 +453,9 @@ class GetDuckTypesTest extends PHPUnit_Framework_TestCase
 
         $data = new GetDuckTypes;
         $expectedResult = [
-            GetDuckTypes::class,
-            'callable',
-            'object',
+            GetDuckTypes::class => GetDuckTypes::class,
+            'callable' => 'callable',
+            'object' => 'object',
         ];
 
         // ----------------------------------------------------------------
@@ -313,15 +479,15 @@ class GetDuckTypesTest extends PHPUnit_Framework_TestCase
 
         $data = new GetDuckTypesTest_StringTarget;
         $expectedResult = [
-            GetDuckTypesTest_StringTarget::class
+            GetDuckTypesTest_StringTarget::class => GetDuckTypesTest_StringTarget::class
         ];
         // HHVM currently adds this class to the class hierarchy
         if (defined('HHVM_VERSION')) {
-            $expectedResult[] = 'Stringish';
+            $expectedResult['Stringish'] = 'Stringish';
         }
         $expectedResult = array_merge($expectedResult, [
-            'string',
-            'object',
+            'string' => 'string',
+            'object' => 'object',
         ]);
 
         // ----------------------------------------------------------------
@@ -346,9 +512,9 @@ class GetDuckTypesTest extends PHPUnit_Framework_TestCase
 
         $data = new stdClass;
         $expectedResult = [
-            'stdClass',
-            'Traversable',
-            'object',
+            'stdClass' => 'stdClass',
+            'Traversable' => 'Traversable',
+            'object' => 'object',
         ];
 
         // ----------------------------------------------------------------
@@ -372,9 +538,9 @@ class GetDuckTypesTest extends PHPUnit_Framework_TestCase
 
         $data = GetDuckTypesTest_StringTarget::class;
         $expectedResult = [
-            GetDuckTypesTest_StringTarget::class,
-            'class',
-            'string',
+            GetDuckTypesTest_StringTarget::class => GetDuckTypesTest_StringTarget::class,
+            'class' => 'class',
+            'string' => 'string',
         ];
 
         // ----------------------------------------------------------------
@@ -398,8 +564,8 @@ class GetDuckTypesTest extends PHPUnit_Framework_TestCase
 
         $data = 'is_string';
         $expectedResult = [
-            'callable',
-            'string',
+            'callable' => 'callable',
+            'string' => 'string',
         ];
 
         // ----------------------------------------------------------------
@@ -423,9 +589,9 @@ class GetDuckTypesTest extends PHPUnit_Framework_TestCase
 
         $data = 'Traversable';
         $expectedResult = [
-            'Traversable',
-            'interface',
-            'string',
+            'Traversable' => 'Traversable',
+            'interface' => 'interface',
+            'string' => 'string',
         ];
 
         // ----------------------------------------------------------------

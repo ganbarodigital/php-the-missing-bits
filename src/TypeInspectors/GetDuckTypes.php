@@ -56,25 +56,7 @@ class GetDuckTypes
      * @var array
      */
     private static $arrayExtras = [
-        'Traversable'
-    ];
-
-    /**
-     * the extra items to append to a class
-     * @var array
-     */
-    private static $classExtras = [
-        'class',
-        'string'
-    ];
-
-    /**
-     * the extra items to append to an interface
-     * @var array
-     */
-    private static $interfaceExtras = [
-        'interface',
-        'string'
+        'Traversable' => 'Traversable'
     ];
 
     /**
@@ -116,7 +98,7 @@ class GetDuckTypes
         }
 
         // if we get here, then we just return the PHP scalar type
-        return [ $type ];
+        return [ $type => $type ];
     }
 
     /**
@@ -133,7 +115,7 @@ class GetDuckTypes
         $retval = array_merge(
             array_slice(GetArrayTypes::from($item), 0, -1),
             self::$arrayExtras,
-            ['array']
+            [ 'array' => 'array' ]
         );
 
         // all done
@@ -155,7 +137,7 @@ class GetDuckTypes
         $retval = array_merge(
             GetObjectTypes::from($item),
             self::getObjectSpecialTypes($item),
-            ['object']
+            [ 'object' => 'object' ]
         );
 
         return $retval;
@@ -173,7 +155,7 @@ class GetDuckTypes
         $retval = [];
 
         if ($object instanceof stdClass) {
-            $retval[] = 'Traversable';
+            $retval['Traversable'] = 'Traversable';
         }
 
         return $retval;
@@ -194,15 +176,15 @@ class GetDuckTypes
 
         // special case - is this a class name?
         if (class_exists($item)) {
-            $retval = array_merge($retval, GetClassTypes::from($item), ['class']);
+            $retval = array_merge($retval, GetClassTypes::from($item), ['class' => 'class']);
         }
         else if (interface_exists($item)) {
-            $retval = array_merge($retval, GetClassTypes::from($item), ['interface']);
+            $retval = array_merge($retval, GetClassTypes::from($item), ['interface' => 'interface']);
         }
 
         // pull in the list of strict string types too
         $retval = array_merge($retval, GetStringTypes::from($item));
-        
+
         // all done
         return $retval;
     }

@@ -82,7 +82,7 @@ class GetClassTypes
 
         // our return value
         $retval = array_merge(
-            [$item],
+            [$item => $item],
             static::getClassHierarchy($item),
             static::getInterfaceHierarchy($item)
         );
@@ -103,7 +103,7 @@ class GetClassTypes
         $retval = [];
 
         foreach (class_parents($className) as $parentName) {
-            $retval[] = $parentName;
+            $retval[$parentName] = $parentName;
         }
 
         // all done
@@ -123,7 +123,7 @@ class GetClassTypes
         $retval = [];
 
         foreach (class_implements($className) as $interfaceName) {
-            $retval[] = $interfaceName;
+            $retval[$interfaceName] = $interfaceName;
         }
 
         // all done

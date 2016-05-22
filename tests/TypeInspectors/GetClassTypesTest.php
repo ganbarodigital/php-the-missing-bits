@@ -205,44 +205,44 @@ class GetClassTypesTest extends PHPUnit_Framework_TestCase
             [
                 ArrayObject::class,
                 [
-                    ArrayObject::class,
-                    'IteratorAggregate',
-                    'Traversable',
-                    'ArrayAccess',
-                    'Serializable',
-                    'Countable',
+                    ArrayObject::class => ArrayObject::class,
+                    'IteratorAggregate' => 'IteratorAggregate',
+                    'Traversable' => 'Traversable',
+                    'ArrayAccess' => 'ArrayAccess',
+                    'Serializable' => 'Serializable',
+                    'Countable' => 'Countable',
                 ]
             ],
             [
                 GetClassTypesTest_Target1::class,
                 [
-                    GetClassTypesTest_Target1::class,
-                    GetClassTypesTest_Interface1::class,
+                    GetClassTypesTest_Target1::class => GetClassTypesTest_Target1::class,
+                    GetClassTypesTest_Interface1::class => GetClassTypesTest_Interface1::class,
                 ]
             ],
             [
                 GetClassTypesTest_Target2::class,
                 [
-                    GetClassTypesTest_Target2::class,
-                    GetClassTypesTest_Interface2::class,
+                    GetClassTypesTest_Target2::class => GetClassTypesTest_Target2::class,
+                    GetClassTypesTest_Interface2::class => GetClassTypesTest_Interface2::class,
                 ]
             ],
             [
                 GetClassTypesTest_Target1_3::class,
                 [
-                    GetClassTypesTest_Target1_3::class,
-                    GetClassTypesTest_Target1::class,
-                    GetClassTypesTest_Interface1::class,
-                    GetClassTypesTest_Interface3::class,
+                    GetClassTypesTest_Target1_3::class => GetClassTypesTest_Target1_3::class,
+                    GetClassTypesTest_Target1::class => GetClassTypesTest_Target1::class,
+                    GetClassTypesTest_Interface1::class => GetClassTypesTest_Interface1::class,
+                    GetClassTypesTest_Interface3::class => GetClassTypesTest_Interface3::class,
                 ]
             ],
             [
                 GetClassTypesTest_Target2_3::class,
                 [
-                    GetClassTypesTest_Target2_3::class,
-                    GetClassTypesTest_Target2::class,
-                    GetClassTypesTest_Interface2::class,
-                    GetClassTypesTest_Interface3::class,
+                    GetClassTypesTest_Target2_3::class => GetClassTypesTest_Target2_3::class,
+                    GetClassTypesTest_Target2::class => GetClassTypesTest_Target2::class,
+                    GetClassTypesTest_Interface2::class => GetClassTypesTest_Interface2::class,
+                    GetClassTypesTest_Interface3::class => GetClassTypesTest_Interface3::class,
                 ]
             ],
         ];
@@ -254,20 +254,20 @@ class GetClassTypesTest extends PHPUnit_Framework_TestCase
             [
                 Traversable::class,
                 [
-                    'Traversable',
+                    'Traversable' => 'Traversable',
                 ]
             ],
             [
                 GetClassTypesTest_Interface1::class,
                 [
-                    GetClassTypesTest_Interface1::class,
+                    GetClassTypesTest_Interface1::class => GetClassTypesTest_Interface1::class,
                 ]
             ],
             [
                 GetClassTypesTest_Interface4::class,
                 [
-                    GetClassTypesTest_Interface4::class,
-                    GetClassTypesTest_Interface1::class,
+                    GetClassTypesTest_Interface4::class => GetClassTypesTest_Interface4::class,
+                    GetClassTypesTest_Interface1::class => GetClassTypesTest_Interface1::class,
                 ]
             ]
         ];

@@ -116,7 +116,7 @@ class GetObjectTypes
 
         foreach (self::$objectConditionalExtras as $methodName => $type) {
             if (method_exists($object, $methodName)) {
-                $retval[] = $type;
+                $retval[$type] = $type;
             }
         }
 

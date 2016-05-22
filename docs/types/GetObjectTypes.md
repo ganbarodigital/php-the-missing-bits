@@ -61,6 +61,85 @@ In PHP 7.0, `object` is not valid type declaration. That's why `GetObjectTypes` 
 
 ### Example Return Values
 
+Here's a list of examples of accepted input values:
+
+```php
+var_dump(get_object_types(function(){}));
+
+// outputs
+//
+// array(2) {
+//   ["Closure"]=>
+//   string(7) "Closure"
+//   ["callable"]=>
+//   string(8) "callable"
+// }
+```
+
+```php
+var_dump(get_object_types(new ArrayObject));
+
+// outputs
+//
+// array(6) {
+//   ["ArrayObject"]=>
+//   string(11) "ArrayObject"
+//   ["IteratorAggregate"]=>
+//   string(17) "IteratorAggregate"
+//   ["Traversable"]=>
+//   string(11) "Traversable"
+//   ["ArrayAccess"]=>
+//   string(11) "ArrayAccess"
+//   ["Serializable"]=>
+//   string(12) "Serializable"
+//   ["Countable"]=>
+//   string(9) "Countable"
+// }
+```
+
+```php
+use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
+
+var_dump(get_object_types(new GetStrictTypes));
+
+// outputs
+//
+// array(2) {
+//   ["GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes"]=>
+//   string(56) "GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes"
+//   ["callable"]=>
+//   string(8) "callable"
+// }
+```
+
+```php
+var_dump(get_object_types((object)[]));
+
+// outputs
+//
+// array(1) {
+//   ["stdClass"]=>
+//   string(8) "stdClass"
+// }
+```
+
+```php
+var_dump(get_object_types(new Exception(__FILE__)));
+
+// outputs
+//
+// array(3) {
+//   ["Exception"]=>
+//   string(9) "Exception"
+//   ["Throwable"]=>
+//   string(9) "Throwable"
+//   ["string"]=>
+//   string(6) "string"
+// }
+```
+
+Here's a list of examples of ingored input values:
+
 ```php
 var_dump(get_object_types(null));
 
@@ -68,7 +147,6 @@ var_dump(get_object_types(null));
 //
 // array(0) {
 // }
-//
 ```
 
 ```php
@@ -78,7 +156,6 @@ var_dump(get_object_types([1,2,3]));
 //
 // array(0) {
 // }
-//
 ```
 
 ```php
@@ -90,21 +167,6 @@ var_dump(get_object_types([GetStrictTypes::class, "from"]));
 //
 // array(0) {
 // }
-//
-```
-
-```php
-var_dump(get_object_types(function(){}));
-
-// outputs
-//
-// array(2) {
-//   [0]=>
-//   string(7) "Closure"
-//   [1]=>
-//   string(8) "callable"
-// }
-//
 ```
 
 ```php
@@ -114,7 +176,6 @@ var_dump(get_object_types(true));
 //
 // array(0) {
 // }
-//
 ```
 
 ```php
@@ -124,7 +185,6 @@ var_dump(get_object_types(false));
 //
 // array(0) {
 // }
-//
 ```
 
 ```php
@@ -134,7 +194,15 @@ var_dump(get_object_types(0.0));
 //
 // array(0) {
 // }
+```
+
+```php
+var_dump(get_object_types(3.1415927));
+
+// outputs
 //
+// array(0) {
+// }
 ```
 
 ```php
@@ -144,57 +212,78 @@ var_dump(get_object_types(0));
 //
 // array(0) {
 // }
-//
 ```
 
 ```php
-var_dump(get_object_types(new ArrayObject));
+var_dump(get_object_types(100));
 
 // outputs
 //
-// array(6) {
-//   [0]=>
-//   string(11) "ArrayObject"
-//   [1]=>
-//   string(17) "IteratorAggregate"
-//   [2]=>
-//   string(11) "Traversable"
-//   [3]=>
-//   string(11) "ArrayAccess"
-//   [4]=>
-//   string(12) "Serializable"
-//   [5]=>
-//   string(9) "Countable"
+// array(0) {
 // }
-//
 ```
 
 ```php
-use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
-
-var_dump(get_object_types(new GetStrictTypes));
+var_dump(get_object_types(-100));
 
 // outputs
 //
-// array(2) {
-//   [0]=>
-//   string(56) "GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes"
-//   [1]=>
-//   string(8) "callable"
+// array(0) {
 // }
-//
 ```
 
 ```php
-var_dump(get_object_types((object)[]));
+var_dump(get_object_types(STDIN));
 
 // outputs
 //
-// array(1) {
-//   [0]=>
-//   string(8) "stdClass"
+// array(0) {
 // }
+```
+
+```php
+var_dump(get_object_types("true"));
+
+// outputs
 //
+// array(0) {
+// }
+```
+
+```php
+var_dump(get_object_types("false"));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(get_object_types("0.0"));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(get_object_types("3.1415927"));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(get_object_types("0"));
+
+// outputs
+//
+// array(0) {
+// }
 ```
 
 ```php
@@ -204,7 +293,15 @@ var_dump(get_object_types("100"));
 //
 // array(0) {
 // }
+```
+
+```php
+var_dump(get_object_types("hello, world!"));
+
+// outputs
 //
+// array(0) {
+// }
 ```
 
 ```php
@@ -214,7 +311,6 @@ var_dump(get_object_types(ArrayObject::class));
 //
 // array(0) {
 // }
-//
 ```
 
 ```php
@@ -224,7 +320,6 @@ var_dump(get_object_types(Traversable::class));
 //
 // array(0) {
 // }
-//
 ```
 
 ## Throws

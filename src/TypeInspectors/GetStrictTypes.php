@@ -84,6 +84,6 @@ class GetStrictTypes
         }
 
         // if we get here, then we just return the PHP scalar type
-        return [ $type ];
+        return [ $type => $type ];
     }
 }

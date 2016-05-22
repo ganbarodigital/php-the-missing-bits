@@ -139,37 +139,186 @@ class GetStrictTypesTest extends PHPUnit_Framework_TestCase
     public function provideDataToTest()
     {
         $retval = [
-            [ null,  [ 'NULL' ] ],
-            [ [ 1,2,3 ], [ 'array' ] ],
-            [ [ GetStrictTypes::class, 'from'], [ 'callable', 'array'] ],
-            [ 'gettype', [ 'callable', 'string' ] ],
-            [ true, [ 'boolean' ] ],
-            [ false, [ 'boolean' ] ],
-            [ 0.0, [ 'double' ] ],
-            [ 0, [ 'integer' ] ],
-            [ 1, [ 'integer' ] ],
-            [ new ArrayObject(), [ ArrayObject::class, 'IteratorAggregate', 'Traversable', 'ArrayAccess', 'Serializable', 'Countable' ] ],
-            [ new GetStrictTypes(), [ GetStrictTypes::class, 'callable' ] ],
-            [ (object)[ 'name' => 'test data'], [ 'stdClass' ] ],
-            [ STDIN, [ 'resource'] ],
-            [ "0.0", [ "double", "string" ] ],
-            [ "3.1415927", [ "double", "string" ] ],
-            [ "1337e0", [ "double", "string" ] ],
-            [ "0", [ "integer", "string" ] ],
-            [ "100", [ "integer", "string" ] ],
-            [ "42", [ "integer", "string" ] ],
-            [ "02471", [ "integer", "string" ] ],
-            [ ArrayObject::class, [ 'string' ] ],
-            [ Traversable::class, [ 'string'] ],
+            [
+                null,
+                [
+                    'NULL' => 'NULL',
+                ]
+            ],
+            [
+                [ 1,2,3 ],
+                [
+                    'array' => 'array',
+                ]
+            ],
+            [
+                [ GetStrictTypes::class, 'from'],
+                [
+                    'callable' => 'callable',
+                    'array' => 'array',
+                ]
+            ],
+            [
+                'gettype',
+                [
+                    'callable' => 'callable',
+                    'string' => 'string',
+                ]
+            ],
+            [
+                true,
+                [
+                    'boolean' => 'boolean',
+                ]
+            ],
+            [
+                false,
+                [
+                    'boolean' => 'boolean',
+                ]
+            ],
+            [
+                0.0,
+                [
+                    'double' => 'double',
+                ]
+            ],
+            [
+                3.1415927,
+                [
+                    'double' => 'double',
+                ]
+            ],
+            [
+                0,
+                [
+                    'integer' => 'integer',
+                ]
+            ],
+            [
+                100,
+                [
+                    'integer' => 'integer'
+                ]
+            ],
+            [
+                -100,
+                [
+                    'integer' => 'integer'
+                ]
+            ],
+            [
+                new ArrayObject(),
+                [
+                    ArrayObject::class => ArrayObject::class,
+                    'IteratorAggregate' => 'IteratorAggregate',
+                    'Traversable' => 'Traversable',
+                    'ArrayAccess' => 'ArrayAccess',
+                    'Serializable' => 'Serializable',
+                    'Countable' => 'Countable',
+                ]
+            ],
+            [
+                new GetStrictTypes(),
+                [
+                    GetStrictTypes::class => GetStrictTypes::class,
+                    'callable' => 'callable',
+                ]
+            ],
+            [
+                (object)[ 'name' => 'test data'],
+                [
+                    'stdClass' => 'stdClass',
+                ]
+            ],
+            [
+                STDIN,
+                [
+                    'resource' => 'resource',
+                ]
+            ],
+            [
+                "0.0",
+                [
+                    "double" => "double",
+                    "string" => "string",
+                ]
+            ],
+            [
+                "3.1415927",
+                [
+                    "double" => "double",
+                    "string" => "string",
+                ]
+            ],
+            [
+                "1337e0",
+                [
+                    "double" => "double",
+                    "string" => "string",
+                ]
+            ],
+            [
+                "0",
+                [
+                    "integer" => "integer",
+                    "string" => "string",
+                ]
+            ],
+            [ "100",
+                [
+                    "integer" => "integer",
+                    "string" => "string",
+                ]
+            ],
+            [
+                "42",
+                [
+                    "integer" => "integer",
+                    "string" => "string",
+                ]
+            ],
+            [
+                "02471",
+                [
+                    "integer" => "integer",
+                    "string" => "string",
+                ]
+            ],
+            [
+                ArrayObject::class,
+                [
+                    'string' => 'string',
+                ]
+            ],
+            [
+                Traversable::class,
+                [
+                    'string' => 'string',
+                ]
+            ],
         ];
 
         if (interface_exists('Throwable')) {
             // PHP 7.0
-            $retval[] = [ new Exception(__FILE__), [ 'Exception', 'Throwable', 'string' ] ];
+            $retval[] = [
+                new Exception(__FILE__),
+                [
+                    'Exception' => 'Exception',
+                    'Throwable' => 'Throwable',
+                    'string' => 'string',
+                ]
+            ];
         }
         else {
             // PHP 5.x
-            $retval[] = [ new Exception(__FILE__), [ 'Exception', 'string' ] ];
+            $retval[] = [
+                new Exception(__FILE__),
+                [
+                    'Exception' => 'Exception',
+                    'string' => 'string',
+                ]
+            ];
         }
 
         return $retval;
@@ -204,33 +353,33 @@ class GetStrictTypesTest extends PHPUnit_Framework_TestCase
             [
                 new GetStrictTypesTest_Target1,
                 [
-                    GetStrictTypesTest_Target1::class,
-                    GetStrictTypesTest_Interface1::class,
+                    GetStrictTypesTest_Target1::class => GetStrictTypesTest_Target1::class,
+                    GetStrictTypesTest_Interface1::class => GetStrictTypesTest_Interface1::class,
                 ]
             ],
             [
                 new GetStrictTypesTest_Target2,
                 [
-                    GetStrictTypesTest_Target2::class,
-                    GetStrictTypesTest_Interface2::class,
+                    GetStrictTypesTest_Target2::class => GetStrictTypesTest_Target2::class,
+                    GetStrictTypesTest_Interface2::class => GetStrictTypesTest_Interface2::class,
                 ]
             ],
             [
                 new GetStrictTypesTest_Target1_3,
                 [
-                    GetStrictTypesTest_Target1_3::class,
-                    GetStrictTypesTest_Target1::class,
-                    GetStrictTypesTest_Interface1::class,
-                    GetStrictTypesTest_Interface3::class,
+                    GetStrictTypesTest_Target1_3::class => GetStrictTypesTest_Target1_3::class,
+                    GetStrictTypesTest_Target1::class => GetStrictTypesTest_Target1::class,
+                    GetStrictTypesTest_Interface1::class => GetStrictTypesTest_Interface1::class,
+                    GetStrictTypesTest_Interface3::class => GetStrictTypesTest_Interface3::class,
                 ]
             ],
             [
                 new GetStrictTypesTest_Target2_3,
                 [
-                    GetStrictTypesTest_Target2_3::class,
-                    GetStrictTypesTest_Target2::class,
-                    GetStrictTypesTest_Interface2::class,
-                    GetStrictTypesTest_Interface3::class,
+                    GetStrictTypesTest_Target2_3::class => GetStrictTypesTest_Target2_3::class,
+                    GetStrictTypesTest_Target2::class => GetStrictTypesTest_Target2::class,
+                    GetStrictTypesTest_Interface2::class => GetStrictTypesTest_Interface2::class,
+                    GetStrictTypesTest_Interface3::class => GetStrictTypesTest_Interface3::class,
                 ]
             ],
         ];
@@ -246,8 +395,8 @@ class GetStrictTypesTest extends PHPUnit_Framework_TestCase
 
         $data = [ GetStrictTypes::class, 'from' ];
         $expectedResult = [
-            'callable',
-            'array',
+            'callable' => 'callable',
+            'array' => 'array',
         ];
 
         // ----------------------------------------------------------------
@@ -271,8 +420,8 @@ class GetStrictTypesTest extends PHPUnit_Framework_TestCase
 
         $data = new GetStrictTypes;
         $expectedResult = [
-            GetStrictTypes::class,
-            'callable',
+            GetStrictTypes::class => GetStrictTypes::class,
+            'callable' => 'callable',
         ];
 
         // ----------------------------------------------------------------
@@ -296,15 +445,13 @@ class GetStrictTypesTest extends PHPUnit_Framework_TestCase
 
         $data = new GetStrictTypesTest_StringTarget;
         $expectedResult = [
-            GetStrictTypesTest_StringTarget::class
+            GetStrictTypesTest_StringTarget::class => GetStrictTypesTest_StringTarget::class
         ];
         // HHVM currently adds this class to the class hierarchy
         if (defined('HHVM_VERSION')) {
-            $expectedResult[] = 'Stringish';
+            $expectedResult['Stringish'] = 'Stringish';
         }
-        $expectedResult = array_merge($expectedResult, [
-            'string',
-        ]);
+        $expectedResult['string'] = 'string';
 
         // ----------------------------------------------------------------
         // perform the change
@@ -327,8 +474,8 @@ class GetStrictTypesTest extends PHPUnit_Framework_TestCase
 
         $data = 'is_string';
         $expectedResult = [
-            'callable',
-            'string',
+            'callable' => 'callable',
+            'string' => 'string',
         ];
 
         // ----------------------------------------------------------------

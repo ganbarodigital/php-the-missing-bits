@@ -72,7 +72,7 @@ var_dump(get_string_types("true"));
 // outputs
 //
 // array(1) {
-//   [0]=>
+//   ["string"]=>
 //   string(6) "string"
 // }
 ```
@@ -83,7 +83,7 @@ var_dump(get_string_types("false"));
 // outputs
 //
 // array(1) {
-//   [0]=>
+//   ["string"]=>
 //   string(6) "string"
 // }
 ```
@@ -94,9 +94,9 @@ var_dump(get_string_types("0.0"));
 // outputs
 //
 // array(2) {
-//   [0]=>
+//   ["double"]=>
 //   string(6) "double"
-//   [1]=>
+//   ["string"]=>
 //   string(6) "string"
 // }
 ```
@@ -107,9 +107,9 @@ var_dump(get_string_types("3.1415927"));
 // outputs
 //
 // array(2) {
-//   [0]=>
+//   ["double"]=>
 //   string(6) "double"
-//   [1]=>
+//   ["string"]=>
 //   string(6) "string"
 // }
 ```
@@ -120,9 +120,9 @@ var_dump(get_string_types("0"));
 // outputs
 //
 // array(2) {
-//   [0]=>
+//   ["integer"]=>
 //   string(7) "integer"
-//   [1]=>
+//   ["string"]=>
 //   string(6) "string"
 // }
 ```
@@ -133,9 +133,9 @@ var_dump(get_string_types("100"));
 // outputs
 //
 // array(2) {
-//   [0]=>
+//   ["integer"]=>
 //   string(7) "integer"
-//   [1]=>
+//   ["string"]=>
 //   string(6) "string"
 // }
 ```
@@ -146,7 +146,7 @@ var_dump(get_string_types(new Exception(__FILE__)));
 // outputs
 //
 // array(1) {
-//   [0]=>
+//   ["string"]=>
 //   string(6) "string"
 // }
 ```
@@ -157,7 +157,7 @@ var_dump(get_string_types("hello, world!"));
 // outputs
 //
 // array(1) {
-//   [0]=>
+//   ["string"]=>
 //   string(6) "string"
 // }
 ```
@@ -168,7 +168,7 @@ var_dump(get_string_types(ArrayObject::class));
 // outputs
 //
 // array(1) {
-//   [0]=>
+//   ["string"]=>
 //   string(6) "string"
 // }
 ```
@@ -179,7 +179,7 @@ var_dump(get_string_types(Traversable::class));
 // outputs
 //
 // array(1) {
-//   [0]=>
+//   ["string"]=>
 //   string(6) "string"
 // }
 ```
@@ -252,7 +252,34 @@ var_dump(get_string_types(0.0));
 ```
 
 ```php
+var_dump(get_string_types(3.1415927));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
 var_dump(get_string_types(0));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(get_string_types(100));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(get_string_types(-100));
 
 // outputs
 //

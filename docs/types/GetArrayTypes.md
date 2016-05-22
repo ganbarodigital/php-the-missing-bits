@@ -75,7 +75,7 @@ var_dump(get_array_types([1,2,3]));
 // outputs
 //
 // array(1) {
-//   [0]=>
+//   ["array"]=>
 //   string(5) "array"
 // }
 ```
@@ -88,9 +88,9 @@ var_dump(get_array_types([GetStrictTypes::class, "from"]));
 // outputs
 //
 // array(2) {
-//   [0]=>
+//   ["callable"]=>
 //   string(8) "callable"
-//   [1]=>
+//   ["array"]=>
 //   string(5) "array"
 // }
 ```
@@ -143,7 +143,34 @@ var_dump(get_array_types(0.0));
 ```
 
 ```php
+var_dump(get_array_types(3.1415927));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
 var_dump(get_array_types(0));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(get_array_types(100));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(get_array_types(-100));
 
 // outputs
 //
@@ -236,6 +263,15 @@ var_dump(get_array_types("0"));
 
 ```php
 var_dump(get_array_types("100"));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(get_array_types(new Exception(__FILE__)));
 
 // outputs
 //

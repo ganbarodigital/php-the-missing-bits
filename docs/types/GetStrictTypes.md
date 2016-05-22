@@ -58,7 +58,7 @@ var_dump(get_strict_types(null));
 // outputs
 //
 // array(1) {
-//   [0]=>
+//   ["NULL"]=>
 //   string(4) "NULL"
 // }
 ```
@@ -69,7 +69,7 @@ var_dump(get_strict_types([1,2,3]));
 // outputs
 //
 // array(1) {
-//   [0]=>
+//   ["array"]=>
 //   string(5) "array"
 // }
 ```
@@ -82,9 +82,9 @@ var_dump(get_strict_types([GetStrictTypes::class, "from"]));
 // outputs
 //
 // array(2) {
-//   [0]=>
+//   ["callable"]=>
 //   string(8) "callable"
-//   [1]=>
+//   ["array"]=>
 //   string(5) "array"
 // }
 ```
@@ -95,9 +95,9 @@ var_dump(get_strict_types(function(){}));
 // outputs
 //
 // array(2) {
-//   [0]=>
+//   ["Closure"]=>
 //   string(7) "Closure"
-//   [1]=>
+//   ["callable"]=>
 //   string(8) "callable"
 // }
 ```
@@ -108,7 +108,7 @@ var_dump(get_strict_types(true));
 // outputs
 //
 // array(1) {
-//   [0]=>
+//   ["boolean"]=>
 //   string(7) "boolean"
 // }
 ```
@@ -119,7 +119,7 @@ var_dump(get_strict_types(false));
 // outputs
 //
 // array(1) {
-//   [0]=>
+//   ["boolean"]=>
 //   string(7) "boolean"
 // }
 ```
@@ -130,7 +130,7 @@ var_dump(get_strict_types(0.0));
 // outputs
 //
 // array(1) {
-//   [0]=>
+//   ["double"]=>
 //   string(6) "double"
 // }
 ```
@@ -141,7 +141,7 @@ var_dump(get_strict_types(3.1415927));
 // outputs
 //
 // array(1) {
-//   [0]=>
+//   ["double"]=>
 //   string(6) "double"
 // }
 ```
@@ -152,7 +152,7 @@ var_dump(get_strict_types(0));
 // outputs
 //
 // array(1) {
-//   [0]=>
+//   ["integer"]=>
 //   string(7) "integer"
 // }
 ```
@@ -163,7 +163,7 @@ var_dump(get_strict_types(100));
 // outputs
 //
 // array(1) {
-//   [0]=>
+//   ["integer"]=>
 //   string(7) "integer"
 // }
 ```
@@ -174,7 +174,7 @@ var_dump(get_strict_types(-100));
 // outputs
 //
 // array(1) {
-//   [0]=>
+//   ["integer"]=>
 //   string(7) "integer"
 // }
 ```
@@ -185,17 +185,17 @@ var_dump(get_strict_types(new ArrayObject));
 // outputs
 //
 // array(6) {
-//   [0]=>
+//   ["ArrayObject"]=>
 //   string(11) "ArrayObject"
-//   [1]=>
+//   ["IteratorAggregate"]=>
 //   string(17) "IteratorAggregate"
-//   [2]=>
+//   ["Traversable"]=>
 //   string(11) "Traversable"
-//   [3]=>
+//   ["ArrayAccess"]=>
 //   string(11) "ArrayAccess"
-//   [4]=>
+//   ["Serializable"]=>
 //   string(12) "Serializable"
-//   [5]=>
+//   ["Countable"]=>
 //   string(9) "Countable"
 // }
 ```
@@ -208,9 +208,9 @@ var_dump(get_strict_types(new GetStrictTypes));
 // outputs
 //
 // array(2) {
-//   [0]=>
+//   ["GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes"]=>
 //   string(56) "GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes"
-//   [1]=>
+//   ["callable"]=>
 //   string(8) "callable"
 // }
 ```
@@ -221,7 +221,7 @@ var_dump(get_strict_types((object)[]));
 // outputs
 //
 // array(1) {
-//   [0]=>
+//   ["stdClass"]=>
 //   string(8) "stdClass"
 // }
 ```
@@ -232,7 +232,7 @@ var_dump(get_strict_types(STDIN));
 // outputs
 //
 // array(1) {
-//   [0]=>
+//   ["resource"]=>
 //   string(8) "resource"
 // }
 ```
@@ -243,7 +243,7 @@ var_dump(get_strict_types("true"));
 // outputs
 //
 // array(1) {
-//   [0]=>
+//   ["string"]=>
 //   string(6) "string"
 // }
 ```
@@ -254,7 +254,7 @@ var_dump(get_strict_types("false"));
 // outputs
 //
 // array(1) {
-//   [0]=>
+//   ["string"]=>
 //   string(6) "string"
 // }
 ```
@@ -265,9 +265,9 @@ var_dump(get_strict_types("0.0"));
 // outputs
 //
 // array(2) {
-//   [0]=>
+//   ["double"]=>
 //   string(6) "double"
-//   [1]=>
+//   ["string"]=>
 //   string(6) "string"
 // }
 ```
@@ -278,9 +278,9 @@ var_dump(get_strict_types("3.1415927"));
 // outputs
 //
 // array(2) {
-//   [0]=>
+//   ["double"]=>
 //   string(6) "double"
-//   [1]=>
+//   ["string"]=>
 //   string(6) "string"
 // }
 ```
@@ -291,9 +291,9 @@ var_dump(get_strict_types("0"));
 // outputs
 //
 // array(2) {
-//   [0]=>
+//   ["integer"]=>
 //   string(7) "integer"
-//   [1]=>
+//   ["string"]=>
 //   string(6) "string"
 // }
 ```
@@ -304,9 +304,9 @@ var_dump(get_strict_types("100"));
 // outputs
 //
 // array(2) {
-//   [0]=>
+//   ["integer"]=>
 //   string(7) "integer"
-//   [1]=>
+//   ["string"]=>
 //   string(6) "string"
 // }
 ```
@@ -317,11 +317,11 @@ var_dump(get_strict_types(new Exception(__FILE__)));
 // outputs
 //
 // array(3) {
-//   [0]=>
+//   ["Exception"]=>
 //   string(9) "Exception"
-//   [1]=>
+//   ["Throwable"]=>
 //   string(9) "Throwable"
-//   [2]=>
+//   ["string"]=>
 //   string(6) "string"
 // }
 ```
@@ -332,7 +332,7 @@ var_dump(get_strict_types("hello, world!"));
 // outputs
 //
 // array(1) {
-//   [0]=>
+//   ["string"]=>
 //   string(6) "string"
 // }
 ```
@@ -343,7 +343,7 @@ var_dump(get_strict_types(ArrayObject::class));
 // outputs
 //
 // array(1) {
-//   [0]=>
+//   ["string"]=>
 //   string(6) "string"
 // }
 ```
@@ -354,7 +354,7 @@ var_dump(get_strict_types(Traversable::class));
 // outputs
 //
 // array(1) {
-//   [0]=>
+//   ["string"]=>
 //   string(6) "string"
 // }
 ```

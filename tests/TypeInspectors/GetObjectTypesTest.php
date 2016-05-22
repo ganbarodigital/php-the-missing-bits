@@ -167,33 +167,33 @@ class GetObjectTypesTest extends PHPUnit_Framework_TestCase
             [
                 new GetObjectTypesTest_Target1,
                 [
-                    GetObjectTypesTest_Target1::class,
-                    GetObjectTypesTest_Interface1::class,
+                    GetObjectTypesTest_Target1::class => GetObjectTypesTest_Target1::class,
+                    GetObjectTypesTest_Interface1::class => GetObjectTypesTest_Interface1::class,
                 ]
             ],
             [
                 new GetObjectTypesTest_Target2,
                 [
-                    GetObjectTypesTest_Target2::class,
-                    GetObjectTypesTest_Interface2::class,
+                    GetObjectTypesTest_Target2::class => GetObjectTypesTest_Target2::class,
+                    GetObjectTypesTest_Interface2::class => GetObjectTypesTest_Interface2::class,
                 ]
             ],
             [
                 new GetObjectTypesTest_Target1_3,
                 [
-                    GetObjectTypesTest_Target1_3::class,
-                    GetObjectTypesTest_Target1::class,
-                    GetObjectTypesTest_Interface1::class,
-                    GetObjectTypesTest_Interface3::class,
+                    GetObjectTypesTest_Target1_3::class => GetObjectTypesTest_Target1_3::class,
+                    GetObjectTypesTest_Target1::class => GetObjectTypesTest_Target1::class,
+                    GetObjectTypesTest_Interface1::class => GetObjectTypesTest_Interface1::class,
+                    GetObjectTypesTest_Interface3::class => GetObjectTypesTest_Interface3::class,
                 ]
             ],
             [
                 new GetObjectTypesTest_Target2_3,
                 [
-                    GetObjectTypesTest_Target2_3::class,
-                    GetObjectTypesTest_Target2::class,
-                    GetObjectTypesTest_Interface2::class,
-                    GetObjectTypesTest_Interface3::class,
+                    GetObjectTypesTest_Target2_3::class => GetObjectTypesTest_Target2_3::class,
+                    GetObjectTypesTest_Target2::class => GetObjectTypesTest_Target2::class,
+                    GetObjectTypesTest_Interface2::class => GetObjectTypesTest_Interface2::class,
+                    GetObjectTypesTest_Interface3::class => GetObjectTypesTest_Interface3::class,
                 ]
             ],
         ];
@@ -210,8 +210,8 @@ class GetObjectTypesTest extends PHPUnit_Framework_TestCase
 
         $data = new GetObjectTypes;
         $expectedResult = [
-            GetObjectTypes::class,
-            'callable',
+            GetObjectTypes::class => GetObjectTypes::class,
+            'callable' => 'callable',
         ];
 
         // ----------------------------------------------------------------
@@ -236,15 +236,13 @@ class GetObjectTypesTest extends PHPUnit_Framework_TestCase
 
         $data = new GetObjectTypesTest_StringTarget;
         $expectedResult = [
-            GetObjectTypesTest_StringTarget::class
+            GetObjectTypesTest_StringTarget::class => GetObjectTypesTest_StringTarget::class
         ];
         // HHVM currently adds this class to the class hierarchy
         if (defined('HHVM_VERSION')) {
-            $expectedResult[] = 'Stringish';
+            $expectedResult['Stringish'] = 'Stringish';
         }
-        $expectedResult = array_merge($expectedResult, [
-            'string',
-        ]);
+        $expectedResult['string'] = 'string';
 
         // ----------------------------------------------------------------
         // perform the change
@@ -291,9 +289,30 @@ class GetObjectTypesTest extends PHPUnit_Framework_TestCase
     public function provideObjectsToTest()
     {
         return [
-            [ new ArrayObject(), [ ArrayObject::class, 'IteratorAggregate', 'Traversable', 'ArrayAccess', 'Serializable', 'Countable' ] ],
-            [ new GetObjectTypes(), [ GetObjectTypes::class, 'callable' ] ],
-            [ (object)[ 'name' => 'test data'], [ 'stdClass' ] ],
+            [
+                new ArrayObject(),
+                [
+                    ArrayObject::class => ArrayObject::class,
+                    'IteratorAggregate' => 'IteratorAggregate',
+                    'Traversable' => 'Traversable',
+                    'ArrayAccess' => 'ArrayAccess',
+                    'Serializable' => 'Serializable',
+                    'Countable' => 'Countable',
+                ]
+            ],
+            [
+                new GetObjectTypes(),
+                [
+                    GetObjectTypes::class => GetObjectTypes::class,
+                    'callable' => 'callable',
+                ]
+            ],
+            [
+                (object)[ 'name' => 'test data'],
+                [
+                    'stdClass' => 'stdClass',
+                ]
+            ],
         ];
     }
 

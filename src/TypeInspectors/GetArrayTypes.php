@@ -81,11 +81,11 @@ class GetArrayTypes
 
         // we go from the most specific to the least specific
         if (is_callable($item)) {
-            $retval[] = "callable";
+            $retval["callable"] = "callable";
         }
 
         // all done
-        $retval[] = 'array';
+        $retval["array"] = 'array';
         return $retval;
     }
 }

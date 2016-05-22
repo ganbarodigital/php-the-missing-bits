@@ -71,17 +71,17 @@ var_dump(get_class_types(ArrayObject::class));
 // outputs
 //
 // array(6) {
-//   [0]=>
+//   ["ArrayObject"]=>
 //   string(11) "ArrayObject"
-//   [1]=>
+//   ["IteratorAggregate"]=>
 //   string(17) "IteratorAggregate"
-//   [2]=>
+//   ["Traversable"]=>
 //   string(11) "Traversable"
-//   [3]=>
+//   ["ArrayAccess"]=>
 //   string(11) "ArrayAccess"
-//   [4]=>
+//   ["Serializable"]=>
 //   string(12) "Serializable"
-//   [5]=>
+//   ["Countable"]=>
 //   string(9) "Countable"
 // }
 ```
@@ -92,7 +92,7 @@ var_dump(get_class_types(Traversable::class));
 // outputs
 //
 // array(1) {
-//   [0]=>
+//   ["Traversable"]=>
 //   string(11) "Traversable"
 // }
 ```
@@ -165,7 +165,34 @@ var_dump(get_class_types(0.0));
 ```
 
 ```php
+var_dump(get_class_types(3.1415927));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
 var_dump(get_class_types(0));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(get_class_types(100));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(get_class_types(-100));
 
 // outputs
 //
@@ -258,6 +285,15 @@ var_dump(get_class_types("0"));
 
 ```php
 var_dump(get_class_types("100"));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(get_class_types(new Exception(__FILE__)));
 
 // outputs
 //

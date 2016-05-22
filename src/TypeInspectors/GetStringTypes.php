@@ -88,14 +88,14 @@ class GetStringTypes
 
         // special case - strings can be callables too
         if (is_callable($item)) {
-            $retval[] = 'callable';
+            $retval['callable'] = 'callable';
         }
 
         // special case - strings can be numbers too
         $retval = array_merge($retval, static::detectNumbers($item));
 
         // all done
-        $retval[] = 'string';
+        $retval['string'] = 'string';
         return $retval;
     }
 
@@ -118,14 +118,14 @@ class GetStringTypes
         }
 
         // if we get here, then $item will coerce to a PHP numeric type :)
-        return [ $retval ];
+        return [ $retval => $retval ];
     }
 
     private static function fromObject($item)
     {
         // does this object support being converted to a string?
         if (method_exists($item, '__toString')) {
-            return [ 'string' ];
+            return [ 'string' => 'string' ];
         }
 
         // no, it does not

@@ -143,8 +143,8 @@ class GetArrayTypesTest extends PHPUnit_Framework_TestCase
 
         $data = [ GetArrayTypes::class, 'from' ];
         $expectedResult = [
-            'callable',
-            'array',
+            'callable' => 'callable',
+            'array' => 'array',
         ];
 
         // ----------------------------------------------------------------
@@ -189,8 +189,8 @@ class GetArrayTypesTest extends PHPUnit_Framework_TestCase
     public function provideArraysToTest()
     {
         return [
-            [ [ 1,2,3 ], [ 'array' ] ],
-            [ [ GetArrayTypes::class, 'from'], [ 'callable', 'array'] ],
+            [ [ 1,2,3 ], [ 'array' => 'array' ] ],
+            [ [ GetArrayTypes::class, 'from'], [ 'callable' => 'callable', 'array' => 'array' ] ],
         ];
     }
 
