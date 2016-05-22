@@ -73,6 +73,7 @@ class GetClassTraitsTest extends PHPUnit_Framework_TestCase
     /**
      * @covers ::__invoke
      * @covers ::from
+     * @covers ::getTraits
      * @dataProvider provideDataToTest
      */
     public function testCanUseAsObject($data, $expectedTypes)
@@ -96,6 +97,7 @@ class GetClassTraitsTest extends PHPUnit_Framework_TestCase
     /**
      * @covers ::__invoke
      * @covers ::from
+     * @covers ::getTraits
      * @dataProvider provideDataToTest
      */
     public function testCanCallStatically($data, $expectedTypes)
@@ -118,6 +120,7 @@ class GetClassTraitsTest extends PHPUnit_Framework_TestCase
      * @covers \get_class_traits
      * @covers ::__invoke
      * @covers ::from
+     * @covers ::getTraits
      * @dataProvider provideDataToTest
      */
     public function testCanCallAsFunction($data, $expectedTypes)
@@ -138,6 +141,7 @@ class GetClassTraitsTest extends PHPUnit_Framework_TestCase
 
     /**
      * @covers ::from
+     * @covers ::getTraits
      * @dataProvider provideClassNamesToTest
      */
     public function testDetectsTraitsUsedByClasses($data, $expectedResult)
@@ -160,6 +164,7 @@ class GetClassTraitsTest extends PHPUnit_Framework_TestCase
 
     /**
      * @covers ::from
+     * @covers ::getTraits
      * @dataProvider provideObjectsToTest
      */
     public function testDetectsTraitsUsedByObjects($data, $expectedResult)
@@ -182,6 +187,7 @@ class GetClassTraitsTest extends PHPUnit_Framework_TestCase
 
     /**
      * @covers ::from
+     * @covers ::getTraits
      * @dataProvider provideEverythingElseToTest
      */
     public function testReturnsEmptyArrayForEverythingElse($data, $expectedResult)
