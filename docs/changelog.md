@@ -17,6 +17,7 @@ pageflow_next_text: Contributing
   - added `GetClassTypes`
   - added `GetObjectTypes`
   - added `GetNumericType`
+  - added `GetStringTypes`
 
 ## v1.2.0
 

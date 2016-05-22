@@ -46,6 +46,7 @@ use GanbaroDigital\MissingBits\TypeInspectors\GetClassTypes;
 use GanbaroDigital\MissingBits\TypeInspectors\GetNumericType;
 use GanbaroDigital\MissingBits\TypeInspectors\GetObjectTypes;
 use GanbaroDigital\MissingBits\TypeInspectors\GetPrintableType;
+use GanbaroDigital\MissingBits\TypeInspectors\GetStringTypes;
 
 /**
  * get a full list of strict types than an array can satisfy
@@ -112,4 +113,17 @@ function get_object_types($item)
 function get_printable_type($item, $flags = GetPrintableType::FLAG_DEFAULTS)
 {
     return GetPrintableType::of($item, $flags);
+}
+
+/**
+ * get a full list of types that a string might satisfy
+ *
+ * @param  string $item
+ *         the item to examine
+ * @return string[]
+ *         the list of type(s) that this item can be
+ */
+function get_string_types($item)
+{
+    return GetStringTypes::from($item);
 }
