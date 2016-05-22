@@ -190,11 +190,36 @@ class GetClassTypesTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($expectedResult, $actualResult);
     }
 
+    /**
+     * @covers ::from
+     * @covers ::getClassHierarchy
+     * @covers ::getInterfaceHierarchy
+     * @dataProvider provideObjectsToTest
+     */
+    public function testDetectsObjects($data, $expectedResult)
+    {
+        // ----------------------------------------------------------------
+        // setup your test
+
+        $this->assertTrue(is_object($data));
+
+        // ----------------------------------------------------------------
+        // perform the change
+
+        $actualResult = GetClassTypes::from($data);
+
+        // ----------------------------------------------------------------
+        // test the results
+
+        $this->assertEquals($expectedResult, $actualResult);
+    }
+
     public function provideDataToTest()
     {
         return array_merge(
             $this->provideClassNamesToTest(),
             $this->provideInterfacesToTest(),
+            $this->provideObjectsToTest(),
             $this->provideEverythingElseToTest()
         );
     }
@@ -273,6 +298,35 @@ class GetClassTypesTest extends PHPUnit_Framework_TestCase
         ];
     }
 
+    public function provideObjectsToTest()
+    {
+        return [
+            [
+                new ArrayObject(),
+                [
+                    ArrayObject::class => ArrayObject::class,
+                    'IteratorAggregate' => 'IteratorAggregate',
+                    'Traversable' => 'Traversable',
+                    'ArrayAccess' => 'ArrayAccess',
+                    'Serializable' => 'Serializable',
+                    'Countable' => 'Countable',
+                ]
+            ],
+            [
+                new GetClassTypes(),
+                [
+                    GetClassTypes::class => GetClassTypes::class,
+                ]
+            ],
+            [
+                (object)[ 'name' => 'test data'],
+                [
+                    'stdClass' => 'stdClass',
+                ]
+            ],
+        ];
+    }
+
     public function provideEverythingElseToTest()
     {
         return [
@@ -284,9 +338,6 @@ class GetClassTypesTest extends PHPUnit_Framework_TestCase
             [ 0.0, [] ],
             [ 0, [] ],
             [ 1, [] ],
-            [ new ArrayObject(), [] ],
-            [ new GetClassTypes(), [] ],
-            [ (object)[ 'name' => 'test data'], [] ],
             [ '100', [] ],
         ];
     }

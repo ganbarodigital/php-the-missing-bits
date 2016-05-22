@@ -48,9 +48,9 @@ The input parameters are:
 
 `GetClassTypes` returns an array.
 
-* If `$data` is not a string, an empty list `[]` is returned
-* If `$data` is not a valid class or interface name, an empty list `[]` is returned
-* For classes, we return a list of the class, its parents, and all interfaces it implements (directly or otherwise)
+* If `$data` is not a string or an object, an empty list `[]` is returned
+* For strings, if `$data` is not a valid class or interface name, an empty list `[]` is returned
+* For classes and objects, we return a list of the class, its parents, and all interfaces it implements (directly or otherwise)
 * For interfaces, we return a list of the interface and its parents
 
 The resulting list is a complete list of strict types where it is safe to use `$data`.
@@ -64,6 +64,75 @@ That's why `GetClassTypes` does not include any traits in the returned list.
 ### Example Return Values
 
 Here's a list of examples of accepted input values:
+
+```php
+var_dump(get_class_types(function(){}));
+
+// outputs
+//
+// array(1) {
+//   ["Closure"]=>
+//   string(7) "Closure"
+// }
+```
+
+```php
+var_dump(get_class_types(new ArrayObject));
+
+// outputs
+//
+// array(6) {
+//   ["ArrayObject"]=>
+//   string(11) "ArrayObject"
+//   ["IteratorAggregate"]=>
+//   string(17) "IteratorAggregate"
+//   ["Traversable"]=>
+//   string(11) "Traversable"
+//   ["ArrayAccess"]=>
+//   string(11) "ArrayAccess"
+//   ["Serializable"]=>
+//   string(12) "Serializable"
+//   ["Countable"]=>
+//   string(9) "Countable"
+// }
+```
+
+```php
+use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
+
+var_dump(get_class_types(new GetStrictTypes));
+
+// outputs
+//
+// array(1) {
+//   ["GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes"]=>
+//   string(56) "GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes"
+// }
+```
+
+```php
+var_dump(get_class_types((object)[]));
+
+// outputs
+//
+// array(1) {
+//   ["stdClass"]=>
+//   string(8) "stdClass"
+// }
+```
+
+```php
+var_dump(get_class_types(new Exception(__FILE__)));
+
+// outputs
+//
+// array(2) {
+//   ["Exception"]=>
+//   string(9) "Exception"
+//   ["Throwable"]=>
+//   string(9) "Throwable"
+// }
+```
 
 ```php
 var_dump(get_class_types(ArrayObject::class));
@@ -121,15 +190,6 @@ var_dump(get_class_types([1,2,3]));
 use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
 
 var_dump(get_class_types([GetStrictTypes::class, "from"]));
-
-// outputs
-//
-// array(0) {
-// }
-```
-
-```php
-var_dump(get_class_types(function(){}));
 
 // outputs
 //
@@ -201,35 +261,6 @@ var_dump(get_class_types(-100));
 ```
 
 ```php
-var_dump(get_class_types(new ArrayObject));
-
-// outputs
-//
-// array(0) {
-// }
-```
-
-```php
-use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
-
-var_dump(get_class_types(new GetStrictTypes));
-
-// outputs
-//
-// array(0) {
-// }
-```
-
-```php
-var_dump(get_class_types((object)[]));
-
-// outputs
-//
-// array(0) {
-// }
-```
-
-```php
 var_dump(get_class_types(STDIN));
 
 // outputs
@@ -285,15 +316,6 @@ var_dump(get_class_types("0"));
 
 ```php
 var_dump(get_class_types("100"));
-
-// outputs
-//
-// array(0) {
-// }
-```
-
-```php
-var_dump(get_class_types(new Exception(__FILE__)));
 
 // outputs
 //

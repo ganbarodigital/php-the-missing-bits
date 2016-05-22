@@ -71,6 +71,11 @@ class GetClassTypes
      */
     public static function from($item)
     {
+        // special case - are we looking at an object?
+        if (is_object($item)) {
+            $item = get_class($item);
+        }
+        
         // robustness!
         if (!is_string($item)) {
             return [];

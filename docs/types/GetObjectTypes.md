@@ -1,8 +1,8 @@
 ---
 currentSection: types
 currentItem: GetObjectTypes
-pageflow_prev_url: GetDuckTypes.html
-pageflow_prev_text: GetDuckTypes class
+pageflow_prev_url: GetNumericType.html
+pageflow_prev_text: GetNumericType class
 pageflow_next_url: GetPrintableType.html
 pageflow_next_text: GetPrintableType class
 ---
