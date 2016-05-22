@@ -14,6 +14,7 @@ pageflow_next_text: Contributing
 
 * Added a richer set of type inspectors
   - added `GetArrayTypes`
+  - added `GetClassTypes`
 
 ## v1.2.0
 

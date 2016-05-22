@@ -41,6 +41,7 @@
  * @link      http://ganbarodigital.github.io/php-the-missing-bits
  */
 
+use GanbaroDigital\MissingBits\TypeInspectors\GetClassTypes;
 use GanbaroDigital\MissingBits\TypeInspectors\GetArrayTypes;
 use GanbaroDigital\MissingBits\TypeInspectors\GetPrintableType;
 
@@ -55,6 +56,19 @@ use GanbaroDigital\MissingBits\TypeInspectors\GetPrintableType;
 function get_array_types($item)
 {
     return GetArrayTypes::from($item);
+}
+
+/**
+ * get a full list of a class's inheritence hierarchy
+ *
+ * @param  string $item
+ *         the item to examine
+ * @return string[]
+ *         the class's inheritence hierarchy
+ */
+function get_class_types($item)
+{
+    return GetClassTypes::from($item);
 }
 
 /**
