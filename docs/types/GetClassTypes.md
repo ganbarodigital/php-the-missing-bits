@@ -55,6 +55,8 @@ The input parameters are:
 
 The resulting list is a complete list of strict types where it is safe to use `$data`.
 
+### Example Return Values
+
 ```php
 var_dump(get_class_types(null));
 
