@@ -60,22 +60,14 @@ That's why `GetArrayTypes` does not include `Traversable` in the returned list.
 </div>
 
 <div class="callout warning" markdown="1">
-You can't pass an `ArrayObject` or `ArrayAccess` into any of the `array_XXX()` functions.
+You can't pass an `ArrayObject`, `ArrayAccess` or a `Traversable` into any of the `array_XXX()` functions.
 
-That's why `GetArrayTypes` returns an empty list for `ArrayObject` and `ArrayAccess`.
+That's why `GetArrayTypes` returns an empty list for `ArrayObject`, `ArrayAccess`, and `Traversable`.
 </div>
 
 ### Example Return Values
 
-```php
-var_dump(get_array_types(null));
-
-// outputs
-//
-// array(0) {
-// }
-//
-```
+Here's a list of examples of accepted input values:
 
 ```php
 var_dump(get_array_types([1,2,3]));
@@ -86,7 +78,6 @@ var_dump(get_array_types([1,2,3]));
 //   [0]=>
 //   string(5) "array"
 // }
-//
 ```
 
 ```php
@@ -102,7 +93,17 @@ var_dump(get_array_types([GetStrictTypes::class, "from"]));
 //   [1]=>
 //   string(5) "array"
 // }
+```
+
+Here's a list of examples of ingored input values:
+
+```php
+var_dump(get_array_types(null));
+
+// outputs
 //
+// array(0) {
+// }
 ```
 
 ```php
@@ -112,7 +113,6 @@ var_dump(get_array_types(function(){}));
 //
 // array(0) {
 // }
-//
 ```
 
 ```php
@@ -122,7 +122,6 @@ var_dump(get_array_types(true));
 //
 // array(0) {
 // }
-//
 ```
 
 ```php
@@ -132,7 +131,6 @@ var_dump(get_array_types(false));
 //
 // array(0) {
 // }
-//
 ```
 
 ```php
@@ -142,7 +140,6 @@ var_dump(get_array_types(0.0));
 //
 // array(0) {
 // }
-//
 ```
 
 ```php
@@ -152,7 +149,6 @@ var_dump(get_array_types(0));
 //
 // array(0) {
 // }
-//
 ```
 
 ```php
@@ -162,7 +158,6 @@ var_dump(get_array_types(new ArrayObject));
 //
 // array(0) {
 // }
-//
 ```
 
 ```php
@@ -174,7 +169,6 @@ var_dump(get_array_types(new GetStrictTypes));
 //
 // array(0) {
 // }
-//
 ```
 
 ```php
@@ -184,7 +178,60 @@ var_dump(get_array_types((object)[]));
 //
 // array(0) {
 // }
+```
+
+```php
+var_dump(get_array_types(STDIN));
+
+// outputs
 //
+// array(0) {
+// }
+```
+
+```php
+var_dump(get_array_types("true"));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(get_array_types("false"));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(get_array_types("0.0"));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(get_array_types("3.1415927"));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(get_array_types("0"));
+
+// outputs
+//
+// array(0) {
+// }
 ```
 
 ```php
@@ -194,7 +241,15 @@ var_dump(get_array_types("100"));
 //
 // array(0) {
 // }
+```
+
+```php
+var_dump(get_array_types("hello, world!"));
+
+// outputs
 //
+// array(0) {
+// }
 ```
 
 ```php
@@ -204,7 +259,6 @@ var_dump(get_array_types(ArrayObject::class));
 //
 // array(0) {
 // }
-//
 ```
 
 ```php
@@ -214,7 +268,6 @@ var_dump(get_array_types(Traversable::class));
 //
 // array(0) {
 // }
-//
 ```
 
 ## Throws
