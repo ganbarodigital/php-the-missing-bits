@@ -7,8 +7,8 @@ pageflow_prev_text: GetStrictTypes class
 
 # GetStringTypes
 
-<div class="callout warning">
-Not yet in a tagged release
+<div class="callout info">
+Since v1.3.0
 </div>
 
 ## Description

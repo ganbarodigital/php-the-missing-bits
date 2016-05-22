@@ -10,6 +10,12 @@ pageflow_next_text: Contributing
 
 ## develop branch
 
+Nothing yet.
+
+## v1.3.0
+
+Released Sunday 22nd May 2016.
+
 ### New
 
 * Added a richer set of type inspectors, based on code originally from `ganbarodigital/php-defensive`

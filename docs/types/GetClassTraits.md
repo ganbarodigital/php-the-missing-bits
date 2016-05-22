@@ -9,8 +9,8 @@ pageflow_next_text: GetClassTypes class
 
 # GetClassTraits
 
-<div class="callout warning">
-Not yet in a tagged release
+<div class="callout info">
+Since v1.3.0
 </div>
 
 ## Description
