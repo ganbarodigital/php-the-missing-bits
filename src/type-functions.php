@@ -43,6 +43,16 @@
 
 use GanbaroDigital\MissingBits\TypeInspectors\GetPrintableType;
 
+/**
+ * what PHP type is $data?
+ *
+ * @param  mixed $data
+ *         the data to examine
+ * @param  int $flags
+ *         options to change what we put in the return value
+ * @return string
+ *         the data type of $data
+ */
 function get_printable_type($item, $flags = GetPrintableType::FLAG_DEFAULTS)
 {
     return GetPrintableType::of($item, $flags);
