@@ -20,4 +20,5 @@ Function | Purpose
 [GetObjectTypes](GetObjectTypes.html) | returns a list of all strict PHP types for a given object
 [GetNumericType](GetNumericType.html) | returns which PHP `integer` or `double` a given value might be
 [GetPrintableType](GetPrintableType.html) | `gettype()` for error logging / exception messages
+[GetStrictTypes](GetStrictTypes.html) | returns a list of all strict PHP types for a given value or variable
 [GetStringTypes](GetStringTypes.html) | returns a list of all strict PHP types for a given string

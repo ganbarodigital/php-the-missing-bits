@@ -104,6 +104,9 @@ menu:
             GetPrintableType:
                 text: GetPrintableType
                 relativeUrl: types/GetPrintableType.html
+            GetStrictTypes:
+                text: GetStrictTypes
+                relativeUrl: types/GetStrictTypes.html
             GetStringTypes:
                 text: GetStringTypes
                 relativeUrl: types/GetStringTypes.html

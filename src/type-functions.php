@@ -43,6 +43,7 @@
 
 use GanbaroDigital\MissingBits\TypeInspectors\GetArrayTypes;
 use GanbaroDigital\MissingBits\TypeInspectors\GetClassTypes;
+use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
 use GanbaroDigital\MissingBits\TypeInspectors\GetNumericType;
 use GanbaroDigital\MissingBits\TypeInspectors\GetObjectTypes;
 use GanbaroDigital\MissingBits\TypeInspectors\GetPrintableType;
@@ -113,6 +114,19 @@ function get_object_types($item)
 function get_printable_type($item, $flags = GetPrintableType::FLAG_DEFAULTS)
 {
     return GetPrintableType::of($item, $flags);
+}
+
+/**
+ * return any data type's type name list
+ *
+ * @param  mixed $item
+ *         the item to examine
+ * @return array
+ *         the list of type(s) that this item can be
+ */
+function get_strict_types($item)
+{
+    return GetStrictTypes::from($item);
 }
 
 /**
