@@ -15,6 +15,7 @@ pageflow_next_text: Contributing
 * Added a richer set of type inspectors
   - added `GetArrayTypes`
   - added `GetClassTypes`
+  - added `GetDuckTypes`
   - added `GetObjectTypes`
   - added `GetNumericType`
   - added `GetStrictTypes`

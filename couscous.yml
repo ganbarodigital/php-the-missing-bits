@@ -95,6 +95,9 @@ menu:
             GetClassTypes:
                 text: GetClassTypes
                 relativeUrl: types/GetClassTypes.html
+            GetDuckTypes:
+                text: GetDuckTypes
+                relativeUrl: types/GetDuckTypes.html
             GetNumericType:
                 text: GetNumericType
                 relativeUrl: types/GetNumericType.html

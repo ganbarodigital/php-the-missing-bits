@@ -76,6 +76,19 @@ function get_class_types($item)
 }
 
 /**
+ * return a practical list of data types for any value or variable
+ *
+ * @param  mixed $item
+ *         the item to examine
+ * @return string[]
+ *         the list of type(s) that this item can be
+ */
+function get_duck_types($item)
+{
+    return \GanbaroDigital\MissingBits\TypeInspectors\GetDuckTypes::from($item);
+}
+
+/**
  * do we have a numeric type? if so, what is it?
  *
  * @param  mixed $item

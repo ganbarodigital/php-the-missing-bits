@@ -17,6 +17,7 @@ Function | Purpose
 ---------|--------
 [GetArrayTypes](GetArrayTypes.html) | returns a list of all strict PHP types for a given array
 [GetClassTypes](GetClassTypes.html) | returns a list of all strict PHP types for a given class or interface
+[GetDuckTypes](GetDuckTypes.html) | returns a list of all practical PHP types for a given value or variable
 [GetObjectTypes](GetObjectTypes.html) | returns a list of all strict PHP types for a given object
 [GetNumericType](GetNumericType.html) | returns which PHP `integer` or `double` a given value might be
 [GetPrintableType](GetPrintableType.html) | `gettype()` for error logging / exception messages
