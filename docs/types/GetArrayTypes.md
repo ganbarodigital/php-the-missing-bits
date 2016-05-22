@@ -53,6 +53,20 @@ The input parameters are:
 
 The resulting list is a complete list of strict types where it is safe to use `$data`.
 
+<div class="callout warning" markdown="1">
+Although PHP arrays and `Traversable` objects are safe to use in a `foreach` loop, PHP 7.0 type declarations won't let you pass an array into a function or method that expects a `Traversable`.
+
+That's why `GetArrayTypes` does not include `Traversable` in the returned list.
+</div>
+
+<div class="callout warning" markdown="1">
+You can't pass an `ArrayObject` or `ArrayAccess` into any of the `array_XXX()` functions.
+
+That's why `GetArrayTypes` returns an empty list for `ArrayObject` and `ArrayAccess`.
+</div>
+
+### Example Return Values
+
 ```php
 var_dump(get_array_types(null));
 
@@ -60,6 +74,7 @@ var_dump(get_array_types(null));
 //
 // array(0) {
 // }
+//
 ```
 
 ```php
@@ -68,22 +83,26 @@ var_dump(get_array_types([1,2,3]));
 // outputs
 //
 // array(1) {
-//  [0] =>
-//  string(5) "array"
+//   [0]=>
+//   string(5) "array"
 // }
+//
 ```
 
 ```php
-var_dump(get_array_types([GetArrayTypes::class, 'from']));
+use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
+
+var_dump(get_array_types([GetStrictTypes::class, "from"]));
 
 // outputs
 //
 // array(2) {
-//  [0] =>
-//  string(8) "callable"
-//  [1] =>
-//  string(5) "array"
+//   [0]=>
+//   string(8) "callable"
+//   [1]=>
+//   string(5) "array"
 // }
+//
 ```
 
 ```php
@@ -93,6 +112,7 @@ var_dump(get_array_types(function(){}));
 //
 // array(0) {
 // }
+//
 ```
 
 ```php
@@ -102,6 +122,7 @@ var_dump(get_array_types(true));
 //
 // array(0) {
 // }
+//
 ```
 
 ```php
@@ -111,6 +132,7 @@ var_dump(get_array_types(false));
 //
 // array(0) {
 // }
+//
 ```
 
 ```php
@@ -120,6 +142,7 @@ var_dump(get_array_types(0.0));
 //
 // array(0) {
 // }
+//
 ```
 
 ```php
@@ -129,6 +152,7 @@ var_dump(get_array_types(0));
 //
 // array(0) {
 // }
+//
 ```
 
 ```php
@@ -138,15 +162,19 @@ var_dump(get_array_types(new ArrayObject));
 //
 // array(0) {
 // }
+//
 ```
 
 ```php
-var_dump(get_array_types(new GetDuckTypes));
+use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
+
+var_dump(get_array_types(new GetStrictTypes));
 
 // outputs
 //
 // array(0) {
 // }
+//
 ```
 
 ```php
@@ -156,15 +184,17 @@ var_dump(get_array_types((object)[]));
 //
 // array(0) {
 // }
+//
 ```
 
 ```php
-var_dump(get_array_types('100'));
+var_dump(get_array_types("100"));
 
 // outputs
 //
 // array(0) {
 // }
+//
 ```
 
 ```php
@@ -174,6 +204,7 @@ var_dump(get_array_types(ArrayObject::class));
 //
 // array(0) {
 // }
+//
 ```
 
 ```php
@@ -183,6 +214,7 @@ var_dump(get_array_types(Traversable::class));
 //
 // array(0) {
 // }
+//
 ```
 
 ## Throws
