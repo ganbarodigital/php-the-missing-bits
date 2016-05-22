@@ -43,10 +43,7 @@
 
 use GanbaroDigital\MissingBits\TypeInspectors\GetPrintableType;
 
-if (!function_exists("get_printable_type")) {
-
 function get_printable_type($item, $flags = GetPrintableType::FLAG_DEFAULTS)
 {
     return GetPrintableType::of($item, $flags);
-}
 }
