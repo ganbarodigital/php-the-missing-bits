@@ -89,6 +89,30 @@ menu:
             home:
                 text: Type Functions and Classes
                 relativeUrl: types/index.html
+            GetArrayTypes:
+                text: GetArrayTypes
+                relativeUrl: types/GetArrayTypes.html
+            GetClassTraits:
+                text: GetClassTraits
+                relativeUrl: types/GetClassTraits.html
+            GetClassTypes:
+                text: GetClassTypes
+                relativeUrl: types/GetClassTypes.html
+            GetDuckTypes:
+                text: GetDuckTypes
+                relativeUrl: types/GetDuckTypes.html
+            GetNumericType:
+                text: GetNumericType
+                relativeUrl: types/GetNumericType.html
+            GetObjectTypes:
+                text: GetObjectTypes
+                relativeUrl: types/GetObjectTypes.html
             GetPrintableType:
                 text: GetPrintableType
                 relativeUrl: types/GetPrintableType.html
+            GetStrictTypes:
+                text: GetStrictTypes
+                relativeUrl: types/GetStrictTypes.html
+            GetStringTypes:
+                text: GetStringTypes
+                relativeUrl: types/GetStringTypes.html

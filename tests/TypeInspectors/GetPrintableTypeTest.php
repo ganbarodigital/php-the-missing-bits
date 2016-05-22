@@ -75,6 +75,7 @@ class GetPrintableTypeTest extends PHPUnit_Framework_TestCase
      * @covers ::of
      * @covers ::returnCallableType
      * @covers ::returnObjectType
+     * @covers ::returnScalarType
      * @dataProvider provideTypesToTest
      */
     public function testCanUseAsObject($data, $flags, $expectedType)
@@ -99,6 +100,7 @@ class GetPrintableTypeTest extends PHPUnit_Framework_TestCase
      * @covers ::of
      * @covers ::returnCallableType
      * @covers ::returnObjectType
+     * @covers ::returnScalarType
      * @dataProvider provideTypesToTest
      */
     public function testCanCallStatically($data, $flags, $expectedType)
@@ -119,6 +121,10 @@ class GetPrintableTypeTest extends PHPUnit_Framework_TestCase
 
     /**
      * @covers \get_printable_type
+     * @covers ::of
+     * @covers ::returnCallableType
+     * @covers ::returnObjectType
+     * @covers ::returnScalarType
      * @dataProvider provideTypesToTest
      */
     public function testCanCallAsFunction($data, $flags, $expectedType)

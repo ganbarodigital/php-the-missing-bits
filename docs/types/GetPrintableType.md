@@ -1,8 +1,10 @@
 ---
 currentSection: types
 currentItem: GetPrintableType
-pageflow_prev_url: index.html
-pageflow_prev_text: Type Functions and Classes
+pageflow_prev_url: GetObjectTypes.html
+pageflow_prev_text: GetObjectTypes class
+pageflow_next_url: GetStrictTypes.html
+pageflow_next_text: GetStrictTypes class
 ---
 
 # GetPrintableType

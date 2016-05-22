@@ -41,12 +41,130 @@
  * @link      http://ganbarodigital.github.io/php-the-missing-bits
  */
 
+use GanbaroDigital\MissingBits\TypeInspectors\GetArrayTypes;
+use GanbaroDigital\MissingBits\TypeInspectors\GetClassTraits;
+use GanbaroDigital\MissingBits\TypeInspectors\GetClassTypes;
+use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
+use GanbaroDigital\MissingBits\TypeInspectors\GetNumericType;
+use GanbaroDigital\MissingBits\TypeInspectors\GetObjectTypes;
 use GanbaroDigital\MissingBits\TypeInspectors\GetPrintableType;
+use GanbaroDigital\MissingBits\TypeInspectors\GetStringTypes;
 
-if (!function_exists("get_printable_type")) {
+/**
+ * get a full list of strict types than an array can satisfy
+ *
+ * @param  array $item
+ *         the item to examine
+ * @return string[]
+ *         the array's list of types
+ */
+function get_array_types($item)
+{
+    return GetArrayTypes::from($item);
+}
 
+/**
+ * get a full list of the traits used by a class or its parents
+ *
+ * @param  string $item
+ *         the item to examine
+ * @return string[]
+ *         the class's traits list
+ */
+function get_class_traits($item)
+{
+    return GetClassTraits::from($item);
+}
+
+/**
+ * get a full list of a class's inheritence hierarchy
+ *
+ * @param  string $item
+ *         the item to examine
+ * @return string[]
+ *         the class's inheritence hierarchy
+ */
+function get_class_types($item)
+{
+    return GetClassTypes::from($item);
+}
+
+/**
+ * return a practical list of data types for any value or variable
+ *
+ * @param  mixed $item
+ *         the item to examine
+ * @return string[]
+ *         the list of type(s) that this item can be
+ */
+function get_duck_types($item)
+{
+    return \GanbaroDigital\MissingBits\TypeInspectors\GetDuckTypes::from($item);
+}
+
+/**
+ * do we have a numeric type? if so, what is it?
+ *
+ * @param  mixed $item
+ *         the item to examine
+ * @return string|null
+ *         the numeric type, or null if it is not numeric
+ */
+function get_numeric_type($item)
+{
+    return GetNumericType::from($item);
+}
+
+/**
+ * get the list of extra types that are valid for this specific object
+ *
+ * @param  object $object
+ *         the object to examine
+ * @return string[]
+ *         a (possibly empty) list of types for this object
+ */
+function get_object_types($item)
+{
+    return GetObjectTypes::from($item);
+}
+
+/**
+ * what PHP type is $data?
+ *
+ * @param  mixed $data
+ *         the data to examine
+ * @param  int $flags
+ *         options to change what we put in the return value
+ * @return string
+ *         the data type of $data
+ */
 function get_printable_type($item, $flags = GetPrintableType::FLAG_DEFAULTS)
 {
     return GetPrintableType::of($item, $flags);
 }
+
+/**
+ * return any data type's type name list
+ *
+ * @param  mixed $item
+ *         the item to examine
+ * @return array
+ *         the list of type(s) that this item can be
+ */
+function get_strict_types($item)
+{
+    return GetStrictTypes::from($item);
+}
+
+/**
+ * get a full list of types that a string might satisfy
+ *
+ * @param  string $item
+ *         the item to examine
+ * @return string[]
+ *         the list of type(s) that this item can be
+ */
+function get_string_types($item)
+{
+    return GetStringTypes::from($item);
 }
