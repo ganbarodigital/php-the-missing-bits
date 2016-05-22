@@ -262,20 +262,20 @@ class GetNumericTypeTest extends PHPUnit_Framework_TestCase
 
     public function provideNumericStringsToTest()
     {
-        // we cannot simply call provideRealDoublesToTest(), as PHP will
-        // convert some of those doubles to integers
-        $retval = [
+        return [
             [ "0.0", "double" ],
             [ "3.1415927", "double" ],
 
             // examples from the PHP manual
             [ "1337e0", "double" ],
-        ];
-        foreach ($this->provideRealIntegersToTest() as $args) {
-            $retval[] = [ "" . $args[0], $args[1] ];
-        }
 
-        return $retval;
+            [ "0", "integer" ],
+            [ "100", "integer" ],
+
+            // examples from the PHP manual
+            [ "42", "integer" ],
+            [ "02471", "integer" ],
+        ];
     }
 
     public function provideEverythingElseToTest()
