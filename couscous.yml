@@ -95,9 +95,15 @@ menu:
             GetClassTypes:
                 text: GetClassTypes
                 relativeUrl: types/GetClassTypes.html
+            GetNumericType:
+                text: GetNumericType
+                relativeUrl: types/GetNumericType.html
             GetObjectTypes:
                 text: GetObjectTypes
                 relativeUrl: types/GetObjectTypes.html
             GetPrintableType:
                 text: GetPrintableType
                 relativeUrl: types/GetPrintableType.html
+            GetStringTypes:
+                text: GetStringTypes
+                relativeUrl: types/GetStringTypes.html

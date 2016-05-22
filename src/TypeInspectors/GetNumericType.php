@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright (c) 2016-present Ganbaro Digital Ltd
+ * Copyright (c) 2015-present Ganbaro Digital Ltd
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,80 +36,58 @@
  * @category  Libraries
  * @package   MissingBits/Types
  * @author    Stuart Herbert <stuherbert@ganbarodigital.com>
- * @copyright 2016-present Ganbaro Digital Ltd www.ganbarodigital.com
+ * @copyright 2015-present Ganbaro Digital Ltd www.ganbarodigital.com
  * @license   http://www.opensource.org/licenses/bsd-license.php  BSD License
  * @link      http://ganbarodigital.github.io/php-the-missing-bits
  */
 
-use GanbaroDigital\MissingBits\TypeInspectors\GetArrayTypes;
-use GanbaroDigital\MissingBits\TypeInspectors\GetClassTypes;
-use GanbaroDigital\MissingBits\TypeInspectors\GetNumericType;
-use GanbaroDigital\MissingBits\TypeInspectors\GetObjectTypes;
-use GanbaroDigital\MissingBits\TypeInspectors\GetPrintableType;
+namespace GanbaroDigital\MissingBits\TypeInspectors;
 
-/**
- * get a full list of strict types than an array can satisfy
- *
- * @param  array $item
- *         the item to examine
- * @return string[]
- *         the array's list of types
- */
-function get_array_types($item)
-{
-    return GetArrayTypes::from($item);
-}
-
-/**
- * get a full list of a class's inheritence hierarchy
- *
- * @param  string $item
- *         the item to examine
- * @return string[]
- *         the class's inheritence hierarchy
- */
-function get_class_types($item)
-{
-    return GetClassTypes::from($item);
-}
+use stdClass;
 
 /**
  * do we have a numeric type? if so, what is it?
- *
- * @param  mixed $item
- *         the item to examine
- * @return string|null
- *         the numeric type, or null if it is not numeric
  */
-function get_numeric_type($item)
+class GetNumericType
 {
-    return GetNumericType::from($item);
-}
+    /**
+     * do we have a numeric type? if so, what is it?
+     *
+     * @param  mixed $item
+     *         the item to examine
+     * @return string|null
+     *         the numeric type, or null if it is not numeric
+     */
+    public function __invoke($item)
+    {
+        return self::from($item);
+    }
 
-/**
- * get the list of extra types that are valid for this specific object
- *
- * @param  object $object
- *         the object to examine
- * @return string[]
- *         a (possibly empty) list of types for this object
- */
-function get_object_types($item)
-{
-    return GetObjectTypes::from($item);
-}
+    /**
+     * do we have a numeric type? if so, what is it?
+     *
+     * @param  mixed $item
+     *         the item to examine
+     * @return string|null
+     *         the numeric type, or null if it is not numeric
+     */
+    public static function from($item)
+    {
+        // robustness!
+        if (!is_numeric($item)) {
+            return null;
+        }
 
-/**
- * what PHP type is $data?
- *
- * @param  mixed $data
- *         the data to examine
- * @param  int $flags
- *         options to change what we put in the return value
- * @return string
- *         the data type of $data
- */
-function get_printable_type($item, $flags = GetPrintableType::FLAG_DEFAULTS)
-{
-    return GetPrintableType::of($item, $flags);
+        // special case - it's already a real number type
+        if (!is_string($item)) {
+            return gettype($item);
+        }
+
+        // at this point, we have a string to typecast
+        //
+        // we can get PHP to do that for us :)
+        $num = $item + 0;
+
+        return gettype($num);
+    }
 }
