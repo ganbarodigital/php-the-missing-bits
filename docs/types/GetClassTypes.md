@@ -55,131 +55,15 @@ The input parameters are:
 
 The resulting list is a complete list of strict types where it is safe to use `$data`.
 
+<div class="callout warning" markdown="1">
+PHP doesn't support using traits as type-hints or type declarations.
+
+That's why `GetClassTypes` does not include any traits in the returned list.
+</div>
+
 ### Example Return Values
 
-```php
-var_dump(get_class_types(null));
-
-// outputs
-//
-// array(0) {
-// }
-//
-```
-
-```php
-var_dump(get_class_types([1,2,3]));
-
-// outputs
-//
-// array(0) {
-// }
-//
-```
-
-```php
-use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
-
-var_dump(get_class_types([GetStrictTypes::class, "from"]));
-
-// outputs
-//
-// array(0) {
-// }
-//
-```
-
-```php
-var_dump(get_class_types(function(){}));
-
-// outputs
-//
-// array(0) {
-// }
-//
-```
-
-```php
-var_dump(get_class_types(true));
-
-// outputs
-//
-// array(0) {
-// }
-//
-```
-
-```php
-var_dump(get_class_types(false));
-
-// outputs
-//
-// array(0) {
-// }
-//
-```
-
-```php
-var_dump(get_class_types(0.0));
-
-// outputs
-//
-// array(0) {
-// }
-//
-```
-
-```php
-var_dump(get_class_types(0));
-
-// outputs
-//
-// array(0) {
-// }
-//
-```
-
-```php
-var_dump(get_class_types(new ArrayObject));
-
-// outputs
-//
-// array(0) {
-// }
-//
-```
-
-```php
-use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
-
-var_dump(get_class_types(new GetStrictTypes));
-
-// outputs
-//
-// array(0) {
-// }
-//
-```
-
-```php
-var_dump(get_class_types((object)[]));
-
-// outputs
-//
-// array(0) {
-// }
-//
-```
-
-```php
-var_dump(get_class_types("100"));
-
-// outputs
-//
-// array(0) {
-// }
-//
-```
+Here's a list of examples of accepted input values:
 
 ```php
 var_dump(get_class_types(ArrayObject::class));
@@ -200,7 +84,6 @@ var_dump(get_class_types(ArrayObject::class));
 //   [5]=>
 //   string(9) "Countable"
 // }
-//
 ```
 
 ```php
@@ -212,7 +95,183 @@ var_dump(get_class_types(Traversable::class));
 //   [0]=>
 //   string(11) "Traversable"
 // }
+```
+
+Here's a list of examples of ingored input values:
+
+```php
+var_dump(get_class_types(null));
+
+// outputs
 //
+// array(0) {
+// }
+```
+
+```php
+var_dump(get_class_types([1,2,3]));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
+
+var_dump(get_class_types([GetStrictTypes::class, "from"]));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(get_class_types(function(){}));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(get_class_types(true));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(get_class_types(false));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(get_class_types(0.0));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(get_class_types(0));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(get_class_types(new ArrayObject));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
+
+var_dump(get_class_types(new GetStrictTypes));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(get_class_types((object)[]));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(get_class_types(STDIN));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(get_class_types("true"));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(get_class_types("false"));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(get_class_types("0.0"));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(get_class_types("3.1415927"));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(get_class_types("0"));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(get_class_types("100"));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(get_class_types("hello, world!"));
+
+// outputs
+//
+// array(0) {
+// }
 ```
 
 ## Throws
