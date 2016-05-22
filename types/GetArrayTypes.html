@@ -44,8 +44,8 @@
                                                                     <li class="">
                                         <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/index.html">Type Functions and Classes</a>
                                     </li>
-                                                                    <li class="">
-                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetArrayTypes.html">GetArrayTypes</a>
+                                                                    <li class="current">
+                                        <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetArrayTypes.html">GetArrayTypes</a>
                                     </li>
                                                                     <li class="">
                                         <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetClassTraits.html">GetClassTraits</a>
@@ -62,8 +62,8 @@
                                                                     <li class="">
                                         <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetObjectTypes.html">GetObjectTypes</a>
                                     </li>
-                                                                    <li class="current">
-                                        <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetPrintableType.html">GetPrintableType</a>
+                                                                    <li class="">
+                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetPrintableType.html">GetPrintableType</a>
                                     </li>
                                                                     <li class="">
                                         <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetStrictTypes.html">GetStrictTypes</a>
@@ -77,107 +77,255 @@
                                             <main role="main">
                         <nav class="pageflow">
               <ul>
-                                    <li><a href="GetObjectTypes.html">Prev: GetObjectTypes class</a></li>
-                                                      <li><a href="GetStrictTypes.html">Next: GetStrictTypes class</a></li>
+                                    <li><a href="index.html">Prev: Type Functions and Classes</a></li>
+                                                      <li><a href="GetClassTraits.html">Next: GetClassTraits class</a></li>
                                 </ul>
             </nav>
             
             <article>
-                <h1 id="getprintabletype">GetPrintableType</h1>
+                <h1 id="getarraytypes">GetArrayTypes</h1>
 <div class="callout info">
-<p>Since version 1.1.0.</p>
+Since v1.3.0
 </div>
 <h2 id="description">Description</h2>
-<p><code>GetPrintableType</code> returns the PHP type of the data that you pass to it.</p>
-<p>It is designed for use in error logging and exception messages. It is a replacement for PHP's built-in <code>gettype()</code> function.</p>
+<p><code>GetArrayTypes</code> returns a list of all strict PHP types for a given PHP array. The list is ordered with the most specific match first.</p>
 <pre><code class="language-php">// how to import
-use GanbaroDigital\MissingBits\TypeInspectors\GetPrintableType;
+use GanbaroDigital\MissingBits\TypeInspectors\GetArrayTypes;
 
 // call directly
 //
-// returns a string
-echo GetPrintableType::of($data);
+// returns an array
+var_dump(GetArrayTypes::from($data));
 
 // use as an object
 //
-// returns a string
-$inspector = new GetPrintableType;
-echo $inspector($data);
+// returns an array
+$inspector = new GetArrayTypes;
+var_dump($inspector($data));
 
 // use as a global function
-echo get_printable_type($data);</code></pre>
+//
+// returns an array
+var_dump(get_array_types($data));</code></pre>
 <h2 id="parameters">Parameters</h2>
 <p>The input parameters are:</p>
 <ul>
-<li><code>$data</code> - the PHP variable to examine</li>
-<li><code>$flags</code> - bit-mask of options to add extra information to the return value</li>
+<li><code>mixed $data</code> - the item to examine</li>
 </ul>
-<p>The following flags are supported:</p>
+<h2 id="return-value">Return Value</h2>
+<p><code>GetArrayTypes</code> returns an array.</p>
+<ul>
+<li>If <code>$data</code> is not a PHP array, an empty list <code>[]</code> is returned</li>
+<li>For arrays, we check to see if the array is a valid PHP <code>callable</code></li>
+</ul>
+<p>The resulting list is a complete list of strict types where it is safe to use <code>$data</code>.</p>
+<div class="callout warning">
+<p>Although PHP arrays and <code>Traversable</code> objects are safe to use in a <code>foreach</code> loop, PHP 7.0 type declarations won't let you pass an array into a function or method that expects a <code>Traversable</code>.</p>
+<p>That's why <code>GetArrayTypes</code> does not include <code>Traversable</code> in the returned list.</p>
+</div>
+<div class="callout warning">
+<p>You can't pass an <code>ArrayObject</code>, <code>ArrayAccess</code> or a <code>Traversable</code> into any of the <code>array_XXX()</code> functions.</p>
+<p>That's why <code>GetArrayTypes</code> returns an empty list for <code>ArrayObject</code>, <code>ArrayAccess</code>, and <code>Traversable</code>.</p>
+</div>
+<h3 id="example-return-values">Example Return Values</h3>
+<p>Here's a list of examples of accepted input values:</p>
+<pre><code class="language-php">var_dump(get_array_types([1,2,3]));
+
+// outputs
+//
+// array(1) {
+//   ["array"]=&gt;
+//   string(5) "array"
+// }</code></pre>
+<pre><code class="language-php">use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
+
+var_dump(get_array_types([GetStrictTypes::class, "from"]));
+
+// outputs
+//
+// array(2) {
+//   ["callable"]=&gt;
+//   string(8) "callable"
+//   ["array"]=&gt;
+//   string(5) "array"
+// }</code></pre>
+<p>Here's a list of examples of ingored input values:</p>
+<pre><code class="language-php">var_dump(get_array_types(null));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_array_types(function(){}));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_array_types(true));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_array_types(false));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_array_types(0.0));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_array_types(3.1415927));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_array_types(0));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_array_types(100));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_array_types(-100));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_array_types(new ArrayObject));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
+
+var_dump(get_array_types(new GetStrictTypes));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_array_types((object)[]));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_array_types(STDIN));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_array_types("true"));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_array_types("false"));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_array_types("0.0"));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_array_types("3.1415927"));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_array_types("0"));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_array_types("100"));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_array_types(new Exception(__FILE__)));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_array_types("hello, world!"));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_array_types(ArrayObject::class));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_array_types(Traversable::class));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<h2 id="throws">Throws</h2>
+<p><code>GetArrayTypes</code> does not throw any exceptions.</p>
+<h2 id="works-with">Works With</h2>
+<p><code>GetArrayTypes</code> is supported on these versions of PHP:</p>
 <table>
 <thead>
 <tr>
-<th>Flag</th>
-<th>Behaviour</th>
+<th>PHP Version</th>
+<th>Works?</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>GetPrintableType::FLAG_NONE</code></td>
-<td>no extra information required (default behaviour)</td>
+<td>5.5</td>
+<td>Yes</td>
 </tr>
 <tr>
-<td><code>GetPrintableType::FLAG_CLASSNAME</code></td>
-<td>add the <code>class</code> or <code>interface</code> name if <code>$data</code> is a PHP object</td>
+<td>5.6</td>
+<td>Yes</td>
 </tr>
 <tr>
-<td><code>GetPrintableType::FLAG_CALLABLE_DETAILS</code></td>
-<td>add the <code>class</code> (if present) and function or method name of the callable</td>
+<td>7.0</td>
+<td>Yes</td>
 </tr>
 <tr>
-<td><code>GetPrintableType::FLAG_SCALAR_VALUE</code></td>
-<td>adds the value of $data if <code>$data</code> is a boolean, double, integer or string</td>
+<td>HHVM</td>
+<td>Yes</td>
 </tr>
 </tbody>
 </table>
-<p>If <code>$flags</code> is not provided, it defaults to <code>GetPrintableType::FLAG_DEFAULTS</code>. This contains the following flag(s):</p>
-<ul>
-<li><code>GetPrintableType::FLAG_CLASSNAME</code></li>
-<li><code>GetPrintableType::FLAG_CALLABLE_DETAILS</code></li>
-<li><code>GetPrintableType::FLAG_SCALAR_VALUE</code></li>
-</ul>
-<h2 id="return-value">Return Value</h2>
-<p><code>GetPrintableType</code> returns a <code>string</code>, which contains the PHP type of <code>$data</code>:</p>
-<ul>
-<li><code>NULL</code></li>
-<li><code>array</code></li>
-<li><code>boolean</code> or <code>boolean&lt;true&gt;</code> or <code>boolean&lt;false&gt;</code></li>
-<li><code>callable</code> or <code>callable&lt;function&gt;</code> or <code>callable&lt;classname::method&gt;</code></li>
-<li><code>double</code> or <code>double&lt;value&gt;</code></li>
-<li><code>integer</code> or <code>integer&lt;value&gt;</code></li>
-<li><code>object</code> or <code>object&lt;classname&gt;</code></li>
-<li><code>resource</code></li>
-<li><code>string</code> or <code>string&lt;value&gt;</code></li>
-</ul>
-<div class="callout info">
-<h4 id="callables-over-arrays-and-strings">Callables over Arrays and Strings</h4>
-<p>If you pass in an array that is also a valid <code>callable</code>, <code>GetPrintableType</code> will return <code>callable</code>.</p>
-<p>The same goes for strings. If you pass in a string that is also a valid <code>callable</code>, <code>GetPrintableType</code> will return <code>callable</code>.</p>
-</div>
-<div class="callout info">
-<h4 id="callables-over-closure">Callables over Closure</h4>
-<p>PHP turns anonymous functions into objects of type <code>Closure</code>. <code>GetPrintableType</code> will return <code>callable</code> instead of <code>object&lt;closure&gt;</code>.
-</closure></p>
-</div>
-<h2 id="throws">Throws</h2>
-<p><code>GetPrintableType</code> does not throw any exceptions.</p>
-<h2 id="constraints">Constraints</h2>
-<p>None.</p>
             </article>
 
                         <nav class="pageflow">
               <ul>
-                                    <li><a href="GetObjectTypes.html">Prev: GetObjectTypes class</a></li>
-                                                      <li><a href="GetStrictTypes.html">Next: GetStrictTypes class</a></li>
+                                    <li><a href="index.html">Prev: Type Functions and Classes</a></li>
+                                                      <li><a href="GetClassTraits.html">Next: GetClassTraits class</a></li>
                                 </ul>
             </nav>
                     </main>

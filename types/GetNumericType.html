@@ -56,14 +56,14 @@
                                                                     <li class="">
                                         <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetDuckTypes.html">GetDuckTypes</a>
                                     </li>
-                                                                    <li class="">
-                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetNumericType.html">GetNumericType</a>
+                                                                    <li class="current">
+                                        <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetNumericType.html">GetNumericType</a>
                                     </li>
                                                                     <li class="">
                                         <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetObjectTypes.html">GetObjectTypes</a>
                                     </li>
-                                                                    <li class="current">
-                                        <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetPrintableType.html">GetPrintableType</a>
+                                                                    <li class="">
+                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetPrintableType.html">GetPrintableType</a>
                                     </li>
                                                                     <li class="">
                                         <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetStrictTypes.html">GetStrictTypes</a>
@@ -77,107 +77,199 @@
                                             <main role="main">
                         <nav class="pageflow">
               <ul>
-                                    <li><a href="GetObjectTypes.html">Prev: GetObjectTypes class</a></li>
-                                                      <li><a href="GetStrictTypes.html">Next: GetStrictTypes class</a></li>
+                                    <li><a href="GetDuckTypes.html">Prev: GetDuckTypes class</a></li>
+                                                      <li><a href="GetObjectTypes.html">Next: GetObjectTypes class</a></li>
                                 </ul>
             </nav>
             
             <article>
-                <h1 id="getprintabletype">GetPrintableType</h1>
+                <h1 id="getnumerictype">GetNumericType</h1>
 <div class="callout info">
-<p>Since version 1.1.0.</p>
+Since v1.3.0
 </div>
 <h2 id="description">Description</h2>
-<p><code>GetPrintableType</code> returns the PHP type of the data that you pass to it.</p>
-<p>It is designed for use in error logging and exception messages. It is a replacement for PHP's built-in <code>gettype()</code> function.</p>
+<p><code>GetNumericType</code> returns <code>integer</code> or <code>double</code> if the input variable is a numeric type, or can be automatically coerced into a numeric type by PHP.</p>
 <pre><code class="language-php">// how to import
-use GanbaroDigital\MissingBits\TypeInspectors\GetPrintableType;
+use GanbaroDigital\MissingBits\TypeInspectors\GetNumericType;
 
 // call directly
 //
-// returns a string
-echo GetPrintableType::of($data);
+// returns an array
+var_dump(GetNumericType::from($data));
 
 // use as an object
 //
-// returns a string
-$inspector = new GetPrintableType;
-echo $inspector($data);
+// returns an array
+$inspector = new GetNumericType;
+var_dump($inspector($data));
 
 // use as a global function
-echo get_printable_type($data);</code></pre>
+//
+// returns an array
+var_dump(get_numeric_type($data));</code></pre>
 <h2 id="parameters">Parameters</h2>
 <p>The input parameters are:</p>
 <ul>
-<li><code>$data</code> - the PHP variable to examine</li>
-<li><code>$flags</code> - bit-mask of options to add extra information to the return value</li>
+<li><code>mixed $data</code> - the item to examine</li>
 </ul>
-<p>The following flags are supported:</p>
+<h2 id="return-value">Return Value</h2>
+<p><code>GetNumericType</code> returns a string on success, or <code>NULL</code> otherwise.</p>
+<ul>
+<li>If <code>$data</code> is not numeric, <code>NULL</code> is returned.</li>
+<li>If <code>$data</code> is already an <code>integer</code> or a <code>double</code>, we return <code>integer</code> or <code>double</code> accordingly.</li>
+<li>if <code>$data</code> is a string, we convert it to a number, and return <code>integer</code> or <code>double</code> accordingly.</li>
+</ul>
+<div class="callout warning">
+<p><code>GetNumericType</code> relies on PHP's <code>is_numeric()</code>. <code>is_numeric()</code> behaves differently in PHP 5.x and PHP 7.0.</p>
+</div>
+<h3 id="example-return-values">Example Return Values</h3>
+<p>Here's a list of examples of accepted input values:</p>
+<pre><code class="language-php">var_dump(get_numeric_type(0.0));
+
+// outputs
+//
+// string(6) "double"</code></pre>
+<pre><code class="language-php">var_dump(get_numeric_type(0));
+
+// outputs
+//
+// string(7) "integer"</code></pre>
+<pre><code class="language-php">var_dump(get_numeric_type("0.0"));
+
+// outputs
+//
+// string(6) "double"</code></pre>
+<pre><code class="language-php">var_dump(get_numeric_type("3.1415927"));
+
+// outputs
+//
+// string(6) "double"</code></pre>
+<pre><code class="language-php">var_dump(get_numeric_type("0"));
+
+// outputs
+//
+// string(7) "integer"</code></pre>
+<pre><code class="language-php">var_dump(get_numeric_type("100"));
+
+// outputs
+//
+// string(7) "integer"</code></pre>
+<p>Here's a list of examples of ingored input values:</p>
+<pre><code class="language-php">var_dump(get_numeric_type(null));
+
+// outputs
+//
+// NULL</code></pre>
+<pre><code class="language-php">var_dump(get_numeric_type([1,2,3]));
+
+// outputs
+//
+// NULL</code></pre>
+<pre><code class="language-php">use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
+
+var_dump(get_numeric_type([GetStrictTypes::class, "from"]));
+
+// outputs
+//
+// NULL</code></pre>
+<pre><code class="language-php">var_dump(get_numeric_type(function(){}));
+
+// outputs
+//
+// NULL</code></pre>
+<pre><code class="language-php">var_dump(get_numeric_type(true));
+
+// outputs
+//
+// NULL</code></pre>
+<pre><code class="language-php">var_dump(get_numeric_type(false));
+
+// outputs
+//
+// NULL</code></pre>
+<pre><code class="language-php">var_dump(get_numeric_type(new ArrayObject));
+
+// outputs
+//
+// NULL</code></pre>
+<pre><code class="language-php">use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
+
+var_dump(get_numeric_type(new GetStrictTypes));
+
+// outputs
+//
+// NULL</code></pre>
+<pre><code class="language-php">var_dump(get_numeric_type((object)[]));
+
+// outputs
+//
+// NULL</code></pre>
+<pre><code class="language-php">var_dump(get_numeric_type(STDIN));
+
+// outputs
+//
+// NULL</code></pre>
+<pre><code class="language-php">var_dump(get_numeric_type("true"));
+
+// outputs
+//
+// NULL</code></pre>
+<pre><code class="language-php">var_dump(get_numeric_type("false"));
+
+// outputs
+//
+// NULL</code></pre>
+<pre><code class="language-php">var_dump(get_numeric_type("hello, world!"));
+
+// outputs
+//
+// NULL</code></pre>
+<pre><code class="language-php">var_dump(get_numeric_type(ArrayObject::class));
+
+// outputs
+//
+// NULL</code></pre>
+<pre><code class="language-php">var_dump(get_numeric_type(Traversable::class));
+
+// outputs
+//
+// NULL</code></pre>
+<h2 id="throws">Throws</h2>
+<p><code>GetNumericType</code> does not throw any exceptions.</p>
+<h2 id="works-with">Works With</h2>
+<p><code>GetNumericType</code> is supported on these versions of PHP:</p>
 <table>
 <thead>
 <tr>
-<th>Flag</th>
-<th>Behaviour</th>
+<th>PHP Version</th>
+<th>Works?</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>GetPrintableType::FLAG_NONE</code></td>
-<td>no extra information required (default behaviour)</td>
+<td>5.5</td>
+<td>Yes</td>
 </tr>
 <tr>
-<td><code>GetPrintableType::FLAG_CLASSNAME</code></td>
-<td>add the <code>class</code> or <code>interface</code> name if <code>$data</code> is a PHP object</td>
+<td>5.6</td>
+<td>Yes</td>
 </tr>
 <tr>
-<td><code>GetPrintableType::FLAG_CALLABLE_DETAILS</code></td>
-<td>add the <code>class</code> (if present) and function or method name of the callable</td>
+<td>7.0</td>
+<td>Yes</td>
 </tr>
 <tr>
-<td><code>GetPrintableType::FLAG_SCALAR_VALUE</code></td>
-<td>adds the value of $data if <code>$data</code> is a boolean, double, integer or string</td>
+<td>HHVM</td>
+<td>Yes</td>
 </tr>
 </tbody>
 </table>
-<p>If <code>$flags</code> is not provided, it defaults to <code>GetPrintableType::FLAG_DEFAULTS</code>. This contains the following flag(s):</p>
-<ul>
-<li><code>GetPrintableType::FLAG_CLASSNAME</code></li>
-<li><code>GetPrintableType::FLAG_CALLABLE_DETAILS</code></li>
-<li><code>GetPrintableType::FLAG_SCALAR_VALUE</code></li>
-</ul>
-<h2 id="return-value">Return Value</h2>
-<p><code>GetPrintableType</code> returns a <code>string</code>, which contains the PHP type of <code>$data</code>:</p>
-<ul>
-<li><code>NULL</code></li>
-<li><code>array</code></li>
-<li><code>boolean</code> or <code>boolean&lt;true&gt;</code> or <code>boolean&lt;false&gt;</code></li>
-<li><code>callable</code> or <code>callable&lt;function&gt;</code> or <code>callable&lt;classname::method&gt;</code></li>
-<li><code>double</code> or <code>double&lt;value&gt;</code></li>
-<li><code>integer</code> or <code>integer&lt;value&gt;</code></li>
-<li><code>object</code> or <code>object&lt;classname&gt;</code></li>
-<li><code>resource</code></li>
-<li><code>string</code> or <code>string&lt;value&gt;</code></li>
-</ul>
-<div class="callout info">
-<h4 id="callables-over-arrays-and-strings">Callables over Arrays and Strings</h4>
-<p>If you pass in an array that is also a valid <code>callable</code>, <code>GetPrintableType</code> will return <code>callable</code>.</p>
-<p>The same goes for strings. If you pass in a string that is also a valid <code>callable</code>, <code>GetPrintableType</code> will return <code>callable</code>.</p>
-</div>
-<div class="callout info">
-<h4 id="callables-over-closure">Callables over Closure</h4>
-<p>PHP turns anonymous functions into objects of type <code>Closure</code>. <code>GetPrintableType</code> will return <code>callable</code> instead of <code>object&lt;closure&gt;</code>.
-</closure></p>
-</div>
-<h2 id="throws">Throws</h2>
-<p><code>GetPrintableType</code> does not throw any exceptions.</p>
-<h2 id="constraints">Constraints</h2>
-<p>None.</p>
             </article>
 
                         <nav class="pageflow">
               <ul>
-                                    <li><a href="GetObjectTypes.html">Prev: GetObjectTypes class</a></li>
-                                                      <li><a href="GetStrictTypes.html">Next: GetStrictTypes class</a></li>
+                                    <li><a href="GetDuckTypes.html">Prev: GetDuckTypes class</a></li>
+                                                      <li><a href="GetObjectTypes.html">Next: GetObjectTypes class</a></li>
                                 </ul>
             </nav>
                     </main>
