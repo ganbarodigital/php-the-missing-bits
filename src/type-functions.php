@@ -43,6 +43,7 @@
 
 use GanbaroDigital\MissingBits\TypeInspectors\GetClassTypes;
 use GanbaroDigital\MissingBits\TypeInspectors\GetArrayTypes;
+use GanbaroDigital\MissingBits\TypeInspectors\GetObjectTypes;
 use GanbaroDigital\MissingBits\TypeInspectors\GetPrintableType;
 
 /**
@@ -69,6 +70,19 @@ function get_array_types($item)
 function get_class_types($item)
 {
     return GetClassTypes::from($item);
+}
+
+/**
+ * get the list of extra types that are valid for this specific object
+ *
+ * @param  object $object
+ *         the object to examine
+ * @return string[]
+ *         a (possibly empty) list of types for this object
+ */
+function get_object_types($item)
+{
+    return GetObjectTypes::from($item);
 }
 
 /**

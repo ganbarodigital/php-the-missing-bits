@@ -92,6 +92,12 @@ menu:
             GetArrayTypes:
                 text: GetArrayTypes
                 relativeUrl: types/GetArrayTypes.html
+            GetClassTypes:
+                text: GetClassTypes
+                relativeUrl: types/GetClassTypes.html
+            GetObjectTypes:
+                text: GetObjectTypes
+                relativeUrl: types/GetObjectTypes.html
             GetPrintableType:
                 text: GetPrintableType
                 relativeUrl: types/GetPrintableType.html
