@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright (c) 2016-present Ganbaro Digital Ltd
+ * Copyright (c) 2015-present Ganbaro Digital Ltd
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,38 +36,56 @@
  * @category  Libraries
  * @package   MissingBits/Types
  * @author    Stuart Herbert <stuherbert@ganbarodigital.com>
- * @copyright 2016-present Ganbaro Digital Ltd www.ganbarodigital.com
+ * @copyright 2015-present Ganbaro Digital Ltd www.ganbarodigital.com
  * @license   http://www.opensource.org/licenses/bsd-license.php  BSD License
  * @link      http://ganbarodigital.github.io/php-the-missing-bits
  */
 
-use GanbaroDigital\MissingBits\TypeInspectors\GetArrayTypes;
-use GanbaroDigital\MissingBits\TypeInspectors\GetPrintableType;
+namespace GanbaroDigital\MissingBits\TypeInspectors;
 
 /**
  * get a full list of strict types than an array can satisfy
- *
- * @param  array $item
- *         the item to examine
- * @return string[]
- *         the array's list of types
  */
-function get_array_types($item)
+class GetArrayTypes
 {
-    return GetArrayTypes::from($item);
-}
+    /**
+     * get a full list of strict types than an array can satisfy
+     *
+     * @param  array $item
+     *         the item to examine
+     * @return string[]
+     *         the array's list of types
+     */
+    public function __invoke($item)
+    {
+        return self::from($item);
+    }
 
-/**
- * what PHP type is $data?
- *
- * @param  mixed $data
- *         the data to examine
- * @param  int $flags
- *         options to change what we put in the return value
- * @return string
- *         the data type of $data
- */
-function get_printable_type($item, $flags = GetPrintableType::FLAG_DEFAULTS)
-{
-    return GetPrintableType::of($item, $flags);
+    /**
+     * get a full list of strict types than an array can satisfy
+     *
+     * @param  array $item
+     *         the item to examine
+     * @return string[]
+     *         the array's list of types
+     */
+    public static function from($item)
+    {
+        // robustness!
+        if (!is_array($item)) {
+            return [];
+        }
+
+        // our return type
+        $retval = [];
+
+        // we go from the most specific to the least specific
+        if (is_callable($item)) {
+            $retval[] = "callable";
+        }
+
+        // all done
+        $retval[] = 'array';
+        return $retval;
+    }
 }

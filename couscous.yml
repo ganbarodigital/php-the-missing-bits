@@ -89,6 +89,9 @@ menu:
             home:
                 text: Type Functions and Classes
                 relativeUrl: types/index.html
+            GetArrayTypes:
+                text: GetArrayTypes
+                relativeUrl: types/GetArrayTypes.html
             GetPrintableType:
                 text: GetPrintableType
                 relativeUrl: types/GetPrintableType.html

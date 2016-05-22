@@ -10,6 +10,11 @@ pageflow_next_text: Contributing
 
 ## develop branch
 
+### New
+
+* Added a richer set of type inspectors
+  - added `GetArrayTypes`
+
 ## v1.2.0
 
 Released Monday 9th May 2016.

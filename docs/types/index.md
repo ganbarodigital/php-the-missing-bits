@@ -1,8 +1,8 @@
 ---
 currentSection: types
 currentItem: home
-pageflow_next_url: GetPrintableType.html
-pageflow_next_text: GetPrintableType
+pageflow_next_url: GetArrayTypes.html
+pageflow_next_text: GetArrayTypes class
 ---
 
 # Type Functions and Classes
@@ -15,4 +15,5 @@ Here's a list of what we find is missing from PHP's built-in support for data ty
 
 Function | Purpose
 ---------|--------
+[GetArrayTypes](GetArrayTypes.html) | returns a list of all strict PHP types for a given array
 [GetPrintableType](GetPrintableType.html) | `gettype()` for error logging / exception messages
