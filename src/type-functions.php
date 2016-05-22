@@ -42,6 +42,7 @@
  */
 
 use GanbaroDigital\MissingBits\TypeInspectors\GetArrayTypes;
+use GanbaroDigital\MissingBits\TypeInspectors\GetClassTraits;
 use GanbaroDigital\MissingBits\TypeInspectors\GetClassTypes;
 use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
 use GanbaroDigital\MissingBits\TypeInspectors\GetNumericType;
@@ -60,6 +61,19 @@ use GanbaroDigital\MissingBits\TypeInspectors\GetStringTypes;
 function get_array_types($item)
 {
     return GetArrayTypes::from($item);
+}
+
+/**
+ * get a full list of the traits used by a class or its parents
+ *
+ * @param  string $item
+ *         the item to examine
+ * @return string[]
+ *         the class's traits list
+ */
+function get_class_traits($item)
+{
+    return GetClassTraits::from($item);
 }
 
 /**

@@ -92,6 +92,9 @@ menu:
             GetArrayTypes:
                 text: GetArrayTypes
                 relativeUrl: types/GetArrayTypes.html
+            GetClassTraits:
+                text: GetClassTraits
+                relativeUrl: types/GetClassTraits.html
             GetClassTypes:
                 text: GetClassTypes
                 relativeUrl: types/GetClassTypes.html

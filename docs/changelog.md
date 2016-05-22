@@ -12,8 +12,9 @@ pageflow_next_text: Contributing
 
 ### New
 
-* Added a richer set of type inspectors
+* Added a richer set of type inspectors, based on code originally from `ganbarodigital/php-defensive`
   - added `GetArrayTypes`
+  - added `GetClassTraits`
   - added `GetClassTypes`
   - added `GetDuckTypes`
   - added `GetObjectTypes`

@@ -1,8 +1,8 @@
 ---
 currentSection: types
 currentItem: GetClassTypes
-pageflow_prev_url: GetArrayTypes.html
-pageflow_prev_text: GetArrayTypes class
+pageflow_prev_url: GetClassTraits.html
+pageflow_prev_text: GetClassTraits class
 pageflow_next_url: GetDuckTypes.html
 pageflow_next_text: GetDuckTypes class
 ---

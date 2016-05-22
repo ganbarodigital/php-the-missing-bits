@@ -3,8 +3,8 @@ currentSection: types
 currentItem: GetArrayTypes
 pageflow_prev_url: index.html
 pageflow_prev_text: Type Functions and Classes
-pageflow_next_url: GetClassTypes.html
-pageflow_next_text: GetClassTypes class
+pageflow_next_url: GetClassTraits.html
+pageflow_next_text: GetClassTraits class
 ---
 
 # GetArrayTypes
