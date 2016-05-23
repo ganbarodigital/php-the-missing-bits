@@ -1,8 +1,8 @@
 ---
 currentSection: types
 currentItem: GetNumericType
-pageflow_prev_url: GetDuckTypes.html
-pageflow_prev_text: GetDuckTypes class
+pageflow_prev_url: GetNamespace.html
+pageflow_prev_text: GetNamespace class
 pageflow_next_url: GetObjectTypes.html
 pageflow_next_text: GetObjectTypes class
 ---

@@ -101,6 +101,9 @@ menu:
             GetDuckTypes:
                 text: GetDuckTypes
                 relativeUrl: types/GetDuckTypes.html
+            GetNamespace:
+                text: GetNamespace
+                relativeUrl: types/GetNamespace.html
             GetNumericType:
                 text: GetNumericType
                 relativeUrl: types/GetNumericType.html

@@ -44,10 +44,11 @@
 use GanbaroDigital\MissingBits\TypeInspectors\GetArrayTypes;
 use GanbaroDigital\MissingBits\TypeInspectors\GetClassTraits;
 use GanbaroDigital\MissingBits\TypeInspectors\GetClassTypes;
-use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
+use GanbaroDigital\MissingBits\TypeInspectors\GetNamespace;
 use GanbaroDigital\MissingBits\TypeInspectors\GetNumericType;
 use GanbaroDigital\MissingBits\TypeInspectors\GetObjectTypes;
 use GanbaroDigital\MissingBits\TypeInspectors\GetPrintableType;
+use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
 use GanbaroDigital\MissingBits\TypeInspectors\GetStringTypes;
 
 /**
@@ -100,6 +101,23 @@ function get_class_types($item)
 function get_duck_types($item)
 {
     return \GanbaroDigital\MissingBits\TypeInspectors\GetDuckTypes::from($item);
+}
+
+/**
+ * what namespace does a class live within?
+ *
+ * @param  string|object $item
+ *         the item to examine
+ * @return string
+ *         the class's namespace
+ * @throws InvalidArgumentException
+ *         - if we have not been given a string or object
+ *         - if the string does not contain the name of a defined
+ *           class / interface / trait
+ */
+function get_namespace($item)
+{
+    return GetNamespace::from($item);
 }
 
 /**

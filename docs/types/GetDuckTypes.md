@@ -3,8 +3,8 @@ currentSection: types
 currentItem: GetDuckTypes
 pageflow_prev_url: GetClassTypes.html
 pageflow_prev_text: GetClassTypes class
-pageflow_next_url: GetNumericType.html
-pageflow_next_text: GetNumericType class
+pageflow_next_url: GetNamespace.html
+pageflow_next_text: GetNamespace class
 ---
 
 # GetDuckTypes
