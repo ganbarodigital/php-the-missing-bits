@@ -10,7 +10,11 @@ pageflow_next_text: Contributing
 
 ## develop branch
 
-Nothing yet.
+### New
+
+* Added support for inspecting class, interface, trait and object names
+  - added `GetNamespace`
+  - added `StripNamespace`
 
 ## v1.3.0
 

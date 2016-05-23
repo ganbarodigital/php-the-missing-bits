@@ -119,3 +119,6 @@ menu:
             GetStringTypes:
                 text: GetStringTypes
                 relativeUrl: types/GetStringTypes.html
+            StripNamespace:
+                text: StripNamespace
+                relativeUrl: types/StripNamespace.html

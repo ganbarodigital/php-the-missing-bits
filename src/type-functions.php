@@ -50,6 +50,7 @@ use GanbaroDigital\MissingBits\TypeInspectors\GetObjectTypes;
 use GanbaroDigital\MissingBits\TypeInspectors\GetPrintableType;
 use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
 use GanbaroDigital\MissingBits\TypeInspectors\GetStringTypes;
+use GanbaroDigital\MissingBits\TypeInspectors\StripNamespace;
 
 /**
  * get a full list of strict types than an array can satisfy
@@ -185,4 +186,21 @@ function get_strict_types($item)
 function get_string_types($item)
 {
     return GetStringTypes::from($item);
+}
+
+/**
+ * get the name of a class, minus its namespace
+ *
+ * @param  string|object $item
+ *         the item to examine
+ * @return string
+ *         the class's non-qualified classname
+ * @throws InvalidArgumentException
+ *         - if we have not been given a string or object
+ *         - if the string does not contain the name of a defined
+ *           class / interface / trait
+ */
+function strip_namespace($item)
+{
+    return StripNamespace::from($item);
 }
