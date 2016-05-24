@@ -9,8 +9,8 @@ pageflow_next_text: GetCaller class
 
 # FilterBacktrace
 
-<div class="callout warning">
-Not yet in a tagged release
+<div class="callout info">
+Since v1.4.0
 </div>
 
 ## Description

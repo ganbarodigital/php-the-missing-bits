@@ -10,6 +10,12 @@ pageflow_next_text: Contributing
 
 ## develop branch
 
+Nothing yet.
+
+## v1.4.0
+
+Released Tue 24th May 2016.
+
 ### New
 
 * Added support for inspecting class, interface, trait and object names

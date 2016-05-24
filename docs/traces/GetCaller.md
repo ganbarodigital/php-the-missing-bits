@@ -9,8 +9,8 @@ pageflow_next_text: StackFrame class
 
 # GetPrintableType
 
-<div class="callout warning" markdown="1">
-Not yet in a tagged release
+<div class="callout info">
+Since v1.4.0
 </div>
 
 ## Description
