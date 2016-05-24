@@ -16,6 +16,7 @@ pageflow_next_text: Contributing
   - added `GetNamespace`
   - added `StripNamespace`
 * Added support for working with PHP stack traces
+  - added `FilterBacktrace`
   - added `StackFrame`
 
 ## v1.3.0

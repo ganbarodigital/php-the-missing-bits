@@ -1,8 +1,8 @@
 ---
 currentSection: traces
 currentItem: StackFrame
-pageflow_next_url: index.html
-pageflow_next_text: Stack Trace Functions and Classes
+pageflow_prev_url: FilterBacktrace.html
+pageflow_prev_text: FilterBacktrace class
 ---
 
 # StackFrame
