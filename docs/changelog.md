@@ -12,6 +12,22 @@ pageflow_next_text: Contributing
 
 Nothing yet.
 
+## v1.4.0
+
+Released Tue 24th May 2016.
+
+### New
+
+* Added support for inspecting class, interface, trait and object names
+  - added `GetNamespace`
+  - added `StripNamespace`
+* Added support for working with PHP stack traces
+  - added `FilterBacktrace`
+  - added `GetCaller`
+  - added `get_caller()`
+  - added `get_caller_from_trace()`
+  - added `StackFrame`
+
 ## v1.3.0
 
 Released Sunday 22nd May 2016.

@@ -81,6 +81,24 @@ menu:
                 text: vnsprintf
                 relativeUrl: strings/vnsprintf.html
 
+    traces:
+        text: Traces
+        relativeUrl: traces/index.html
+
+        items:
+            home:
+                text: Stack Trace Functions and Classes
+                relativeUrl: traces/index.html
+            FilterBacktrace:
+                text: FilterBacktrace
+                relativeUrl: traces/FilterBacktrace.html
+            GetCaller:
+                text: GetCaller
+                relativeUrl: traces/GetCaller.html
+            StackFrame:
+                text: StackFrame
+                relativeUrl: traces/StackFrame.html
+
     types:
         text: Types
         relativeUrl: types/index.html
@@ -101,6 +119,9 @@ menu:
             GetDuckTypes:
                 text: GetDuckTypes
                 relativeUrl: types/GetDuckTypes.html
+            GetNamespace:
+                text: GetNamespace
+                relativeUrl: types/GetNamespace.html
             GetNumericType:
                 text: GetNumericType
                 relativeUrl: types/GetNumericType.html
@@ -116,3 +137,6 @@ menu:
             GetStringTypes:
                 text: GetStringTypes
                 relativeUrl: types/GetStringTypes.html
+            StripNamespace:
+                text: StripNamespace
+                relativeUrl: types/StripNamespace.html

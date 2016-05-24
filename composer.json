@@ -24,6 +24,7 @@
         },
         "files": [
             "src/string-functions.php",
+            "src/trace-functions.php",
             "src/type-functions.php"
         ]
     }
