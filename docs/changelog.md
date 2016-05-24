@@ -15,6 +15,8 @@ pageflow_next_text: Contributing
 * Added support for inspecting class, interface, trait and object names
   - added `GetNamespace`
   - added `StripNamespace`
+* Added support for working with PHP stack traces
+  - added `StackFrame`
 
 ## v1.3.0
 

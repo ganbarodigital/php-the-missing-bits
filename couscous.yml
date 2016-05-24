@@ -81,6 +81,18 @@ menu:
                 text: vnsprintf
                 relativeUrl: strings/vnsprintf.html
 
+    traces:
+        text: Traces
+        relativeUrl: traces/index.html
+
+        items:
+            home:
+                text: Stack Trace Functions and Classes
+                relativeUrl: traces/index.html
+            StackFrame:
+                text: StackFrame
+                relativeUrl: traces/StackFrame.html
+
     types:
         text: Types
         relativeUrl: types/index.html
