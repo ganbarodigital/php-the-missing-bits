@@ -92,6 +92,9 @@ menu:
             FilterBacktrace:
                 text: FilterBacktrace
                 relativeUrl: traces/FilterBacktrace.html
+            GetCaller:
+                text: GetCaller
+                relativeUrl: traces/GetCaller.html
             StackFrame:
                 text: StackFrame
                 relativeUrl: traces/StackFrame.html

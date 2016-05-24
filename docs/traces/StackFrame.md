@@ -1,8 +1,8 @@
 ---
 currentSection: traces
 currentItem: StackFrame
-pageflow_prev_url: FilterBacktrace.html
-pageflow_prev_text: FilterBacktrace class
+pageflow_prev_url: GetCaller.html
+pageflow_prev_text: GetCaller class
 ---
 
 # StackFrame
@@ -122,11 +122,11 @@ class StackFrame
 
 ## Works With
 
-`GetArrayTypes` is supported on these versions of PHP:
+`StackFrame` is supported on these versions of PHP:
 
 PHP Version | Works?
 ------------|-------
 5.5 | Yes
 5.6 | Yes
 7.0 | Yes
-HHVM | Yes
+HHVM | Untested

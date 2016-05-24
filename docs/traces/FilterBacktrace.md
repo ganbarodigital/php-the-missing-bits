@@ -3,8 +3,8 @@ currentSection: traces
 currentItem: FilterBacktrace
 pageflow_prev_url: index.html
 pageflow_prev_text: Stack Trace Functions and Classes
-pageflow_next_url: StackFrame.html
-pageflow_next_text: StackFrame class
+pageflow_next_url: GetCaller.html
+pageflow_next_text: GetCaller class
 ---
 
 # FilterBacktrace
@@ -133,7 +133,7 @@ None at this time.
 
 ## Works With
 
-`GetArrayTypes` is supported on these versions of PHP:
+`FilterBacktrace` is supported on these versions of PHP:
 
 PHP Version | Works?
 ------------|-------
