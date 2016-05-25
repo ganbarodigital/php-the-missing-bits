@@ -89,6 +89,9 @@ menu:
             home:
                 text: Stack Trace Functions and Classes
                 relativeUrl: traces/index.html
+            HowThePhpStackFrameWorks:
+                text: How The PHP Stack Frame Works
+                relativeUrl: traces/HowThePhpStackFrameWorks.html
             FilterBacktrace:
                 text: FilterBacktrace
                 relativeUrl: traces/FilterBacktrace.html
