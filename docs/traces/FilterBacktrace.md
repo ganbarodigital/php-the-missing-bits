@@ -127,6 +127,23 @@ class RejectStrings
 }
 ```
 
+## Return Value
+
+`FilterBacktrace` returns an array:
+
+Key | Description
+----|------------
+class | A valid PHP class name, or NULL
+function | The method on the class that called us, or NULL
+file | The file were the PHP code was defined, or NULL
+line | The line number in the file where the PHP code was defined, or NULL
+stackIndex | Where did we find these details in the backtrace array?
+
+You should expect some of the fields in the return array to be `NULL`:
+
+* Any entry in the returned array can be `NULL`.
+* One of `class`, `class` and `function`, or `file` will have a value.
+
 ## Notes
 
 None at this time.
