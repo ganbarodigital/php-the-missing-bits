@@ -33,6 +33,9 @@
                             <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/strings/index.html">Strings</a>
                         </li>
                                             <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/traces/index.html">Traces</a>
+                        </li>
+                                            <li class="">
                             <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/index.html">Types</a>
                         </li>
                                     </ul>
@@ -65,7 +68,7 @@
                                                             </ul>
                         </nav>
                     </header>
-                                                                                                        <main role="main">
+                                                                                                                            <main role="main">
                         <nav class="pageflow">
               <ul>
                                     <li><a href="installation.html">Prev: Installation</a></li>
@@ -77,9 +80,27 @@
                 <h1 id="changelog">CHANGELOG</h1>
 <h2 id="develop-branch">develop branch</h2>
 <p>Nothing yet.</p>
+<h2 id="v140">v1.4.0</h2>
+<p>Released Tue 24th May 2016.</p>
+<h3 id="new">New</h3>
+<ul>
+<li>Added support for inspecting class, interface, trait and object names
+<ul>
+<li>added <code>GetNamespace</code></li>
+<li>added <code>StripNamespace</code></li>
+</ul></li>
+<li>Added support for working with PHP stack traces
+<ul>
+<li>added <code>FilterBacktrace</code></li>
+<li>added <code>GetCaller</code></li>
+<li>added <code>get_caller()</code></li>
+<li>added <code>get_caller_from_trace()</code></li>
+<li>added <code>StackFrame</code></li>
+</ul></li>
+</ul>
 <h2 id="v130">v1.3.0</h2>
 <p>Released Sunday 22nd May 2016.</p>
-<h3 id="new">New</h3>
+<h3 id="new-1">New</h3>
 <ul>
 <li>Added a richer set of type inspectors, based on code originally from <code>ganbarodigital/php-defensive</code>
 <ul>
@@ -95,7 +116,7 @@
 </ul>
 <h2 id="v120">v1.2.0</h2>
 <p>Released Monday 9th May 2016.</p>
-<h3 id="new-1">New</h3>
+<h3 id="new-2">New</h3>
 <ul>
 <li>Added support for entities that can switch between a read-only mode and read-write
 <ul>
@@ -114,13 +135,13 @@
 </ul>
 <h2 id="v110">v1.1.0</h2>
 <p>Released Sunday 17th April 2016.</p>
-<h3 id="new-2">New</h3>
+<h3 id="new-3">New</h3>
 <ul>
 <li>Added <a href="types/GetPrintableType.html"><code>GetPrintableType</code></a></li>
 </ul>
 <h2 id="v100">v1.0.0</h2>
 <p>Released Sunday 17th April 2016.</p>
-<h3 id="new-3">New</h3>
+<h3 id="new-4">New</h3>
 <ul>
 <li>Added <a href="strings/vnsprintf.html"><code>vnsprint()</code></a></li>
 </ul>

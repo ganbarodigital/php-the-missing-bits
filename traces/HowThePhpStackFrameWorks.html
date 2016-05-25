@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!--[if lt IE 9]>
+            <script src="assets/html5shiv.js"></script>
+            <script src="assets/html5printshiv.js"></script>
+        <![endif]-->
+        <meta charset="utf-8"/>
+        <title>PHP: The Missing Bits from Ganbaro Digital</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="http://ganbarodigital.github.io/php-the-missing-bits/assets/docs.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="http://ganbarodigital.github.io/php-the-missing-bits/assets/prism.css">
+        <script src="http://ganbarodigital.github.io/php-the-missing-bits/assets/prism.js"></script>
+    </head>
+    <body data-ishi-anchors="1">
+        <header role="banner">
+            <div>
+                <p style="font-size: 34px; padding-top: 10px">PHP: The Missing Bits</p>
+                <p style="font-size: 18px; border-bottom: 1px solid; padding-bottom: 10px">Functions that we wish came with PHP</p>
+            </div>
+            <!--<a href="http://ganbarodigital.github.io/php-the-missing-bits/index.html">
+                <img src="http://ganbarodigital.github.io/php-the-missing-bits/assets/ganbarodigital.svg" width="60" height="60" style="vertical-align: middle; float: left; margin-right: 15px">
+            </a>-->
+            <nav class="navbar topbar">
+                <ul>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/index.html">Overview</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/entities/index.html">Entities</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/strings/index.html">Strings</a>
+                        </li>
+                                            <li class="current">
+                            <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/traces/index.html">Traces</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/index.html">Types</a>
+                        </li>
+                                    </ul>
+            </nav>
+        </header>
+                                                                                                                    <header role="subnav">
+                        <nav class="navbar">
+                            <ul>
+                                                                    <li class="">
+                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/traces/index.html">Stack Trace Functions and Classes</a>
+                                    </li>
+                                                                    <li class="current">
+                                        <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/traces/HowThePhpStackFrameWorks.html">How The PHP Stack Frame Works</a>
+                                    </li>
+                                                                    <li class="">
+                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/traces/FilterBacktrace.html">FilterBacktrace</a>
+                                    </li>
+                                                                    <li class="">
+                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/traces/GetCaller.html">GetCaller</a>
+                                    </li>
+                                                                    <li class="">
+                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/traces/StackFrame.html">StackFrame</a>
+                                    </li>
+                                                            </ul>
+                        </nav>
+                    </header>
+                                                                <main role="main">
+                        <nav class="pageflow">
+              <ul>
+                                    <li><a href="index.html">Prev: Stack Trace Functions and Classes</a></li>
+                                                      <li><a href="FilterBacktrace.html">Next: FilterBacktrace class</a></li>
+                                </ul>
+            </nav>
+            
+            <article>
+                <h1 id="how-the-php-stack-frame-works">How The PHP Stack Frame Works</h1>
+<h2 id="introduction">Introduction</h2>
+<p>The PHP stack frame isn't as straight-forward as you might think. This caught us out when building <a href="FilterBacktrace.html"><code>FilterBacktrace</code></a>.</p>
+<h2 id="whats-in-a-stack-frame">What's In A Stack Frame</h2>
+<p>Here's a stack dump generated by calling <code>debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS)</code>:</p>
+<pre><code>array(11) {
+  [0] =&gt;
+  array(5) {
+    'file' =&gt;
+    string(98) "/Users/stuart/Devel/ganbarodigital/php-mv-defensive/tests/V1/Exceptions/BadRequirementDataTest.php"
+    'line' =&gt;
+    int(142)
+    'function' =&gt;
+    string(22) "newFromRequirementData"
+    'class' =&gt;
+    string(57) "GanbaroDigital\Defensive\V1\Exceptions\BadRequirementData"
+    'type' =&gt;
+    string(2) "::"
+  }
+  [1] =&gt;
+  array(3) {
+    'function' =&gt;
+    string(35) "testCanCreateFromBadRequirementData"
+    'class' =&gt;
+    string(65) "GanbaroDigitalTest\Defensive\V1\Exceptions\BadRequirementDataTest"
+    'type' =&gt;
+    string(2) "-&gt;"
+  }
+  [2] =&gt;
+  array(5) {
+    'file' =&gt;
+    string(101) "/Users/stuart/Devel/ganbarodigital/php-mv-defensive/vendor/phpunit/phpunit/src/Framework/TestCase.php"
+    'line' =&gt;
+    int(909)
+    'function' =&gt;
+    string(10) "invokeArgs"
+    'class' =&gt;
+    string(16) "ReflectionMethod"
+    'type' =&gt;
+    string(2) "-&gt;"
+  }
+  [3] =&gt;
+  array(5) {
+    'file' =&gt;
+    string(101) "/Users/stuart/Devel/ganbarodigital/php-mv-defensive/vendor/phpunit/phpunit/src/Framework/TestCase.php"
+    'line' =&gt;
+    int(768)
+    'function' =&gt;
+    string(7) "runTest"
+    'class' =&gt;
+    string(26) "PHPUnit_Framework_TestCase"
+    'type' =&gt;
+    string(2) "-&gt;"
+  }
+  [4] =&gt;
+  array(5) {
+    'file' =&gt;
+    string(103) "/Users/stuart/Devel/ganbarodigital/php-mv-defensive/vendor/phpunit/phpunit/src/Framework/TestResult.php"
+    'line' =&gt;
+    int(612)
+    'function' =&gt;
+    string(7) "runBare"
+    'class' =&gt;
+    string(26) "PHPUnit_Framework_TestCase"
+    'type' =&gt;
+    string(2) "-&gt;"
+  }
+  [5] =&gt;
+  array(5) {
+    'file' =&gt;
+    string(101) "/Users/stuart/Devel/ganbarodigital/php-mv-defensive/vendor/phpunit/phpunit/src/Framework/TestCase.php"
+    'line' =&gt;
+    int(724)
+    'function' =&gt;
+    string(3) "run"
+    'class' =&gt;
+    string(28) "PHPUnit_Framework_TestResult"
+    'type' =&gt;
+    string(2) "-&gt;"
+  }
+  [6] =&gt;
+  array(5) {
+    'file' =&gt;
+    string(102) "/Users/stuart/Devel/ganbarodigital/php-mv-defensive/vendor/phpunit/phpunit/src/Framework/TestSuite.php"
+    'line' =&gt;
+    int(747)
+    'function' =&gt;
+    string(3) "run"
+    'class' =&gt;
+    string(26) "PHPUnit_Framework_TestCase"
+    'type' =&gt;
+    string(2) "-&gt;"
+  }
+  [7] =&gt;
+  array(5) {
+    'file' =&gt;
+    string(100) "/Users/stuart/Devel/ganbarodigital/php-mv-defensive/vendor/phpunit/phpunit/src/TextUI/TestRunner.php"
+    'line' =&gt;
+    int(440)
+    'function' =&gt;
+    string(3) "run"
+    'class' =&gt;
+    string(27) "PHPUnit_Framework_TestSuite"
+    'type' =&gt;
+    string(2) "-&gt;"
+  }
+  [8] =&gt;
+  array(5) {
+    'file' =&gt;
+    string(97) "/Users/stuart/Devel/ganbarodigital/php-mv-defensive/vendor/phpunit/phpunit/src/TextUI/Command.php"
+    'line' =&gt;
+    int(149)
+    'function' =&gt;
+    string(5) "doRun"
+    'class' =&gt;
+    string(25) "PHPUnit_TextUI_TestRunner"
+    'type' =&gt;
+    string(2) "-&gt;"
+  }
+  [9] =&gt;
+  array(5) {
+    'file' =&gt;
+    string(97) "/Users/stuart/Devel/ganbarodigital/php-mv-defensive/vendor/phpunit/phpunit/src/TextUI/Command.php"
+    'line' =&gt;
+    int(100)
+    'function' =&gt;
+    string(3) "run"
+    'class' =&gt;
+    string(22) "PHPUnit_TextUI_Command"
+    'type' =&gt;
+    string(2) "-&gt;"
+  }
+  [10] =&gt;
+  array(5) {
+    'file' =&gt;
+    string(82) "/Users/stuart/Devel/ganbarodigital/php-mv-defensive/vendor/phpunit/phpunit/phpunit"
+    'line' =&gt;
+    int(47)
+    'function' =&gt;
+    string(4) "main"
+    'class' =&gt;
+    string(22) "PHPUnit_TextUI_Command"
+    'type' =&gt;
+    string(2) "::"
+  }
+}</code></pre>
+<p>Each stack frame can contain any of these details:</p>
+<table>
+<thead>
+<tr>
+<th>Detail</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>file</td>
+<td>A PHP file that has been executed</td>
+</tr>
+<tr>
+<td>line</td>
+<td>The line number in 'file' that is being executed</td>
+</tr>
+<tr>
+<td>class</td>
+<td>A class that is being called</td>
+</tr>
+<tr>
+<td>function</td>
+<td>The method on 'class' that is being called (if 'class' has a value)</td>
+</tr>
+<tr>
+<td>function</td>
+<td>A global function that is being called (if 'class' has no value or is not set)</td>
+</tr>
+<tr>
+<td>type</td>
+<td>How 'function' was called (<code>::</code> for a static call, <code>-&gt;</code> for a call on an object, not set if 'class' is not set)</td>
+</tr>
+</tbody>
+</table>
+<p>At first glance, that looks very straight-forward. Let's isolate a single stack frame:</p>
+<table>
+<thead>
+<tr>
+<th>Detail</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>file</td>
+<td>/Users/stuart/Devel/ganbarodigital/php-mv-defensive/vendor/phpunit/phpunit/src/TextUI/TestRunner.php</td>
+</tr>
+<tr>
+<td>line</td>
+<td>440</td>
+</tr>
+<tr>
+<td>class</td>
+<td>PHPUnit_Framework_TestSuite</td>
+</tr>
+<tr>
+<td>function</td>
+<td>run</td>
+</tr>
+</tbody>
+</table>
+<p>Hang on a moment. According to that, line 440 of TestRunner.php is part of the <code>run()</code> method of <code>PHPUnit_Framework_TestSuite</code>. Surely that's a typo?</p>
+<p>No, it isn't. Here's the stack frame that I built that table from:</p>
+<pre><code>[7] =&gt;
+array(5) {
+  'file' =&gt;
+  string(100) "/Users/stuart/Devel/ganbarodigital/php-mv-defensive/vendor/phpunit/phpunit/src/TextUI/TestRunner.php"
+  'line' =&gt;
+  int(440)
+  'function' =&gt;
+  string(3) "run"
+  'class' =&gt;
+  string(27) "PHPUnit_Framework_TestSuite"
+  'type' =&gt;
+  string(2) "-&gt;"
+}</code></pre>
+<p>What's going on?</p>
+<h2 id="stack-frames-contain-staggered-data">Stack Frames Contain Staggered Data</h2>
+<p>In any PHP stack frame, <code>file</code> and <code>line</code> correctly refer to the code that is executing. <code>class</code>, <code>function</code> and <code>type</code> (if present) refer to the code that <code>file</code> and <code>line</code> is <strong>calling</strong> - and <strong>not</strong> the code in <code>file</code> and line <code>line</code> as you might be expecting.</p>
+<p>You can clearly see that in the following two stack frames:</p>
+<pre><code>[7] =&gt;
+array(5) {
+  'file' =&gt;
+  string(100) "/Users/stuart/Devel/ganbarodigital/php-mv-defensive/vendor/phpunit/phpunit/src/TextUI/TestRunner.php"
+  'line' =&gt;
+  int(440)
+  'function' =&gt;
+  string(3) "run"
+  'class' =&gt;
+  string(27) "PHPUnit_Framework_TestSuite"
+  'type' =&gt;
+  string(2) "-&gt;"
+}
+[8] =&gt;
+array(5) {
+  'file' =&gt;
+  string(97) "/Users/stuart/Devel/ganbarodigital/php-mv-defensive/vendor/phpunit/phpunit/src/TextUI/Command.php"
+  'line' =&gt;
+  int(149)
+  'function' =&gt;
+  string(5) "doRun"
+  'class' =&gt;
+  string(25) "PHPUnit_TextUI_TestRunner"
+  'type' =&gt;
+  string(2) "-&gt;"
+}</code></pre>
+<h2 id="how-to-work-out-actual-caller-details">How To Work Out Actual Caller Details</h2>
+<p>To work out a full set of caller details, do the following:</p>
+<ol>
+<li>take the <code>class</code>, <code>function</code> and <code>type</code> values from a stack frame</li>
+<li>take the <code>file</code> and <code>line</code> values from the preceeding stack frame</li>
+</ol>
+<p>In our example above, if you combine <code>class</code>, <code>function</code> and <code>type</code> from stack frame 8 with <code>file</code> and <code>line</code> from stack frame 7, you get this:</p>
+<table>
+<thead>
+<tr>
+<th>Detail</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>file</td>
+<td>/Users/stuart/Devel/ganbarodigital/php-mv-defensive/vendor/phpunit/phpunit/src/TextUI/TestRunner.php</td>
+</tr>
+<tr>
+<td>line</td>
+<td>440</td>
+</tr>
+<tr>
+<td>class</td>
+<td>PHPUnit_TextUI_TestRunner</td>
+</tr>
+<tr>
+<td>function</td>
+<td>doRun</td>
+</tr>
+<tr>
+<td>type</td>
+<td>-&gt;</td>
+</tr>
+</tbody>
+</table>
+<p>... which looks far more credible :)</p>
+<h2 id="automatically-handled-for-you">Automatically Handled For You</h2>
+<p>Our <a href="FilterBacktrace.html"><code>FilterBacktrace</code></a> class automatically handles this for you. All of our other classes in the <code>TraceInspectors</code> namespace use <code>FilterBacktrace</code> to understand the PHP stack.</p>
+<p>As long as you use our classes, you won't have to worry about this PHP behaviour in your own code.</p>
+            </article>
+
+                        <nav class="pageflow">
+              <ul>
+                                    <li><a href="index.html">Prev: Stack Trace Functions and Classes</a></li>
+                                                      <li><a href="FilterBacktrace.html">Next: FilterBacktrace class</a></li>
+                                </ul>
+            </nav>
+                    </main>
+
+        <aside class="sidebar">
+            <h2>This Page</h2>
+            <nav class="toc" data-type="ishi-toc" data-max-depth="3">
+            </nav>
+        </aside>
+        <footer>
+            <div class="strapline">
+                <p>Copyright &copy; 2015 <a href="http://ganbarodigital.com">Ganbaro Digital Ltd</a>. Released under the <a href="http://ganbarodigital.github.io/php-the-missing-bits/license.html">New BSD</a> license.
+                                            Find PHP: The Missing Bits on <a href="https://github.com/ganbarodigital/php-the-missing-bits">GitHub</a>.
+                                        Built with <a href="http://couscous.io/">Couscous</a>.
+                </p>
+            </div>
+        </footer>
+    <script src="http://ganbarodigital.github.io/php-the-missing-bits/assets/laroux.js"></script>
+    <script src="http://ganbarodigital.github.io/php-the-missing-bits/assets/ishi.js"></script>
+    </body>
+</html>

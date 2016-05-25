@@ -50,8 +50,8 @@
                                                                     <li class="">
                                         <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetArrayTypes.html">GetArrayTypes</a>
                                     </li>
-                                                                    <li class="current">
-                                        <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetClassTraits.html">GetClassTraits</a>
+                                                                    <li class="">
+                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetClassTraits.html">GetClassTraits</a>
                                     </li>
                                                                     <li class="">
                                         <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetClassTypes.html">GetClassTypes</a>
@@ -77,8 +77,8 @@
                                                                     <li class="">
                                         <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetStringTypes.html">GetStringTypes</a>
                                     </li>
-                                                                    <li class="">
-                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/StripNamespace.html">StripNamespace</a>
+                                                                    <li class="current">
+                                        <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/types/StripNamespace.html">StripNamespace</a>
                                     </li>
                                                             </ul>
                         </nav>
@@ -86,58 +86,51 @@
                                             <main role="main">
                         <nav class="pageflow">
               <ul>
-                                    <li><a href="GetArrayTypes.html">Prev: GetArrayTypes class</a></li>
-                                                      <li><a href="GetClassTypes.html">Next: GetClassTypes class</a></li>
+                                    <li><a href="GetStringTypes.html">Prev: GetStringTypes class</a></li>
+                                                      <li></li>
                                 </ul>
             </nav>
             
             <article>
-                <h1 id="getclasstraits">GetClassTraits</h1>
+                <h1 id="stripnamespace">StripNamespace</h1>
 <div class="callout info">
-Since v1.3.0
+Since v1.4.0
 </div>
 <h2 id="description">Description</h2>
-<p><code>GetClassTraits</code> returns a list of all the traits used by a class or object. The list includes all traits used by parent classes, and by the traits in the list too.</p>
-<p><code>GetClassTraits</code> is a deeper-inspecting version of PHP's <a href="http://php.net/manual/en/function.class-uses.php"><code>class_uses()</code></a>.</p>
+<p><code>StripNamespace</code> returns a class or object's class name, minus the namespace.</p>
 <pre><code class="language-php">// how to import
-use GanbaroDigital\MissingBits\TypeInspectors\GetClassTraits;
+use GanbaroDigital\MissingBits\TypeInspectors\StripNamespace;
 
 // call directly
 //
-// returns an array
-var_dump(GetClassTraits::from($data));
+// returns a string
+var_dump(StripNamespace::from($item));
 
 // use as an object
 //
-// returns an array
-$inspector = new GetClassTraits;
-var_dump($inspector($data));
+// returns a string
+$inspector = new StripNamespace;
+var_dump($inspector($item));
 
 // use as a global function
 //
-// returns an array
-var_dump(get_class_traits($data));</code></pre>
+// returns a string
+var_dump(strip_namespace($item));</code></pre>
 <h2 id="parameters">Parameters</h2>
 <p>The input parameters are:</p>
 <ul>
-<li><code>mixed $data</code> - the item to examine</li>
+<li><code>$item</code> - the item to examine. Must an object, or a string containing the name of a valid class, interface or trait.</li>
 </ul>
 <h2 id="return-value">Return Value</h2>
-<p><code>GetClassTraits</code> returns an array.</p>
-<ul>
-<li>If <code>$data</code> is not a string or an object, an empty list <code>[]</code> is returned</li>
-<li>For strings, if <code>$data</code> is not a valid class name, an empty list <code>[]</code> is returned</li>
-<li>For classes and objects, we return a list of the traits used by the class, its parents, and any traits that any of those classes use</li>
-</ul>
-<p>The resulting list is a complete list of the traits used by <code>$data</code>.</p>
-<div class="callout warning">
-<p>PHP doesn't support using traits in interfaces.</p>
-<p>That's why <code>GetClassTraits</code> always returns an empty list for an interface.</p>
-</div>
+<p><code>StripNamespace</code> returns a string. It contains the name of the class or object, without the namespace portion of the name.</p>
 <h2 id="throws">Throws</h2>
-<p><code>GetClassTraits</code> does not throw any exceptions.</p>
+<p><code>StripNamespace</code> throws these exceptions:</p>
+<ul>
+<li>if <code>$item</code> is not an object or string, <code>InvalidArgumentException</code> is thrown</li>
+<li>if <code>$item</code> is a string, but does not contain a defined class, interface or trait, <code>InvalidArgumentException</code> is thrown</li>
+</ul>
 <h2 id="works-with">Works With</h2>
-<p><code>GetClassTraits</code> is supported on these versions of PHP:</p>
+<p><code>StripNamespace</code> is supported on these versions of PHP:</p>
 <table>
 <thead>
 <tr>
@@ -168,8 +161,8 @@ var_dump(get_class_traits($data));</code></pre>
 
                         <nav class="pageflow">
               <ul>
-                                    <li><a href="GetArrayTypes.html">Prev: GetArrayTypes class</a></li>
-                                                      <li><a href="GetClassTypes.html">Next: GetClassTypes class</a></li>
+                                    <li><a href="GetStringTypes.html">Prev: GetStringTypes class</a></li>
+                                                      <li></li>
                                 </ul>
             </nav>
                     </main>

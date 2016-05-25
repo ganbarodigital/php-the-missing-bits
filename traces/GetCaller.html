@@ -29,11 +29,11 @@
                                             <li class="">
                             <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/entities/index.html">Entities</a>
                         </li>
-                                            <li class="current">
-                            <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/strings/index.html">Strings</a>
-                        </li>
                                             <li class="">
-                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/traces/index.html">Traces</a>
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/strings/index.html">Strings</a>
+                        </li>
+                                            <li class="current">
+                            <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/traces/index.html">Traces</a>
                         </li>
                                             <li class="">
                             <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/index.html">Types</a>
@@ -41,76 +41,118 @@
                                     </ul>
             </nav>
         </header>
-                                                                                                <header role="subnav">
+                                                                                                                    <header role="subnav">
                         <nav class="navbar">
                             <ul>
                                                                     <li class="">
-                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/strings/index.html">String Functions and Classes</a>
+                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/traces/index.html">Stack Trace Functions and Classes</a>
+                                    </li>
+                                                                    <li class="">
+                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/traces/HowThePhpStackFrameWorks.html">How The PHP Stack Frame Works</a>
+                                    </li>
+                                                                    <li class="">
+                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/traces/FilterBacktrace.html">FilterBacktrace</a>
                                     </li>
                                                                     <li class="current">
-                                        <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/strings/vnsprintf.html">vnsprintf</a>
+                                        <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/traces/GetCaller.html">GetCaller</a>
+                                    </li>
+                                                                    <li class="">
+                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/traces/StackFrame.html">StackFrame</a>
                                     </li>
                                                             </ul>
                         </nav>
                     </header>
-                                                                                    <main role="main">
+                                                                <main role="main">
                         <nav class="pageflow">
               <ul>
-                                    <li><a href="index.html">Prev: String Functions</a></li>
-                                                      <li></li>
+                                    <li><a href="FilterBacktrace.html">Prev: FilterBacktrace class</a></li>
+                                                      <li><a href="StackFrame.html">Next: StackFrame class</a></li>
                                 </ul>
             </nav>
             
             <article>
-                <h1 id="vnsprintf">vnsprintf()</h1>
+                <h1 id="getprintabletype">GetPrintableType</h1>
 <div class="callout info">
-<p>Since version 1.0.0.</p>
+Since v1.4.0
 </div>
 <h2 id="description">Description</h2>
-<p><code>vnsprintf()</code> - PHP's <code>vsprintf()</code> with added support for <em>named arguments</em>.</p>
-<pre><code class="language-php">string vnsprintf(string $format, array $args);</code></pre>
+<p><code>GetCaller</code> examines a <code>debug_backtrace()</code> to work out who has called your code.</p>
+<p>It was introduced for use in error logging and exception messages.</p>
+<pre><code class="language-php">// how to import
+use GanbaroDigital\MissingBits\TraceInspectors\GetCaller;
+use GanbaroDigital\MissingBits\TraceInspectors\StackFrame;
+
+// call directly
+//
+// returns a StackFrame
+$trace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
+$caller = GetCaller::from($trace);
+echo (string)$caller;
+
+// use as an object
+//
+// returns a StackFrame
+$trace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
+$inspector = new GetCaller;
+$caller = $inspector($trace);
+echo (string)$caller;
+
+// use as a global function
+//
+// returns a StackFrame
+$trace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
+$caller = get_caller_from_trace($trace);
+echo (string)$caller;
+
+// most convenient of all - no need to pass in a trace
+$caller = get_caller();
+echo (string)$caller;</code></pre>
 <h2 id="parameters">Parameters</h2>
-<p><code>vnsprintf()</code> takes two parameters:</p>
+<p>The input parameters are:</p>
 <ul>
-<li><code>$format</code> (string) - a <a href="http://php.net/manual/en/function.sprintf.php">sprintf()-compatible</a> format string, which may also contained <em>named parameters</em></li>
-<li><code>$args</code> (array) - a list of data values for <code>sprintf()</code> to use when <code>$format</code> is expanded</li>
+<li><code>$backtrace</code> - a <code>debug_backtrace()</code> return value to examine</li>
+<li><code>$filterList</code> - optional list of namespaces and classes to skip over</li>
 </ul>
-<p>PHP's built-in <code>sprintf()</code> already supports <em>positional parameters</em>:</p>
-<pre><code class="language-php">echo vsprintf("The %1\$s sat on the %2\$s", ['cat', 'mat']) . PHP_EOL;
-// output: The cat sat on the mat</code></pre>
-<p><code>vnsprintf()</code> adds support for using <em>named parameters</em> too:</p>
-<pre><code class="language-php">$args = [
-    'animal' =&gt; 'cat',
-    'place' =&gt; 'mat'
-];
-echo vnsprintf("The %animal\$s sat on the %place\$s", $args) . PHP_EOL;
-// output: The cat sat on the mat</code></pre>
-<h2 id="return-values">Return Values</h2>
-<p><code>vnsprintf()</code> returns a string: the result of expanding <code>$format</code> using the data in <code>$args</code>.</p>
+<h2 id="return-value">Return Value</h2>
+<p><code>GetCaller</code> returns a <a href="StackFrame.html"><code>StackFrame</code></a>.</p>
 <h2 id="throws">Throws</h2>
-<p><code>vnsprintf()</code> throws the following exception(s):</p>
-<ul>
-<li><code>InvalidArgumentException</code> - if you use a <em>named parameter</em> that can't be found in <code>$args</code></li>
-</ul>
-<h2 id="constraints">Constraints</h2>
-<p>Internally, <code>vnsprintf()</code> converts <code>$format</code> into a <code>sprintf()</code>-compatible format string. As a result, <code>$format</code> must be one of the following:</p>
-<ul>
-<li>100%-compatible with <code>sprintf()</code>, or</li>
-<li>use only <em>named parameters</em>, or</li>
-<li>use a mix of <em>named parameters</em> and <em>positional parameters</em></li>
-</ul>
-<p>You <strong>cannot</strong> do the following:</p>
-<ul>
-<li>use a mix of <em>named parameters</em> and normal (non-position) parameters in <code>$format</code></li>
-<li>use a mix of <em>positional parameters</em> and normal (non-positional) parameters in <code>$format</code></li>
-</ul>
-<p>If you do so, you'll get an error message from PHP.</p>
+<p><code>GetCaller</code> does not throw any exceptions.</p>
+<h2 id="notes">Notes</h2>
+<p>None at this time.</p>
+<h2 id="works-with">Works With</h2>
+<p><code>GetCaller</code> is supported on these versions of PHP:</p>
+<table>
+<thead>
+<tr>
+<th>PHP Version</th>
+<th>Works?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5.5</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>5.6</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>7.0</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>HHVM</td>
+<td>Untested</td>
+</tr>
+</tbody>
+</table>
             </article>
 
                         <nav class="pageflow">
               <ul>
-                                    <li><a href="index.html">Prev: String Functions</a></li>
-                                                      <li></li>
+                                    <li><a href="FilterBacktrace.html">Prev: FilterBacktrace class</a></li>
+                                                      <li><a href="StackFrame.html">Next: StackFrame class</a></li>
                                 </ul>
             </nav>
                     </main>
