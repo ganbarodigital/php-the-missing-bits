@@ -10,7 +10,10 @@ pageflow_next_text: Contributing
 
 ## develop branch
 
-Nothing yet.
+### Fixes
+
+* Performance improvements to:
+  - `GetDuckTypes`
 
 ## v1.4.0
 
