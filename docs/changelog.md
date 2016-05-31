@@ -14,7 +14,9 @@ pageflow_next_text: Contributing
 
 * Extra duck type features
   - added `GetStringDuckTypes`
-  - added `numeric` duck type (can be returned by `GetStringDuckTypes`)
+  - added `numeric` duck type; can be returned by
+    - `GetDuckTypes`
+    - `GetStringDuckTypes`
 
 ### Fixes
 
