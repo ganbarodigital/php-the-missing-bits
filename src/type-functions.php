@@ -138,7 +138,7 @@ function get_numeric_type($item)
 /**
  * get the list of extra types that are valid for this specific object
  *
- * @param  object $object
+ * @param  object $item
  *         the object to examine
  * @return string[]
  *         a (possibly empty) list of types for this object
@@ -149,14 +149,14 @@ function get_object_types($item)
 }
 
 /**
- * what PHP type is $data?
+ * what PHP type is $item?
  *
- * @param  mixed $data
+ * @param  mixed $item
  *         the data to examine
  * @param  int $flags
  *         options to change what we put in the return value
  * @return string
- *         the data type of $data
+ *         the data type of $item
  */
 function get_printable_type($item, $flags = GetPrintableType::FLAG_DEFAULTS)
 {

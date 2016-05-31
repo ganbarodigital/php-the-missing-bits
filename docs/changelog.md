@@ -28,6 +28,7 @@ pageflow_next_text: Contributing
   - `GetStrictTypes`
   - `GetStringTypes`
   - `StripNamespace`
+  - `get_caller`
 
 ## v1.4.0
 
