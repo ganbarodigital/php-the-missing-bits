@@ -49,6 +49,7 @@ use GanbaroDigital\MissingBits\TypeInspectors\GetNumericType;
 use GanbaroDigital\MissingBits\TypeInspectors\GetObjectTypes;
 use GanbaroDigital\MissingBits\TypeInspectors\GetPrintableType;
 use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
+use GanbaroDigital\MissingBits\TypeInspectors\GetStringDuckTypes;
 use GanbaroDigital\MissingBits\TypeInspectors\GetStringTypes;
 use GanbaroDigital\MissingBits\TypeInspectors\StripNamespace;
 
@@ -173,6 +174,19 @@ function get_printable_type($item, $flags = GetPrintableType::FLAG_DEFAULTS)
 function get_strict_types($item)
 {
     return GetStrictTypes::from($item);
+}
+
+/**
+ * get a full list of types that a string might satisfy
+ *
+ * @param  string $item
+ *         the item to examine
+ * @return string[]
+ *         the list of type(s) that this item can be
+ */
+function get_string_duck_types($item)
+{
+    return GetStringDuckTypes::from($item);
 }
 
 /**

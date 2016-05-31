@@ -46,25 +46,14 @@ namespace GanbaroDigital\MissingBits\TypeInspectors;
 use stdClass;
 
 /**
- * return a practical list of data types for any value or variable
+ * get a full list of types that a string might satisfy
  */
-class GetDuckTypes
+class GetStringDuckTypes
 {
     /**
-     * which method do we want to call for a given type?
+     * get a full list of types that a string might satisfy
      *
-     * @var array
-     */
-    private static $dispatchTable = [
-        'array' => 'fromArray',
-        'object' => 'fromObject',
-        'string' => 'fromString'
-    ];
-
-    /**
-     * return a practical list of data types for any value or variable
-     *
-     * @param  mixed $item
+     * @param  string $item
      *         the item to examine
      * @return string[]
      *         the list of type(s) that this item can be
@@ -75,95 +64,103 @@ class GetDuckTypes
     }
 
     /**
-     * return a practical list of data types for any value or variable
+     * get a full list of types that a string might satisfy
      *
-     * @param  mixed $item
+     * @param  string $item
      *         the item to examine
      * @return string[]
      *         the list of type(s) that this item can be
      */
     public static function from($item)
     {
-        $type = gettype($item);
-        if (isset(self::$dispatchTable[$type])) {
-            $method = self::$dispatchTable[$type];
-            return self::$method($item);
+        // special case - we might have a coercable object
+        if (is_object($item)) {
+            return static::fromObject($item);
         }
 
-        // if we get here, then we just return the PHP scalar type
-        return [ $type => $type ];
+        // robustness!
+        if (!is_string($item)) {
+            return [];
+        }
+
+        // our return list
+        $retval = [];
+
+        // special case - strings can be callables too
+        if (is_callable($item)) {
+            $retval['callable'] = 'callable';
+        }
+
+        // special cases
+        //  - strings can be numbers too
+        //  - strings can be class names too
+        $retval = array_merge(
+            $retval,
+            static::detectClassNames($item),
+            static::detectNumbers($item)
+        );
+
+        // all done
+        $retval['string'] = 'string';
+        return $retval;
     }
 
     /**
-     * get the list of possible types that could match an array
+     * does this string contain any class or interface names?
      *
-     * @param  array $item
+     * @param  string $item
      *         the item to examine
      * @return string[]
-     *         a list of matching types
      */
-    private static function fromArray($item)
+    private static function detectClassNames($item)
     {
-        // our return type
-        $retval = array_merge(
-            array_slice(GetArrayTypes::from($item), 0, -1),
-            [
-                'Traversable' => 'Traversable',
-                'array' => 'array'
-            ]
-        );
+        $retval = [];
+
+        // special case - is this a class name?
+        if (class_exists($item)) {
+            $retval = array_merge($retval, GetClassTypes::from($item), ['class' => 'class']);
+        }
+        else if (interface_exists($item)) {
+            $retval = array_merge($retval, GetClassTypes::from($item), ['interface' => 'interface']);
+        }
 
         // all done
         return $retval;
     }
 
     /**
-     * get the list of possible types that could match an object
+     * will this string co-erce to any numeric types?
      *
-     * @param  object $item
+     * @param  string $item
      *         the item to examine
      * @return string[]
-     *         a list of matching objects
      */
-    private static function fromObject($item)
+    private static function detectNumbers($item)
     {
-        $retval = array_merge(
-            GetObjectTypes::from($item),
-            self::getObjectSpecialTypes($item),
-            [ 'object' => 'object' ]
-        );
+        // what do we think this might be?
+        $retval = GetNumericType::from($item);
 
-        return $retval;
-    }
-
-    /**
-     * hard-coded rules for dealing with PHP's built-in classes
-     *
-     * @param  object $object
-     *         object to examine
-     * @return array
-     */
-    private static function getObjectSpecialTypes($object)
-    {
-        $retval = [];
-
-        if ($object instanceof stdClass) {
-            $retval['Traversable'] = 'Traversable';
+        // special case - return an empty list if the string
+        // isn't numeric at all
+        if ($retval === null) {
+            return [];
         }
 
-        return $retval;
+        // if we get here, then $item will coerce to a PHP numeric type :)
+        return [
+            $retval => $retval,
+            'numeric' => 'numeric',
+        ];
     }
 
-    /**
-     * return any data type's type name
-     *
-     * @param  mixed $item
-     *         the item to examine
-     * @return array
-     *         the basic type of the examined item
-     */
-    private static function fromString($item)
+    private static function fromObject($item)
     {
-        return GetStringDuckTypes::from($item);
+        // does this object support being converted to a string?
+        if (method_exists($item, '__toString')) {
+            return [ 'string' => 'string' ];
+        }
+
+        // no, it does not
+        return [];
     }
 }
