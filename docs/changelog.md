@@ -10,6 +10,12 @@ pageflow_next_text: Contributing
 
 ## develop branch
 
+Nothing yet.
+
+## v1.5.0
+
+Released Tue 31st May 2016.
+
 ### New
 
 * Extra duck type features

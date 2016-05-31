@@ -9,8 +9,8 @@ pageflow_next_text: GetStringTypes class
 
 # GetStringDuckTypes
 
-<div class="callout warning">
-Not yet in a tagged release
+<div class="callout info">
+Since v1.5.0
 </div>
 
 ## Description
