@@ -311,9 +311,11 @@ var_dump(get_duck_types(new GetStrictTypes));
 
 // outputs
 //
-// array(2) {
+// array(3) {
 //   ["double"]=&gt;
 //   string(6) "double"
+//   ["numeric"]=&gt;
+//   string(7) "numeric"
 //   ["string"]=&gt;
 //   string(6) "string"
 // }</code></pre>
@@ -321,9 +323,11 @@ var_dump(get_duck_types(new GetStrictTypes));
 
 // outputs
 //
-// array(2) {
+// array(3) {
 //   ["double"]=&gt;
 //   string(6) "double"
+//   ["numeric"]=&gt;
+//   string(7) "numeric"
 //   ["string"]=&gt;
 //   string(6) "string"
 // }</code></pre>
@@ -331,9 +335,11 @@ var_dump(get_duck_types(new GetStrictTypes));
 
 // outputs
 //
-// array(2) {
+// array(3) {
 //   ["integer"]=&gt;
 //   string(7) "integer"
+//   ["numeric"]=&gt;
+//   string(7) "numeric"
 //   ["string"]=&gt;
 //   string(6) "string"
 // }</code></pre>
@@ -341,9 +347,11 @@ var_dump(get_duck_types(new GetStrictTypes));
 
 // outputs
 //
-// array(2) {
+// array(3) {
 //   ["integer"]=&gt;
 //   string(7) "integer"
+//   ["numeric"]=&gt;
+//   string(7) "numeric"
 //   ["string"]=&gt;
 //   string(6) "string"
 // }</code></pre>
@@ -405,8 +413,11 @@ var_dump(get_duck_types(new GetStrictTypes));
 // }</code></pre>
 <h2 id="throws">Throws</h2>
 <p><code>GetDuckTypes</code> does not throw any exceptions.</p>
-<h2 id="constraints">Constraints</h2>
-<p>None</p>
+<h2 id="changelog">Changelog</h2>
+<h3 id="v150">v1.5.0</h3>
+<ul>
+<li>Now returns the <code>numeric</code> duck type for strings that can be doubles or integers.</li>
+</ul>
             </article>
 
                         <nav class="pageflow">

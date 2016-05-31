@@ -71,8 +71,8 @@
                                                                     <li class="">
                                         <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetPrintableType.html">GetPrintableType</a>
                                     </li>
-                                                                    <li class="current">
-                                        <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetStrictTypes.html">GetStrictTypes</a>
+                                                                    <li class="">
+                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetStrictTypes.html">GetStrictTypes</a>
                                     </li>
                                                                     <li class="">
                                         <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetStringTypes.html">GetStringTypes</a>
@@ -86,144 +86,141 @@
                                             <main role="main">
                         <nav class="pageflow">
               <ul>
-                                    <li><a href="GetPrintableType.html">Prev: GetPrintableType class</a></li>
-                                                      <li><a href="GetStringDuckTypes.html">Next: GetStringDuckTypes class</a></li>
+                                    <li><a href="GetStrictTypes.html">Prev: GetStrictTypes class</a></li>
+                                                      <li><a href="GetStringTypes.html">Next: GetStringTypes class</a></li>
                                 </ul>
             </nav>
             
             <article>
-                <h1 id="getstricttypes">GetStrictTypes</h1>
+                <h1 id="getstringducktypes">GetStringDuckTypes</h1>
 <div class="callout info">
-Since v1.3.0
+Since v1.5.0
 </div>
 <h2 id="description">Description</h2>
-<p><code>GetStrictTypes</code> returns a list of all strict PHP types for a given value or variable. The list is ordered with the most specific match first.</p>
+<p><code>GetStringDuckTypes</code> returns a list of all strict PHP types for a given string. The list is ordered with the most specific match first.</p>
 <pre><code class="language-php">// how to import
-use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
+use GanbaroDigital\MissingBits\TypeInspectors\GetStringDuckTypes;
 
 // call directly
 //
 // returns an array
-var_dump(GetStrictTypes::from($data));
+var_dump(GetStringDuckTypes::from($data));
 
 // use as an object
 //
 // returns an array
-$inspector = new GetStrictTypes;
+$inspector = new GetStringDuckTypes;
 var_dump($inspector($data));
 
 // use as a global function
 //
 // returns an array
-var_dump(get_strict_types($data));</code></pre>
+var_dump(get_string_duck_types($data));</code></pre>
 <h2 id="parameters">Parameters</h2>
 <p>The input parameters are:</p>
 <ul>
 <li><code>mixed $data</code> - the item to examine</li>
 </ul>
 <h2 id="return-value">Return Value</h2>
-<p><code>GetStrictTypes</code> returns an array. It contains a list of all valid PHP types for <code>$data</code>.</p>
+<p><code>GetStringDuckTypes</code> returns an array.</p>
+<ul>
+<li>If <code>$data</code> is an object that implements <code>::__toString()</code>, the list <code>[ 'string' ]</code> is returned.</li>
+<li>Otherwise, if <code>$data</code> is not a string, an empty list <code>[]</code> is returned.</li>
+<li>We check <code>$data</code> to see if it can be automatically coerced into an <code>integer</code> or a <code>double</code>. If it can, we return <code>integer</code> or <code>double</code>, and we also return <code>numeric</code>.</li>
+<li>We check <code>$data</code> to see if it contains a class name or an interface name. If it does, we return the full class hierarchy, plus also <code>class</code> or <code>interface</code> as appropriate.</li>
+</ul>
+<p>The resulting list is a complete list of string-related duck types for <code>$data</code>.</p>
+<div class="callout warning">
+<p>PHP does not automatically convert <code>'true'</code> or <code>'false'</code> into booleans.</p>
+<p>That's why <code>GetStringDuckTypes</code> doesn't add <code>'boolean'</code> to the list of returned types if a string contains the text of a boolean value.</p>
+</div>
 <h3 id="example-return-values">Example Return Values</h3>
 <p>Here's a list of examples of accepted input values:</p>
-<pre><code class="language-php">var_dump(get_strict_types(null));
+<pre><code class="language-php">var_dump(get_string_duck_types("true"));
 
 // outputs
 //
 // array(1) {
-//   ["NULL"]=&gt;
-//   string(4) "NULL"
+//   ["string"]=&gt;
+//   string(6) "string"
 // }</code></pre>
-<pre><code class="language-php">var_dump(get_strict_types([1,2,3]));
+<pre><code class="language-php">var_dump(get_string_duck_types("false"));
 
 // outputs
 //
 // array(1) {
-//   ["array"]=&gt;
-//   string(5) "array"
+//   ["string"]=&gt;
+//   string(6) "string"
 // }</code></pre>
-<pre><code class="language-php">use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
-
-var_dump(get_strict_types([GetStrictTypes::class, "from"]));
+<pre><code class="language-php">var_dump(get_string_duck_types("0.0"));
 
 // outputs
 //
-// array(2) {
-//   ["callable"]=&gt;
-//   string(8) "callable"
-//   ["array"]=&gt;
-//   string(5) "array"
-// }</code></pre>
-<pre><code class="language-php">var_dump(get_strict_types(function(){}));
-
-// outputs
-//
-// array(2) {
-//   ["Closure"]=&gt;
-//   string(7) "Closure"
-//   ["callable"]=&gt;
-//   string(8) "callable"
-// }</code></pre>
-<pre><code class="language-php">var_dump(get_strict_types(true));
-
-// outputs
-//
-// array(1) {
-//   ["boolean"]=&gt;
-//   string(7) "boolean"
-// }</code></pre>
-<pre><code class="language-php">var_dump(get_strict_types(false));
-
-// outputs
-//
-// array(1) {
-//   ["boolean"]=&gt;
-//   string(7) "boolean"
-// }</code></pre>
-<pre><code class="language-php">var_dump(get_strict_types(0.0));
-
-// outputs
-//
-// array(1) {
+// array(3) {
 //   ["double"]=&gt;
 //   string(6) "double"
+//   ["numeric"]=&gt;
+//   string(7) "numeric"
+//   ["string"]=&gt;
+//   string(6) "string"
 // }</code></pre>
-<pre><code class="language-php">var_dump(get_strict_types(3.1415927));
+<pre><code class="language-php">var_dump(get_string_duck_types("3.1415927"));
 
 // outputs
 //
-// array(1) {
+// array(3) {
 //   ["double"]=&gt;
 //   string(6) "double"
+//   ["numeric"]=&gt;
+//   string(7) "numeric"
+//   ["string"]=&gt;
+//   string(6) "string"
 // }</code></pre>
-<pre><code class="language-php">var_dump(get_strict_types(0));
+<pre><code class="language-php">var_dump(get_string_duck_types("0"));
+
+// outputs
+//
+// array(3) {
+//   ["integer"]=&gt;
+//   string(7) "integer"
+//   ["numeric"]=&gt;
+//   string(7) "numeric"
+//   ["string"]=&gt;
+//   string(6) "string"
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_string_duck_types("100"));
+
+// outputs
+//
+// array(3) {
+//   ["integer"]=&gt;
+//   string(7) "integer"
+//   ["numeric"]=&gt;
+//   string(7) "numeric"
+//   ["string"]=&gt;
+//   string(6) "string"
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_string_duck_types(new Exception(__FILE__)));
 
 // outputs
 //
 // array(1) {
-//   ["integer"]=&gt;
-//   string(7) "integer"
+//   ["string"]=&gt;
+//   string(6) "string"
 // }</code></pre>
-<pre><code class="language-php">var_dump(get_strict_types(100));
+<pre><code class="language-php">var_dump(get_string_duck_types("hello, world!"));
 
 // outputs
 //
 // array(1) {
-//   ["integer"]=&gt;
-//   string(7) "integer"
+//   ["string"]=&gt;
+//   string(6) "string"
 // }</code></pre>
-<pre><code class="language-php">var_dump(get_strict_types(-100));
+<pre><code class="language-php">var_dump(get_string_duck_types(ArrayObject::class));
 
 // outputs
 //
-// array(1) {
-//   ["integer"]=&gt;
-//   string(7) "integer"
-// }</code></pre>
-<pre><code class="language-php">var_dump(get_strict_types(new ArrayObject));
-
-// outputs
-//
-// array(6) {
+// array(8) {
 //   ["ArrayObject"]=&gt;
 //   string(11) "ArrayObject"
 //   ["IteratorAggregate"]=&gt;
@@ -236,131 +233,122 @@ var_dump(get_strict_types([GetStrictTypes::class, "from"]));
 //   string(12) "Serializable"
 //   ["Countable"]=&gt;
 //   string(9) "Countable"
-// }</code></pre>
-<pre><code class="language-php">use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
-
-var_dump(get_strict_types(new GetStrictTypes));
-
-// outputs
-//
-// array(2) {
-//   ["GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes"]=&gt;
-//   string(56) "GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes"
-//   ["callable"]=&gt;
-//   string(8) "callable"
-// }</code></pre>
-<pre><code class="language-php">var_dump(get_strict_types((object)[]));
-
-// outputs
-//
-// array(1) {
-//   ["stdClass"]=&gt;
-//   string(8) "stdClass"
-// }</code></pre>
-<pre><code class="language-php">var_dump(get_strict_types(STDIN));
-
-// outputs
-//
-// array(1) {
-//   ["resource"]=&gt;
-//   string(8) "resource"
-// }</code></pre>
-<pre><code class="language-php">var_dump(get_strict_types("true"));
-
-// outputs
-//
-// array(1) {
+//   ["class"]=&gt;
+//   string(5) "class"
 //   ["string"]=&gt;
 //   string(6) "string"
 // }</code></pre>
-<pre><code class="language-php">var_dump(get_strict_types("false"));
-
-// outputs
-//
-// array(1) {
-//   ["string"]=&gt;
-//   string(6) "string"
-// }</code></pre>
-<pre><code class="language-php">var_dump(get_strict_types("0.0"));
-
-// outputs
-//
-// array(2) {
-//   ["double"]=&gt;
-//   string(6) "double"
-//   ["string"]=&gt;
-//   string(6) "string"
-// }</code></pre>
-<pre><code class="language-php">var_dump(get_strict_types("3.1415927"));
-
-// outputs
-//
-// array(2) {
-//   ["double"]=&gt;
-//   string(6) "double"
-//   ["string"]=&gt;
-//   string(6) "string"
-// }</code></pre>
-<pre><code class="language-php">var_dump(get_strict_types("0"));
-
-// outputs
-//
-// array(2) {
-//   ["integer"]=&gt;
-//   string(7) "integer"
-//   ["string"]=&gt;
-//   string(6) "string"
-// }</code></pre>
-<pre><code class="language-php">var_dump(get_strict_types("100"));
-
-// outputs
-//
-// array(2) {
-//   ["integer"]=&gt;
-//   string(7) "integer"
-//   ["string"]=&gt;
-//   string(6) "string"
-// }</code></pre>
-<pre><code class="language-php">var_dump(get_strict_types(new Exception(__FILE__)));
+<pre><code class="language-php">var_dump(get_string_duck_types(Traversable::class));
 
 // outputs
 //
 // array(3) {
-//   ["Exception"]=&gt;
-//   string(9) "Exception"
-//   ["Throwable"]=&gt;
-//   string(9) "Throwable"
+//   ["Traversable"]=&gt;
+//   string(11) "Traversable"
+//   ["interface"]=&gt;
+//   string(9) "interface"
 //   ["string"]=&gt;
 //   string(6) "string"
 // }</code></pre>
-<pre><code class="language-php">var_dump(get_strict_types("hello, world!"));
+<p>Here's a list of examples of ingored input values:</p>
+<pre><code class="language-php">var_dump(get_string_duck_types(null));
 
 // outputs
 //
-// array(1) {
-//   ["string"]=&gt;
-//   string(6) "string"
+// array(0) {
 // }</code></pre>
-<pre><code class="language-php">var_dump(get_strict_types(ArrayObject::class));
+<pre><code class="language-php">var_dump(get_string_duck_types([1,2,3]));
 
 // outputs
 //
-// array(1) {
-//   ["string"]=&gt;
-//   string(6) "string"
+// array(0) {
 // }</code></pre>
-<pre><code class="language-php">var_dump(get_strict_types(Traversable::class));
+<pre><code class="language-php">use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
+
+var_dump(get_string_duck_types([GetStrictTypes::class, "from"]));
 
 // outputs
 //
-// array(1) {
-//   ["string"]=&gt;
-//   string(6) "string"
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_string_duck_types(function(){}));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_string_duck_types(true));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_string_duck_types(false));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_string_duck_types(0.0));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_string_duck_types(3.1415927));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_string_duck_types(0));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_string_duck_types(100));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_string_duck_types(-100));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_string_duck_types(new ArrayObject));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
+
+var_dump(get_string_duck_types(new GetStrictTypes));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_string_duck_types((object)[]));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_string_duck_types(STDIN));
+
+// outputs
+//
+// array(0) {
 // }</code></pre>
 <h2 id="throws">Throws</h2>
-<p><code>GetStrictTypes</code> does not throw any exceptions.</p>
+<p><code>GetStringDuckTypes</code> does not throw any exceptions.</p>
 <h2 id="works-with">Works With</h2>
-<p><code>GetStrictTypes</code> is supported on these versions of PHP:</p>
+<p><code>GetStringDuckTypes</code> is supported on these versions of PHP:</p>
 <table>
 <thead>
 <tr>
@@ -391,8 +379,8 @@ var_dump(get_strict_types(new GetStrictTypes));
 
                         <nav class="pageflow">
               <ul>
-                                    <li><a href="GetPrintableType.html">Prev: GetPrintableType class</a></li>
-                                                      <li><a href="GetStringDuckTypes.html">Next: GetStringDuckTypes class</a></li>
+                                    <li><a href="GetStrictTypes.html">Prev: GetStrictTypes class</a></li>
+                                                      <li><a href="GetStringTypes.html">Next: GetStringTypes class</a></li>
                                 </ul>
             </nav>
                     </main>
