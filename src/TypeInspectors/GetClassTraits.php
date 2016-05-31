@@ -80,7 +80,7 @@ class GetClassTraits
         // let's get the list of traits for this hierarchy
         $retval = [];
         foreach ($classes as $className) {
-            $retval = array_merge($retval, static::getTraits($className));
+            $retval = array_merge($retval, self::getTraits($className));
         }
 
         // all done
@@ -103,7 +103,7 @@ class GetClassTraits
 
         foreach ($traits as $trait) {
             $retval[$trait] = $trait;
-            $retval = array_merge($retval, static::getTraits($trait));
+            $retval = array_merge($retval, self::getTraits($trait));
         }
 
         return $retval;

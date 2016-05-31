@@ -112,7 +112,7 @@ class GetPrintableType
     private static function returnCallableType($data, $flags)
     {
         // user doesn't want the details
-        if (!($flags & static::FLAG_CALLABLE_DETAILS)) {
+        if (!($flags & self::FLAG_CALLABLE_DETAILS)) {
             return "callable";
         }
 
@@ -169,7 +169,7 @@ class GetPrintableType
     private static function returnScalarType($data, $flags)
     {
         // user doesn't want the details
-        if (!($flags & static::FLAG_SCALAR_VALUE)) {
+        if (!($flags & self::FLAG_SCALAR_VALUE)) {
             return gettype($data);
         }
 

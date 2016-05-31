@@ -75,7 +75,7 @@ class GetStringDuckTypes
     {
         // special case - we might have a coercable object
         if (is_object($item)) {
-            return static::fromObject($item);
+            return self::fromObject($item);
         }
 
         // robustness!
@@ -96,8 +96,8 @@ class GetStringDuckTypes
         //  - strings can be class names too
         $retval = array_merge(
             $retval,
-            static::detectClassNames($item),
-            static::detectNumbers($item)
+            self::detectClassNames($item),
+            self::detectNumbers($item)
         );
 
         // all done

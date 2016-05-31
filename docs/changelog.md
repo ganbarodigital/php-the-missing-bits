@@ -20,6 +20,14 @@ pageflow_next_text: Contributing
 
 * Performance improvements to:
   - `GetDuckTypes`
+* Scrutinizer-CI suggested fixes to:
+  - `GetClassTraits`
+  - `GetClassTypes`
+  - `GetNamespace`
+  - `GetPrintableType`
+  - `GetStrictTypes`
+  - `GetStringTypes`
+  - `StripNamespace`
 
 ## v1.4.0
 

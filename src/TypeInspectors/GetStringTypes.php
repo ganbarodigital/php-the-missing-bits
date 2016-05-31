@@ -75,7 +75,7 @@ class GetStringTypes
     {
         // special case - we might have a coercable object
         if (is_object($item)) {
-            return static::fromObject($item);
+            return self::fromObject($item);
         }
 
         // robustness!
@@ -92,7 +92,7 @@ class GetStringTypes
         }
 
         // special case - strings can be numbers too
-        $retval = array_merge($retval, static::detectNumbers($item));
+        $retval = array_merge($retval, self::detectNumbers($item));
 
         // all done
         $retval['string'] = 'string';
