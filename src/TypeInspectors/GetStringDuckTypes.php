@@ -43,18 +43,20 @@
 
 namespace GanbaroDigital\MissingBits\TypeInspectors;
 
+use stdClass;
+
 /**
- * get a full list of the traits used by a class or its parents
+ * get a full list of types that a string might satisfy
  */
-class GetClassTraits
+class GetStringDuckTypes
 {
     /**
-     * get a full list of the traits used by a class or its parents
+     * get a full list of types that a string might satisfy
      *
      * @param  string $item
      *         the item to examine
      * @return string[]
-     *         the class's traits list
+     *         the list of type(s) that this item can be
      */
     public function __invoke($item)
     {
@@ -62,25 +64,64 @@ class GetClassTraits
     }
 
     /**
-     * get a full list of the traits used by a class or its parents
+     * get a full list of types that a string might satisfy
      *
      * @param  string $item
      *         the item to examine
      * @return string[]
-     *         the class's traits list
+     *         the list of type(s) that this item can be
      */
     public static function from($item)
     {
-        // let's start with a class hierarchy
-        $classes = GetClassTypes::from($item);
-        if (count($classes) === 0) {
+        // special case - we might have a coercable object
+        if (is_object($item)) {
+            return self::fromObject($item);
+        }
+
+        // robustness!
+        if (!is_string($item)) {
             return [];
         }
 
-        // let's get the list of traits for this hierarchy
+        // our return list
         $retval = [];
-        foreach ($classes as $className) {
-            $retval = array_merge($retval, self::getTraits($className));
+
+        // special case - strings can be callables too
+        if (is_callable($item)) {
+            $retval['callable'] = 'callable';
+        }
+
+        // special cases
+        //  - strings can be numbers too
+        //  - strings can be class names too
+        $retval = array_merge(
+            $retval,
+            self::detectClassNames($item),
+            self::detectNumbers($item)
+        );
+
+        // all done
+        $retval['string'] = 'string';
+        return $retval;
+    }
+
+    /**
+     * does this string contain any class or interface names?
+     *
+     * @param  string $item
+     *         the item to examine
+     * @return string[]
+     */
+    private static function detectClassNames($item)
+    {
+        $retval = [];
+
+        // special case - is this a class name?
+        if (class_exists($item)) {
+            $retval = array_merge($retval, GetClassTypes::from($item), ['class' => 'class']);
+        }
+        else if (interface_exists($item)) {
+            $retval = array_merge($retval, GetClassTypes::from($item), ['interface' => 'interface']);
         }
 
         // all done
@@ -88,24 +129,38 @@ class GetClassTraits
     }
 
     /**
-     * get a list of traits from a given class, and from the traits in
-     * that class
+     * will this string co-erce to any numeric types?
      *
-     * @param  string $className
-     *         the class or trait to examine
+     * @param  string $item
+     *         the item to examine
      * @return string[]
-     *         a list of the traits used by $className
      */
-    private static function getTraits($className)
+    private static function detectNumbers($item)
     {
-        $retval = [];
-        $traits = class_uses($className);
+        // what do we think this might be?
+        $retval = GetNumericType::from($item);
 
-        foreach ($traits as $trait) {
-            $retval[$trait] = $trait;
-            $retval = array_merge($retval, self::getTraits($trait));
+        // special case - return an empty list if the string
+        // isn't numeric at all
+        if ($retval === null) {
+            return [];
         }
 
-        return $retval;
+        // if we get here, then $item will coerce to a PHP numeric type :)
+        return [
+            $retval => $retval,
+            'numeric' => 'numeric',
+        ];
+    }
+
+    private static function fromObject($item)
+    {
+        // does this object support being converted to a string?
+        if (method_exists($item, '__toString')) {
+            return [ 'string' => 'string' ];
+        }
+
+        // no, it does not
+        return [];
     }
 }

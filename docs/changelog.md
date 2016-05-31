@@ -12,6 +12,32 @@ pageflow_next_text: Contributing
 
 Nothing yet.
 
+## v1.5.0
+
+Released Tue 31st May 2016.
+
+### New
+
+* Extra duck type features
+  - added `GetStringDuckTypes`
+  - added `numeric` duck type; can be returned by
+    - `GetDuckTypes`
+    - `GetStringDuckTypes`
+
+### Fixes
+
+* Performance improvements to:
+  - `GetDuckTypes`
+* Scrutinizer-CI suggested fixes to:
+  - `GetClassTraits`
+  - `GetClassTypes`
+  - `GetNamespace`
+  - `GetPrintableType`
+  - `GetStrictTypes`
+  - `GetStringTypes`
+  - `StripNamespace`
+  - `get_caller`
+
 ## v1.4.0
 
 Released Tue 24th May 2016.

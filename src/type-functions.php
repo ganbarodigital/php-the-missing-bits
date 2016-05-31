@@ -49,6 +49,7 @@ use GanbaroDigital\MissingBits\TypeInspectors\GetNumericType;
 use GanbaroDigital\MissingBits\TypeInspectors\GetObjectTypes;
 use GanbaroDigital\MissingBits\TypeInspectors\GetPrintableType;
 use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
+use GanbaroDigital\MissingBits\TypeInspectors\GetStringDuckTypes;
 use GanbaroDigital\MissingBits\TypeInspectors\GetStringTypes;
 use GanbaroDigital\MissingBits\TypeInspectors\StripNamespace;
 
@@ -137,7 +138,7 @@ function get_numeric_type($item)
 /**
  * get the list of extra types that are valid for this specific object
  *
- * @param  object $object
+ * @param  object $item
  *         the object to examine
  * @return string[]
  *         a (possibly empty) list of types for this object
@@ -148,14 +149,14 @@ function get_object_types($item)
 }
 
 /**
- * what PHP type is $data?
+ * what PHP type is $item?
  *
- * @param  mixed $data
+ * @param  mixed $item
  *         the data to examine
  * @param  int $flags
  *         options to change what we put in the return value
  * @return string
- *         the data type of $data
+ *         the data type of $item
  */
 function get_printable_type($item, $flags = GetPrintableType::FLAG_DEFAULTS)
 {
@@ -173,6 +174,19 @@ function get_printable_type($item, $flags = GetPrintableType::FLAG_DEFAULTS)
 function get_strict_types($item)
 {
     return GetStrictTypes::from($item);
+}
+
+/**
+ * get a full list of types that a string might satisfy
+ *
+ * @param  string $item
+ *         the item to examine
+ * @return string[]
+ *         the list of type(s) that this item can be
+ */
+function get_string_duck_types($item)
+{
+    return GetStringDuckTypes::from($item);
 }
 
 /**

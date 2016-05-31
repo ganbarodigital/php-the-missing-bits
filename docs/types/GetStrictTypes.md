@@ -3,8 +3,8 @@ currentSection: types
 currentItem: GetStrictTypes
 pageflow_prev_url: GetPrintableType.html
 pageflow_prev_text: GetPrintableType class
-pageflow_next_url: GetStringTypes.html
-pageflow_next_text: GetStringTypes class
+pageflow_next_url: GetStringDuckTypes.html
+pageflow_next_text: GetStringDuckTypes class
 ---
 
 # GetStrictTypes

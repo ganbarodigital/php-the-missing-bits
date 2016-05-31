@@ -42,6 +42,7 @@
  */
 
 use GanbaroDigital\MissingBits\TraceInspectors\GetCaller;
+use GanbaroDigital\MissingBits\TraceInspectors\StackFrame;
 
  /**
   * work out who has called a piece of code

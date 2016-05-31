@@ -79,8 +79,8 @@ class GetStrictTypes
     {
         // do we have a helper defined for this type?
         $type = gettype($item);
-        if (isset(static::$dispatchMap[$type])) {
-            return call_user_func_array(static::$dispatchMap[$type], [$item]);
+        if (isset(self::$dispatchMap[$type])) {
+            return call_user_func_array(self::$dispatchMap[$type], [$item]);
         }
 
         // if we get here, then we just return the PHP scalar type

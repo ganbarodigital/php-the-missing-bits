@@ -1,8 +1,8 @@
 ---
 currentSection: traces
 currentItem: home
-pageflow_next_url: StackFrame.html
-pageflow_next_text: StackFrame class
+pageflow_next_url: HowThePhpStackFrameWorks.html
+pageflow_next_text: How The PHP Stack Frame Works
 ---
 
 # Stack Trace Functions and Classes
@@ -10,6 +10,8 @@ pageflow_next_text: StackFrame class
 ## Introduction
 
 Here's a list of what we find is missing from PHP's built-in support for working with stack traces.
+
+Btw, the PHP stack trace is a little odd to work with. We've written up [a full explanation](HowThePhpStackFrameWorks.html) of what's strange about it.
 
 ## Available Classes
 

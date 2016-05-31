@@ -64,7 +64,7 @@ class GetNamespace
      */
     public function __invoke($item)
     {
-        return static::from($item);
+        return self::from($item);
     }
 
     /**

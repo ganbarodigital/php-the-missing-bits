@@ -51,21 +51,14 @@ use stdClass;
 class GetDuckTypes
 {
     /**
-     * the extra items to append to any array's type list
+     * which method do we want to call for a given type?
      *
      * @var array
      */
-    private static $arrayExtras = [
-        'Traversable' => 'Traversable'
-    ];
-
-    /**
-     * the extra items that *might* be part of an object's type list
-     * @var array
-     */
-    private static $objectConditionalExtras = [
-        "__toString" => "string",
-        "__invoke"   => "callable",
+    private static $dispatchTable = [
+        'array' => 'fromArray',
+        'object' => 'fromObject',
+        'string' => 'fromString'
     ];
 
     /**
@@ -92,9 +85,9 @@ class GetDuckTypes
     public static function from($item)
     {
         $type = gettype($item);
-        $methodName = 'from' . ucfirst($type);
-        if (method_exists(self::class, $methodName)) {
-            return call_user_func_array([self::class, $methodName], [$item]);
+        if (isset(self::$dispatchTable[$type])) {
+            $method = self::$dispatchTable[$type];
+            return self::$method($item);
         }
 
         // if we get here, then we just return the PHP scalar type
@@ -114,8 +107,10 @@ class GetDuckTypes
         // our return type
         $retval = array_merge(
             array_slice(GetArrayTypes::from($item), 0, -1),
-            self::$arrayExtras,
-            [ 'array' => 'array' ]
+            [
+                'Traversable' => 'Traversable',
+                'array' => 'array'
+            ]
         );
 
         // all done
@@ -132,8 +127,6 @@ class GetDuckTypes
      */
     private static function fromObject($item)
     {
-        $className = get_class($item);
-
         $retval = array_merge(
             GetObjectTypes::from($item),
             self::getObjectSpecialTypes($item),
@@ -171,21 +164,6 @@ class GetDuckTypes
      */
     private static function fromString($item)
     {
-        // our return value
-        $retval = [];
-
-        // special case - is this a class name?
-        if (class_exists($item)) {
-            $retval = array_merge($retval, GetClassTypes::from($item), ['class' => 'class']);
-        }
-        else if (interface_exists($item)) {
-            $retval = array_merge($retval, GetClassTypes::from($item), ['interface' => 'interface']);
-        }
-
-        // pull in the list of strict string types too
-        $retval = array_merge($retval, GetStringTypes::from($item));
-
-        // all done
-        return $retval;
+        return GetStringDuckTypes::from($item);
     }
 }

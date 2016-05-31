@@ -291,9 +291,11 @@ var_dump(get_duck_types("0.0"));
 
 // outputs
 //
-// array(2) {
+// array(3) {
 //   ["double"]=>
 //   string(6) "double"
+//   ["numeric"]=>
+//   string(7) "numeric"
 //   ["string"]=>
 //   string(6) "string"
 // }
@@ -304,9 +306,11 @@ var_dump(get_duck_types("3.1415927"));
 
 // outputs
 //
-// array(2) {
+// array(3) {
 //   ["double"]=>
 //   string(6) "double"
+//   ["numeric"]=>
+//   string(7) "numeric"
 //   ["string"]=>
 //   string(6) "string"
 // }
@@ -317,9 +321,11 @@ var_dump(get_duck_types("0"));
 
 // outputs
 //
-// array(2) {
+// array(3) {
 //   ["integer"]=>
 //   string(7) "integer"
+//   ["numeric"]=>
+//   string(7) "numeric"
 //   ["string"]=>
 //   string(6) "string"
 // }
@@ -330,9 +336,11 @@ var_dump(get_duck_types("100"));
 
 // outputs
 //
-// array(2) {
+// array(3) {
 //   ["integer"]=>
 //   string(7) "integer"
+//   ["numeric"]=>
+//   string(7) "numeric"
 //   ["string"]=>
 //   string(6) "string"
 // }
@@ -410,6 +418,8 @@ var_dump(get_duck_types(Traversable::class));
 
 `GetDuckTypes` does not throw any exceptions.
 
-## Constraints
+## Changelog
 
-None
+### v1.5.0
+
+- Now returns the `numeric` duck type for strings that can be doubles or integers.

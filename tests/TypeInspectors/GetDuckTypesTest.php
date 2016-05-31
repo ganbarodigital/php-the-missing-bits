@@ -257,6 +257,7 @@ class GetDuckTypesTest extends PHPUnit_Framework_TestCase
                 "0.0",
                 [
                     "double" => "double",
+                    "numeric" => "numeric",
                     "string" => "string",
                 ]
             ],
@@ -264,6 +265,7 @@ class GetDuckTypesTest extends PHPUnit_Framework_TestCase
                 "3.1415927",
                 [
                     "double" => "double",
+                    "numeric" => "numeric",
                     "string" => "string",
                 ]
             ],
@@ -271,6 +273,7 @@ class GetDuckTypesTest extends PHPUnit_Framework_TestCase
                 "1337e0",
                 [
                     "double" => "double",
+                    "numeric" => "numeric",
                     "string" => "string",
                 ]
             ],
@@ -278,12 +281,14 @@ class GetDuckTypesTest extends PHPUnit_Framework_TestCase
                 "0",
                 [
                     "integer" => "integer",
+                    "numeric" => "numeric",
                     "string" => "string",
                 ]
             ],
             [ "100",
                 [
                     "integer" => "integer",
+                    "numeric" => "numeric",
                     "string" => "string",
                 ]
             ],
@@ -291,6 +296,7 @@ class GetDuckTypesTest extends PHPUnit_Framework_TestCase
                 "42",
                 [
                     "integer" => "integer",
+                    "numeric" => "numeric",
                     "string" => "string",
                 ]
             ],
@@ -298,6 +304,7 @@ class GetDuckTypesTest extends PHPUnit_Framework_TestCase
                 "02471",
                 [
                     "integer" => "integer",
+                    "numeric" => "numeric",
                     "string" => "string",
                 ]
             ],

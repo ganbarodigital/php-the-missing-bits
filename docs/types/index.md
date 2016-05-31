@@ -24,5 +24,6 @@ Function | Purpose
 [GetNumericType](GetNumericType.html) | returns which PHP `integer` or `double` a given value might be
 [GetPrintableType](GetPrintableType.html) | `gettype()` for error logging / exception messages
 [GetStrictTypes](GetStrictTypes.html) | returns a list of all strict PHP types for a given value or variable
+[GetStringDuckTypes](GetStringDuckTypes.html) | returns a list of all PHP duck types for a given string
 [GetStringTypes](GetStringTypes.html) | returns a list of all strict PHP types for a given string
 [`StripNamespace`](StripNamespace.html) | returns a class's or object's classname without the namespace

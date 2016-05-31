@@ -88,8 +88,8 @@ class GetClassTypes
         // our return value
         $retval = array_merge(
             [$item => $item],
-            static::getClassHierarchy($item),
-            static::getInterfaceHierarchy($item)
+            self::getClassHierarchy($item),
+            self::getInterfaceHierarchy($item)
         );
 
         return $retval;
