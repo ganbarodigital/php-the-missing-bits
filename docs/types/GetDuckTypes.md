@@ -418,6 +418,8 @@ var_dump(get_duck_types(Traversable::class));
 
 `GetDuckTypes` does not throw any exceptions.
 
-## Constraints
+## Changelog
 
-None
+### v1.5.0
+
+- Now returns the `numeric` duck type for strings that can be doubles or integers.
