@@ -57,6 +57,8 @@ class GetDuckTypes
      */
     private static $dispatchTable = [
         'array' => 'fromArray',
+        'double' => 'fromDouble',
+        'integer' => 'fromInteger',
         'object' => 'fromObject',
         'string' => 'fromString'
     ];
@@ -115,6 +117,39 @@ class GetDuckTypes
 
         // all done
         return $retval;
+    }
+
+    /**
+     * get the list of possible types that could match a floating point
+     * number
+     *
+     * @param  double $item
+     *         the item to examine
+     * @return string[]
+     *         a list of matching types
+     */
+    private static function fromDouble($item)
+    {
+        return [
+            "double" => "double",
+            "numeric" => "numeric",
+        ];
+    }
+
+    /**
+     * get the list of possible types that could match an integer
+     *
+     * @param  integer $item
+     *         the item to examine
+     * @return string[]
+     *         a list of matching types
+     */
+    private static function fromInteger($item)
+    {
+        return [
+            "integer" => "integer",
+            "numeric" => "numeric",
+        ];
     }
 
     /**

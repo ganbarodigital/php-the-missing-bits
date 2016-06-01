@@ -148,9 +148,11 @@ var_dump(get_duck_types(0.0));
 
 // outputs
 //
-// array(1) {
+// array(2) {
 //   ["double"]=>
 //   string(6) "double"
+//   ["numeric"]=>
+//   string(7) "numeric"
 // }
 ```
 
@@ -159,9 +161,11 @@ var_dump(get_duck_types(3.1415927));
 
 // outputs
 //
-// array(1) {
+// array(2) {
 //   ["double"]=>
 //   string(6) "double"
+//   ["numeric"]=>
+//   string(7) "numeric"
 // }
 ```
 
@@ -170,9 +174,11 @@ var_dump(get_duck_types(0));
 
 // outputs
 //
-// array(1) {
+// array(2) {
 //   ["integer"]=>
 //   string(7) "integer"
+//   ["numeric"]=>
+//   string(7) "numeric"
 // }
 ```
 
@@ -181,9 +187,11 @@ var_dump(get_duck_types(100));
 
 // outputs
 //
-// array(1) {
+// array(2) {
 //   ["integer"]=>
 //   string(7) "integer"
+//   ["numeric"]=>
+//   string(7) "numeric"
 // }
 ```
 
@@ -192,9 +200,11 @@ var_dump(get_duck_types(-100));
 
 // outputs
 //
-// array(1) {
+// array(2) {
 //   ["integer"]=>
 //   string(7) "integer"
+//   ["numeric"]=>
+//   string(7) "numeric"
 // }
 ```
 
@@ -420,6 +430,10 @@ var_dump(get_duck_types(Traversable::class));
 
 ## Changelog
 
+### v1.5.1
+
+- Now returns the `numeric` duck type for `double` and `integer` PHP types.
+- 
 ### v1.5.0
 
 - Now returns the `numeric` duck type for strings that can be doubles or integers.
