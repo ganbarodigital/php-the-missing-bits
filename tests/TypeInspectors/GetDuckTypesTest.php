@@ -193,30 +193,35 @@ class GetDuckTypesTest extends PHPUnit_Framework_TestCase
                 0.0,
                 [
                     'double' => 'double',
+                    "numeric" => "numeric",
                 ]
             ],
             [
                 3.1415927,
                 [
                     'double' => 'double',
+                    "numeric" => "numeric",
                 ]
             ],
             [
                 0,
                 [
                     'integer' => 'integer',
+                    "numeric" => "numeric",
                 ]
             ],
             [
                 100,
                 [
-                    'integer' => 'integer'
+                    'integer' => 'integer',
+                    "numeric" => "numeric",
                 ]
             ],
             [
                 -100,
                 [
-                    'integer' => 'integer'
+                    'integer' => 'integer',
+                    "numeric" => "numeric",
                 ]
             ],
             [
