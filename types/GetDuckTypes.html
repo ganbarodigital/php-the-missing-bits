@@ -201,41 +201,51 @@ var_dump(get_duck_types([GetStrictTypes::class, "from"]));
 
 // outputs
 //
-// array(1) {
+// array(2) {
 //   ["double"]=&gt;
 //   string(6) "double"
+//   ["numeric"]=&gt;
+//   string(7) "numeric"
 // }</code></pre>
 <pre><code class="language-php">var_dump(get_duck_types(3.1415927));
 
 // outputs
 //
-// array(1) {
+// array(2) {
 //   ["double"]=&gt;
 //   string(6) "double"
+//   ["numeric"]=&gt;
+//   string(7) "numeric"
 // }</code></pre>
 <pre><code class="language-php">var_dump(get_duck_types(0));
 
 // outputs
 //
-// array(1) {
+// array(2) {
 //   ["integer"]=&gt;
 //   string(7) "integer"
+//   ["numeric"]=&gt;
+//   string(7) "numeric"
 // }</code></pre>
 <pre><code class="language-php">var_dump(get_duck_types(100));
 
 // outputs
 //
-// array(1) {
+// array(2) {
 //   ["integer"]=&gt;
 //   string(7) "integer"
+//   ["numeric"]=&gt;
+//   string(7) "numeric"
 // }</code></pre>
 <pre><code class="language-php">var_dump(get_duck_types(-100));
 
 // outputs
 //
-// array(1) {
+// array(2) {
 //   ["integer"]=&gt;
 //   string(7) "integer"
+//   ["numeric"]=&gt;
+//   string(7) "numeric"
 // }</code></pre>
 <pre><code class="language-php">var_dump(get_duck_types(new ArrayObject));
 
@@ -414,8 +424,12 @@ var_dump(get_duck_types(new GetStrictTypes));
 <h2 id="throws">Throws</h2>
 <p><code>GetDuckTypes</code> does not throw any exceptions.</p>
 <h2 id="changelog">Changelog</h2>
-<h3 id="v150">v1.5.0</h3>
+<h3 id="v151">v1.5.1</h3>
 <ul>
+<li>Now returns the <code>numeric</code> duck type for <code>double</code> and <code>integer</code> PHP types.</li>
+<li>
+<h3 id="v150">v1.5.0</h3>
+</li>
 <li>Now returns the <code>numeric</code> duck type for strings that can be doubles or integers.</li>
 </ul>
             </article>
