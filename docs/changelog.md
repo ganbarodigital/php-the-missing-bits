@@ -10,6 +10,12 @@ pageflow_next_text: Contributing
 
 ## develop branch
 
+Nothing yet.
+
+## v1.5.1
+
+Released Wed 1st June 2016.
+
 ### Fixes
 
 * `GetDuckTypes` now also returns `numeric` for PHP `double` and `integer` types
