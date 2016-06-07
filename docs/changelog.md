@@ -10,7 +10,10 @@ pageflow_next_text: Contributing
 
 ## develop branch
 
-Nothing yet.
+### New
+
+* Added some interfaces to map objects to PHP types / inspect objects as you'd inspect a PHP type
+  - added `CanBeEmpty`
 
 ## v1.5.1
 
