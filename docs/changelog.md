@@ -15,6 +15,7 @@ pageflow_next_text: Contributing
 * Added some interfaces to map objects to PHP types / inspect objects as you'd inspect a PHP type
   - added `CanBeEmpty`
   - added `Listable`
+  - added `Logical`
 
 ## v1.5.1
 
