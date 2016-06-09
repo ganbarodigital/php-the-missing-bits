@@ -11,10 +11,17 @@ pageflow_next_text: GetArrayTypes class
 
 Here's a list of what we find is missing from PHP's built-in support for data types.
 
-## Available Classes
+## Type Inspectors
 
-Function | Purpose
----------|--------
+These classes provide information about
+
+* a variable's duck types or strict types
+* a class's parents, traits, and namespace
+
+Click on the class below for more details.
+
+Class | Purpose
+------|--------
 [GetArrayTypes](GetArrayTypes.html) | returns a list of all strict PHP types for a given array
 [GetClassTraits](GetClassTraits.html) | returns a list of all traits used by a class or object, its parents, and its traits
 [GetClassTypes](GetClassTypes.html) | returns a list of all strict PHP types for a given class or interface
@@ -27,3 +34,18 @@ Function | Purpose
 [GetStringDuckTypes](GetStringDuckTypes.html) | returns a list of all PHP duck types for a given string
 [GetStringTypes](GetStringTypes.html) | returns a list of all strict PHP types for a given string
 [`StripNamespace`](StripNamespace.html) | returns a class's or object's classname without the namespace
+
+## Type Interfaces
+
+These interfaces provide:
+
+* ways to convert an object to built-in PHP data types
+* ways to inspect an object just like you'd inspect built-in PHP data types
+
+Click on the interface below for more details.
+
+Interface | Purpose
+----------|--------
+[`CanBeEmpty`](CanBeEmpty.html) | adds `isEmpty()` to an object
+[`Listable`](Listable.html) | adds `toArray()` to an object
+[`Logical`](Logical.html) | adds `isTrue()` to an object
