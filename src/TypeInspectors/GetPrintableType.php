@@ -54,6 +54,7 @@ class GetPrintableType
     const FLAG_CLASSNAME = 1;
     const FLAG_CALLABLE_DETAILS = 2;
     const FLAG_SCALAR_VALUE = 4;
+    const FLAG_MAX_VALUE = 7;
 
     const FLAG_DEFAULTS = 7;
 
@@ -84,6 +85,14 @@ class GetPrintableType
      */
     public static function of($data, $flags = self::FLAG_DEFAULTS)
     {
+        // make sure we have a usable set of flags
+        if (!is_int($flags)) {
+            $flags = self::FLAG_DEFAULTS;
+        }
+        if ($flags < 0 || $flags > self::FLAG_MAX_VALUE) {
+            $flags = self::FLAG_DEFAULTS;
+        }
+
         if (is_object($data)) {
             return self::returnObjectType($data, $flags);
         }

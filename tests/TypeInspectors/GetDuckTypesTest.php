@@ -75,6 +75,8 @@ class GetDuckTypesTest extends PHPUnit_Framework_TestCase
      * @covers ::__invoke
      * @covers ::from
      * @covers ::fromArray
+     * @covers ::fromDouble
+     * @covers ::fromInteger
      * @covers ::fromObject
      * @covers ::fromString
      * @dataProvider provideDataToTest
@@ -101,6 +103,8 @@ class GetDuckTypesTest extends PHPUnit_Framework_TestCase
      * @covers ::__invoke
      * @covers ::from
      * @covers ::fromArray
+     * @covers ::fromDouble
+     * @covers ::fromInteger
      * @covers ::fromObject
      * @covers ::fromString
      * @dataProvider provideDataToTest
@@ -126,6 +130,8 @@ class GetDuckTypesTest extends PHPUnit_Framework_TestCase
      * @covers ::__invoke
      * @covers ::from
      * @covers ::fromArray
+     * @covers ::fromDouble
+     * @covers ::fromInteger
      * @covers ::fromObject
      * @covers ::fromString
      * @dataProvider provideDataToTest

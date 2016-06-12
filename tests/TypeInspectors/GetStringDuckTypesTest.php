@@ -73,6 +73,7 @@ class GetStringDuckTypesTest extends PHPUnit_Framework_TestCase
     /**
      * @covers ::__invoke
      * @covers ::from
+     * @covers ::detectClassNames
      * @covers ::detectNumbers
      * @covers ::fromObject
      * @dataProvider provideDataToTest
@@ -97,6 +98,7 @@ class GetStringDuckTypesTest extends PHPUnit_Framework_TestCase
 
     /**
      * @covers ::from
+     * @covers ::detectClassNames
      * @covers ::detectNumbers
      * @covers ::fromObject
      * @dataProvider provideDataToTest
@@ -120,6 +122,7 @@ class GetStringDuckTypesTest extends PHPUnit_Framework_TestCase
     /**
      * @covers \get_string_duck_types
      * @covers ::from
+     * @covers ::detectClassNames
      * @covers ::detectNumbers
      * @covers ::fromObject
      * @dataProvider provideDataToTest

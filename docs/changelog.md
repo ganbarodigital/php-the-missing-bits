@@ -12,6 +12,15 @@ pageflow_next_text: Contributing
 
 Nothing yet.
 
+## v1.6.1
+
+Released Sun 12th June 2016.
+
+### Fixes
+
+* Make sure `$flags` for `GetPrintableType` are always valid
+  - if we get invalid flags, we use the default flags
+
 ## v1.6.0
 
 Released Sun 12th June 2016.
