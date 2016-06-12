@@ -44,8 +44,8 @@
                                                                                                                                         <header role="subnav">
                         <nav class="navbar">
                             <ul>
-                                                                    <li class="current">
-                                        <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/types/index.html">Type Functions and Classes</a>
+                                                                    <li class="">
+                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/index.html">Type Functions and Classes</a>
                                     </li>
                                                                     <li class="">
                                         <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetArrayTypes.html">GetArrayTypes</a>
@@ -86,115 +86,48 @@
                                             <main role="main">
                         <nav class="pageflow">
               <ul>
-                                    <li></li>
-                                                      <li><a href="GetArrayTypes.html">Next: GetArrayTypes class</a></li>
+                                    <li><a href="StripNamespace.html">Prev: StripNamespace class</a></li>
+                                                      <li><a href="Listable.html">Next: Listable interface</a></li>
                                 </ul>
             </nav>
             
             <article>
-                <h1 id="type-functions-and-classes">Type Functions and Classes</h1>
-<h2 id="introduction">Introduction</h2>
-<p>Here's a list of what we find is missing from PHP's built-in support for data types.</p>
-<h2 id="type-inspectors">Type Inspectors</h2>
-<p>These classes provide information about</p>
-<ul>
-<li>a variable's duck types or strict types</li>
-<li>a class's parents, traits, and namespace</li>
-</ul>
-<p>Click on the class below for more details.</p>
-<table>
-<thead>
-<tr>
-<th>Class</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="GetArrayTypes.html"><code>GetArrayTypes</code></a></td>
-<td>returns a list of all strict PHP types for a given array</td>
-</tr>
-<tr>
-<td><a href="GetClassTraits.html"><code>GetClassTraits</code></a></td>
-<td>returns a list of all traits used by a class or object, its parents, and its traits</td>
-</tr>
-<tr>
-<td><a href="GetClassTypes.html"><code>GetClassTypes</code></a></td>
-<td>returns a list of all strict PHP types for a given class or interface</td>
-</tr>
-<tr>
-<td><a href="GetDuckTypes.html"><code>GetDuckTypes</code></a></td>
-<td>returns a list of all practical PHP types for a given value or variable</td>
-</tr>
-<tr>
-<td><a href="GetObjectTypes.html"><code>GetObjectTypes</code></a></td>
-<td>returns a list of all strict PHP types for a given object</td>
-</tr>
-<tr>
-<td><a href="GetNamespace.html"><code>GetNamespace</code></a></td>
-<td>returns a class's or object's namespace</td>
-</tr>
-<tr>
-<td><a href="GetNumericType.html"><code>GetNumericType</code></a></td>
-<td>returns which PHP <code>integer</code> or <code>double</code> a given value might be</td>
-</tr>
-<tr>
-<td><a href="GetPrintableType.html"><code>GetPrintableType</code></a></td>
-<td><code>gettype()</code> for error logging / exception messages</td>
-</tr>
-<tr>
-<td><a href="GetStrictTypes.html"><code>GetStrictTypes</code></a></td>
-<td>returns a list of all strict PHP types for a given value or variable</td>
-</tr>
-<tr>
-<td><a href="GetStringDuckTypes.html"><code>GetStringDuckTypes</code></a></td>
-<td>returns a list of all PHP duck types for a given string</td>
-</tr>
-<tr>
-<td><a href="GetStringTypes.html"><code>GetStringTypes</code></a></td>
-<td>returns a list of all strict PHP types for a given string</td>
-</tr>
-<tr>
-<td><a href="StripNamespace.html"><code>StripNamespace</code></a></td>
-<td>returns a class's or object's classname without the namespace</td>
-</tr>
-</tbody>
-</table>
-<h2 id="type-interfaces">Type Interfaces</h2>
-<p>These interfaces provide:</p>
-<ul>
-<li>ways to convert an object to built-in PHP data types</li>
-<li>ways to inspect an object just like you'd inspect built-in PHP data types</li>
-</ul>
-<p>Click on the interface below for more details.</p>
-<table>
-<thead>
-<tr>
-<th>Interface</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="CanBeEmpty.html"><code>CanBeEmpty</code></a></td>
-<td>adds <code>isEmpty()</code> to an object</td>
-</tr>
-<tr>
-<td><a href="Listable.html"><code>Listable</code></a></td>
-<td>adds <code>toArray()</code> to an object</td>
-</tr>
-<tr>
-<td><a href="Logical.html"><code>Logical</code></a></td>
-<td>adds <code>isTrue()</code> to an object</td>
-</tr>
-</tbody>
-</table>
+                <h1 id="canbeempty">CanBeEmpty</h1>
+<div class="callout info">
+Since v1.6.0
+</div>
+<h2 id="description">Description</h2>
+<p><code>CanBeEmpty</code> is an interface. Implement this interface if your object can answer the question &quot;is it empty?&quot;.</p>
+<h2 id="public-interface">Public Interface</h2>
+<p><code>CanBeEmpty</code> has the following public interface:</p>
+<pre><code class="language-php">// CanBeEmpty lives in this namespace
+namespace GanbaroDigital\MissingBits\TypeInterfaces;
+
+/**
+ * for objects that can answer the question: 'are you empty'?
+ */
+interface CanBeEmpty
+{
+    /**
+     * returns true if the object should be considered as 'empty'
+     *
+     * empty might include:
+     * - never initialised
+     * - data container, has no data
+     * - data container, contains only empty data
+     *
+     * @return boolean
+     */
+    public function isEmpty();
+}</code></pre>
+<h2 id="notes">Notes</h2>
+<p>None at this time.</p>
             </article>
 
                         <nav class="pageflow">
               <ul>
-                                    <li></li>
-                                                      <li><a href="GetArrayTypes.html">Next: GetArrayTypes class</a></li>
+                                    <li><a href="StripNamespace.html">Prev: StripNamespace class</a></li>
+                                                      <li><a href="Listable.html">Next: Listable interface</a></li>
                                 </ul>
             </nav>
                     </main>
