@@ -10,7 +10,10 @@ pageflow_next_text: Contributing
 
 ## develop branch
 
-Nothing yet.
+### Fixes
+
+* Make sure `$flags` for `GetPrintableType` are always valid
+  - if we get invalid flags, we use the default flags
 
 ## v1.6.0
 

@@ -143,6 +143,29 @@ class GetPrintableTypeTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($expectedType, $actualType);
     }
 
+    /**
+     * @covers ::of
+     * @dataProvider provideBadFlags
+     */
+    public function testWillUseDefaultFlagsIfInvalidFlagsProvided($flags)
+    {
+        // ----------------------------------------------------------------
+        // setup your test
+
+        $data = 100;
+        $expectedType = "integer<100>";
+
+        // ----------------------------------------------------------------
+        // perform the change
+
+        $actualType = GetPrintableType::of($data, $flags);
+
+        // ----------------------------------------------------------------
+        // test the results
+
+        $this->assertEquals($expectedType, $actualType);
+    }
+
     public function provideTypesToTest()
     {
         return [
@@ -185,6 +208,22 @@ class GetPrintableTypeTest extends PHPUnit_Framework_TestCase
             [ 'hello, world', GetPrintableType::FLAG_NONE, 'string' ],
             [ 'hello, world', GetPrintableType::FLAG_DEFAULTS, 'string<hello, world>' ],
             [ 'hello, world', GetPrintableType::FLAG_SCALAR_VALUE, 'string<hello, world>' ],
+        ];
+    }
+
+    public function provideBadFlags()
+    {
+        return [
+            [ null ],
+            [ [] ],
+            [ true ],
+            [ false ],
+            [ function(){} ],
+            [ 100.100 ],
+            [ 100 ],
+            [ (object)[] ],
+            [ STDIN ],
+            [ "hello, world!" ],
         ];
     }
 }
