@@ -7,8 +7,8 @@ pageflow_prev_text: Listable interface
 
 # Logical
 
-<div class="callout warning">
-Not yet in a tagged release
+<div class="callout info">
+Since v1.6.0
 </div>
 
 ## Description
