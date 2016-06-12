@@ -89,7 +89,7 @@ class GetPrintableType
         if (!is_int($flags)) {
             $flags = self::FLAG_DEFAULTS;
         }
-        if ($flags > self::FLAG_MAX_VALUE) {
+        if ($flags < 0 || $flags > self::FLAG_MAX_VALUE) {
             $flags = self::FLAG_DEFAULTS;
         }
 
