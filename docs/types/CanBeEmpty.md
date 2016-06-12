@@ -9,8 +9,8 @@ pageflow_next_text: Listable interface
 
 # CanBeEmpty
 
-<div class="callout warning">
-Not yet in a tagged release
+<div class="callout info">
+Since v1.6.0
 </div>
 
 ## Description

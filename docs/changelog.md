@@ -10,6 +10,12 @@ pageflow_next_text: Contributing
 
 ## develop branch
 
+Nothing yet.
+
+## v1.6.0
+
+Released Sun 12th June 2016.
+
 ### New
 
 * Added some interfaces to map objects to PHP types / inspect objects as you'd inspect a PHP type
