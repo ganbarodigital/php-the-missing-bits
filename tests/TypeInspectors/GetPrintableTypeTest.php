@@ -221,6 +221,7 @@ class GetPrintableTypeTest extends PHPUnit_Framework_TestCase
             [ function(){} ],
             [ 100.100 ],
             [ 100 ],
+            [ -100 ],
             [ (object)[] ],
             [ STDIN ],
             [ "hello, world!" ],
