@@ -92,6 +92,10 @@ PHP turns anonymous functions into objects of type `Closure`. `GetPrintableType`
 
 `GetPrintableType` does not throw any exceptions.
 
-## Constraints
+## Changelog
 
-None.
+### v1.6.1
+
+* Improved robustness of `$flags`
+
+  If `$flags` isn't an integer, we now use the default flags. Same goes if `$flags` is an integer, but contains a value that's outside the range of valid bitmask flags.
