@@ -64,7 +64,7 @@ checks:
         precedence_mistakes: true
         avoid_conflicting_incrementers: true
         avoid_corrupting_byteorder_marks: true
-        function_in_camel_caps: true
+        function_in_camel_caps: false
 
 coding_style:
     php:
