@@ -12,6 +12,16 @@ pageflow_next_text: Contributing
 
 Nothing yet.
 
+## v1.7.0
+
+Released Sun 19th June 2016.
+
+### New
+
+* Added some helpers to overcome `array_merge()` performance issues.
+  - added `array_append_values()`
+  - added `array_merge_keys()`
+
 ## v1.6.1
 
 Released Sun 12th June 2016.
