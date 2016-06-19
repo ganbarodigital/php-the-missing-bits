@@ -23,6 +23,7 @@
             "GanbaroDigital\\MissingBits\\": "src"
         },
         "files": [
+            "src/array-functions.php",
             "src/string-functions.php",
             "src/trace-functions.php",
             "src/type-functions.php"

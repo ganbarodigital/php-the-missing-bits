@@ -10,7 +10,10 @@ pageflow_next_text: Contributing
 
 ## develop branch
 
-Nothing yet.
+### New
+
+* Added some helpers to overcome `array_merge()` performance issues.
+  - added `array_append_values()`
 
 ## v1.6.1
 
