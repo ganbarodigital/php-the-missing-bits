@@ -7,8 +7,8 @@ pageflow_prev_text: array_append_values()
 
 # array_merge_keys()
 
-<div class="callout warning" markdown="1">
-Not yet in a tagged release
+<div class="callout info" markdown="1">
+Since version 1.7.0
 </div>
 
 ## Description

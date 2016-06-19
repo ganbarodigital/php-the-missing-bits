@@ -10,6 +10,12 @@ pageflow_next_text: Contributing
 
 ## develop branch
 
+Nothing yet.
+
+## v1.7.0
+
+Released Sun 19th June 2016.
+
 ### New
 
 * Added some helpers to overcome `array_merge()` performance issues.
