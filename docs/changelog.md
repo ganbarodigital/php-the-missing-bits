@@ -14,6 +14,7 @@ pageflow_next_text: Contributing
 
 * Added some helpers to overcome `array_merge()` performance issues.
   - added `array_append_values()`
+  - added `array_merge_keys()`
 
 ## v1.6.1
 

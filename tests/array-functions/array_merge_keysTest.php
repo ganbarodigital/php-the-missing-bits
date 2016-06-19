@@ -41,50 +41,41 @@
  * @link      http://ganbarodigital.github.io/php-the-missing-bits
  */
 
-/**
- * append one array to another, ignoring the array keys in $extra
- *
- * added because of the observed performance problems with array_merge()
- * at scale
- *
- * @param  array $target
- *         the array to append to
- * @param  array $extra
- *         the array that we want to append
- * @return array
- *         the combined array
- */
-function array_append_values(array $target, array $extra)
+class array_merge_keysTest extends PHPUnit_Framework_TestCase
 {
-    $retval = $target;
-    foreach ($extra as $value) {
-        $retval[] = $value;
+    /**
+     * @covers ::array_merge_keys
+     * @dataProvider provideArraysToMerge
+     */
+    public function testCanMergeTwoArrays($target, $extra, $expectedResult)
+    {
+        // ----------------------------------------------------------------
+        // setup your test
+
+        // ----------------------------------------------------------------
+        // perform the change
+
+        $actualResult = array_merge_keys($target, $extra);
+
+        // ----------------------------------------------------------------
+        // test the results
+
+        $this->assertEquals($expectedResult, $actualResult);
     }
 
-    // all done
-    return $retval;
-}
-
-/**
- * append one array to another, respecting the array keys in $extra
- *
- * added because of the observed performance problems with array_merge()
- * at scale
- *
- * @param  array $target
- *         the array to merge into
- * @param  array $extra
- *         the array that we want to merge with $target
- * @return array
- *         the combined array
- */
-function array_merge_keys($target, $extra)
-{
-    $retval = $target;
-    foreach ($extra as $key => $value) {
-        $retval[$key] = $value;
+    public function provideArraysToMerge()
+    {
+        return [
+            [
+                [ 1,2,3],
+                [ 4,5,6],
+                [ 4,5,6]
+            ],
+            [
+                ['color' => 'red', 2, 4],
+                ['a', 'b', 'color' => 'green', 'shape' => 'trapezoid', 4],
+                ['color' => 'green', 0 => 'a', '1' => 'b', 2 => 4, 'shape' => 'trapezoid']
+            ],
+        ];
     }
-
-    // all done
-    return $retval;
 }
