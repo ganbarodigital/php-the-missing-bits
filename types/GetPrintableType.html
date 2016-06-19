@@ -27,6 +27,9 @@
                             <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/index.html">Overview</a>
                         </li>
                                             <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/arrays/index.html">Arrays</a>
+                        </li>
+                                            <li class="">
                             <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/entities/index.html">Entities</a>
                         </li>
                                             <li class="">
@@ -41,7 +44,7 @@
                                     </ul>
             </nav>
         </header>
-                                                                                                                                        <header role="subnav">
+                                                                                                                                                            <header role="subnav">
                         <nav class="navbar">
                             <ul>
                                                                     <li class="">
@@ -179,8 +182,14 @@ echo get_printable_type($data);</code></pre>
 </div>
 <h2 id="throws">Throws</h2>
 <p><code>GetPrintableType</code> does not throw any exceptions.</p>
-<h2 id="constraints">Constraints</h2>
-<p>None.</p>
+<h2 id="changelog">Changelog</h2>
+<h3 id="v161">v1.6.1</h3>
+<ul>
+<li>
+<p>Improved robustness of <code>$flags</code></p>
+<p>If <code>$flags</code> isn't an integer, we now use the default flags. Same goes if <code>$flags</code> is an integer, but contains a value that's outside the range of valid bitmask flags.</p>
+</li>
+</ul>
             </article>
 
                         <nav class="pageflow">

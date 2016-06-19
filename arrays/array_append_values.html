@@ -26,11 +26,11 @@
                                             <li class="">
                             <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/index.html">Overview</a>
                         </li>
-                                            <li class="">
-                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/arrays/index.html">Arrays</a>
-                        </li>
                                             <li class="current">
-                            <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/entities/index.html">Entities</a>
+                            <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/arrays/index.html">Arrays</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/entities/index.html">Entities</a>
                         </li>
                                             <li class="">
                             <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/strings/index.html">Strings</a>
@@ -44,99 +44,81 @@
                                     </ul>
             </nav>
         </header>
-                                                                                                <header role="subnav">
+                                                                            <header role="subnav">
                         <nav class="navbar">
                             <ul>
+                                                                    <li class="">
+                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/arrays/index.html">Array Functions and Classes</a>
+                                    </li>
                                                                     <li class="current">
-                                        <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/entities/index.html">Entities Classes and Interfaces</a>
+                                        <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/arrays/array_append_values.html">array_append_values</a>
                                     </li>
                                                                     <li class="">
-                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/entities/ReadOnlyException.html">ReadOnlyException</a>
-                                    </li>
-                                                                    <li class="">
-                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/entities/WriteProtectableEntity.html">WriteProtectableEntity</a>
-                                    </li>
-                                                                    <li class="">
-                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/entities/WriteProtectedEntity.html">WriteProtectedEntity</a>
-                                    </li>
-                                                                    <li class="">
-                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/entities/WriteProtectTab.html">WriteProtectTab</a>
+                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/arrays/array_merge_keys.html">array_merge_keys</a>
                                     </li>
                                                             </ul>
                         </nav>
                     </header>
-                                                                                                        <main role="main">
+                                                                                                                            <main role="main">
                         <nav class="pageflow">
               <ul>
-                                    <li></li>
-                                                      <li><a href="ReadOnlyException.html">Next: ReadOnlyException class</a></li>
+                                    <li><a href="index.html">Prev: Array Functions</a></li>
+                                                      <li><a href="array_merge_keys.html">Next: array_merge_keys()</a></li>
                                 </ul>
             </nav>
             
             <article>
-                <h1 id="entities">Entities</h1>
-<h2 id="introduction">Introduction</h2>
-<p>Entities are objects that:</p>
+                <h1 id="array_append_values">array_append_values()</h1>
+<div class="callout info">
+<p>Since version 1.7.0</p>
+</div>
+<h2 id="description">Description</h2>
+<p><code>array_append_values()</code> - fast alternative to PHP's built-in <code>array_merge()</code></p>
+<pre><code class="language-php">array array_append_values(array $target, array $extra);</code></pre>
+<p>You'll need to experiment with your own application to work out when <code>array_append_values()</code> is faster than PHP's built-in <code>array_merge()</code>.</p>
+<h2 id="parameters">Parameters</h2>
+<p><code>array_append_values()</code> takes two parameters:</p>
 <ul>
-<li>hold data, and</li>
-<li>support changing that data after construction (normally via <code>setXXX()</code> methods)</li>
+<li><code>$target</code> (array) - the array that <code>$extra</code> will be appended to</li>
+<li><code>$extra</code> (array) - the list of values to append to <code>$target</code></li>
 </ul>
-<p>Here's a list of what we feel is missing from PHP's built-in support for entities.</p>
-<h2 id="available-exceptions">Available Exceptions</h2>
-<table>
-<thead>
-<tr>
-<th>Exception</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="ReadOnlyException.html"><code>ReadOnlyException</code></a></td>
-<td>thrown when attempting to edit an entity that is write-protected</td>
-</tr>
-</tbody>
-</table>
-<h2 id="available-interfaces">Available Interfaces</h2>
-<table>
-<thead>
-<tr>
-<th>Interface</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="WriteProtectableEntity.html"><code>WriteProtectableEntity</code></a></td>
-<td>entities that can be switched into read-only mode</td>
-</tr>
-<tr>
-<td><a href="WriteProtectedEntity.html"><code>WriteProtectedEntity</code></a></td>
-<td>entities that switch into read-only mode after construction</td>
-</tr>
-</tbody>
-</table>
-<h2 id="available-traits">Available Traits</h2>
-<table>
-<thead>
-<tr>
-<th>Trait</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="WriteProtectTab.html"><code>WriteProtectTab</code></a></td>
-<td>simple implementation of the <code>WriteProtectableEntity</code> interface</td>
-</tr>
-</tbody>
-</table>
+<p>It's a good idea to only call <code>array_append_values()</code> if both <code>$target</code> and <code>$extra</code> are non-associative arrays (i.e. they use numbered indexes, and the value of those numbers isn't important). You can pass associative arrays into <code>array_append_values()</code>, but you'll probably find the results very confusing!</p>
+<h2 id="return-values">Return Values</h2>
+<p><code>array_append_values()</code> returns a new array. This is the result of appending the values in <code>$extra</code> to <code>$target</code>.</p>
+<ul>
+<li>The keys and values from <code>$target</code> are maintained</li>
+<li>The values from <code>$extra</code> are appended</li>
+<li>The keys from <code>$extra</code> are ignored</li>
+</ul>
+<h2 id="example">Example</h2>
+<pre><code class="language-php">$target = [
+    "fish" =&gt; "trout",
+    "name" =&gt; "harry"
+];
+
+$extra = [
+    "fish" =&gt; "salmon",
+    "name" =&gt; "sally"
+];
+
+var_dump(array_append_values($target, $extra));</code></pre>
+<p>Outputs:</p>
+<pre><code>array(4) {
+  'fish' =&gt;
+  string(5) "trout"
+  'name' =&gt;
+  string(5) "harry"
+  [0] =&gt;
+  string(6) "salmon"
+  [1] =&gt;
+  string(5) "sally"
+}</code></pre>
             </article>
 
                         <nav class="pageflow">
               <ul>
-                                    <li></li>
-                                                      <li><a href="ReadOnlyException.html">Next: ReadOnlyException class</a></li>
+                                    <li><a href="index.html">Prev: Array Functions</a></li>
+                                                      <li><a href="array_merge_keys.html">Next: array_merge_keys()</a></li>
                                 </ul>
             </nav>
                     </main>
