@@ -10,7 +10,10 @@ pageflow_next_text: Contributing
 
 ## develop branch
 
-Nothing yet.
+### New
+
+* Added additional type inspections
+  - added `is_stringy()`
 
 ## v1.7.0
 

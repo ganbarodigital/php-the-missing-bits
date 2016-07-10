@@ -3,8 +3,8 @@ currentSection: types
 currentItem: GetStringTypes
 pageflow_prev_url: GetStringDuckTypes.html
 pageflow_prev_text: GetStringDuckTypes class
-pageflow_next_url: StripNamespace.html
-pageflow_next_text: StripNamespace class
+pageflow_next_url: is_stringy.html
+pageflow_next_text: is_stringy()
 ---
 
 # GetStringTypes

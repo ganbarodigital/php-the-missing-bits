@@ -1,8 +1,8 @@
 ---
 currentSection: types
 currentItem: StripNamespace
-pageflow_prev_url: GetStringTypes.html
-pageflow_prev_text: GetStringTypes class
+pageflow_prev_url: is_stringy.html
+pageflow_prev_text: is_stringy()
 pageflow_next_url: CanBeEmpty.html
 pageflow_next_text: CanBeEmpty interface
 ---
