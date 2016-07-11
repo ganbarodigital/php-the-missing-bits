@@ -41,6 +41,37 @@
  * @link      http://ganbarodigital.github.io/php-the-missing-bits
  */
 
+/**
+ * surround a string with braces, if it would need braces in order to be used
+ * as a PHP property name in eval()
+ *
+ * @param  string $item
+ *         the property name to add braces to (if required)
+ * @return string
+ */
+function addbraces($item) {
+    // robustness!
+    if (!is_stringy($item)) {
+        throw new InvalidArgumentException('$item is not a valid class or object property name');
+    }
+
+    // would the string need braces if we used it in eval()?
+    //
+    // the rules are:
+    // - first character must be an ASCII letter or an underscore
+    // - the remaining characters can only be ASCII letters, numbers,
+    //   or an underscore
+    //
+    // any string that doesn't satisfy those rules needs braces adding
+    if (!preg_match("/[A-Za-z_][A-Za-z0-9_]{" . (strlen($item) - 1) . "}/", $item)) {
+        // yes it would
+        return '{' . $item . '}';
+    }
+
+    // if we get here, then all is well
+    return $item;
+}
+
 if (!function_exists("vnsprintf")) {
 
 /**
