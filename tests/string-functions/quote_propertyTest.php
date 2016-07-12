@@ -41,10 +41,10 @@
  * @link      http://ganbarodigital.github.io/php-the-missing-bits
  */
 
-class addbracesTest extends PHPUnit_Framework_TestCase
+class quote_propertyTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @covers ::addbraces
+     * @covers ::quote_property
      * @dataProvider provideSafePropertyNames
      */
     public function test_does_not_add_braces_to_safe_property_names($name, $expectedName)
@@ -55,7 +55,7 @@ class addbracesTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualName = addbraces($expectedName);
+        $actualName = quote_property($name);
 
         // ----------------------------------------------------------------
         // test the results
@@ -64,7 +64,7 @@ class addbracesTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::addbraces
+     * @covers ::quote_property
      * @dataProvider provideUnsafePropertyNames
      */
     public function test_adds_braces_to_unsafe_property_names($name, $expectedName)
@@ -75,7 +75,7 @@ class addbracesTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualName = addbraces($name);
+        $actualName = quote_property($name);
 
         // ----------------------------------------------------------------
         // test the results
@@ -84,20 +84,20 @@ class addbracesTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::addbraces
+     * @covers ::quote_property
      */
     public function test_works_with_objects_that_have_toString()
     {
         // ----------------------------------------------------------------
         // setup your test
 
-        $name = new AddBraces_String("extractArray");
+        $name = new quote_property_String("extractArray");
         $expectedName = "extractArray";
 
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualName = addbraces($name);
+        $actualName = quote_property($name);
 
         // ----------------------------------------------------------------
         // test the results
@@ -106,7 +106,7 @@ class addbracesTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::addbraces
+     * @covers ::quote_property
      * @expectedException InvalidArgumentException
      */
     public function test_throws_InvalidArgumentException_for_objects_that_do_not_have_toString()
@@ -119,14 +119,14 @@ class addbracesTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualName = addbraces($name);
+        $actualName = quote_property($name);
 
         // ----------------------------------------------------------------
         // test the results
     }
 
     /**
-     * @covers ::addbraces
+     * @covers ::quote_property
      * @expectedException InvalidArgumentException
      */
     public function test_throws_InvalidArgumentException_for_NULL()
@@ -139,14 +139,14 @@ class addbracesTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualName = addbraces($name);
+        $actualName = quote_property($name);
 
         // ----------------------------------------------------------------
         // test the results
     }
 
     /**
-     * @covers ::addbraces
+     * @covers ::quote_property
      * @expectedException InvalidArgumentException
      */
     public function test_throws_InvalidArgumentException_for_true()
@@ -159,14 +159,14 @@ class addbracesTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualName = addbraces($name);
+        $actualName = quote_property($name);
 
         // ----------------------------------------------------------------
         // test the results
     }
 
     /**
-     * @covers ::addbraces
+     * @covers ::quote_property
      * @expectedException InvalidArgumentException
      */
     public function test_throws_InvalidArgumentException_for_false()
@@ -179,14 +179,14 @@ class addbracesTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualName = addbraces($name);
+        $actualName = quote_property($name);
 
         // ----------------------------------------------------------------
         // test the results
     }
 
     /**
-     * @covers ::addbraces
+     * @covers ::quote_property
      * @expectedException InvalidArgumentException
      */
     public function test_throws_InvalidArgumentException_for_arrays()
@@ -199,14 +199,14 @@ class addbracesTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualName = addbraces($name);
+        $actualName = quote_property($name);
 
         // ----------------------------------------------------------------
         // test the results
     }
 
     /**
-     * @covers ::addbraces
+     * @covers ::quote_property
      * @expectedException InvalidArgumentException
      */
     public function test_throws_InvalidArgumentException_for_resources()
@@ -219,7 +219,7 @@ class addbracesTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualName = addbraces($name);
+        $actualName = quote_property($name);
 
         // ----------------------------------------------------------------
         // test the results
@@ -249,7 +249,7 @@ class addbracesTest extends PHPUnit_Framework_TestCase
     }
 }
 
-class AddBraces_String
+class quote_property_String
 {
     private $value;
 

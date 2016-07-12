@@ -45,14 +45,14 @@
  * surround a string with braces, if it would need braces in order to be used
  * as a PHP property name in eval()
  *
- * @param  string $item
+ * @param  string $propertyName
  *         the property name to add braces to (if required)
  * @return string
  */
-function addbraces($item) {
+function quote_property($propertyName) {
     // robustness!
-    if (!is_stringy($item)) {
-        throw new InvalidArgumentException('$item is not a valid class or object property name');
+    if (!is_stringy($propertyName)) {
+        throw new InvalidArgumentException('$propertyName is not a valid class or object property name');
     }
 
     // would the string need braces if we used it in eval()?
@@ -63,13 +63,13 @@ function addbraces($item) {
     //   or an underscore
     //
     // any string that doesn't satisfy those rules needs braces adding
-    if (!preg_match("/[A-Za-z_][A-Za-z0-9_]{" . (strlen($item) - 1) . "}/", $item)) {
+    if (!preg_match("/[A-Za-z_][A-Za-z0-9_]{" . (strlen($propertyName) - 1) . "}/", $propertyName)) {
         // yes it would
-        return '{' . $item . '}';
+        return '{' . $propertyName . '}';
     }
 
-    // if we get here, then all is well
-    return $item;
+    // if we get here, then no action is needed
+    return $propertyName;
 }
 
 if (!function_exists("vnsprintf")) {

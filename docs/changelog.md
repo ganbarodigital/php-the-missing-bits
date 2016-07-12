@@ -15,7 +15,7 @@ pageflow_next_text: Contributing
 * Added additional type inspections
   - added `is_stringy()`
 * Additional string functions to help build PHP code snippets
-  - added `addbraces()`
+  - added `quote_property()`
 
 ## v1.7.0
 

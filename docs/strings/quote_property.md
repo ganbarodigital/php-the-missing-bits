@@ -1,13 +1,13 @@
 ---
 currentSection: strings
-currentItem: addbraces
-pageflow_prev_url: index.html
-pageflow_prev_text: String Functions
+currentItem: quote_property
+pageflow_prev_url: quote_index.html
+pageflow_prev_text: quote_index()
 pageflow_next_url: vnsprintf.html
 pageflow_next_text: vnsprintf()
 ---
 
-# addbraces()
+# quote_property()
 
 <div class="callout warning">
 Not yet in a tagged release
@@ -15,21 +15,21 @@ Not yet in a tagged release
 
 ## Description
 
-`addbraces()` - surround a string with `{` and `}` if it can't be safely used as a class or object property name in `eval()`
+`quote_property()` - surround a string with `{` and `}` if it can't be safely used as a class or object property name in `eval()`
 
 ```php
-string addbraces(string $item);
+string quote_property(string $item);
 ```
 
 ## Parameters
 
-`addbraces()` takes one parameter:
+`quote_property()` takes one parameter:
 
-* `string $item` - the string to add braces too
+* `string $item` - the string to add braces to
 
 ## Return Value
 
-`addbraces()` returns a string.
+`quote_property()` returns a string.
 
 * the string will be `{$item}` if braces are required
 * the string will be `$item` otherwise
@@ -40,7 +40,7 @@ Here's a list of examples of accepted input values:
 
 ```php
 // $obj->exceptionsList
-var_dump(addbraces("exceptionsList"));
+var_dump(quote_property("exceptionsList"));
 
 // outputs:
 // string(14) "exceptionsList"
@@ -48,7 +48,7 @@ var_dump(addbraces("exceptionsList"));
 
 ```php
 // $obj->{0}
-var_dump(addbraces(0));
+var_dump(quote_property(0));
 
 // outputs:
 // string(3) "{0}"
@@ -56,7 +56,7 @@ var_dump(addbraces(0));
 
 ```php
 // $obj->{total-cost}
-var_dump(addbraces("total-cost"));
+var_dump(quote_property("total-cost"));
 
 // outputs:
 // string(12) "{total-cost}"
@@ -64,7 +64,7 @@ var_dump(addbraces("total-cost"));
 
 ```php
 // $obj->total_cost
-var_dump(addbraces("total_cost"));
+var_dump(quote_property("total_cost"));
 
 // outputs:
 // string(10) "total_cost"
@@ -72,11 +72,11 @@ var_dump(addbraces("total_cost"));
 
 ## Throws
 
-`addbraces()` throws an `InvalidArgumentException` if `$item` is not a string or something that can be sensibly cast as a string.
+`quote_property()` throws an `InvalidArgumentException` if `$item` is not a string or something that can be sensibly cast as a string.
 
 ## Works With
 
-`addbraces()` is supported on these versions of PHP:
+`quote_property()` is supported on these versions of PHP:
 
 PHP Version | Works?
 ------------|-------
