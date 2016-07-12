@@ -42,6 +42,25 @@
  */
 
 /**
+* surround an array key with single quotes if appropriate
+*
+* If $key isn't a string, no quotes are added.
+*
+* @param  mixed $key
+*         the item to (possibly) quote
+* @return mixed
+*         the unmodified $key if it is not a string
+*         the quoted $key if it is a string
+*/
+function quote_index($key) {
+    if (!is_string($key)) {
+        return $key;
+    }
+
+    return "'$key'";
+}
+
+/**
  * surround a string with braces, if it would need braces in order to be used
  * as a PHP property name in eval()
  *
