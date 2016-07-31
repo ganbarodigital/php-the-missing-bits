@@ -51,6 +51,8 @@ use GanbaroDigital\MissingBits\TypeInspectors\GetPrintableType;
 use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
 use GanbaroDigital\MissingBits\TypeInspectors\GetStringDuckTypes;
 use GanbaroDigital\MissingBits\TypeInspectors\GetStringTypes;
+use GanbaroDigital\MissingBits\TypeInspectors\IsList;
+use GanbaroDigital\MissingBits\TypeInspectors\IsListyObject;
 use GanbaroDigital\MissingBits\TypeInspectors\StripNamespace;
 
 /**
@@ -203,6 +205,34 @@ function get_string_types($item)
 }
 
 /**
+ * can $list be safely (and sensibly) used in a foreach() loop?
+ *
+ * @param  mixed $list
+ *         the value to inspect
+ * @return bool
+ *         TRUE if $list can be used in a foreach() loop
+ *         FALSE otherwise
+ */
+function is_list($list)
+{
+    return IsList::check($list);
+}
+
+/**
+ * can $list be safely (and sensibly) used in a foreach() loop?
+ *
+ * @param  object $list
+ *         the value to inspect
+ * @return bool
+ *         TRUE if $list can be used in a foreach() loop
+ *         FALSE otherwise
+ */
+function is_listy_object($list)
+{
+    return IsListyObject::check($list);
+}
+
+/**
  * is $item something that PHP will accept as a string?
  *
  * @param  mixed $item
@@ -225,7 +255,7 @@ function is_stringy($item)
     }
 
     // there's no point turning these into strings
-    // 
+    //
     // NULL
     // array
     // boolean
