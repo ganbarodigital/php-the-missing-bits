@@ -10,6 +10,14 @@ pageflow_next_text: Contributing
 
 ## develop branch
 
+### New
+
+* Added support for detecting lists
+  - added `is_list()`
+  - added `IsList::check()`
+  - added `is_listy_object()`
+  - added `IsListyObject::check()`
+
 ## v1.8.0
 
 Released Sun 31st July 2016.

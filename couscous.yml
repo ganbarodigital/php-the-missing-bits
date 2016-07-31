@@ -179,6 +179,12 @@ menu:
             GetStringTypes:
                 text: GetStringTypes
                 relativeUrl: types/GetStringTypes.html
+            IsList:
+                text: IsList
+                relativeUrl: types/IsList.html
+            IsListyObject:
+                text: IsListyObject
+                relativeUrl: types/IsListyObject.html
             is_stringy:
                 text: is_stringy
                 relativeUrl: types/is_stringy.html

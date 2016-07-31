@@ -34,44 +34,43 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *
  * @category  Libraries
- * @package   MissingBits/ListTraversals
+ * @package   MissingBits/TypeInspectors
  * @author    Stuart Herbert <stuherbert@ganbarodigital.com>
  * @copyright 2016-present Ganbaro Digital Ltd www.ganbarodigital.com
  * @license   http://www.opensource.org/licenses/bsd-license.php  BSD License
  * @link      http://ganbarodigital.github.io/php-the-missing-bits
  */
 
-namespace GanbaroDigital\MissingBits\ListTraversals;
-
-use GanbaroDigital\MissingBits\TypeInspectors\IsListyObject;
-use InvalidArgumentException;
+namespace GanbaroDigital\MissingBits\TypeInspectors;
 
 /**
- * traverse a list held in an object
+ * do we have a valid PHP list?
  */
-class TraverseObject
+class IsList
 {
     /**
-     * traverse a list held in an object
+     * can $list be safely (and sensibly) used in a foreach() loop?
      *
-     * @param  object $list
-     *         the list to walk
-     * @param  string $listName
-     *         what is the name of $list in the calling code?
-     * @param  callable $callable
-     *         what are we calling
-     * @return void
+     * @param  mixed $list
+     *         the value to inspect
+     * @return bool
+     *         TRUE if $list can be used in a foreach() loop
+     *         FALSE otherwise
      */
-    public static function using($list, $listName, callable $callable)
+    public static function check($list)
     {
-        // robustness!
-        if (!IsListyObject::check($list)) {
-            throw new InvalidArgumentException($listName . ' cannot be traversed as a list');
+        // genuine PHP array?
+        if (is_array($list)) {
+            return true;
         }
 
-        foreach ($list as $key => $data) {
-            $name = $listName . '->' . quote_property($key);
-            $callable($data, $key, $name);
+        // all objects can be traversed, although it doesn't
+        // always make sense
+        if (!is_object($list)) {
+            return false;
         }
+
+        // delegate the check to this checker
+        return IsListyObject::check($list);
     }
 }
