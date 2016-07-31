@@ -15,6 +15,8 @@ pageflow_next_text: Contributing
 * Added support for iterating over lists
   - added `traverse_array()`
   - added `TraverseArray::using()`
+  - added `traverse_list()`
+  - added `TraverseList::using()`
   - added `traverse_object()`
   - added `TraverseObject::using()`
 * Added additional type inspections
