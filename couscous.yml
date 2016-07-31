@@ -84,6 +84,24 @@ menu:
                 text: WriteProtectTab
                 relativeUrl: entities/WriteProtectTab.html
 
+    lists:
+        text: Lists
+        relativeUrl: lists/index.html
+
+        items:
+            home:
+                text: List Functions and Classes
+                relativeUrl: lists/index.html
+            TraverseArray:
+                text: TraverseArray
+                relativeUrl: lists/TraverseArray.html
+            TraverseList:
+                text: TraverseList
+                relativeUrl: lists/TraverseList.html
+            TraverseObject:
+                text: TraverseObject
+                relativeUrl: lists/TraverseObject.html
+
     strings:
         text: Strings
         relativeUrl: strings/index.html

@@ -12,6 +12,9 @@ pageflow_next_text: Contributing
 
 ### New
 
+* Added support for iterating over lists
+  - added `traverse_array()`
+  - added `TraverseArray::using()`
 * Added additional type inspections
   - added `is_stringy()`
 * Additional string functions to help build PHP code snippets
