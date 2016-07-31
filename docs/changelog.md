@@ -10,6 +10,10 @@ pageflow_next_text: Contributing
 
 ## develop branch
 
+## v1.8.0
+
+Released Sun 31st July 2016.
+
 ### New
 
 * Added support for iterating over lists
