@@ -71,8 +71,8 @@
                                                                     <li class="">
                                         <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetNumericType.html">GetNumericType</a>
                                     </li>
-                                                                    <li class="current">
-                                        <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetObjectTypes.html">GetObjectTypes</a>
+                                                                    <li class="">
+                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetObjectTypes.html">GetObjectTypes</a>
                                     </li>
                                                                     <li class="">
                                         <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetPrintableType.html">GetPrintableType</a>
@@ -89,8 +89,8 @@
                                                                     <li class="">
                                         <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/IsListyObject.html">IsListyObject</a>
                                     </li>
-                                                                    <li class="">
-                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/is_stringy.html">is_stringy</a>
+                                                                    <li class="current">
+                                        <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/types/is_stringy.html">is_stringy</a>
                                     </li>
                                                                     <li class="">
                                         <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/StripNamespace.html">StripNamespace</a>
@@ -101,242 +101,47 @@
                                             <main role="main">
                         <nav class="pageflow">
               <ul>
-                                    <li><a href="GetNumericType.html">Prev: GetNumericType class</a></li>
-                                                      <li><a href="GetPrintableType.html">Next: GetPrintableType class</a></li>
+                                    <li><a href="GetStringTypes.html">Prev: GetStringTypes class</a></li>
+                                                      <li><a href="StripNamespace.html">Next: StripNamespace class</a></li>
                                 </ul>
             </nav>
             
             <article>
-                <h1 id="getobjecttypes">GetObjectTypes</h1>
-<div class="callout info">
-Since v1.3.0
+                <h1 id="is_stringy">is_stringy()</h1>
+<div class="callout warning">
+Not yet in a tagged release
 </div>
 <h2 id="description">Description</h2>
-<p><code>GetObjectTypes</code> returns a list of all strict PHP types for a given PHP object. The list is ordered with the most specific match first.</p>
-<pre><code class="language-php">// how to import
-use GanbaroDigital\MissingBits\TypeInspectors\GetObjectTypes;
-
-// call directly
-//
-// returns an array
-var_dump(GetObjectTypes::from($data));
-
-// use as an object
-//
-// returns an array
-$inspector = new GetObjectTypes;
-var_dump($inspector($data));
-
-// use as a global function
-//
-// returns an array
-var_dump(get_object_types($data));</code></pre>
+<p><code>is_stringy()</code> - can we use the variable as a string?</p>
+<pre><code class="language-php">boolean is_stringy(mixed $item);</code></pre>
 <h2 id="parameters">Parameters</h2>
-<p>The input parameters are:</p>
+<p><code>is_stringy()</code> takes one parameter:</p>
 <ul>
-<li><code>mixed $data</code> - the item to examine</li>
+<li><code>mixed $item</code> - the variable to examine</li>
 </ul>
 <h2 id="return-value">Return Value</h2>
-<p><code>GetObjectTypes</code> returns an array.</p>
+<p><code>is_stringy()</code> returns <code>TRUE</code> or <code>FALSE</code>:</p>
 <ul>
-<li>If <code>$data</code> is not an object, an empty list <code>[]</code> is returned</li>
-<li>We return a list of the object's class, the class's parents, and all interfaces it implements (directly or otherwise)</li>
-<li>We detect if the object is invokeable</li>
-<li>We detect if the object supports automatic conversion to a string</li>
+<li><code>TRUE</code> if PHP will use <code>$item</code> as a string
+<ul>
+<li>strings</li>
+<li>integers</li>
+<li>doubles</li>
+<li>objects with the <code>__toString()</code> method</li>
+</ul></li>
+<li><code>FALSE</code> otherwise
+<ul>
+<li>null</li>
+<li>arrays</li>
+<li>booleans</li>
+<li>resources</li>
+<li>all other objects</li>
+</ul></li>
 </ul>
-<p>The resulting list is a complete list of strict types where it is safe to use <code>$data</code>.</p>
-<div class="callout warning">
-<p>In PHP 7.0, <code>object</code> is not valid type declaration. That's why <code>GetObjectTypes</code> does not include <code>object</code> in the returned list.</p>
-</div>
-<h3 id="example-return-values">Example Return Values</h3>
-<p>Here's a list of examples of accepted input values:</p>
-<pre><code class="language-php">var_dump(get_object_types(function(){}));
-
-// outputs
-//
-// array(2) {
-//   ["Closure"]=&gt;
-//   string(7) "Closure"
-//   ["callable"]=&gt;
-//   string(8) "callable"
-// }</code></pre>
-<pre><code class="language-php">var_dump(get_object_types(new ArrayObject));
-
-// outputs
-//
-// array(6) {
-//   ["ArrayObject"]=&gt;
-//   string(11) "ArrayObject"
-//   ["IteratorAggregate"]=&gt;
-//   string(17) "IteratorAggregate"
-//   ["Traversable"]=&gt;
-//   string(11) "Traversable"
-//   ["ArrayAccess"]=&gt;
-//   string(11) "ArrayAccess"
-//   ["Serializable"]=&gt;
-//   string(12) "Serializable"
-//   ["Countable"]=&gt;
-//   string(9) "Countable"
-// }</code></pre>
-<pre><code class="language-php">use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
-
-var_dump(get_object_types(new GetStrictTypes));
-
-// outputs
-//
-// array(2) {
-//   ["GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes"]=&gt;
-//   string(56) "GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes"
-//   ["callable"]=&gt;
-//   string(8) "callable"
-// }</code></pre>
-<pre><code class="language-php">var_dump(get_object_types((object)[]));
-
-// outputs
-//
-// array(1) {
-//   ["stdClass"]=&gt;
-//   string(8) "stdClass"
-// }</code></pre>
-<pre><code class="language-php">var_dump(get_object_types(new Exception(__FILE__)));
-
-// outputs
-//
-// array(3) {
-//   ["Exception"]=&gt;
-//   string(9) "Exception"
-//   ["Throwable"]=&gt;
-//   string(9) "Throwable"
-//   ["string"]=&gt;
-//   string(6) "string"
-// }</code></pre>
-<p>Here's a list of examples of ingored input values:</p>
-<pre><code class="language-php">var_dump(get_object_types(null));
-
-// outputs
-//
-// array(0) {
-// }</code></pre>
-<pre><code class="language-php">var_dump(get_object_types([1,2,3]));
-
-// outputs
-//
-// array(0) {
-// }</code></pre>
-<pre><code class="language-php">use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
-
-var_dump(get_object_types([GetStrictTypes::class, "from"]));
-
-// outputs
-//
-// array(0) {
-// }</code></pre>
-<pre><code class="language-php">var_dump(get_object_types(true));
-
-// outputs
-//
-// array(0) {
-// }</code></pre>
-<pre><code class="language-php">var_dump(get_object_types(false));
-
-// outputs
-//
-// array(0) {
-// }</code></pre>
-<pre><code class="language-php">var_dump(get_object_types(0.0));
-
-// outputs
-//
-// array(0) {
-// }</code></pre>
-<pre><code class="language-php">var_dump(get_object_types(3.1415927));
-
-// outputs
-//
-// array(0) {
-// }</code></pre>
-<pre><code class="language-php">var_dump(get_object_types(0));
-
-// outputs
-//
-// array(0) {
-// }</code></pre>
-<pre><code class="language-php">var_dump(get_object_types(100));
-
-// outputs
-//
-// array(0) {
-// }</code></pre>
-<pre><code class="language-php">var_dump(get_object_types(-100));
-
-// outputs
-//
-// array(0) {
-// }</code></pre>
-<pre><code class="language-php">var_dump(get_object_types(STDIN));
-
-// outputs
-//
-// array(0) {
-// }</code></pre>
-<pre><code class="language-php">var_dump(get_object_types("true"));
-
-// outputs
-//
-// array(0) {
-// }</code></pre>
-<pre><code class="language-php">var_dump(get_object_types("false"));
-
-// outputs
-//
-// array(0) {
-// }</code></pre>
-<pre><code class="language-php">var_dump(get_object_types("0.0"));
-
-// outputs
-//
-// array(0) {
-// }</code></pre>
-<pre><code class="language-php">var_dump(get_object_types("3.1415927"));
-
-// outputs
-//
-// array(0) {
-// }</code></pre>
-<pre><code class="language-php">var_dump(get_object_types("0"));
-
-// outputs
-//
-// array(0) {
-// }</code></pre>
-<pre><code class="language-php">var_dump(get_object_types("100"));
-
-// outputs
-//
-// array(0) {
-// }</code></pre>
-<pre><code class="language-php">var_dump(get_object_types("hello, world!"));
-
-// outputs
-//
-// array(0) {
-// }</code></pre>
-<pre><code class="language-php">var_dump(get_object_types(ArrayObject::class));
-
-// outputs
-//
-// array(0) {
-// }</code></pre>
-<pre><code class="language-php">var_dump(get_object_types(Traversable::class));
-
-// outputs
-//
-// array(0) {
-// }</code></pre>
 <h2 id="throws">Throws</h2>
-<p><code>GetObjectTypes</code> does not throw any exceptions.</p>
+<p><code>is_stringy()</code> does not throw any exceptions.</p>
 <h2 id="works-with">Works With</h2>
-<p><code>GetObjectTypes</code> is supported on these versions of PHP:</p>
+<p><code>is_stringy()</code> is supported on these versions of PHP:</p>
 <table>
 <thead>
 <tr>
@@ -367,8 +172,8 @@ var_dump(get_object_types([GetStrictTypes::class, "from"]));
 
                         <nav class="pageflow">
               <ul>
-                                    <li><a href="GetNumericType.html">Prev: GetNumericType class</a></li>
-                                                      <li><a href="GetPrintableType.html">Next: GetPrintableType class</a></li>
+                                    <li><a href="GetStringTypes.html">Prev: GetStringTypes class</a></li>
+                                                      <li><a href="StripNamespace.html">Next: StripNamespace class</a></li>
                                 </ul>
             </nav>
                     </main>

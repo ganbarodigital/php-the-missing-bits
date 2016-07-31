@@ -32,14 +32,14 @@
                                             <li class="">
                             <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/entities/index.html">Entities</a>
                         </li>
-                                            <li class="">
-                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/lists/index.html">Lists</a>
+                                            <li class="current">
+                            <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/lists/index.html">Lists</a>
                         </li>
                                             <li class="">
                             <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/strings/index.html">Strings</a>
                         </li>
-                                            <li class="current">
-                            <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/traces/index.html">Traces</a>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/traces/index.html">Traces</a>
                         </li>
                                             <li class="">
                             <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/index.html">Types</a>
@@ -47,144 +47,83 @@
                                     </ul>
             </nav>
         </header>
-                                                                                                                                                            <header role="subnav">
+                                                                                                                    <header role="subnav">
                         <nav class="navbar">
                             <ul>
                                                                     <li class="">
-                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/traces/index.html">Stack Trace Functions and Classes</a>
-                                    </li>
-                                                                    <li class="">
-                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/traces/HowThePhpStackFrameWorks.html">How The PHP Stack Frame Works</a>
-                                    </li>
-                                                                    <li class="">
-                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/traces/FilterBacktrace.html">FilterBacktrace</a>
-                                    </li>
-                                                                    <li class="">
-                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/traces/GetCaller.html">GetCaller</a>
+                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/lists/index.html">List Functions and Classes</a>
                                     </li>
                                                                     <li class="current">
-                                        <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/traces/StackFrame.html">StackFrame</a>
+                                        <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/lists/TraverseArray.html">TraverseArray</a>
+                                    </li>
+                                                                    <li class="">
+                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/lists/TraverseList.html">TraverseList</a>
+                                    </li>
+                                                                    <li class="">
+                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/lists/TraverseObject.html">TraverseObject</a>
                                     </li>
                                                             </ul>
                         </nav>
                     </header>
-                                                                <main role="main">
+                                                                                                        <main role="main">
                         <nav class="pageflow">
               <ul>
-                                    <li><a href="GetCaller.html">Prev: GetCaller class</a></li>
-                                                      <li></li>
+                                    <li><a href="index.html">Prev: Lists</a></li>
+                                                      <li><a href="TraverseList.html">Next: TraverseList class</a></li>
                                 </ul>
             </nav>
             
             <article>
-                <h1 id="stackframe">StackFrame</h1>
+                <h1 id="traversearray">TraverseArray</h1>
 <div class="callout info">
-Since v1.4.0
+<p>Since version 1.8.0</p>
 </div>
 <h2 id="description">Description</h2>
-<p><code>StackFrame</code> is a value object. It holds details about a single entry in a PHP stack trace.</p>
-<h2 id="public-interface">Public Interface</h2>
-<p><code>StackFrame</code> has the following public interface:</p>
-<pre><code class="language-php">// StackFrame lives in this namespace
-namespace GanbaroDigital\MissingBits\TraceInspectors;
+<p><code>TraverseArray::using()</code> - iterate over a PHP array</p>
+<p><code>traverse_array()</code> - global function that's a convenience wrapper around <code>TraverseArray::using()</code></p>
+<pre><code class="language-php">// as static function
+use GanbaroDigital\MissingBits\ListTraversals\TraverseArray;
+void TraverseArray::using(array $list, string $listName, callable $callable);
 
-/**
- * StackFrame holds details about a single entry in a PHP stack trace
- */
-class StackFrame
-{
-    /**
-     * constructor
-     *
-     * @param string|null $class
-     *        which class has been executed?
-     * @param string|null $function
-     *        which function or method has been executed?
-     * @param string|null $callType
-     *        how was $function called?
-     * @param string|null $file
-     *        which file was the calling code in?
-     * @param int|null $line
-     *        which line in $file was the calling code on?
-     * @param array $stack
-     *        what was the call stack at the time?
-     */
-    public function __construct($class, $function, $callType, $file, $line, $stack = []);
-
-    /**
-     * which class has been executed?
-     *
-     * @return string|null
-     */
-    public function getClass();
-
-    /**
-     * which function or method has been executed?
-     *
-     * @return string|null
-     */
-    public function getFunction();
-
-    /**
-     * which method has been executed?
-     *
-     * @return string|null
-     */
-    public function getMethod();
-
-    /**
-     * how was the function|method called?
-     *
-     * @return string|null
-     */
-    public function getCallType();
-
-    /**
-     * which file was the executed code defined in?
-     *
-     * @return string|null
-     */
-    public function getFilename();
-
-    /**
-     * which line in $this-&gt;getFile() was the executed code defined on?
-     *
-     * @return int|null
-     */
-    public function getLine();
-
-    /**
-     * what were the contents of the call stack at the time?
-     *
-     * an empty array means that we weren't asked to save the call stack
-     * (probably to save memory - the call stack can be large)
-     *
-     * @return array
-     */
-    public function getStack();
-
-    // =========================================================================
-    //
-    // HELPERS
-    //
-    // -------------------------------------------------------------------------
-
-    /**
-     * return our contents as a sensible, printable string
-     *
-     * @return string
-     */
-    public function getExecutedCodeSummary();
-
-    /**
-     * return our contents as a sensible, printable string
-     *
-     * @return string
-     */
-    public function __toString();
+// as a global function
+void traverse_array(array $list, string $listName, callable $callable);</code></pre>
+<h2 id="parameters">Parameters</h2>
+<p><code>TraverseArray::using()</code> takes three parameters:</p>
+<ul>
+<li><code>array $list</code> - the list to iterate over</li>
+<li><code>string $listName</code> - what you call <code>$list</code> in the calling code</li>
+<li><code>callable $callable</code> - the function to call with each member of <code>$list</code></li>
+</ul>
+<p><code>$callable</code> is any PHP <code>callable</code>. It should take three parameters:</p>
+<pre><code class="language-php">$callable = function($value, $key, $name) {
+    // .. do something here
 }</code></pre>
+<ul>
+<li><code>mixed $value</code> - a single entry from <code>$list</code></li>
+<li><code>mixed $key</code> - the array index of <code>$value</code></li>
+<li><code>string $name</code> - the human-readable name of <code>$value</code>, suitable for including in exception messages and logs</li>
+</ul>
+<p>For example:</p>
+<pre><code class="language-php">$myList = [ "harry", "sally", "alice" ];
+$callable = function($value, $key, $name) {
+    echo "$name is $value" . PHP_EOL;
+}
+TraverseArray::using($myList, 'myList', $callable);</code></pre>
+<p>will output:</p>
+<pre><code>$myList[0] is harry
+$myList[1] is sally
+$myList[2] is alice</code></pre>
+<h2 id="return-value">Return Value</h2>
+<p><code>TraverseArray::using()</code> does not return a value.</p>
+<h2 id="throws">Throws</h2>
+<p><code>TraverseArray::using()</code> throws an <code>InvalidArgumentException</code> if <code>$list</code> is not a PHP array.</p>
+<div class="callout info">
+<h4 id="why-dont-we-use-type-hinting-instead">Why Don't We Use Type-Hinting Instead?</h4>
+<p>If we type-hinted <code>TraverseArray::using()</code> or <code>traverse_array()</code>, we'd end up triggering PHP's legacy error handling system when you passed a non-array to these functions.</p>
+<p>We want to avoid PHP's legacy error handling system wherever we can. In our experience, it makes it very difficult to write robust software that fails gracefully.</p>
+</div>
 <h2 id="works-with">Works With</h2>
-<p><code>StackFrame</code> is supported on these versions of PHP:</p>
+<p><code>TraverseArray::using()</code> and <code>traverse_array</code> are supported on these versions of PHP:</p>
 <table>
 <thead>
 <tr>
@@ -207,7 +146,7 @@ class StackFrame
 </tr>
 <tr>
 <td>HHVM</td>
-<td>Untested</td>
+<td>Yes</td>
 </tr>
 </tbody>
 </table>
@@ -215,8 +154,8 @@ class StackFrame
 
                         <nav class="pageflow">
               <ul>
-                                    <li><a href="GetCaller.html">Prev: GetCaller class</a></li>
-                                                      <li></li>
+                                    <li><a href="index.html">Prev: Lists</a></li>
+                                                      <li><a href="TraverseList.html">Next: TraverseList class</a></li>
                                 </ul>
             </nav>
                     </main>

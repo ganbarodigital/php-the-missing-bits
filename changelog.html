@@ -33,6 +33,9 @@
                             <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/entities/index.html">Entities</a>
                         </li>
                                             <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/lists/index.html">Lists</a>
+                        </li>
+                                            <li class="">
                             <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/strings/index.html">Strings</a>
                         </li>
                                             <li class="">
@@ -71,7 +74,7 @@
                                                             </ul>
                         </nav>
                     </header>
-                                                                                                                                                <main role="main">
+                                                                                                                                                                    <main role="main">
                         <nav class="pageflow">
               <ul>
                                     <li><a href="installation.html">Prev: Installation</a></li>
@@ -82,10 +85,44 @@
             <article>
                 <h1 id="changelog">CHANGELOG</h1>
 <h2 id="develop-branch">develop branch</h2>
-<p>Nothing yet.</p>
+<h2 id="v190">v1.9.0</h2>
+<p>Released Sun 31st July 2016.</p>
+<h3 id="new">New</h3>
+<ul>
+<li>Added support for detecting lists
+<ul>
+<li>added <code>is_list()</code></li>
+<li>added <code>IsList::check()</code></li>
+<li>added <code>is_listy_object()</code></li>
+<li>added <code>IsListyObject::check()</code></li>
+</ul></li>
+</ul>
+<h2 id="v180">v1.8.0</h2>
+<p>Released Sun 31st July 2016.</p>
+<h3 id="new-1">New</h3>
+<ul>
+<li>Added support for iterating over lists
+<ul>
+<li>added <code>traverse_array()</code></li>
+<li>added <code>TraverseArray::using()</code></li>
+<li>added <code>traverse_list()</code></li>
+<li>added <code>TraverseList::using()</code></li>
+<li>added <code>traverse_object()</code></li>
+<li>added <code>TraverseObject::using()</code></li>
+</ul></li>
+<li>Added additional type inspections
+<ul>
+<li>added <code>is_stringy()</code></li>
+</ul></li>
+<li>Additional string functions to help build PHP code snippets
+<ul>
+<li>added <code>quote_index()</code></li>
+<li>added <code>quote_property()</code></li>
+</ul></li>
+</ul>
 <h2 id="v170">v1.7.0</h2>
 <p>Released Sun 19th June 2016.</p>
-<h3 id="new">New</h3>
+<h3 id="new-2">New</h3>
 <ul>
 <li>Added some helpers to overcome <code>array_merge()</code> performance issues.
 <ul>
@@ -104,7 +141,7 @@
 </ul>
 <h2 id="v160">v1.6.0</h2>
 <p>Released Sun 12th June 2016.</p>
-<h3 id="new-1">New</h3>
+<h3 id="new-3">New</h3>
 <ul>
 <li>Added some interfaces to map objects to PHP types / inspect objects as you'd inspect a PHP type
 <ul>
@@ -121,7 +158,7 @@
 </ul>
 <h2 id="v150">v1.5.0</h2>
 <p>Released Tue 31st May 2016.</p>
-<h3 id="new-2">New</h3>
+<h3 id="new-4">New</h3>
 <ul>
 <li>Extra duck type features
 <ul>
@@ -151,7 +188,7 @@
 </ul>
 <h2 id="v140">v1.4.0</h2>
 <p>Released Tue 24th May 2016.</p>
-<h3 id="new-3">New</h3>
+<h3 id="new-5">New</h3>
 <ul>
 <li>Added support for inspecting class, interface, trait and object names
 <ul>
@@ -169,7 +206,7 @@
 </ul>
 <h2 id="v130">v1.3.0</h2>
 <p>Released Sunday 22nd May 2016.</p>
-<h3 id="new-4">New</h3>
+<h3 id="new-6">New</h3>
 <ul>
 <li>Added a richer set of type inspectors, based on code originally from <code>ganbarodigital/php-defensive</code>
 <ul>
@@ -185,7 +222,7 @@
 </ul>
 <h2 id="v120">v1.2.0</h2>
 <p>Released Monday 9th May 2016.</p>
-<h3 id="new-5">New</h3>
+<h3 id="new-7">New</h3>
 <ul>
 <li>Added support for entities that can switch between a read-only mode and read-write
 <ul>
@@ -204,13 +241,13 @@
 </ul>
 <h2 id="v110">v1.1.0</h2>
 <p>Released Sunday 17th April 2016.</p>
-<h3 id="new-6">New</h3>
+<h3 id="new-8">New</h3>
 <ul>
 <li>Added <a href="types/GetPrintableType.html"><code>GetPrintableType</code></a></li>
 </ul>
 <h2 id="v100">v1.0.0</h2>
 <p>Released Sunday 17th April 2016.</p>
-<h3 id="new-7">New</h3>
+<h3 id="new-9">New</h3>
 <ul>
 <li>Added <a href="strings/vnsprintf.html"><code>vnsprint()</code></a></li>
 </ul>

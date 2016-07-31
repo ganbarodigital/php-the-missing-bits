@@ -33,6 +33,9 @@
                             <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/entities/index.html">Entities</a>
                         </li>
                                             <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/lists/index.html">Lists</a>
+                        </li>
+                                            <li class="">
                             <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/strings/index.html">Strings</a>
                         </li>
                                             <li class="">
@@ -44,7 +47,7 @@
                                     </ul>
             </nav>
         </header>
-                                                                                                                                                            <header role="subnav">
+                                                                                                                                                                                <header role="subnav">
                         <nav class="navbar">
                             <ul>
                                                                     <li class="current">
@@ -81,6 +84,15 @@
                                         <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetStringTypes.html">GetStringTypes</a>
                                     </li>
                                                                     <li class="">
+                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/IsList.html">IsList</a>
+                                    </li>
+                                                                    <li class="">
+                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/IsListyObject.html">IsListyObject</a>
+                                    </li>
+                                                                    <li class="">
+                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/is_stringy.html">is_stringy</a>
+                                    </li>
+                                                                    <li class="">
                                         <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/StripNamespace.html">StripNamespace</a>
                                     </li>
                                                             </ul>
@@ -99,12 +111,84 @@
 <h2 id="introduction">Introduction</h2>
 <p>Here's a list of what we find is missing from PHP's built-in support for data types.</p>
 <h2 id="type-inspectors">Type Inspectors</h2>
-<p>These classes provide information about</p>
+<p>These functions and classes provide information about</p>
 <ul>
 <li>a variable's duck types or strict types</li>
 <li>a class's parents, traits, and namespace</li>
 </ul>
-<p>Click on the class below for more details.</p>
+<p>Click on the function or class below for more details.</p>
+<p>Here's the list of global functions you can use for inspecting types:</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="GetArrayTypes.html"><code>get_array_types</code></a></td>
+<td>returns a list of all strict PHP types for a given array</td>
+</tr>
+<tr>
+<td><a href="GetClassTraits.html"><code>get_class_traits</code></a></td>
+<td>returns a list of all traits used by a class or object, its parents, and its traits</td>
+</tr>
+<tr>
+<td><a href="GetClassTypes.html"><code>get_class_types</code></a></td>
+<td>returns a list of all strict PHP types for a given class or interface</td>
+</tr>
+<tr>
+<td><a href="GetDuckTypes.html"><code>get_duck_types</code></a></td>
+<td>returns a list of all practical PHP types for a given value or variable</td>
+</tr>
+<tr>
+<td><a href="GetNamespace.html"><code>get_namespace</code></a></td>
+<td>returns a class's or object's namespace</td>
+</tr>
+<tr>
+<td><a href="GetNumericType.html"><code>get_numeric_type</code></a></td>
+<td>returns which PHP <code>integer</code> or <code>double</code> a given value might be</td>
+</tr>
+<tr>
+<td><a href="GetObjectTypes.html"><code>get_object_types</code></a></td>
+<td>returns a list of all strict PHP types for a given object</td>
+</tr>
+<tr>
+<td><a href="GetPrintableType.html"><code>get_printable_type</code></a></td>
+<td><code>gettype()</code> for error logging / exception messages</td>
+</tr>
+<tr>
+<td><a href="GetStrictTypes.html"><code>get_strict_types</code></a></td>
+<td>returns a list of all strict PHP types for a given value or variable</td>
+</tr>
+<tr>
+<td><a href="GetStringDuckTypes.html"><code>get_string_duck_types</code></a></td>
+<td>returns a list of all PHP duck types for a given string</td>
+</tr>
+<tr>
+<td><a href="GetStringTypes.html"><code>get_string_types</code></a></td>
+<td>returns a list of all strict PHP types for a given string</td>
+</tr>
+<tr>
+<td><a href="IsList.html"><code>is_list</code></a></td>
+<td>can we use the variable in foreach() loop?</td>
+</tr>
+<tr>
+<td><a href="IsListyObject.html"><code>is_listy_object</code></a></td>
+<td>can we use the variable in foreach() loop?</td>
+</tr>
+<tr>
+<td><a href="is_stringy.html"><code>is_stringy</code></a></td>
+<td>can we use the variable as a string?</td>
+</tr>
+<tr>
+<td><a href="StripNamespace.html"><code>strip_namespace</code></a></td>
+<td>returns a class's or object's classname without the namespace</td>
+</tr>
+</tbody>
+</table>
+<p>Here's the list of classes you can use for inspecting types:</p>
 <table>
 <thead>
 <tr>
@@ -130,16 +214,16 @@
 <td>returns a list of all practical PHP types for a given value or variable</td>
 </tr>
 <tr>
-<td><a href="GetObjectTypes.html"><code>GetObjectTypes</code></a></td>
-<td>returns a list of all strict PHP types for a given object</td>
-</tr>
-<tr>
 <td><a href="GetNamespace.html"><code>GetNamespace</code></a></td>
 <td>returns a class's or object's namespace</td>
 </tr>
 <tr>
 <td><a href="GetNumericType.html"><code>GetNumericType</code></a></td>
 <td>returns which PHP <code>integer</code> or <code>double</code> a given value might be</td>
+</tr>
+<tr>
+<td><a href="GetObjectTypes.html"><code>GetObjectTypes</code></a></td>
+<td>returns a list of all strict PHP types for a given object</td>
 </tr>
 <tr>
 <td><a href="GetPrintableType.html"><code>GetPrintableType</code></a></td>
@@ -156,6 +240,14 @@
 <tr>
 <td><a href="GetStringTypes.html"><code>GetStringTypes</code></a></td>
 <td>returns a list of all strict PHP types for a given string</td>
+</tr>
+<tr>
+<td><a href="IsList.html"><code>IsList</code></a></td>
+<td>can we use the variable in foreach() loop?</td>
+</tr>
+<tr>
+<td><a href="IsListyObject.html"><code>IsListyObject</code></a></td>
+<td>can we use the variable in foreach() loop?</td>
 </tr>
 <tr>
 <td><a href="StripNamespace.html"><code>StripNamespace</code></a></td>
