@@ -7,8 +7,8 @@ pageflow_prev_text: TraverseList class
 
 # TraverseObject
 
-<div class="callout warning">
-Not yet in a tagged release
+<div class="callout info" markdown="1">
+Since version 1.8.0
 </div>
 
 ## Description
