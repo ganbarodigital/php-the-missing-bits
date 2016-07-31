@@ -33,6 +33,7 @@ Class | Purpose
 [`GetStrictTypes`](GetStrictTypes.html) | returns a list of all strict PHP types for a given value or variable
 [`GetStringDuckTypes`](GetStringDuckTypes.html) | returns a list of all PHP duck types for a given string
 [`GetStringTypes`](GetStringTypes.html) | returns a list of all strict PHP types for a given string
+[`is_stringy`](is_stringy.html) | can we use the variable as a string?
 [`StripNamespace`](StripNamespace.html) | returns a class's or object's classname without the namespace
 
 ## Type Interfaces

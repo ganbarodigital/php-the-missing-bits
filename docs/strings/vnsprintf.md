@@ -1,8 +1,8 @@
 ---
 currentSection: strings
 currentItem: vnsprintf
-pageflow_prev_url: index.html
-pageflow_prev_text: String Functions
+pageflow_prev_url: quote_property.html
+pageflow_prev_text: quote_property()
 ---
 
 # vnsprintf()

@@ -84,6 +84,24 @@ menu:
                 text: WriteProtectTab
                 relativeUrl: entities/WriteProtectTab.html
 
+    lists:
+        text: Lists
+        relativeUrl: lists/index.html
+
+        items:
+            home:
+                text: List Functions and Classes
+                relativeUrl: lists/index.html
+            TraverseArray:
+                text: TraverseArray
+                relativeUrl: lists/TraverseArray.html
+            TraverseList:
+                text: TraverseList
+                relativeUrl: lists/TraverseList.html
+            TraverseObject:
+                text: TraverseObject
+                relativeUrl: lists/TraverseObject.html
+
     strings:
         text: Strings
         relativeUrl: strings/index.html
@@ -92,6 +110,12 @@ menu:
             home:
                 text: String Functions and Classes
                 relativeUrl: strings/index.html
+            quote_index:
+                text: quote_index
+                relativeUrl: strings/quote_index.html
+            quote_property:
+                text: quote_property
+                relativeUrl: strings/quote_property.html
             vnsprintf:
                 text: vnsprintf
                 relativeUrl: strings/vnsprintf.html
@@ -155,6 +179,9 @@ menu:
             GetStringTypes:
                 text: GetStringTypes
                 relativeUrl: types/GetStringTypes.html
+            is_stringy:
+                text: is_stringy
+                relativeUrl: types/is_stringy.html
             StripNamespace:
                 text: StripNamespace
                 relativeUrl: types/StripNamespace.html

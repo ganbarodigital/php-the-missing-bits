@@ -203,6 +203,38 @@ function get_string_types($item)
 }
 
 /**
+ * is $item something that PHP will accept as a string?
+ *
+ * @param  mixed $item
+ *         the variable to examine
+ * @return boolean
+ *         TRUE if PHP will happily use $item as a string
+ *         FALSE otherwise
+ */
+function is_stringy($item)
+{
+    // PHP will auto-convert these to strings without generating
+    // any errors
+    if (is_string($item) || is_int($item) || is_double($item)) {
+        return true;
+    }
+
+    // depends if the object has the __toString() method or not
+    if (is_object($item)) {
+        return method_exists($item, '__toString');
+    }
+
+    // there's no point turning these into strings
+    // 
+    // NULL
+    // array
+    // boolean
+    // callable
+    // resource
+    return false;
+}
+
+/**
  * get the name of a class, minus its namespace
  *
  * @param  string|object $item

@@ -10,7 +10,24 @@ pageflow_next_text: Contributing
 
 ## develop branch
 
-Nothing yet.
+## v1.8.0
+
+Released Sun 31st July 2016.
+
+### New
+
+* Added support for iterating over lists
+  - added `traverse_array()`
+  - added `TraverseArray::using()`
+  - added `traverse_list()`
+  - added `TraverseList::using()`
+  - added `traverse_object()`
+  - added `TraverseObject::using()`
+* Added additional type inspections
+  - added `is_stringy()`
+* Additional string functions to help build PHP code snippets
+  - added `quote_index()`
+  - added `quote_property()`
 
 ## v1.7.0
 
