@@ -10,7 +10,7 @@ pageflow_next_text: GetStrictTypes class
 # GetPrintableType
 
 <div class="callout info" markdown="1">
-Since version 1.1.0.
+Since version 1.1.0
 </div>
 
 ## Description

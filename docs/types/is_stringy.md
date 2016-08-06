@@ -1,16 +1,16 @@
 ---
 currentSection: types
 currentItem: is_stringy
-pageflow_prev_url: GetStringTypes.html
-pageflow_prev_text: GetStringTypes class
+pageflow_prev_url: IsListyObject.html
+pageflow_prev_text: IsListyObject class
 pageflow_next_url: StripNamespace.html
 pageflow_next_text: StripNamespace class
 ---
 
 # is_stringy()
 
-<div class="callout warning">
-Not yet in a tagged release
+<div class="callout info">
+Since v1.8.0
 </div>
 
 ## Description

@@ -10,7 +10,7 @@ pageflow_next_text: quote_property()
 # quote_index()
 
 <div class="callout info" markdown="1">
-Since version 1.8.0
+Since v1.8.0
 </div>
 
 ## Description

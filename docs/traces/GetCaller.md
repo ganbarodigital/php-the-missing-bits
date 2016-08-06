@@ -7,7 +7,7 @@ pageflow_next_url: StackFrame.html
 pageflow_next_text: StackFrame class
 ---
 
-# GetPrintableType
+# GetCaller
 
 <div class="callout info">
 Since v1.4.0

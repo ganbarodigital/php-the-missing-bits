@@ -10,7 +10,7 @@ pageflow_next_text: is_stringy()
 # IsListyObject
 
 <div class="callout info" markdown="1">
-Since version 1.9.0
+Since v1.9.0
 </div>
 
 ## Description
