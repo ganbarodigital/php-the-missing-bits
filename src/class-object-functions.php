@@ -126,3 +126,41 @@ function has_class_props($target, $filter = ReflectionProperty::IS_PUBLIC)
     // if we get here, then the class has no static properties
     return false;
 }
+
+/**
+ * does an object have properties?
+ *
+ * @param  object  $target
+ *         the object to examine
+ * @param  int $filter
+ *         the kind of properties to look for
+ *         default is to look for public properties only
+ * @return boolean
+ *         TRUE if $target is an object with properties
+ *         FALSE otherwise
+ */
+function has_object_props($target, $filter = ReflectionProperty::IS_PUBLIC)
+{
+    // robustness!!
+    if (!is_object($target)) {
+        return false;
+    }
+
+    // use PHP reflection to get the most accurate results
+    $refObj = new ReflectionObject($target);
+    $refProps = $refObj->getProperties($filter);
+
+    // what did we get?
+    if (!is_array($refProps) || count($refProps) === 0) {
+        return false;
+    }
+    
+    // ReflectionObject::getProperties() will return static properties too :(
+    foreach ($refProps as $refProp) {
+        if (!$refProp->isStatic()) {
+            return true;
+        }
+    }
+
+    return false;
+}

@@ -15,6 +15,7 @@ pageflow_next_text: Contributing
 * Added support for inspecting class and object properties
   - added `get_class_props()`
   - added `has_class_props()`
+  - added `has_object_props()`
 
 ## v1.9.0
 
