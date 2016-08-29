@@ -85,3 +85,44 @@ function get_class_props($target, $filter = ReflectionProperty::IS_PUBLIC)
     // all done
     return $retval;
 }
+
+/**
+ * does a class have static properties?
+ *
+ * @param  string $target
+ *         the class to examine
+ * @param  int $filter
+ *         the kind of properties to look for
+ *         default is to look for public properties only
+ * @return boolean
+ *         TRUE if $target is a class with static properties
+ *         FALSE otherwise
+ */
+function has_class_props($target, $filter = ReflectionProperty::IS_PUBLIC)
+{
+    // robustness!!
+    if (!is_stringy($target)) {
+        throw new InvalidArgumentException('$target is not a string, is a ' . get_printable_type($target));
+    }
+
+    // make sure we have a valid class
+    if (!class_exists($target) && !interface_exists($target)) {
+        throw new InvalidArgumentException("class/interface '" . $target . "' not found");
+    }
+
+    // use PHP reflection to get the most accurate results
+    $refObj = new ReflectionClass($target);
+    $refProps = $refObj->getProperties($filter + ReflectionProperty::IS_STATIC);
+
+    // what did we get?
+    foreach ($refProps as $refProp) {
+        // ReflectionClass::getProperties() will return non-static properties
+        // too, and we have to filter them out manually :(
+        if ($refProp->isStatic()) {
+            return true;
+        }
+    }
+
+    // if we get here, then the class has no static properties
+    return false;
+}
