@@ -63,6 +63,24 @@ menu:
                 text: array_merge_keys
                 relativeUrl: arrays/array_merge_keys.html
 
+    classes-objects:
+        text: Classes and Objects
+        relativeUrl: classes-objects/index.html
+
+        items:
+            home:
+                text: Class and Object Functions
+                relativeUrl: classes-objects/index.html
+            get_class_props:
+                text: get_class_props()
+                relativeUrl: classes-objects/get_class_props.html
+            has_class_props:
+                text: has_class_props()
+                relativeUrl: classes-objects/has_class_props.html
+            has_object_props:
+                text: has_object_props()
+                relativeUrl: classes-objects/has_object_props.html
+
     entities:
         text: Entities
         relativeUrl: entities/index.html
