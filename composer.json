@@ -24,6 +24,7 @@
         },
         "files": [
             "src/array-functions.php",
+            "src/class-object-functions.php",
             "src/list-functions.php",
             "src/string-functions.php",
             "src/trace-functions.php",

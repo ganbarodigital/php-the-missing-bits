@@ -10,6 +10,11 @@ pageflow_next_text: Contributing
 
 ## develop branch
 
+### New
+
+* Added support for inspecting class and object properties
+  - added `get_class_props()`
+
 ## v1.9.0
 
 Released Sun 31st July 2016.
