@@ -16,6 +16,7 @@ pageflow_next_text: Contributing
   - added `get_class_props()`
   - added `has_class_props()`
   - added `has_object_props()`
+  - added `FilterClassProperties::from()`
   - added `FilterProperties` helper class
 
 ## v1.9.0
