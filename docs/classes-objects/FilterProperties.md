@@ -1,8 +1,8 @@
 ---
 currentSection: classes-objects
 currentItem: FilterProperties
-pageflow_prev_url: FilterClassProperties.html
-pageflow_prev_text: FilterClassProperties class
+pageflow_prev_url: FilterObjectProperties.html
+pageflow_prev_text: FilterObjectProperties class
 ---
 
 # FilterProperties
