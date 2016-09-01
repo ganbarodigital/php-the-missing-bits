@@ -20,6 +20,7 @@ pageflow_next_text: Contributing
   - added `FilterObjectProperties::from()`
   - added `FilterProperties` helper class
   - added `HasClassProperties::check()`
+  - added `HasObjectProperties::check()`
   - added `HasFilteredProperties` helper class
   - added `IsClassProperty` helper class
   - added `IsObjectProperty` helper class

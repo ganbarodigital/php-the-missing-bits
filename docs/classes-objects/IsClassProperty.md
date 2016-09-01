@@ -1,8 +1,8 @@
 ---
 currentSection: classes-objects
 currentItem: IsClassProperty
-pageflow_prev_url: HasFilteredProperties.html
-pageflow_prev_text: HasFilteredProperties class
+pageflow_prev_url: HasObjectProperties.html
+pageflow_prev_text: HasObjectProperties class
 pageflow_next_url: IsObjectProperty.html
 pageflow_next_text: IsObjectProperty class
 ---

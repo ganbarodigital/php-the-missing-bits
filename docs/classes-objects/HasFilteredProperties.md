@@ -3,8 +3,8 @@ currentSection: classes-objects
 currentItem: HasFilteredProperties
 pageflow_prev_url: HasClassProperties.html
 pageflow_prev_text: HasClassProperties class
-pageflow_next_url: IsClassProperty.html
-pageflow_next_text: IsClassProperty class
+pageflow_next_url: HasObjectProperties.html
+pageflow_next_text: HasObjectProperties class
 ---
 
 # HasFilteredProperties()
