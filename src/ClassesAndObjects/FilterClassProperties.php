@@ -77,7 +77,7 @@ class FilterClassProperties
         // if we get here, then we want to do this
         $refObj = new ReflectionClass($target);
         $resultFilter = function(ReflectionProperty $refProp, &$finalResult) {
-            if (!$refProp->isStatic()) {
+            if (!IsClassProperty::check($refProp)) {
                 return;
             }
 
