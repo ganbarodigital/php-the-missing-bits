@@ -41,10 +41,10 @@
  * @link      http://ganbarodigital.github.io/php-the-missing-bits
  */
 
-class has_object_propsTest extends PHPUnit_Framework_TestCase
+class has_object_propertiesTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @covers ::has_object_props
+     * @covers ::has_object_properties
      */
     public function test_returns_false_if_object_has_no_non_static_properties()
     {
@@ -54,7 +54,7 @@ class has_object_propsTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = has_object_props(new has_object_propsTest_NoNonStaticProperties);
+        $actualResult = has_object_properties(new has_object_propertiesTest_NoNonStaticProperties);
 
         // ----------------------------------------------------------------
         // test the results
@@ -63,7 +63,7 @@ class has_object_propsTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::has_object_props
+     * @covers ::has_object_properties
      */
     public function test_returns_true_if_object_has_non_static_properties()
     {
@@ -73,7 +73,7 @@ class has_object_propsTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = has_object_props(new has_object_propsTest_SeveralNonStaticProperties);
+        $actualResult = has_object_properties(new has_object_propertiesTest_SeveralNonStaticProperties);
 
         // ----------------------------------------------------------------
         // test the results
@@ -82,51 +82,66 @@ class has_object_propsTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::has_object_props
+     * @covers ::has_object_properties
      * @dataProvider provideNonObjects
      */
-    public function test_returns_false_for_non_objects($target)
+    public function test_throws_InvalidArgumentException_for_non_objects($target, $expectedType)
     {
         // ----------------------------------------------------------------
         // setup your test
 
+        $expectedMessage = '$target is not an object, is a ' . $expectedType;
+        $actualMessage = null;
+
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = has_object_props($target);
+        try {
+            has_object_properties($target);
+        }
+        catch (InvalidArgumentException $e) {
+            $actualMessage = $e->getMessage();
+        }
 
         // ----------------------------------------------------------------
         // test the results
 
-        $this->assertFalse($actualResult);
+        // this will only pass:
+        //
+        // 1 - if an exception was thrown at all, and
+        // 2 - if the exception contained the correct message
+        //
+        // this helps us catch cases where the right exception is being
+        // thrown for other reasons
+        $this->assertEquals($expectedMessage, $actualMessage);
     }
 
     public function provideNonObjects()
     {
         return [
-            [ null ],
-            [ [] ],
-            [ true ],
-            [ false ],
-            [ 0.0 ],
-            [ -100.0 ],
-            [ 100.0 ],
-            [ 3.1415927 ],
-            [ 0 ],
-            [ -100 ],
-            [ 100 ],
-            [ STDIN ],
-            [ 'doesNotExist' ],
+            [ null, 'NULL' ],
+            [ [], 'array' ],
+            [ true, 'boolean<true>' ],
+            [ false, 'boolean<false>' ],
+            [ 0.0, 'double<0>' ],
+            [ -100.0, 'double<-100>' ],
+            [ 100.0, 'double<100>' ],
+            [ 3.1415927, 'double<3.1415927>' ],
+            [ 0, 'integer<0>' ],
+            [ -100, 'integer<-100>' ],
+            [ 100, 'integer<100>' ],
+            [ STDIN, 'resource' ],
+            [ 'doesNotExist', 'string<doesNotExist>' ],
         ];
     }
 }
 
-class has_object_propsTest_NoNonStaticProperties
+class has_object_propertiesTest_NoNonStaticProperties
 {
     public static $staticProp1 = 1;
 }
 
-class has_object_propsTest_SeveralNonStaticProperties
+class has_object_propertiesTest_SeveralNonStaticProperties
 {
     public $objProp1 = 1;
     public $objProp2 = 2;

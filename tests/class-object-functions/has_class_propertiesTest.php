@@ -41,12 +41,12 @@
  * @link      http://ganbarodigital.github.io/php-the-missing-bits
  */
 
-class get_class_propsTest extends PHPUnit_Framework_TestCase
+class has_class_propertiesTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @covers ::get_class_props
+     * @covers ::has_class_properties
      */
-    public function test_returns_empty_array_if_class_has_no_static_properties()
+    public function test_returns_false_if_class_has_no_static_properties()
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -54,43 +54,73 @@ class get_class_propsTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = get_class_props(get_class_propsTest_NoStaticProperties::class);
+        $actualResult = has_class_properties(has_class_propertiesTest_NoStaticProperties::class);
 
         // ----------------------------------------------------------------
         // test the results
 
-        $this->assertTrue(is_array($actualResult));
-        $this->assertEquals(0, count($actualResult));
+        $this->assertFalse($actualResult);
     }
 
     /**
-     * @covers ::get_class_props
+     * @covers ::has_class_properties
      */
-    public function test_returns_list_of_static_properties()
+    public function test_returns_true_if_class_has_static_properties()
     {
         // ----------------------------------------------------------------
         // setup your test
 
-        $expectedResult = [
-            'staticProp1' => 1,
-            'staticProp2' => 2,
-            'staticProp3' => 3,
-            'staticProp4' => null,
-        ];
-
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = get_class_props('get_class_propsTest_SeveralStaticProperties');
+        $actualResult = has_class_properties('has_class_propertiesTest_SeveralStaticProperties');
 
         // ----------------------------------------------------------------
         // test the results
 
-        $this->assertEquals($expectedResult, $actualResult);
+        $this->assertTrue($actualResult);
     }
 
     /**
-     * @covers ::get_class_props
+     * @covers ::has_class_properties
+     */
+    public function test_returns_true_if_parent_class_has_static_properties()
+    {
+        // ----------------------------------------------------------------
+        // setup your test
+
+        // ----------------------------------------------------------------
+        // perform the change
+
+        $actualResult = has_class_properties(has_class_propertiesTest_ChildOfStaticProperties::class);
+
+        // ----------------------------------------------------------------
+        // test the results
+
+        $this->assertTrue($actualResult);
+    }
+
+    /**
+     * @covers ::has_class_properties
+     */
+    public function test_returns_true_if_class_uses_traits_that_have_static_properties()
+    {
+        // ----------------------------------------------------------------
+        // setup your test
+
+        // ----------------------------------------------------------------
+        // perform the change
+
+        $actualResult = has_class_properties(has_class_propertiesTest_UsesTraitWithStaticProperties::class);
+
+        // ----------------------------------------------------------------
+        // test the results
+
+        $this->assertTrue($actualResult);
+    }
+
+    /**
+     * @covers ::has_class_properties
      * @dataProvider provideNonStrings
      */
     public function test_throws_InvalidArgumentException_for_non_strings($target, $expectedType)
@@ -105,7 +135,7 @@ class get_class_propsTest extends PHPUnit_Framework_TestCase
         // perform the change
 
         try {
-            get_class_props($target);
+            has_class_properties($target);
         }
         catch (InvalidArgumentException $e) {
             $actualMessage = $e->getMessage();
@@ -125,7 +155,7 @@ class get_class_propsTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::get_class_props
+     * @covers ::has_class_properties
      * @dataProvider provideNonClassStrings
      */
     public function test_throws_InvalidArgumentException_if_target_is_not_valid_classname($invalidClassname, $classAsString)
@@ -140,7 +170,7 @@ class get_class_propsTest extends PHPUnit_Framework_TestCase
         // perform the change
 
         try {
-            get_class_props($invalidClassname);
+            has_class_properties($invalidClassname);
         }
         catch (InvalidArgumentException $e) {
             $actualMessage = $e->getMessage();
@@ -176,17 +206,17 @@ class get_class_propsTest extends PHPUnit_Framework_TestCase
             [ -100, '-100' ],
             [ 100, '100' ],
             [ 'doesNotExist', 'doesNotExist'],
-            [ new get_class_propsTest_Stringy(), 'doesNotExist' ],
+            [ new has_class_propertiesTest_Stringy(), 'doesNotExist' ],
         ];
     }
 }
 
-class get_class_propsTest_NoStaticProperties
+class has_class_propertiesTest_NoStaticProperties
 {
     public $objProp1 = 1;
 }
 
-class get_class_propsTest_SeveralStaticProperties
+class has_class_propertiesTest_SeveralStaticProperties
 {
     public static $staticProp1 = 1;
     public static $staticProp2 = 2;
@@ -196,7 +226,32 @@ class get_class_propsTest_SeveralStaticProperties
     public $objProp1 = 1;
 }
 
-class get_class_propsTest_Stringy
+class has_class_propertiesTest_ChildOfStaticProperties extends has_class_propertiesTest_SeveralStaticProperties
+{
+
+}
+
+trait has_class_propertiesTest_TraitWithStaticProperty
+{
+    public static $staticTraitProp1 = 1;
+}
+
+trait has_class_propertiesTest_ChildTraitOfStaticProperties
+{
+    use has_class_propertiesTest_TraitWithStaticProperty;
+}
+
+class has_class_propertiesTest_UsesTraitWithStaticProperties
+{
+    use has_class_propertiesTest_ChildTraitOfStaticProperties;
+}
+
+class has_class_propertiesTest_ChildOfStaticsWithStaticTraits extends has_class_propertiesTest_SeveralStaticProperties
+{
+    use has_class_propertiesTest_ChildTraitOfStaticProperties;
+}
+
+class has_class_propertiesTest_Stringy
 {
     public function __toString()
     {

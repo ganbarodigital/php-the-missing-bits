@@ -41,12 +41,12 @@
  * @link      http://ganbarodigital.github.io/php-the-missing-bits
  */
 
-class has_class_propsTest extends PHPUnit_Framework_TestCase
+class get_class_propertiesTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @covers ::has_class_props
+     * @covers ::get_class_properties
      */
-    public function test_returns_false_if_class_has_no_static_properties()
+    public function test_returns_empty_array_if_class_has_no_static_properties()
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -54,35 +54,119 @@ class has_class_propsTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = has_class_props(has_class_propsTest_NoStaticProperties::class);
+        $actualResult = get_class_properties(get_class_propertiesTest_NoStaticProperties::class);
 
         // ----------------------------------------------------------------
         // test the results
 
-        $this->assertFalse($actualResult);
+        $this->assertTrue(is_array($actualResult));
+        $this->assertEquals(0, count($actualResult));
     }
 
     /**
-     * @covers ::has_class_props
+     * @covers ::get_class_properties
      */
-    public function test_returns_true_if_class_has_static_properties()
+    public function test_returns_list_of_static_properties()
     {
         // ----------------------------------------------------------------
         // setup your test
 
+        $expectedResult = [
+            'staticProp1' => 1,
+            'staticProp2' => 2,
+            'staticProp3' => 3,
+            'staticProp4' => null,
+        ];
+
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = has_class_props('has_class_propsTest_SeveralStaticProperties');
+        $actualResult = get_class_properties(get_class_propertiesTest_SeveralStaticProperties::class);
 
         // ----------------------------------------------------------------
         // test the results
 
-        $this->assertTrue($actualResult);
+        $this->assertEquals($expectedResult, $actualResult);
     }
 
     /**
-     * @covers ::has_class_props
+     * @covers ::get_class_properties
+     */
+    public function test_returned_list_includes_parent_classes_static_properties()
+    {
+        // ----------------------------------------------------------------
+        // setup your test
+
+        $expectedResult = [
+            'staticProp1' => 1,
+            'staticProp2' => 2,
+            'staticProp3' => 3,
+            'staticProp4' => 4,
+        ];
+
+        // ----------------------------------------------------------------
+        // perform the change
+
+        $actualResult = get_class_properties(get_class_propertiesTest_ChildOfStaticProperties::class);
+
+        // ----------------------------------------------------------------
+        // test the results
+
+        $this->assertEquals($expectedResult, $actualResult);
+    }
+
+    /**
+     * @covers ::get_class_properties
+     */
+    public function test_returned_list_includes_traits_static_properties()
+    {
+        // ----------------------------------------------------------------
+        // setup your test
+
+        $expectedResult = [
+            'staticTraitProp1' => 1,
+        ];
+
+        // ----------------------------------------------------------------
+        // perform the change
+
+        $actualResult = get_class_properties(get_class_propertiesTest_UsesTraitWithStaticProperties::class);
+
+        // ----------------------------------------------------------------
+        // test the results
+
+        $this->assertEquals($expectedResult, $actualResult);
+    }
+
+    /**
+     * @covers ::get_class_properties
+     */
+    public function test_returned_list_includes_parent_classes_and_traits_static_properties()
+    {
+        // ----------------------------------------------------------------
+        // setup your test
+
+        $expectedResult = [
+            'staticProp1' => get_class_propertiesTest_ChildOfStaticsWithStaticTraits::$staticProp1,
+            'staticProp2' => get_class_propertiesTest_ChildOfStaticsWithStaticTraits::$staticProp2,
+            'staticProp3' => get_class_propertiesTest_ChildOfStaticsWithStaticTraits::$staticProp3,
+            'staticProp4' => get_class_propertiesTest_ChildOfStaticsWithStaticTraits::$staticProp4,
+            'staticTraitProp1' => get_class_propertiesTest_ChildOfStaticsWithStaticTraits::$staticTraitProp1,
+        ];
+
+        // ----------------------------------------------------------------
+        // perform the change
+
+        $actualResult = get_class_properties(get_class_propertiesTest_ChildOfStaticsWithStaticTraits::class);
+
+        // ----------------------------------------------------------------
+        // test the results
+
+        $this->assertEquals($expectedResult, $actualResult);
+    }
+
+    /**
+     * @covers ::get_class_properties
      * @dataProvider provideNonStrings
      */
     public function test_throws_InvalidArgumentException_for_non_strings($target, $expectedType)
@@ -97,7 +181,7 @@ class has_class_propsTest extends PHPUnit_Framework_TestCase
         // perform the change
 
         try {
-            has_class_props($target);
+            get_class_properties($target);
         }
         catch (InvalidArgumentException $e) {
             $actualMessage = $e->getMessage();
@@ -117,7 +201,7 @@ class has_class_propsTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::has_class_props
+     * @covers ::get_class_properties
      * @dataProvider provideNonClassStrings
      */
     public function test_throws_InvalidArgumentException_if_target_is_not_valid_classname($invalidClassname, $classAsString)
@@ -132,7 +216,7 @@ class has_class_propsTest extends PHPUnit_Framework_TestCase
         // perform the change
 
         try {
-            has_class_props($invalidClassname);
+            get_class_properties($invalidClassname);
         }
         catch (InvalidArgumentException $e) {
             $actualMessage = $e->getMessage();
@@ -168,17 +252,17 @@ class has_class_propsTest extends PHPUnit_Framework_TestCase
             [ -100, '-100' ],
             [ 100, '100' ],
             [ 'doesNotExist', 'doesNotExist'],
-            [ new has_class_propsTest_Stringy(), 'doesNotExist' ],
+            [ new get_class_propertiesTest_Stringy(), 'doesNotExist' ],
         ];
     }
 }
 
-class has_class_propsTest_NoStaticProperties
+class get_class_propertiesTest_NoStaticProperties
 {
     public $objProp1 = 1;
 }
 
-class has_class_propsTest_SeveralStaticProperties
+class get_class_propertiesTest_SeveralStaticProperties
 {
     public static $staticProp1 = 1;
     public static $staticProp2 = 2;
@@ -188,7 +272,42 @@ class has_class_propsTest_SeveralStaticProperties
     public $objProp1 = 1;
 }
 
-class has_class_propsTest_Stringy
+class get_class_propertiesTest_ChildOfStaticProperties extends get_class_propertiesTest_SeveralStaticProperties
+{
+    public static $staticProp4 = 4;
+}
+
+trait get_class_propertiesTest_Trait1WithStaticProperty
+{
+    public static $staticTraitProp1 = 1;
+}
+
+trait get_class_propertiesTest_Trait2WithStaticProperty
+{
+    public static $staticTraitProp1 = 2;
+}
+
+trait get_class_propertiesTest_ChildTraitOfStaticProperties
+{
+    use get_class_propertiesTest_Trait1WithStaticProperty;
+}
+
+class get_class_propertiesTest_UsesTraitWithStaticProperties
+{
+    use get_class_propertiesTest_ChildTraitOfStaticProperties;
+}
+
+class get_class_propertiesTest_ParentWithStaticTraits extends get_class_propertiesTest_SeveralStaticProperties
+{
+    use get_class_propertiesTest_Trait2WithStaticProperty;
+}
+
+class get_class_propertiesTest_ChildOfStaticsWithStaticTraits extends get_class_propertiesTest_ParentWithStaticTraits
+{
+    use get_class_propertiesTest_Trait2WithStaticProperty;
+}
+
+class get_class_propertiesTest_Stringy
 {
     public function __toString()
     {

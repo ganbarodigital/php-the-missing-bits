@@ -34,19 +34,24 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *
  * @category  Libraries
- * @package   MissingBits/ArrayFunctions
+ * @package   MissingBits/ClassesAndObjects
  * @author    Stuart Herbert <stuherbert@ganbarodigital.com>
  * @copyright 2016-present Ganbaro Digital Ltd www.ganbarodigital.com
  * @license   http://www.opensource.org/licenses/bsd-license.php  BSD License
  * @link      http://ganbarodigital.github.io/php-the-missing-bits
  */
 
+use GanbaroDigital\MissingBits\ClassesAndObjects\FilterClassProperties;
+use GanbaroDigital\MissingBits\ClassesAndObjects\FilterObjectProperties;
+use GanbaroDigital\MissingBits\ClassesAndObjects\HasClassProperties;
+use GanbaroDigital\MissingBits\ClassesAndObjects\HasObjectProperties;
+
 /**
  * get a class's static properties
  *
  * @param  string $target
  *         the class to examine
- * @param  int $filter
+ * @param  int $propTypes
  *         the kind of properties to look for
  *         default is to look for public properties only
  * @return array
@@ -54,36 +59,10 @@
  * @throws InvalidArgumentException
  *         if $target is not a valid class name
  */
-function get_class_props($target, $filter = ReflectionProperty::IS_PUBLIC)
+function get_class_properties($target, $propTypes = ReflectionProperty::IS_PUBLIC)
 {
-    // robustness!!
-    if (!is_stringy($target)) {
-        throw new InvalidArgumentException('$target is not a string, is a ' . get_printable_type($target));
-    }
-
-    // make sure we have a valid class
-    if (!class_exists($target) && !interface_exists($target)) {
-        throw new InvalidArgumentException("class/interface '" . $target . "' not found");
-    }
-
-    // use PHP reflection to get the most accurate results
-    $refObj = new ReflectionClass($target);
-    $refProps = $refObj->getProperties($filter + ReflectionProperty::IS_STATIC);
-
-    // what did we get?
-    $retval = [];
-    foreach ($refProps as $refProp) {
-        // ReflectionClass::getProperties() will return non-static properties
-        // too, and we have to filter them out manually :(
-        if (!$refProp->isStatic()) {
-            continue;
-        }
-        $refProp->setAccessible(true);
-        $retval[$refProp->getName()] = $refProp->getValue();
-    }
-
-    // all done
-    return $retval;
+    // our helper class has all the answers
+    return FilterClassProperties::from($target, $propTypes);
 }
 
 /**
@@ -91,40 +70,35 @@ function get_class_props($target, $filter = ReflectionProperty::IS_PUBLIC)
  *
  * @param  string $target
  *         the class to examine
- * @param  int $filter
+ * @param  int $propTypes
  *         the kind of properties to look for
  *         default is to look for public properties only
  * @return boolean
  *         TRUE if $target is a class with static properties
  *         FALSE otherwise
  */
-function has_class_props($target, $filter = ReflectionProperty::IS_PUBLIC)
+function has_class_properties($target, $propTypes = ReflectionProperty::IS_PUBLIC)
 {
-    // robustness!!
-    if (!is_stringy($target)) {
-        throw new InvalidArgumentException('$target is not a string, is a ' . get_printable_type($target));
-    }
+    return HasClassProperties::check($target, $propTypes);
+}
 
-    // make sure we have a valid class
-    if (!class_exists($target) && !interface_exists($target)) {
-        throw new InvalidArgumentException("class/interface '" . $target . "' not found");
-    }
-
-    // use PHP reflection to get the most accurate results
-    $refObj = new ReflectionClass($target);
-    $refProps = $refObj->getProperties($filter + ReflectionProperty::IS_STATIC);
-
-    // what did we get?
-    foreach ($refProps as $refProp) {
-        // ReflectionClass::getProperties() will return non-static properties
-        // too, and we have to filter them out manually :(
-        if ($refProp->isStatic()) {
-            return true;
-        }
-    }
-
-    // if we get here, then the class has no static properties
-    return false;
+/**
+ * get an object's properties
+ *
+ * @param  object $target
+ *         the object to examine
+ * @param  int $propTypes
+ *         the kind of properties to look for
+ *         default is to look for public properties only
+ * @return array
+ *         a (possibly empty) read-only list of the class's static properties
+ * @throws InvalidArgumentException
+ *         if $target is not an object
+ */
+function get_object_properties($target, $propTypes = ReflectionProperty::IS_PUBLIC)
+{
+    // our helper class has all the answers
+    return FilterObjectProperties::from($target, $propTypes);
 }
 
 /**
@@ -132,35 +106,14 @@ function has_class_props($target, $filter = ReflectionProperty::IS_PUBLIC)
  *
  * @param  object  $target
  *         the object to examine
- * @param  int $filter
+ * @param  int $propTypes
  *         the kind of properties to look for
  *         default is to look for public properties only
  * @return boolean
  *         TRUE if $target is an object with properties
  *         FALSE otherwise
  */
-function has_object_props($target, $filter = ReflectionProperty::IS_PUBLIC)
+function has_object_properties($target, $propTypes = ReflectionProperty::IS_PUBLIC)
 {
-    // robustness!!
-    if (!is_object($target)) {
-        return false;
-    }
-
-    // use PHP reflection to get the most accurate results
-    $refObj = new ReflectionObject($target);
-    $refProps = $refObj->getProperties($filter);
-
-    // what did we get?
-    if (!is_array($refProps) || count($refProps) === 0) {
-        return false;
-    }
-    
-    // ReflectionObject::getProperties() will return static properties too :(
-    foreach ($refProps as $refProp) {
-        if (!$refProp->isStatic()) {
-            return true;
-        }
-    }
-
-    return false;
+    return HasObjectProperties::check($target, $propTypes);
 }
