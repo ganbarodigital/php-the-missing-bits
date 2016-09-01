@@ -69,17 +69,41 @@ menu:
 
         items:
             home:
-                text: Class and Object Functions
+                text: Classes and Objects
                 relativeUrl: classes-objects/index.html
-            get_class_props:
-                text: get_class_props()
-                relativeUrl: classes-objects/get_class_props.html
-            has_class_props:
-                text: has_class_props()
-                relativeUrl: classes-objects/has_class_props.html
-            has_object_props:
-                text: has_object_props()
-                relativeUrl: classes-objects/has_object_props.html
+            get_class_properties:
+                text: get_class_properties()
+                relativeUrl: classes-objects/get_class_properties.html
+            has_class_properties:
+                text: has_class_properties()
+                relativeUrl: classes-objects/has_class_properties.html
+            has_object_properties:
+                text: has_object_properties()
+                relativeUrl: classes-objects/has_object_properties.html
+            FilterClassProperties:
+                text: FilterClassProperties
+                relativeUrl: classes-objects/FilterClassProperties.html
+            FilterObjectProperties:
+                text: FilterObjectProperties
+                relativeUrl: classes-objects/FilterObjectProperties.html
+            FilterProperties:
+                text: FilterProperties
+                relativeUrl: classes-objects/FilterProperties.html
+            HasClassProperties:
+                text: HasClassProperties
+                relativeUrl: classes-objects/HasClassProperties.html
+            HasFilteredProperties:
+                text: HasFilteredProperties
+                relativeUrl: classes-objects/HasFilteredProperties.html
+            HasObjectProperties:
+                text: HasObjectProperties
+                relativeUrl: classes-objects/HasObjectProperties.html
+            IsClassProperty:
+                text: IsClassProperty
+                relativeUrl: classes-objects/IsClassProperty.html
+            IsObjectProperty:
+                text: IsObjectProperty
+                relativeUrl: classes-objects/IsObjectProperty.html
 
     entities:
         text: Entities
