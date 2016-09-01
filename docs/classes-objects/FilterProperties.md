@@ -3,6 +3,8 @@ currentSection: classes-objects
 currentItem: FilterProperties
 pageflow_prev_url: FilterObjectProperties.html
 pageflow_prev_text: FilterObjectProperties class
+pageflow_next_url: HasFilteredProperties.html
+pageflow_next_text: HasFilteredProperties class
 ---
 
 # FilterProperties
