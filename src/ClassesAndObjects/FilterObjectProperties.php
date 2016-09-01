@@ -73,7 +73,7 @@ class FilterObjectProperties
         // if we get here, then we want to do this
         $refObj = new ReflectionObject($target);
         $resultFilter = function(ReflectionProperty $refProp, &$finalResult) use($target) {
-            if ($refProp->isStatic()) {
+            if (!IsObjectProperty::check($refProp)) {
                 return;
             }
 
