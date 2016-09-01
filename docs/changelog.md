@@ -19,6 +19,7 @@ pageflow_next_text: Contributing
   - added `FilterClassProperties::from()`
   - added `FilterObjectProperties::from()`
   - added `FilterProperties` helper class
+  - added `IsClassProperty` helper class
 
 ## v1.9.0
 
