@@ -24,6 +24,7 @@ Function | Purpose
 
 Function | Purpose
 ---------|--------
+[`get_object_properties()`](get_object_properties.html) | return the non-static properties of an object
 [`has_object_properties()`](has_object_properties.html) | does the object have non-static properties at all?
 
 ## Available Classes

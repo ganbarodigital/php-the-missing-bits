@@ -14,6 +14,7 @@ pageflow_next_text: Contributing
 
 * Added support for inspecting class and object properties
   - added `get_class_properties()`
+  - added `get_object_properties()`
   - added `has_class_properties()`
   - added `has_object_properties()`
   - added `FilterClassProperties::from()`

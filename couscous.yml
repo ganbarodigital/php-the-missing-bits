@@ -74,6 +74,9 @@ menu:
             get_class_properties:
                 text: get_class_properties()
                 relativeUrl: classes-objects/get_class_properties.html
+            get_object_properties:
+                text: get_object_properties()
+                relativeUrl: classes-objects/get_object_properties.html
             has_class_properties:
                 text: has_class_properties()
                 relativeUrl: classes-objects/has_class_properties.html

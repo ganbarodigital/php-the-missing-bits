@@ -3,8 +3,8 @@ currentSection: classes-objects
 currentItem: get_class_properties
 pageflow_prev_url: index.html
 pageflow_prev_text: Classes and Objects
-pageflow_next_url: has_class_properties.html
-pageflow_next_text: has_class_properties()
+pageflow_next_url: get_object_properties.html
+pageflow_next_text: get_object_properties()
 ---
 
 # get_class_properties()
