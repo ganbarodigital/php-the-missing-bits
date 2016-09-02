@@ -43,6 +43,8 @@
 
  namespace GanbaroDigitalTest\MissingBits\ClassesAndObjects;
 
+ use GanbaroDigital\Defensive\V1\Interfaces\Check;
+ use GanbaroDigital\Defensive\V1\Interfaces\ListCheck;
  use GanbaroDigital\MissingBits\ClassesAndObjects\IsObjectProperty;
  use PHPUnit_Framework_TestCase;
  use ReflectionObject;
@@ -189,6 +191,103 @@ class IsObjectPropertyTest extends PHPUnit_Framework_TestCase
         // test the results
 
         $this->assertFalse($actualResult);
+    }
+
+    /**
+     * @coversNothing
+     */
+    public function test_is_Check()
+    {
+        // ----------------------------------------------------------------
+        // setup your test
+
+
+        // ----------------------------------------------------------------
+        // perform the change
+
+        $unit = new IsObjectProperty;
+
+        // ----------------------------------------------------------------
+        // test the results
+
+        $this->assertInstanceOf(Check::class, $unit);
+    }
+
+    /**
+     * @covers ::inspect
+     */
+    public function test_can_use_as_Check()
+    {
+        // ----------------------------------------------------------------
+        // setup your test
+
+        $target = new IsObjectPropertyTest_Target;
+        $refObj = new ReflectionObject($target);
+        $refProp = $refObj->getProperty('objPublic');
+
+        $unit = new IsObjectProperty;
+
+        // ----------------------------------------------------------------
+        // perform the change
+
+        $actualResult = $unit->inspect($refProp);
+
+        // ----------------------------------------------------------------
+        // test the results
+
+        $this->assertTrue($actualResult);
+    }
+
+    /**
+     * @coversNothing
+     */
+    public function test_is_ListCheck()
+    {
+        // ----------------------------------------------------------------
+        // setup your test
+
+
+        // ----------------------------------------------------------------
+        // perform the change
+
+        $unit = new IsObjectProperty;
+
+        // ----------------------------------------------------------------
+        // test the results
+
+        $this->assertInstanceOf(ListCheck::class, $unit);
+    }
+
+    /**
+     * @covers ::inspectList
+     * @covers ::checkList
+     */
+    public function test_can_use_as_ListCheck()
+    {
+        // ----------------------------------------------------------------
+        // setup your test
+
+        $target = new IsObjectPropertyTest_Target;
+        $refObj = new ReflectionObject($target);
+        $list = [
+            $refObj->getProperty('objPublic'),
+            $refObj->getProperty('objProtected'),
+            $refObj->getProperty('objPrivate')
+        ];
+
+        $unit = new IsObjectProperty;
+
+        // ----------------------------------------------------------------
+        // perform the change
+
+        $actualResult1 = $unit->inspectList($list);
+        $actualResult2 = IsObjectProperty::checkList($list);
+
+        // ----------------------------------------------------------------
+        // test the results
+
+        $this->assertTrue($actualResult1);
+        $this->assertTrue($actualResult2);
     }
 }
 
