@@ -43,12 +43,13 @@
 
 namespace GanbaroDigital\MissingBits\ClassesAndObjects;
 
+use GanbaroDigital\Defensive\V1\Interfaces\Check;
 use ReflectionProperty;
 
 /**
  * is this property a class property?
  */
-class IsClassProperty
+class IsClassProperty implements Check
 {
     /**
      * is this property a class property?
@@ -66,5 +67,22 @@ class IsClassProperty
         }
 
         return false;
+    }
+
+    /**
+     * is this property a class property?
+     *
+     * NOTE: we cannot add a type-hint to $refProp below, as that will cause
+     * a PHP Fatal Error
+     *
+     * @param  ReflectionProperty $refProp
+     *         the property to inspect
+     * @return bool
+     *         TRUE if $refProp is a class property
+     *         FALSE otherwise
+     */
+    public function inspect($refProp)
+    {
+        return static::check($refProp);
     }
 }

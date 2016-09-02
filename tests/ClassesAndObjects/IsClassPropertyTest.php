@@ -43,10 +43,11 @@
 
  namespace GanbaroDigitalTest\MissingBits\ClassesAndObjects;
 
- use GanbaroDigital\MissingBits\ClassesAndObjects\IsClassProperty;
- use PHPUnit_Framework_TestCase;
- use ReflectionClass;
- use ReflectionProperty;
+use GanbaroDigital\Defensive\V1\Interfaces\Check;
+use GanbaroDigital\MissingBits\ClassesAndObjects\IsClassProperty;
+use PHPUnit_Framework_TestCase;
+use ReflectionClass;
+use ReflectionProperty;
 
  /**
   * @coversDefaultClass GanbaroDigital\MissingBits\ClassesAndObjects\IsClassProperty
@@ -183,6 +184,50 @@ class IsClassPropertyTest extends PHPUnit_Framework_TestCase
         // test the results
 
         $this->assertFalse($actualResult);
+    }
+
+    /**
+     * @coversNothing
+     */
+    public function test_is_Check()
+    {
+        // ----------------------------------------------------------------
+        // setup your test
+
+
+        // ----------------------------------------------------------------
+        // perform the change
+
+        $unit = new IsClassProperty;
+
+        // ----------------------------------------------------------------
+        // test the results
+
+        $this->assertInstanceOf(Check::class, $unit);
+    }
+
+    /**
+     * @covers ::inspect
+     */
+    public function test_can_use_as_Check()
+    {
+        // ----------------------------------------------------------------
+        // setup your test
+
+        $refObj = new ReflectionClass(IsClassPropertyTest_Target::class);
+        $refProp = $refObj->getProperty('staticPublic');
+
+        $unit = new IsClassProperty;
+
+        // ----------------------------------------------------------------
+        // perform the change
+
+        $actualResult = $unit->inspect($refProp);
+
+        // ----------------------------------------------------------------
+        // test the results
+
+        $this->assertTrue($actualResult);
     }
 }
 
