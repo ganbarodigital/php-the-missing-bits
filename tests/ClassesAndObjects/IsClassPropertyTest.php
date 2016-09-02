@@ -44,6 +44,7 @@
  namespace GanbaroDigitalTest\MissingBits\ClassesAndObjects;
 
 use GanbaroDigital\Defensive\V1\Interfaces\Check;
+use GanbaroDigital\Defensive\V1\Interfaces\ListCheck;
 use GanbaroDigital\MissingBits\ClassesAndObjects\IsClassProperty;
 use PHPUnit_Framework_TestCase;
 use ReflectionClass;
@@ -228,6 +229,57 @@ class IsClassPropertyTest extends PHPUnit_Framework_TestCase
         // test the results
 
         $this->assertTrue($actualResult);
+    }
+
+    /**
+     * @coversNothing
+     */
+    public function test_is_ListCheck()
+    {
+        // ----------------------------------------------------------------
+        // setup your test
+
+
+        // ----------------------------------------------------------------
+        // perform the change
+
+        $unit = new IsClassProperty;
+
+        // ----------------------------------------------------------------
+        // test the results
+
+        $this->assertInstanceOf(ListCheck::class, $unit);
+    }
+
+    /**
+     * @covers ::inspectList
+     * @covers ::checkList
+     */
+    public function test_can_use_as_ListCheck()
+    {
+        // ----------------------------------------------------------------
+        // setup your test
+
+        $refObj = new ReflectionClass(IsClassPropertyTest_Target::class);
+        $list = [
+            $refObj->getProperty('staticPublic'),
+            $refObj->getProperty('staticProtected'),
+            $refObj->getProperty('staticPrivate')
+        ];
+
+        $unit = new IsClassProperty;
+
+        // ----------------------------------------------------------------
+        // perform the change
+
+        $actualResult1 = $unit->inspectList($list);
+        $actualResult2 = IsClassProperty::checkList($list);
+
+        // ----------------------------------------------------------------
+        // test the results
+
+        $this->assertTrue($actualResult1);
+        $this->assertTrue($actualResult2);
     }
 }
 

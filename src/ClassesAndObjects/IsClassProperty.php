@@ -43,14 +43,19 @@
 
 namespace GanbaroDigital\MissingBits\ClassesAndObjects;
 
+use GanbaroDigital\Defensive\V1\Checks\ListableCheck;
 use GanbaroDigital\Defensive\V1\Interfaces\Check;
+use GanbaroDigital\Defensive\V1\Interfaces\ListCheck;
 use ReflectionProperty;
 
 /**
  * is this property a class property?
  */
-class IsClassProperty implements Check
+class IsClassProperty implements Check, ListCheck
 {
+    // saves us having to implement inspectList() ourselves
+    use ListableCheck;
+
     /**
      * is this property a class property?
      *
@@ -84,5 +89,21 @@ class IsClassProperty implements Check
     public function inspect($refProp)
     {
         return static::check($refProp);
+    }
+
+    /**
+     * are all the properties in the list class properties?
+     *
+     * @param  mixed $list
+     *         the list of properties to inspect
+     * @return bool
+     *         TRUE if all the entries in the list are class
+     *         properties
+     *         FALSE otherwise
+     */
+    public static function checkList($list)
+    {
+        $check = new static();
+        return $check->inspectList($list);
     }
 }
