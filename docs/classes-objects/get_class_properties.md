@@ -44,5 +44,5 @@ If the class has no static properties, `get_class_properties()` returns an empty
 ## Notes
 
 * `get_class_properties()` will include all static properties defined by the class's parents, by any traits used by the class or its parents, and by any traits used by those traits.
-* `get_class_properties()` only works on classes. Use PHP's built-in `get_object_properties()` to check for non-static properties.
+* `get_class_properties()` only works on classes. Use [`get_object_properties()`](get_object_properties.html) to check for non-static properties.
 * `get_class_properties()` is a convenience wrapper around [`FilterClassProperties::from()`](FilterClassProperties.html)
