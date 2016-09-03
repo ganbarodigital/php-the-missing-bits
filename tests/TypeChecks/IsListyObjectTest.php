@@ -34,14 +34,14 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *
  * @category  Libraries
- * @package   MissingBits/TypeInspectors
+ * @package   MissingBits/TypeChecks
  * @author    Stuart Herbert <stuherbert@ganbarodigital.com>
  * @copyright 2016-present Ganbaro Digital Ltd www.ganbarodigital.com
  * @license   http://www.opensource.org/licenses/bsd-license.php  BSD License
  * @link      http://ganbarodigital.github.io/php-the-missing-bits
  */
 
-namespace GanbaroDigitalTest\MissingBits\TypeInspectors;
+namespace GanbaroDigitalTest\MissingBits\TypeChecks;
 
 use ArrayObject;
 use Closure;
@@ -49,41 +49,14 @@ use stdClass;
 use Traversable;
 use GanbaroDigital\MissingBits\Checks\Check;
 use GanbaroDigital\MissingBits\Checks\ListCheck;
-use GanbaroDigital\MissingBits\TypeInspectors\IsList;
+use GanbaroDigital\MissingBits\TypeChecks\IsListyObject;
 use PHPUnit_Framework_TestCase;
 
 /**
- * @coversDefaultClass GanbaroDigital\MissingBits\TypeInspectors\IsList
+ * @coversDefaultClass GanbaroDigital\MissingBits\TypeChecks\IsListyObject
  */
-class IsListTest extends PHPUnit_Framework_TestCase
+class IsListyObjectTest extends PHPUnit_Framework_TestCase
 {
-    /**
-     * @covers ::check
-     */
-    public function test_array_returns_true()
-    {
-        // ----------------------------------------------------------------
-        // setup your test
-
-        // this is what we're going to feed into IsList()
-        $list = [
-            11,
-            12,
-            13,
-            14
-        ];
-
-        // ----------------------------------------------------------------
-        // perform the change
-
-        $actualResult = IsList::check($list, '$list');
-
-        // ----------------------------------------------------------------
-        // test the results
-
-        $this->assertTrue($actualResult);
-    }
-
     /**
      * @covers ::check
      */
@@ -92,7 +65,7 @@ class IsListTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // setup your test
 
-        // this is what we're going to feed into IsList()
+        // this is what we're going to feed into IsListyObject()
         $list = (object)[
             11,
             12,
@@ -104,7 +77,7 @@ class IsListTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = IsList::check($list, '$list');
+        $actualResult = IsListyObject::check($list, '$list');
 
         // ----------------------------------------------------------------
         // test the results
@@ -120,7 +93,7 @@ class IsListTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // setup your test
 
-        // this is what we're going to feed into IsList()
+        // this is what we're going to feed into IsListyObject()
         $list = new ArrayObject([
             11,
             12,
@@ -132,7 +105,7 @@ class IsListTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = IsList::check($list, '$list');
+        $actualResult = IsListyObject::check($list, '$list');
 
         // ----------------------------------------------------------------
         // test the results
@@ -148,13 +121,13 @@ class IsListTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // setup your test
 
-        // this is what we're going to feed into IsList()
-        $list = new IsList_ObjectTarget;
+        // this is what we're going to feed into IsListyObject()
+        $list = new IsListyObject_ObjectTarget;
 
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = IsList::check($list, '$list');
+        $actualResult = IsListyObject::check($list, '$list');
 
         // ----------------------------------------------------------------
         // test the results
@@ -170,13 +143,13 @@ class IsListTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // setup your test
 
-        // this is what we're going to feed into IsList()
+        // this is what we're going to feed into IsListyObject()
         $list = function() {};
 
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = IsList::check($list, '$list');
+        $actualResult = IsListyObject::check($list, '$list');
 
         // ----------------------------------------------------------------
         // test the results
@@ -199,7 +172,7 @@ class IsListTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        IsList::check($list, '$list');
+        IsListyObject::check($list, '$list');
 
         // ----------------------------------------------------------------
         // test the results
@@ -216,7 +189,7 @@ class IsListTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $unit = new IsList;
+        $unit = new IsListyObject;
 
         // ----------------------------------------------------------------
         // test the results
@@ -232,12 +205,13 @@ class IsListTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // setup your test
 
-        $unit = new IsList;
+        $unit = new IsListyObject;
+        $list = new IsListyObject_ObjectTarget;
 
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult1 = $unit->inspect([]);
+        $actualResult1 = $unit->inspect($list);
         $actualResult2 = $unit->inspect(STDIN);
 
         // ----------------------------------------------------------------
@@ -258,7 +232,7 @@ class IsListTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $unit = new IsList;
+        $unit = new IsListyObject;
 
         // ----------------------------------------------------------------
         // test the results
@@ -275,17 +249,18 @@ class IsListTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // setup your test
 
+        $list1 = [
+            new IsListyObject_ObjectTarget,
+        ];
+        $list2 = [
+            STDIN
+        ];
+
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult1 = IsList::checkList([
-            [ 1 ],
-            [ 2 ]
-        ]);
-        $actualResult2 = IsList::checkList([
-            1,
-            2
-        ]);
+        $actualResult1 = IsListyObject::checkList($list1);
+        $actualResult2 = IsListyObject::checkList($list2);
 
         // ----------------------------------------------------------------
         // test the results
@@ -295,7 +270,7 @@ class IsListTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * a list of values that should fail the IsList check
+     * a list of values that should fail the IsListyObject check
      *
      * @return array
      */
@@ -303,6 +278,7 @@ class IsListTest extends PHPUnit_Framework_TestCase
     {
         return [
             [ null ],
+            [ [ 1,2,3,4 ] ],
             [ true ],
             [ false ],
             [ 0.0 ],
@@ -318,9 +294,9 @@ class IsListTest extends PHPUnit_Framework_TestCase
 }
 
 /**
- * helper class for proving that IsList will iterate over arbitrary objects
+ * helper class for proving that IsListyObject will iterate over arbitrary objects
  */
-class IsList_ObjectTarget
+class IsListyObject_ObjectTarget
 {
     /**
      * token public attribute

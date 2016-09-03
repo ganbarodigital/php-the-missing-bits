@@ -43,7 +43,7 @@
 
 namespace GanbaroDigital\MissingBits\ListTraversals;
 
-use GanbaroDigital\MissingBits\TypeInspectors\IsListyObject;
+use GanbaroDigital\MissingBits\TypeChecks\IsListyObject;
 use InvalidArgumentException;
 
 /**

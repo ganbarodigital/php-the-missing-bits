@@ -21,7 +21,7 @@ Since v1.9.0
 
 ```php
 // as static function
-use GanbaroDigital\MissingBits\TypeInspectors\IsListyObject;
+use GanbaroDigital\MissingBits\TypeChecks\IsListyObject;
 bool IsListyObject::check(mixed $list, string $listName);
 
 // as a global function

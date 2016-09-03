@@ -22,7 +22,7 @@ pageflow_next_text: StripNamespace class
 
 ```php
 // as static function
-use GanbaroDigital\MissingBits\TypeInspectors\IsStringy;
+use GanbaroDigital\MissingBits\TypeChecks\IsStringy;
 boolean IsStringy::check(mixed $item);
 
 // as global function

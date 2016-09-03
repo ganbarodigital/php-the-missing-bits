@@ -34,80 +34,75 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *
  * @category  Libraries
- * @package   MissingBits/TypeInspectors
+ * @package   MissingBits/TypeChecks
  * @author    Stuart Herbert <stuherbert@ganbarodigital.com>
  * @copyright 2016-present Ganbaro Digital Ltd www.ganbarodigital.com
  * @license   http://www.opensource.org/licenses/bsd-license.php  BSD License
  * @link      http://ganbarodigital.github.io/php-the-missing-bits
  */
 
-namespace GanbaroDigital\MissingBits\TypeInspectors;
+namespace GanbaroDigital\MissingBits\TypeChecks;
 
-use GanbaroDigital\MissingBits\Checks\ListableCheck;
 use GanbaroDigital\MissingBits\Checks\Check;
 use GanbaroDigital\MissingBits\Checks\ListCheck;
+use GanbaroDigital\MissingBits\Checks\ListableCheck;
 
 /**
- * is $item something that PHP will accept as a string?
+ * do we have a valid PHP list?
  */
-class IsStringy implements Check, ListCheck
+class IsList implements Check, ListCheck
 {
     // saves us having to implement inspectList() ourselves
     use ListableCheck;
 
     /**
-     * is $item something that PHP will accept as a string?
+     * can $list be safely (and sensibly) used in a foreach() loop?
      *
-     * @param  mixed $item
-     *         the variable to examine
-     * @return boolean
-     *         TRUE if PHP will happily use $item as a string
+     * @param  mixed $list
+     *         the value to inspect
+     * @return bool
+     *         TRUE if $list can be used in a foreach() loop
      *         FALSE otherwise
      */
-    public static function check($item)
+    public static function check($list)
     {
-        // PHP will auto-convert these to strings without generating
-        // any errors
-        if (is_string($item) || is_int($item) || is_double($item)) {
+        // genuine PHP array?
+        if (is_array($list)) {
             return true;
         }
 
-        // depends if the object has the __toString() method or not
-        if (is_object($item)) {
-            return method_exists($item, '__toString');
+        // all objects can be traversed, although it doesn't
+        // always make sense
+        if (!is_object($list)) {
+            return false;
         }
 
-        // there's no point turning these into strings
-        //
-        // NULL
-        // array
-        // boolean
-        // callable
-        // resource
-        return false;
+        // delegate the check to this checker
+        return IsListyObject::check($list);
     }
 
     /**
-     * is $item something that PHP will accept as a string?
-     *
-     * @param  mixed $item
-     *         the variable to examine
-     * @return boolean
-     *         TRUE if PHP will happily use $item as a string
-     *         FALSE otherwise
-     */
-    public function inspect($item)
-    {
-        return static::check($item);
-    }
-
-    /**
-     * are all items in $list something that PHP will accept as a string?
+     * can $list be safely (and sensibly) used in a foreach() loop?
      *
      * @param  mixed $list
-     *         the variable to examine
-     * @return boolean
-     *         TRUE if PHP will happily use all the items in $list as a string
+     *         the value to inspect
+     * @return bool
+     *         TRUE if $list can be used in a foreach() loop
+     *         FALSE otherwise
+     */
+    public function inspect($list)
+    {
+        return static::check($list);
+    }
+
+    /**
+     * can all entries in $list be safely (and sensibly) used in a
+     * foreach() loop?
+     *
+     * @param  mixed $list
+     *         the list of lists to inspect
+     * @return bool
+     *         TRUE if all entries in $list can be used in a foreach() loop
      *         FALSE otherwise
      */
     public static function checkList($list)

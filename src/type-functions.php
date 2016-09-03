@@ -41,6 +41,9 @@
  * @link      http://ganbarodigital.github.io/php-the-missing-bits
  */
 
+use GanbaroDigital\MissingBits\TypeChecks\IsList;
+use GanbaroDigital\MissingBits\TypeChecks\IsListyObject;
+use GanbaroDigital\MissingBits\TypeChecks\IsStringy;
 use GanbaroDigital\MissingBits\TypeInspectors\GetArrayTypes;
 use GanbaroDigital\MissingBits\TypeInspectors\GetClassTraits;
 use GanbaroDigital\MissingBits\TypeInspectors\GetClassTypes;
@@ -51,9 +54,6 @@ use GanbaroDigital\MissingBits\TypeInspectors\GetPrintableType;
 use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
 use GanbaroDigital\MissingBits\TypeInspectors\GetStringDuckTypes;
 use GanbaroDigital\MissingBits\TypeInspectors\GetStringTypes;
-use GanbaroDigital\MissingBits\TypeInspectors\IsList;
-use GanbaroDigital\MissingBits\TypeInspectors\IsListyObject;
-use GanbaroDigital\MissingBits\TypeInspectors\IsStringy;
 use GanbaroDigital\MissingBits\TypeInspectors\StripNamespace;
 
 /**

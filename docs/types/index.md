@@ -11,6 +11,29 @@ pageflow_next_text: GetArrayTypes class
 
 Here's a list of what we find is missing from PHP's built-in support for data types.
 
+## Type Checks
+
+These functions and classes provide a way to check for common data types.
+
+Click on the function or class below for more details.
+
+Here's the list of global functions you can use for inspecting types:
+
+Function | Purpose
+---------|--------
+[`is_list`](IsList.html) | can we use the variable in foreach() loop?
+[`is_listy_object`](IsListyObject.html) | can we use the variable in foreach() loop?
+[`is_stringy`](IsStringy.html) | can we use the variable as a string?
+
+Here's the list of classes you can use for inspecting types:
+
+Class | Purpose
+------|--------
+[`IsList`](IsList.html) | can we use the variable in foreach() loop?
+[`IsListyObject`](IsListyObject.html) | can we use the variable in foreach() loop?
+[`IsStringy`](IsStringy.html) | can we use the variable as a string?
+
+
 ## Type Inspectors
 
 These functions and classes provide information about
@@ -35,9 +58,6 @@ Function | Purpose
 [`get_strict_types`](GetStrictTypes.html) | returns a list of all strict PHP types for a given value or variable
 [`get_string_duck_types`](GetStringDuckTypes.html) | returns a list of all PHP duck types for a given string
 [`get_string_types`](GetStringTypes.html) | returns a list of all strict PHP types for a given string
-[`is_list`](IsList.html) | can we use the variable in foreach() loop?
-[`is_listy_object`](IsListyObject.html) | can we use the variable in foreach() loop?
-[`is_stringy`](IsStringy.html) | can we use the variable as a string?
 [`strip_namespace`](StripNamespace.html) | returns a class's or object's classname without the namespace
 
 Here's the list of classes you can use for inspecting types:
@@ -55,9 +75,6 @@ Class | Purpose
 [`GetStrictTypes`](GetStrictTypes.html) | returns a list of all strict PHP types for a given value or variable
 [`GetStringDuckTypes`](GetStringDuckTypes.html) | returns a list of all PHP duck types for a given string
 [`GetStringTypes`](GetStringTypes.html) | returns a list of all strict PHP types for a given string
-[`IsList`](IsList.html) | can we use the variable in foreach() loop?
-[`IsListyObject`](IsListyObject.html) | can we use the variable in foreach() loop?
-[`IsStringy`](IsStringy.html) | can we use the variable as a string?
 [`StripNamespace`](StripNamespace.html) | returns a class's or object's classname without the namespace
 
 ## Type Interfaces

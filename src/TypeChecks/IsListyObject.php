@@ -34,19 +34,19 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *
  * @category  Libraries
- * @package   MissingBits/TypeInspectors
+ * @package   MissingBits/TypeChecks
  * @author    Stuart Herbert <stuherbert@ganbarodigital.com>
  * @copyright 2016-present Ganbaro Digital Ltd www.ganbarodigital.com
  * @license   http://www.opensource.org/licenses/bsd-license.php  BSD License
  * @link      http://ganbarodigital.github.io/php-the-missing-bits
  */
 
-namespace GanbaroDigital\MissingBits\TypeInspectors;
+namespace GanbaroDigital\MissingBits\TypeChecks;
 
 use Closure;
-use GanbaroDigital\MissingBits\Checks\ListableCheck;
 use GanbaroDigital\MissingBits\Checks\Check;
 use GanbaroDigital\MissingBits\Checks\ListCheck;
+use GanbaroDigital\MissingBits\Checks\ListableCheck;
 
 /**
  * do we have a valid PHP list?

@@ -34,266 +34,175 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *
  * @category  Libraries
- * @package   MissingBits/StringFunctions
+ * @package   MissingBits/TypeChecks
  * @author    Stuart Herbert <stuherbert@ganbarodigital.com>
  * @copyright 2016-present Ganbaro Digital Ltd www.ganbarodigital.com
  * @license   http://www.opensource.org/licenses/bsd-license.php  BSD License
  * @link      http://ganbarodigital.github.io/php-the-missing-bits
  */
 
-namespace GanbaroDigitalTest\MissingBits\TypeInspectors;
+namespace GanbaroDigitalTest\MissingBits\TypeChecks;
 
+use ArrayObject;
+use Closure;
+use stdClass;
+use Traversable;
 use GanbaroDigital\MissingBits\Checks\Check;
 use GanbaroDigital\MissingBits\Checks\ListCheck;
-use GanbaroDigital\MissingBits\TypeInspectors\IsStringy;
+use GanbaroDigital\MissingBits\TypeChecks\IsList;
 use PHPUnit_Framework_TestCase;
-use stdClass;
 
 /**
- * @coversDefaultClass GanbaroDigital\MissingBits\TypeInspectors\IsStringy
+ * @coversDefaultClass GanbaroDigital\MissingBits\TypeChecks\IsList
  */
-class IsStringyTest extends PHPUnit_Framework_TestCase
+class IsListTest extends PHPUnit_Framework_TestCase
 {
     /**
      * @covers ::check
      */
-    public function test_returns_TRUE_for_strings()
+    public function test_array_returns_true()
     {
         // ----------------------------------------------------------------
         // setup your test
 
-        $item = "hello, world";
-        $expectedResult = true;
+        // this is what we're going to feed into IsList()
+        $list = [
+            11,
+            12,
+            13,
+            14
+        ];
 
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = IsStringy::check($item);
+        $actualResult = IsList::check($list, '$list');
 
         // ----------------------------------------------------------------
         // test the results
 
-        $this->assertEquals($expectedResult, $actualResult);
+        $this->assertTrue($actualResult);
     }
 
     /**
      * @covers ::check
      */
-    public function test_returns_TRUE_for_integers()
+    public function test_stdClass_returns_true()
     {
         // ----------------------------------------------------------------
         // setup your test
 
-        $item = 100;
-        $expectedResult = true;
+        // this is what we're going to feed into IsList()
+        $list = (object)[
+            11,
+            12,
+            13,
+            14
+        ];
+        $this->assertInstanceOf(stdClass::class, $list);
 
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = IsStringy::check($item);
+        $actualResult = IsList::check($list, '$list');
 
         // ----------------------------------------------------------------
         // test the results
 
-        $this->assertEquals($expectedResult, $actualResult);
+        $this->assertTrue($actualResult);
     }
 
     /**
      * @covers ::check
      */
-    public function test_returns_TRUE_for_doubles()
+    public function test_Traversable_returns_true()
     {
         // ----------------------------------------------------------------
         // setup your test
 
-        $item = 3.1415927;
-        $expectedResult = true;
+        // this is what we're going to feed into IsList()
+        $list = new ArrayObject([
+            11,
+            12,
+            13,
+            14
+        ]);
+        $this->assertInstanceOf(Traversable::class, $list);
 
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = IsStringy::check($item);
+        $actualResult = IsList::check($list, '$list');
 
         // ----------------------------------------------------------------
         // test the results
 
-        $this->assertEquals($expectedResult, $actualResult);
+        $this->assertTrue($actualResult);
     }
 
     /**
      * @covers ::check
      */
-    public function test_returns_TRUE_for_objects_that_implement_toString()
+    public function test_arbitrary_objects_return_true()
     {
         // ----------------------------------------------------------------
         // setup your test
 
-        $item = new IsStringy_ObjectWithToString();
-        $expectedResult = true;
+        // this is what we're going to feed into IsList()
+        $list = new IsList_ObjectTarget;
 
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = IsStringy::check($item);
+        $actualResult = IsList::check($list, '$list');
 
         // ----------------------------------------------------------------
         // test the results
 
-        $this->assertEquals($expectedResult, $actualResult);
+        $this->assertTrue($actualResult);
     }
 
     /**
      * @covers ::check
      */
-    public function test_returns_FALSE_for_objects_that_do_not_implement_toString()
+    public function test_Closure_returns_false()
     {
         // ----------------------------------------------------------------
         // setup your test
 
-        $item = new stdClass;
-        $expectedResult = false;
+        // this is what we're going to feed into IsList()
+        $list = function() {};
 
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = IsStringy::check($item);
+        $actualResult = IsList::check($list, '$list');
 
         // ----------------------------------------------------------------
         // test the results
 
-        $this->assertEquals($expectedResult, $actualResult);
+        $this->assertFalse($actualResult);
     }
 
     /**
      * @covers ::check
+     * @dataProvider provideNonLists
+     *
+     * @param mixed $list
+     *        the non-list that we're going to use
      */
-    public function test_returns_FALSE_for_NULL()
+    public function test_anything_else_returns_false($list)
     {
         // ----------------------------------------------------------------
         // setup your test
 
-        $item = null;
-        $expectedResult = false;
-
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = IsStringy::check($item);
+        IsList::check($list, '$list');
 
         // ----------------------------------------------------------------
         // test the results
-
-        $this->assertEquals($expectedResult, $actualResult);
-    }
-
-    /**
-     * @covers ::check
-     */
-    public function test_returns_FALSE_for_arrays()
-    {
-        // ----------------------------------------------------------------
-        // setup your test
-
-        $item = [];
-        $expectedResult = false;
-
-        // ----------------------------------------------------------------
-        // perform the change
-
-        $actualResult = IsStringy::check($item);
-
-        // ----------------------------------------------------------------
-        // test the results
-
-        $this->assertEquals($expectedResult, $actualResult);
-    }
-
-    /**
-     * @covers ::check
-     */
-    public function test_returns_FALSE_for_TRUE()
-    {
-        // ----------------------------------------------------------------
-        // setup your test
-
-        $item = true;
-        $expectedResult = false;
-
-        // ----------------------------------------------------------------
-        // perform the change
-
-        $actualResult = IsStringy::check($item);
-
-        // ----------------------------------------------------------------
-        // test the results
-
-        $this->assertEquals($expectedResult, $actualResult);
-    }
-
-    /**
-     * @covers ::check
-     */
-    public function test_returns_FALSE_for_FALSE()
-    {
-        // ----------------------------------------------------------------
-        // setup your test
-
-        $item = false;
-        $expectedResult = false;
-
-        // ----------------------------------------------------------------
-        // perform the change
-
-        $actualResult = IsStringy::check($item);
-
-        // ----------------------------------------------------------------
-        // test the results
-
-        $this->assertEquals($expectedResult, $actualResult);
-    }
-
-    /**
-     * @covers ::check
-     */
-    public function test_returns_FALSE_for_callable_arrays()
-    {
-        // ----------------------------------------------------------------
-        // setup your test
-
-        $item = [ __CLASS__, __FUNCTION__ ];
-        $expectedResult = false;
-
-        // ----------------------------------------------------------------
-        // perform the change
-
-        $actualResult = IsStringy::check($item);
-
-        // ----------------------------------------------------------------
-        // test the results
-
-        $this->assertEquals($expectedResult, $actualResult);
-    }
-
-    /**
-     * @covers ::check
-     */
-    public function test_returns_FALSE_for_resources()
-    {
-        // ----------------------------------------------------------------
-        // setup your test
-
-        $item = STDIN;
-        $expectedResult = false;
-
-        // ----------------------------------------------------------------
-        // perform the change
-
-        $actualResult = IsStringy::check($item);
-
-        // ----------------------------------------------------------------
-        // test the results
-
-        $this->assertEquals($expectedResult, $actualResult);
     }
 
     /**
@@ -307,7 +216,7 @@ class IsStringyTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $unit = new IsStringy;
+        $unit = new IsList;
 
         // ----------------------------------------------------------------
         // test the results
@@ -318,17 +227,17 @@ class IsStringyTest extends PHPUnit_Framework_TestCase
     /**
      * @covers ::inspect
      */
-    public function test_can_use_as_Check()
+    public function test_can_be_used_as_Check()
     {
         // ----------------------------------------------------------------
         // setup your test
 
-        $unit = new IsStringy;
+        $unit = new IsList;
 
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult1 = $unit->inspect("hello, world!");
+        $actualResult1 = $unit->inspect([]);
         $actualResult2 = $unit->inspect(STDIN);
 
         // ----------------------------------------------------------------
@@ -349,7 +258,7 @@ class IsStringyTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $unit = new IsStringy;
+        $unit = new IsList;
 
         // ----------------------------------------------------------------
         // test the results
@@ -361,24 +270,22 @@ class IsStringyTest extends PHPUnit_Framework_TestCase
      * @covers ::checkList
      * @covers ::inspectList
      */
-    public function test_can_use_as_ListCheck()
+    public function test_can_be_used_as_ListCheck()
     {
         // ----------------------------------------------------------------
         // setup your test
 
-        $list1 = [
-            "hello, world",
-            "a trout is a fish"
-        ];
-
-        $list2 = $list1;
-        $list2[] = STDIN;
-
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult1 = IsStringy::checkList($list1);
-        $actualResult2 = IsStringy::checkList($list2);
+        $actualResult1 = IsList::checkList([
+            [ 1 ],
+            [ 2 ]
+        ]);
+        $actualResult2 = IsList::checkList([
+            1,
+            2
+        ]);
 
         // ----------------------------------------------------------------
         // test the results
@@ -386,12 +293,39 @@ class IsStringyTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($actualResult1);
         $this->assertFalse($actualResult2);
     }
+
+    /**
+     * a list of values that should fail the IsList check
+     *
+     * @return array
+     */
+    public function provideNonLists()
+    {
+        return [
+            [ null ],
+            [ true ],
+            [ false ],
+            [ 0.0 ],
+            [ 3.1415927 ],
+            [ -100.19 ],
+            [ 0 ],
+            [ -100 ],
+            [ 100 ],
+            [ STDIN ],
+            [ "hello, world!" ],
+        ];
+    }
 }
 
-class IsStringy_ObjectWithToString
+/**
+ * helper class for proving that IsList will iterate over arbitrary objects
+ */
+class IsList_ObjectTarget
 {
-    public function __toString()
-    {
-        return get_class($this);
-    }
+    /**
+     * token public attribute
+     *
+     * @var string
+     */
+    public $alfred = "the butler";
 }

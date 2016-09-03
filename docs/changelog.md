@@ -35,6 +35,14 @@ pageflow_next_text: Contributing
   - `IsList` now implements `Check` and `ListCheck`
   - `IsListyObject` now implements `Check` and `ListCheck`
 
+### Refactor
+
+Before refactoring, we checked Packagist to make sure that these changes would not break anything that depends upon The Missing Bits.
+
+* Moved several classes from `TypeInspectors` to `TypeChecks`
+  - moved `IsList`
+  - moved `IsListyObject`
+
 ## v1.9.0
 
 Released Sun 31st July 2016.
