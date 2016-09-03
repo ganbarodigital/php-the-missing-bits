@@ -230,9 +230,9 @@ menu:
             IsListyObject:
                 text: IsListyObject
                 relativeUrl: types/IsListyObject.html
-            is_stringy:
-                text: is_stringy
-                relativeUrl: types/is_stringy.html
+            IsStringy:
+                text: IsStringy
+                relativeUrl: types/IsStringy.html
             StripNamespace:
                 text: StripNamespace
                 relativeUrl: types/StripNamespace.html

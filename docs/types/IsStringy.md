@@ -1,35 +1,43 @@
 ---
 currentSection: types
-currentItem: is_stringy
+currentItem: IsStringy
 pageflow_prev_url: IsListyObject.html
 pageflow_prev_text: IsListyObject class
 pageflow_next_url: StripNamespace.html
 pageflow_next_text: StripNamespace class
 ---
 
-# is_stringy()
+# IsStringy
 
-<div class="callout info">
-Since v1.8.0
+<div class="callout info" markdown="1">
+* `is_stringy()` - since v1.8.0
+* `IsStringy::check()` - since v1.10.0
 </div>
 
 ## Description
 
-`is_stringy()` - can we use the variable as a string?
+`IsStringy::check()` - can we use the variable as a string?
+
+`is_stringy()` - global function that's a convenience wrapper around `IsStringy::check()`
 
 ```php
+// as static function
+use GanbaroDigital\MissingBits\TypeInspectors\IsStringy;
+boolean IsStringy::check(mixed $item);
+
+// as global function
 boolean is_stringy(mixed $item);
 ```
 
 ## Parameters
 
-`is_stringy()` takes one parameter:
+`IsStringy::check()` takes one parameter:
 
 * `mixed $item` - the variable to examine
 
 ## Return Value
 
-`is_stringy()` returns `TRUE` or `FALSE`:
+`IsStringy::check()` returns `TRUE` or `FALSE`:
 
 * `TRUE` if PHP will use `$item` as a string
   - strings
@@ -45,11 +53,11 @@ boolean is_stringy(mixed $item);
 
 ## Throws
 
-`is_stringy()` does not throw any exceptions.
+`IsStringy::check()` does not throw any exceptions.
 
 ## Works With
 
-`is_stringy()` is supported on these versions of PHP:
+`IsStringy::check()` is supported on these versions of PHP:
 
 PHP Version | Works?
 ------------|-------

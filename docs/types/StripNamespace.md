@@ -1,8 +1,8 @@
 ---
 currentSection: types
 currentItem: StripNamespace
-pageflow_prev_url: is_stringy.html
-pageflow_prev_text: is_stringy()
+pageflow_prev_url: IsStringy.html
+pageflow_prev_text: IsStringy()
 pageflow_next_url: CanBeEmpty.html
 pageflow_next_text: CanBeEmpty interface
 ---

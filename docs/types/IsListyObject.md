@@ -3,8 +3,8 @@ currentSection: types
 currentItem: IsListyObject
 pageflow_prev_url: IsList.html
 pageflow_prev_text: IsList class
-pageflow_next_url: is_stringy.html
-pageflow_next_text: is_stringy()
+pageflow_next_url: IsStringy.html
+pageflow_next_text: IsStringy class
 ---
 
 # IsListyObject

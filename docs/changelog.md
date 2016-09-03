@@ -25,6 +25,9 @@ pageflow_next_text: Contributing
   - added `HasFilteredProperties` helper class
   - added `IsClassProperty` helper class
   - added `IsObjectProperty` helper class
+* Added `Check` and `ListCheck` support to existing classes
+  - added `IsStringy::check`
+  - `is_stringy()` now uses `IsStringy::check()`
 
 ## v1.9.0
 
