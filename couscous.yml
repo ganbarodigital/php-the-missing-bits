@@ -18,7 +18,7 @@ github:
     repo: php-the-missing-bits
 
 title: "PHP: The Missing Bits"
-subTitle: Functions that we wish came with PHP
+subTitle: Features that we wish came with PHP
 
 menu:
     overview:
@@ -62,6 +62,24 @@ menu:
             array_merge_keys:
                 text: array_merge_keys
                 relativeUrl: arrays/array_merge_keys.html
+
+    checks:
+        text: Checks
+        relativeUrl: checks/index.html
+
+        items:
+            home:
+                text: Checks
+                relativeUrl: checks/index.html
+            Check:
+                text: Check
+                relativeUrl: checks/Check.html
+            ListCheck:
+                text: ListCheck
+                relativeUrl: checks/ListCheck.html
+            ListableCheck:
+                text: ListableCheck
+                relativeUrl: checks/ListableCheck.html
 
     classes-objects:
         text: Classes and Objects
