@@ -22,18 +22,17 @@ Since v1.9.0
 ```php
 // as static function
 use GanbaroDigital\MissingBits\TypeChecks\IsListyObject;
-bool IsListyObject::check(mixed $list, string $listName);
+bool IsListyObject::check(mixed $list);
 
 // as a global function
-bool is_listy_object(mixed $list, string $listName);
+bool is_listy_object(mixed $list);
 ```
 
 ## Parameters
 
-`IsListyObject::check()` takes two parameters:
+`IsListyObject::check()` takes one parameter:
 
 * `mixed $list` - the value to inspect
-* `string $listName` - what you call `$list` in the calling code
 
 ## Return Value
 
