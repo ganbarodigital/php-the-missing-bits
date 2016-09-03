@@ -44,9 +44,9 @@
 namespace GanbaroDigital\MissingBits\TypeInspectors;
 
 use Closure;
-use GanbaroDigital\Defensive\V1\Checks\ListableCheck;
-use GanbaroDigital\Defensive\V1\Interfaces\Check;
-use GanbaroDigital\Defensive\V1\Interfaces\ListCheck;
+use GanbaroDigital\MissingBits\Checks\ListableCheck;
+use GanbaroDigital\MissingBits\Checks\Check;
+use GanbaroDigital\MissingBits\Checks\ListCheck;
 
 /**
  * do we have a valid PHP list?

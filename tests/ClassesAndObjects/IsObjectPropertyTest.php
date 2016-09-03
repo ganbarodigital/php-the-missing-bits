@@ -43,8 +43,8 @@
 
  namespace GanbaroDigitalTest\MissingBits\ClassesAndObjects;
 
- use GanbaroDigital\Defensive\V1\Interfaces\Check;
- use GanbaroDigital\Defensive\V1\Interfaces\ListCheck;
+ use GanbaroDigital\MissingBits\Checks\Check;
+ use GanbaroDigital\MissingBits\Checks\ListCheck;
  use GanbaroDigital\MissingBits\ClassesAndObjects\IsObjectProperty;
  use PHPUnit_Framework_TestCase;
  use ReflectionObject;
