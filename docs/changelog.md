@@ -29,6 +29,7 @@ pageflow_next_text: Contributing
   - added `IsStringy::check`
   - `is_stringy()` now uses `IsStringy::check()`
   - `IsList` now implements `Check` and `ListCheck`
+  - `IsListyObject` now implements `Check` and `ListCheck`
 
 ## v1.9.0
 

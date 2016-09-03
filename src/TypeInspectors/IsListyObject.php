@@ -44,12 +44,18 @@
 namespace GanbaroDigital\MissingBits\TypeInspectors;
 
 use Closure;
+use GanbaroDigital\Defensive\V1\Checks\ListableCheck;
+use GanbaroDigital\Defensive\V1\Interfaces\Check;
+use GanbaroDigital\Defensive\V1\Interfaces\ListCheck;
 
 /**
  * do we have a valid PHP list?
  */
-class IsListyObject
+class IsListyObject implements Check, ListCheck
 {
+    // saves us having to implement inspectList() ourselves
+    use ListableCheck;
+
     /**
      * can $list be safely (and sensibly) used in a foreach() loop?
      *
@@ -73,5 +79,35 @@ class IsListyObject
 
         // if we get here, we're out of checks
         return true;
+    }
+
+    /**
+     * can $list be safely (and sensibly) used in a foreach() loop?
+     *
+     * @param  object $list
+     *         the value to inspect
+     * @return bool
+     *         TRUE if $list can be used in a foreach() loop
+     *         FALSE otherwise
+     */
+    public function inspect($list)
+    {
+        return static::check($list);
+    }
+
+    /**
+     * can all entries in $list be safely (and sensibly) used in a
+     * foreach() loop?
+     *
+     * @param  object $list
+     *         the list of lists to inspect
+     * @return bool
+     *         TRUE if all entries in $list can be used in a foreach() loop
+     *         FALSE otherwise
+     */
+    public static function checkList($list)
+    {
+        $check = new static();
+        return $check->inspectList($list);
     }
 }

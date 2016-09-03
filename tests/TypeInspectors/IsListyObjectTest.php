@@ -47,6 +47,8 @@ use ArrayObject;
 use Closure;
 use stdClass;
 use Traversable;
+use GanbaroDigital\Defensive\V1\Interfaces\Check;
+use GanbaroDigital\Defensive\V1\Interfaces\ListCheck;
 use GanbaroDigital\MissingBits\TypeInspectors\IsListyObject;
 use PHPUnit_Framework_TestCase;
 
@@ -174,6 +176,97 @@ class IsListyObjectTest extends PHPUnit_Framework_TestCase
 
         // ----------------------------------------------------------------
         // test the results
+    }
+
+    /**
+     * @coversNothing
+     */
+    public function test_is_Check()
+    {
+        // ----------------------------------------------------------------
+        // setup your test
+
+        // ----------------------------------------------------------------
+        // perform the change
+
+        $unit = new IsListyObject;
+
+        // ----------------------------------------------------------------
+        // test the results
+
+        $this->assertInstanceOf(Check::class, $unit);
+    }
+
+    /**
+     * @covers ::inspect
+     */
+    public function test_can_be_used_as_Check()
+    {
+        // ----------------------------------------------------------------
+        // setup your test
+
+        $unit = new IsListyObject;
+        $list = new IsListyObject_ObjectTarget;
+
+        // ----------------------------------------------------------------
+        // perform the change
+
+        $actualResult1 = $unit->inspect($list);
+        $actualResult2 = $unit->inspect(STDIN);
+
+        // ----------------------------------------------------------------
+        // test the results
+
+        $this->assertTrue($actualResult1);
+        $this->assertFalse($actualResult2);
+    }
+
+    /**
+     * @coversNothing
+     */
+    public function test_is_ListCheck()
+    {
+        // ----------------------------------------------------------------
+        // setup your test
+
+        // ----------------------------------------------------------------
+        // perform the change
+
+        $unit = new IsListyObject;
+
+        // ----------------------------------------------------------------
+        // test the results
+
+        $this->assertInstanceOf(ListCheck::class, $unit);
+    }
+
+    /**
+     * @covers ::checkList
+     * @covers ::inspectList
+     */
+    public function test_can_be_used_as_ListCheck()
+    {
+        // ----------------------------------------------------------------
+        // setup your test
+
+        $list1 = [
+            new IsListyObject_ObjectTarget,
+        ];
+        $list2 = [
+            STDIN
+        ];
+
+        // ----------------------------------------------------------------
+        // perform the change
+
+        $actualResult1 = IsListyObject::checkList($list1);
+        $actualResult2 = IsListyObject::checkList($list2);
+
+        // ----------------------------------------------------------------
+        // test the results
+
+        $this->assertTrue($actualResult1);
+        $this->assertFalse($actualResult2);
     }
 
     /**
