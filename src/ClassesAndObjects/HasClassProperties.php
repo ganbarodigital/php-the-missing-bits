@@ -50,19 +50,20 @@ use ReflectionProperty;
 class HasClassProperties
 {
     /**
-     * get a class's static properties
+     * does a class have static properties?
      *
      * @param  string $target
      *         the class to examine
-     * @param  int $filter
+     * @param  int $propTypes
      *         the kind of properties to look for
      *         default is to look for public properties only
-     * @return array
-     *         a (possibly empty) read-only list of the class's static properties
+     * @return boolean
+     *         TRUE if the class has static properties
+     *         FALSE otherwise
      * @throws InvalidArgumentException
      *         if $target is not a valid class name
      */
-    public static function check($target, $filter = ReflectionProperty::IS_PUBLIC)
+    public static function check($target, $propTypes = ReflectionProperty::IS_PUBLIC)
     {
         // robustness!!
         if (!is_stringy($target)) {
@@ -77,6 +78,6 @@ class HasClassProperties
         // if we get here, then we want to do this
         $refObj = new ReflectionClass($target);
         $resultFilter = [IsClassProperty::class, 'check'];
-        return HasFilteredProperties::check($refObj, $filter + ReflectionProperty::IS_STATIC, $resultFilter);
+        return HasFilteredProperties::check($refObj, $propTypes | ReflectionProperty::IS_STATIC, $resultFilter);
     }
 }

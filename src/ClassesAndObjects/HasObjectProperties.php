@@ -50,20 +50,20 @@ use ReflectionProperty;
 class HasObjectProperties
 {
     /**
-     * get an object's non-static properties
+     * does an object have non-static properties?
      *
      * @param  object $target
      *         the object to examine
-     * @param  int $filter
+     * @param  int $propTypes
      *         the kind of properties to look for
      *         default is to look for public properties only
-     * @return array
-     *         a (possibly empty) read-only list of the object's
-     *         non-static properties
+     * @return boolean
+     *         TRUE if the object has non-static properties
+     *         FALSE otherwise
      * @throws InvalidArgumentException
      *         if $target is not an object
      */
-    public static function check($target, $filter = ReflectionProperty::IS_PUBLIC)
+    public static function check($target, $propTypes = ReflectionProperty::IS_PUBLIC)
     {
         // robustness!!
         if (!is_object($target)) {
@@ -73,6 +73,6 @@ class HasObjectProperties
         // if we get here, then we want to do this
         $refObj = new ReflectionObject($target);
         $resultFilter = [IsObjectProperty::class, 'check'];
-        return HasFilteredProperties::check($refObj, $filter, $resultFilter);
+        return HasFilteredProperties::check($refObj, $propTypes, $resultFilter);
     }
 }

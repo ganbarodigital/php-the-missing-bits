@@ -53,7 +53,7 @@ class TraverseArray
     /**
      * traverse a list held in an array
      *
-     * @param  array $list
+     * @param  array|Traversable $list
      *         the list to walk
      * @param  string $listName
      *         what is the name of $list in the calling code?

@@ -96,9 +96,9 @@ class IsStringy implements Check, ListCheck
      *         TRUE if PHP will happily use $item as a string
      *         FALSE otherwise
      */
-    public function inspect($list)
+    public function inspect($item)
     {
-        return static::check($list);
+        return static::check($item);
     }
 
     /**
