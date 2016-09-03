@@ -37,7 +37,7 @@ Function | Purpose
 [`get_string_types`](GetStringTypes.html) | returns a list of all strict PHP types for a given string
 [`is_list`](IsList.html) | can we use the variable in foreach() loop?
 [`is_listy_object`](IsListyObject.html) | can we use the variable in foreach() loop?
-[`is_stringy`](is_stringy.html) | can we use the variable as a string?
+[`is_stringy`](IsStringy.html) | can we use the variable as a string?
 [`strip_namespace`](StripNamespace.html) | returns a class's or object's classname without the namespace
 
 Here's the list of classes you can use for inspecting types:
@@ -57,6 +57,7 @@ Class | Purpose
 [`GetStringTypes`](GetStringTypes.html) | returns a list of all strict PHP types for a given string
 [`IsList`](IsList.html) | can we use the variable in foreach() loop?
 [`IsListyObject`](IsListyObject.html) | can we use the variable in foreach() loop?
+[`IsStringy`](IsStringy.html) | can we use the variable as a string?
 [`StripNamespace`](StripNamespace.html) | returns a class's or object's classname without the namespace
 
 ## Type Interfaces
