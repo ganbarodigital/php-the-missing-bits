@@ -3,8 +3,8 @@ currentSection: types
 currentItem: GetStringTypes
 pageflow_prev_url: GetStringDuckTypes.html
 pageflow_prev_text: GetStringDuckTypes class
-pageflow_next_url: IsList.html
-pageflow_next_text: IsList class
+pageflow_next_url: IsArray.html
+pageflow_next_text: IsArray class
 ---
 
 # GetStringTypes

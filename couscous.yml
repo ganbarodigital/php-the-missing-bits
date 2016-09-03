@@ -242,6 +242,9 @@ menu:
             GetStringTypes:
                 text: GetStringTypes
                 relativeUrl: types/GetStringTypes.html
+            IsArray:
+                text: IsArray
+                relativeUrl: types/IsArray.html
             IsList:
                 text: IsList
                 relativeUrl: types/IsList.html

@@ -29,6 +29,7 @@ Here's the list of classes you can use for inspecting types:
 
 Class | Purpose
 ------|--------
+[`IsArray`](IsArray.html) | can we use the variable with PHP's `array_xxx` functions?
 [`IsList`](IsList.html) | can we use the variable in foreach() loop?
 [`IsListyObject`](IsListyObject.html) | can we use the variable in foreach() loop?
 [`IsStringy`](IsStringy.html) | can we use the variable as a string?

@@ -30,10 +30,12 @@ pageflow_next_text: Contributing
   - added `ListCheck` interface
   - added `ListableCheck` trait
 * Added `Check` and `ListCheck` support to existing classes
-  - added `IsStringy::check`
+  - added `IsStringy::check()`
   - `is_stringy()` now uses `IsStringy::check()`
   - `IsList` now implements `Check` and `ListCheck`
   - `IsListyObject` now implements `Check` and `ListCheck`
+* Added a whole bunch of type checks, originally from our Defensive library:
+  - added `IsArray::check()`
 
 ### Refactor
 
