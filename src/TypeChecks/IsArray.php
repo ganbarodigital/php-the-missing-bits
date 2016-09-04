@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright (c) 2015-present Ganbaro Digital Ltd
+ * Copyright (c) 2016-present Ganbaro Digital Ltd
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,7 +36,7 @@
  * @category  Libraries
  * @package   MissingBits/TypeChecks
  * @author    Stuart Herbert <stuherbert@ganbarodigital.com>
- * @copyright 2015-present Ganbaro Digital Ltd www.ganbarodigital.com
+ * @copyright 2016-present Ganbaro Digital Ltd www.ganbarodigital.com
  * @license   http://www.opensource.org/licenses/bsd-license.php  BSD License
  * @link      http://ganbarodigital.github.io/php-the-missing-bits
  */
