@@ -47,13 +47,13 @@ use stdClass;
 use ArrayObject;
 use GanbaroDigital\MissingBits\Checks\Check;
 use GanbaroDigital\MissingBits\Checks\ListCheck;
-use GanbaroDigital\MissingBits\Checks\ListableCheck;
+use GanbaroDigital\MissingBits\Checks\ListCheckHelper;
 use PHPUnit_Framework_TestCase;
 
 /**
- * @coversDefaultClass GanbaroDigital\MissingBits\Checks\ListableCheck
+ * @coversDefaultClass GanbaroDigital\MissingBits\Checks\ListCheckHelper
  */
-class ListableCheckTest extends PHPUnit_Framework_TestCase
+class ListCheckHelperTest extends PHPUnit_Framework_TestCase
 {
     /**
      * @coversNothing
@@ -66,7 +66,7 @@ class ListableCheckTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $unit = new ListableCheckTest_Check;
+        $unit = new ListCheckHelperTest_Check;
 
         // ----------------------------------------------------------------
         // test the results
@@ -85,7 +85,7 @@ class ListableCheckTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $unit = new ListableCheckTest_Check;
+        $unit = new ListCheckHelperTest_Check;
 
         // ----------------------------------------------------------------
         // test the results
@@ -102,7 +102,7 @@ class ListableCheckTest extends PHPUnit_Framework_TestCase
         // setup your test
 
         $expectedData = 1.0;
-        $unit = new ListableCheckTest_Check;
+        $unit = new ListCheckHelperTest_Check;
 
         // ----------------------------------------------------------------
         // perform the change
@@ -126,7 +126,7 @@ class ListableCheckTest extends PHPUnit_Framework_TestCase
 
         $fieldName = '$alfred';
         $expectedData = 1.0;
-        $unit = new ListableCheckTest_Check;
+        $unit = new ListCheckHelperTest_Check;
         $list = new ArrayObject;
         $list[0] = $expectedData;
 
@@ -151,7 +151,7 @@ class ListableCheckTest extends PHPUnit_Framework_TestCase
         // setup your test
 
         $expectedData = 1.0;
-        $unit = new ListableCheckTest_Check;
+        $unit = new ListCheckHelperTest_Check;
         $list = new stdClass;
         $list->jones = $expectedData;
 
@@ -177,7 +177,7 @@ class ListableCheckTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // setup your test
 
-        $unit = new ListableCheckTest_Check;
+        $unit = new ListCheckHelperTest_Check;
 
         // ----------------------------------------------------------------
         // perform the change
@@ -202,9 +202,9 @@ class ListableCheckTest extends PHPUnit_Framework_TestCase
     }
 }
 
-class ListableCheckTest_Check implements Check, ListCheck
+class ListCheckHelperTest_Check implements Check, ListCheck
 {
-    use ListableCheck;
+    use ListCheckHelper;
 
     public $inspectCalled = false;
     public $inspectData = null;

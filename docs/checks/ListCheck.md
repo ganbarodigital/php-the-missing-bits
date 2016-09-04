@@ -3,8 +3,8 @@ currentSection: checks
 currentItem: ListCheck
 pageflow_prev_url: Check.html
 pageflow_prev_text: Check interface
-pageflow_next_url: ListableCheck.html
-pageflow_next_text: ListableCheck trait
+pageflow_next_url: ListCheckHelper.html
+pageflow_next_text: ListCheckHelper trait
 ---
 
 # ListCheck
@@ -133,7 +133,7 @@ Every `ListCheck` can be used as an object:
 * add a `public function __construct()` if your check needs additional input parameters
 * add a `public function inspectList()` which calls your `::inspect()` method
 
-We've provided a [`ListableCheck` trait](ListableCheck.html) that will add the `inspectList()` method to your class.
+We've provided a [`ListCheckHelper` trait](ListCheckHelper.html) that will add the `inspectList()` method to your class.
 
 ### Putting It All Together
 
@@ -142,12 +142,12 @@ Here's a simple min / max check. It supports all the different ways that a `List
 ```php
 use GanbaroDigital\MissingBits\Checks\Check;
 use GanbaroDigital\MissingBits\Checks\ListCheck;
-use GanbaroDigital\MissingBits\Checks\ListableCheck;
+use GanbaroDigital\MissingBits\Checks\ListCheckHelper;
 
 class IsInRange implements Check, ListCheck
 {
     // saves us having to implement inspectList() ourselves
-    use ListableCheck;
+    use ListCheckHelper;
 
     /**
      * minimum acceptable value in our range

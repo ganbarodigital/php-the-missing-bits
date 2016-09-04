@@ -43,12 +43,13 @@
 
 namespace GanbaroDigital\MissingBits\Checks;
 
+use GanbaroDigital\MissingBits\TypeInspectors\GetPrintableType;
 use InvalidArgumentException;
 
 /**
  * add ListCheck support to an existing Check class
  */
-trait ListableCheck
+trait ListCheckHelper
 {
     /**
      * does a list of values pass inspection?
@@ -63,7 +64,7 @@ trait ListableCheck
     {
         // robustness
         if (!is_list($list)) {
-            throw new InvalidArgumentException("'\$list' is not a valid list");
+            throw new InvalidArgumentException('$list is not a list, is a ' . GetPrintableType::of($list));
         }
 
         // a simple foreach() is all that we need here

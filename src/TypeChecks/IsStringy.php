@@ -45,7 +45,7 @@ namespace GanbaroDigital\MissingBits\TypeChecks;
 
 use GanbaroDigital\MissingBits\Checks\Check;
 use GanbaroDigital\MissingBits\Checks\ListCheck;
-use GanbaroDigital\MissingBits\Checks\ListableCheck;
+use GanbaroDigital\MissingBits\Checks\ListCheckHelper;
 
 /**
  * is $item something that PHP will accept as a string?
@@ -53,7 +53,7 @@ use GanbaroDigital\MissingBits\Checks\ListableCheck;
 class IsStringy implements Check, ListCheck
 {
     // saves us having to implement inspectList() ourselves
-    use ListableCheck;
+    use ListCheckHelper;
 
     /**
      * is $item something that PHP will accept as a string?

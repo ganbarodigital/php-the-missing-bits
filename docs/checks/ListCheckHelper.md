@@ -1,11 +1,11 @@
 ---
 currentSection: checks
-currentItem: ListableCheck
+currentItem: ListCheckHelper
 pageflow_prev_url: ListCheck.html
 pageflow_prev_text: ListCheck interface
 ---
 
-# ListableCheck
+# ListCheckHelper
 
 <div class="callout warning" markdown="1">
 Not yet in a tagged release
@@ -13,17 +13,17 @@ Not yet in a tagged release
 
 ## Description
 
-`ListableCheck` is a trait. It implements the `inspectList()` method of the [`ListCheck`](ListCheck.html) interface for you.
+`ListCheckHelper` is a trait. It implements the `inspectList()` method of the [`ListCheck`](ListCheck.html) interface for you.
 
 ## Public Interface
 
-`ListableCheck` has the following public interface:
+`ListCheckHelper` has the following public interface:
 
 ```php
-// ListableCheck lives in this namespace
+// ListCheckHelper lives in this namespace
 namespace GanbaroDigital\MissingBits\Checks;
 
-trait ListableCheck
+trait ListCheckHelper
 {
     /**
      * does a list of values pass inspection?
@@ -42,17 +42,17 @@ trait ListableCheck
 
 ### For Convenience
 
-Use `ListableCheck` in your own classes to save on typing and code duplication.
+Use `ListCheckHelper` in your own classes to save on typing and code duplication.
 
 ```php
 use GanbaroDigital\MissingBits\Checks\Check;
 use GanbaroDigital\MissingBits\Checks\ListCheck;
-use GanbaroDigital\MissingBits\Checks\ListableCheck;
+use GanbaroDigital\MissingBits\Checks\ListCheckHelper;
 
 class IsInRange implements Check, ListCheck
 {
     // save us having to declare inspectList() ourselves
-    use ListableCheck;
+    use ListCheckHelper;
 
     /**
      * minimum acceptable value in our range
@@ -131,7 +131,7 @@ if (!IsInRange::using(10, 20)->inspectList($list)) {
 
 Here is the contract for this trait:
 
-    GanbaroDigital\MissingBits\Checks\ListableCheck
+    GanbaroDigital\MissingBits\Checks\ListCheckHelper
      [x] can instantiate class that uses trait
      [x] is part of ListCheck interface
      [x] can inspect an array of data via inspectList

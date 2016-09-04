@@ -28,7 +28,7 @@ pageflow_next_text: Contributing
 * Added support for a formal approach to writing IsXXX() classes
   - added `Check` interface
   - added `ListCheck` interface
-  - added `ListableCheck` trait
+  - added `ListCheckHelper` trait
 * Added `Check` and `ListCheck` support to existing classes
   - added `IsStringy::check()`
   - `is_stringy()` now uses `IsStringy::check()`

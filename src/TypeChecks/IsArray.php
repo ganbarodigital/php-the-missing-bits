@@ -45,7 +45,7 @@ namespace GanbaroDigital\MissingBits\TypeChecks;
 
 use GanbaroDigital\MissingBits\Checks\Check;
 use GanbaroDigital\MissingBits\Checks\ListCheck;
-use GanbaroDigital\MissingBits\Checks\ListableCheck;
+use GanbaroDigital\MissingBits\Checks\ListCheckHelper;
 
 /**
  * do we have something that is an array? It must be something that can be
@@ -54,7 +54,7 @@ use GanbaroDigital\MissingBits\Checks\ListableCheck;
 class IsArray implements Check, ListCheck
 {
     // saves us having to implement inspectList() ourselves
-    use ListableCheck;
+    use ListCheckHelper;
 
     /**
      * do we have something that is an array?

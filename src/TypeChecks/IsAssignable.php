@@ -45,7 +45,7 @@ namespace GanbaroDigital\MissingBits\TypeChecks;
 
 use GanbaroDigital\MissingBits\Checks\Check;
 use GanbaroDigital\MissingBits\Checks\ListCheck;
-use GanbaroDigital\MissingBits\Checks\ListableCheck;
+use GanbaroDigital\MissingBits\Checks\ListCheckHelper;
 use GanbaroDigital\MissingBits\ClassesAndObjects\HasObjectProperties;
 use stdClass;
 
@@ -55,7 +55,7 @@ use stdClass;
 class IsAssignable implements Check, ListCheck
 {
     // saves us having to implement inspectList() ourselves
-    use ListableCheck;
+    use ListCheckHelper;
 
     /**
      * do we have something that can be used with PHP's object notation

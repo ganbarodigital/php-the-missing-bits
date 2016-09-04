@@ -46,7 +46,7 @@ namespace GanbaroDigital\MissingBits\TypeChecks;
 use Closure;
 use GanbaroDigital\MissingBits\Checks\Check;
 use GanbaroDigital\MissingBits\Checks\ListCheck;
-use GanbaroDigital\MissingBits\Checks\ListableCheck;
+use GanbaroDigital\MissingBits\Checks\ListCheckHelper;
 
 /**
  * do we have a valid PHP list?
@@ -54,7 +54,7 @@ use GanbaroDigital\MissingBits\Checks\ListableCheck;
 class IsListyObject implements Check, ListCheck
 {
     // saves us having to implement inspectList() ourselves
-    use ListableCheck;
+    use ListCheckHelper;
 
     /**
      * can $list be safely (and sensibly) used in a foreach() loop?

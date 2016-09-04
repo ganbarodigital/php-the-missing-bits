@@ -24,7 +24,7 @@ Click on the name of an interface to see full details.
 
 Class | Description
 ------|------------
-[`ListableCheck`](ListableCheck.html) | convenience trait to provide the `inspectList()` method of the `ListCheck` interface
+[`ListCheckHelper`](ListCheckHelper.html) | convenience trait to provide the `inspectList()` method of the `ListCheck` interface
 
 Click on the name of a trait to see full details.
 

@@ -43,7 +43,7 @@
 
 namespace GanbaroDigital\MissingBits\ClassesAndObjects;
 
-use GanbaroDigital\MissingBits\Checks\ListableCheck;
+use GanbaroDigital\MissingBits\Checks\ListCheckHelper;
 use GanbaroDigital\MissingBits\Checks\Check;
 use GanbaroDigital\MissingBits\Checks\ListCheck;
 use ReflectionProperty;
@@ -54,7 +54,7 @@ use ReflectionProperty;
 class IsClassProperty implements Check, ListCheck
 {
     // saves us having to implement inspectList() ourselves
-    use ListableCheck;
+    use ListCheckHelper;
 
     /**
      * is this property a class property?

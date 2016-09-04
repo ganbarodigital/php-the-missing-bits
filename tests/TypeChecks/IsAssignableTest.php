@@ -47,7 +47,7 @@ use PHPUnit_Framework_TestCase;
 use stdClass;
 use GanbaroDigital\MissingBits\Checks\Check;
 use GanbaroDigital\MissingBits\Checks\ListCheck;
-use GanbaroDigital\MissingBits\Checks\ListableCheck;
+use GanbaroDigital\MissingBits\Checks\ListCheckHelper;
 
 /**
  * @coversDefaultClass GanbaroDigital\MissingBits\TypeChecks\IsAssignable
