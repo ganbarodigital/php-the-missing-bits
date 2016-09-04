@@ -3,8 +3,8 @@ currentSection: types
 currentItem: IsArray
 pageflow_prev_url: GetStringTypes.html
 pageflow_prev_text: GetStringTypes class
-pageflow_next_url: IsList.html
-pageflow_next_text: IsList class
+pageflow_next_url: IsAssignable.html
+pageflow_next_text: IsAssignable class
 ---
 
 # IsArray
