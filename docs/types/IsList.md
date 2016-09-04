@@ -1,8 +1,8 @@
 ---
 currentSection: types
 currentItem: IsList
-pageflow_prev_url: IsArray.html
-pageflow_prev_text: IsArray class
+pageflow_prev_url: IsAssignable.html
+pageflow_prev_text: IsAssignable class
 pageflow_next_url: IsListyObject.html
 pageflow_next_text: IsListyObject class
 ---
