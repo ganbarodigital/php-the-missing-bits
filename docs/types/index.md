@@ -21,6 +21,7 @@ Here's the list of global functions you can use for inspecting types:
 
 Function | Purpose
 ---------|--------
+[`is_array_list`](is_array_list.html) | can every item in the list be used as a PHP array?
 [`is_list`](IsList.html) | can we use the variable in foreach() loop?
 [`is_listy_object`](IsListyObject.html) | can we use the variable in foreach() loop?
 [`is_stringy`](IsStringy.html) | can we use the variable as a string?

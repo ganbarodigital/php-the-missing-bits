@@ -41,6 +41,7 @@
  * @link      http://ganbarodigital.github.io/php-the-missing-bits
  */
 
+use GanbaroDigital\MissingBits\TypeChecks\IsArray;
 use GanbaroDigital\MissingBits\TypeChecks\IsList;
 use GanbaroDigital\MissingBits\TypeChecks\IsListyObject;
 use GanbaroDigital\MissingBits\TypeChecks\IsStringy;
@@ -203,6 +204,23 @@ function get_string_duck_types($item)
 function get_string_types($item)
 {
     return GetStringTypes::from($item);
+}
+
+/**
+ * is every entry in $list an array?
+ *
+ * by array, we mean something that you can pass to any of PHP's
+ * array_xxx() functions
+ *
+ * @param  mixed $list
+ *         the list of items to be checked
+ * @return boolean
+ *         TRUE if every item in $list is an array
+ *         FALSE otherwise
+ */
+function is_array_list($list)
+{
+    return IsArray::checkList($list);
 }
 
 /**

@@ -245,6 +245,9 @@ menu:
             IsArray:
                 text: IsArray
                 relativeUrl: types/IsArray.html
+            is_array_list:
+                text: is_array_list
+                relativeUrl: types/is_array_list.html
             IsList:
                 text: IsList
                 relativeUrl: types/IsList.html

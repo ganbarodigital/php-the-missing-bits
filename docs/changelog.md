@@ -36,6 +36,7 @@ pageflow_next_text: Contributing
   - `IsListyObject` now implements `Check` and `ListCheck`
 * Added a whole bunch of type checks, originally from our Defensive library:
   - added `IsArray::check()`
+  - added `is_array_list()` convenience function
   - added `IsAssignable::check()`
 
 ### Refactor
