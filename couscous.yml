@@ -162,7 +162,7 @@ menu:
                 relativeUrl: entities/defining-entities.html
                 contents:
                     ReadOnlyException:
-                        text: ReadOnlyException
+                        text: ReadOnlyException class
                         relativeUrl: entities/ReadOnlyException.class.html
                     ReadOnlyForeverException:
                         text: ReadOnlyForeverException class
@@ -171,13 +171,13 @@ menu:
                         text: Entity interface
                         relativeUrl: entities/Entity.class.html
                     WriteProtectableEntity:
-                        text: WriteProtectableEntity
+                        text: WriteProtectableEntity interface
                         relativeUrl: entities/WriteProtectableEntity.class.html
                     WriteProtectedEntity:
-                        text: WriteProtectedEntity
+                        text: WriteProtectedEntity interface
                         relativeUrl: entities/WriteProtectedEntity.class.html
                     WriteProtectTab:
-                        text: WriteProtectTab
+                        text: WriteProtectTab trait
                         relativeUrl: entities/WriteProtectTab.trait.html
             available-entities:
                 text: Available Entities
