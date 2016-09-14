@@ -1,10 +1,10 @@
 ---
 currentSection: classes-objects
-currentItem: has_class_properties
+currentItem: class-properties
 pageflow_prev_url: get_class_properties.html
 pageflow_prev_text: get_class_properties()
-pageflow_next_url: has_object_properties.html
-pageflow_next_text: has_object_properties()
+pageflow_next_url: FilterClassProperties.from.html
+pageflow_next_text: FilterClassProperties::from()
 ---
 
 # has_class_properties()
@@ -46,4 +46,4 @@ bool has_class_properties(string $target, $propTypes = ReflectionProperty::IS_PU
 
 * `has_class_properties()` will also check parent classes and all the traits used by this class for static properties.
 * `has_class_properties()` only works on classes. Use `has_object_properties()` to check for non-static properties.
-* `has_class_properties()` is a convenience wrapper around [`HasClassProperties::check()`](HasClassProperties.html)
+* `has_class_properties()` is a convenience wrapper around [`HasClassProperties::check()`](HasClassProperties.check.html)

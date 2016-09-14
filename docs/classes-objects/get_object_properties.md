@@ -1,10 +1,10 @@
 ---
 currentSection: classes-objects
-currentItem: get_object_properties
-pageflow_prev_url: get_class_properties.html
-pageflow_prev_text: get_class_properties()
-pageflow_next_url: has_class_properties.html
-pageflow_next_text: has_class_properties()
+currentItem: object-properties
+pageflow_prev_url: object-properties.html
+pageflow_prev_text: Object Properties
+pageflow_next_url: has_object_properties.html
+pageflow_next_text: has_object_properties()
 ---
 
 # get_object_properties()
@@ -44,4 +44,4 @@ If the object has no non-static properties, `get_object_properties()` returns an
 
 * `get_object_properties()` will include all non-static properties defined by the class's parents, by any traits used by the class or its parents, and by any traits used by those traits.
 * `get_object_properties()` only works on objects. Use [`get_class_properties()`](get_class_properties.html) to check for static properties.
-* `get_object_properties()` is a convenience wrapper around [`FilterObjectProperties::from()`](FilterObjectProperties.html)
+* `get_object_properties()` is a convenience wrapper around [`FilterObjectProperties::from()`](FilterObjectProperties.from.html)

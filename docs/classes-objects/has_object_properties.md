@@ -1,10 +1,10 @@
 ---
 currentSection: classes-objects
-currentItem: has_object_properties
-pageflow_prev_url: has_class_properties.html
-pageflow_prev_text: has_class_properties()
-pageflow_next_url: FilterClassProperties.html
-pageflow_next_text: FilterClassProperties class
+currentItem: object-properties
+pageflow_prev_url: get_object_properties.html
+pageflow_prev_text: get_object_properties()
+pageflow_next_url: FilterObjectProperties.from.html
+pageflow_next_text: FilterObjectProperties::from()
 ---
 
 # has_object_properties()
@@ -47,4 +47,4 @@ bool has_object_properties(object $target, $propTypes = ReflectionProperty::IS_P
 
 ## Notes
 
-* `has_object_properties()` is a convenience wrapper around [`HasObjectProperties::check()`](HasObjectProperties.html)
+* `has_object_properties()` is a convenience wrapper around [`HasObjectProperties::check()`](HasObjectProperties.check.html)

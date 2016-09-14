@@ -1,13 +1,13 @@
 ---
 currentSection: classes-objects
-currentItem: FilterProperties
-pageflow_prev_url: FilterObjectProperties.html
-pageflow_prev_text: FilterObjectProperties class
-pageflow_next_url: HasClassProperties.html
-pageflow_next_text: HasClassProperties class
+currentItem: property-helpers
+pageflow_prev_url: property-helpers.html
+pageflow_prev_text: Property Helpers
+pageflow_next_url: HasFilteredProperties.check.html
+pageflow_next_text: HasFilteredProperties::check()
 ---
 
-# FilterProperties
+# FilterProperties::from()
 
 <div class="callout warning" markdown="1">
 Not yet in a tagged release
@@ -46,7 +46,7 @@ where:
 
 `FilterProperties::from()` will call `$resultFilter()` with each discovered property. Your `$resultFilter` callable is responsible for storing the property in `$finalResult`.
 
-<div class="callout danger">
+<div class="callout danger" markdown="1">
 Only properties stored in `$finalResult` will be returned by `FilterProperties::from()`!
 </div>
 

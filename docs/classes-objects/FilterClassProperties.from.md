@@ -1,13 +1,13 @@
 ---
 currentSection: classes-objects
-currentItem: FilterClassProperties
-pageflow_prev_url: has_object_properties.html
-pageflow_prev_text: has_object_properties()
-pageflow_next_url: FilterObjectProperties.html
-pageflow_next_text: FilterObjectProperties class
+currentItem: class-properties
+pageflow_prev_url: has_class_properties.html
+pageflow_prev_text: has_class_properties()
+pageflow_next_url: HasClassProperties.check.html
+pageflow_next_text: HasClassProperties::check()
 ---
 
-# FilterClassProperties()
+# FilterClassProperties::from()
 
 <div class="callout warning" markdown="1">
 Not yet in a tagged release
@@ -44,4 +44,4 @@ If the class has no static properties, `FilterClassProperties::from()` returns a
 ## Notes
 
 * `FilterClassProperties::from()` will include all static properties defined by the class's parents, by any traits used by the class or its parents, and by any traits used by those traits.
-* `FilterClassProperties::from()` only works on classes. Use [`FilterObjectProperties::from()`](FilterObjectProperties.html) to get an object's non-static properties.
+* `FilterClassProperties::from()` only works on classes. Use [`FilterObjectProperties::from()`](FilterObjectProperties.from.html) to get an object's non-static properties.

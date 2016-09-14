@@ -1,13 +1,11 @@
 ---
 currentSection: classes-objects
-currentItem: HasFilteredProperties
-pageflow_prev_url: HasClassProperties.html
-pageflow_prev_text: HasClassProperties class
-pageflow_next_url: HasObjectProperties.html
-pageflow_next_text: HasObjectProperties class
+currentItem: property-helpers
+pageflow_prev_url: FilterProperties.from.html
+pageflow_prev_text: FilterProperties::from()
 ---
 
-# HasFilteredProperties()
+# HasFilteredProperties::check()
 
 <div class="callout warning" markdown="1">
 Not yet in a tagged release

@@ -1,13 +1,13 @@
 ---
 currentSection: classes-objects
-currentItem: HasObjectProperties
-pageflow_prev_url: HasFilteredProperties.html
-pageflow_prev_text: HasFilteredProperties class
-pageflow_next_url: IsClassProperty.html
-pageflow_next_text: IsClassProperty class
+currentItem: object-properties
+pageflow_prev_url: FilterObjectProperties.from.html
+pageflow_prev_text: FilterObjectProperties::from()
+pageflow_next_url: IsObjectProperty.check.html
+pageflow_next_text: IsObjectProperty::check()
 ---
 
-# HasObjectProperties
+# HasObjectProperties::check()
 
 <div class="callout warning" markdown="1">
 Not yet in a tagged release
@@ -43,4 +43,4 @@ bool HasObjectProperties(object $target, $propTypes = ReflectionProperty::IS_PUB
 
 ## Constraints
 
-`HasObjectProperties::check()` only works on objects. Use [`HasClassProperties::check()`](HasClassProperties.html) to check for static properties.
+`HasObjectProperties::check()` only works on objects. Use [`HasClassProperties::check()`](HasClassProperties.check.html) to check for static properties.

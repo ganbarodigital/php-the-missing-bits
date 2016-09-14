@@ -93,42 +93,54 @@ menu:
             home:
                 text: Classes and Objects
                 relativeUrl: classes-objects/index.html
-            get_class_properties:
-                text: get_class_properties()
-                relativeUrl: classes-objects/get_class_properties.html
-            get_object_properties:
-                text: get_object_properties()
-                relativeUrl: classes-objects/get_object_properties.html
-            has_class_properties:
-                text: has_class_properties()
-                relativeUrl: classes-objects/has_class_properties.html
-            has_object_properties:
-                text: has_object_properties()
-                relativeUrl: classes-objects/has_object_properties.html
-            FilterClassProperties:
-                text: FilterClassProperties
-                relativeUrl: classes-objects/FilterClassProperties.html
-            FilterObjectProperties:
-                text: FilterObjectProperties
-                relativeUrl: classes-objects/FilterObjectProperties.html
-            FilterProperties:
-                text: FilterProperties
-                relativeUrl: classes-objects/FilterProperties.html
-            HasClassProperties:
-                text: HasClassProperties
-                relativeUrl: classes-objects/HasClassProperties.html
-            HasFilteredProperties:
-                text: HasFilteredProperties
-                relativeUrl: classes-objects/HasFilteredProperties.html
-            HasObjectProperties:
-                text: HasObjectProperties
-                relativeUrl: classes-objects/HasObjectProperties.html
-            IsClassProperty:
-                text: IsClassProperty
-                relativeUrl: classes-objects/IsClassProperty.html
-            IsObjectProperty:
-                text: IsObjectProperty
-                relativeUrl: classes-objects/IsObjectProperty.html
+            class-properties:
+                text: Class Properties
+                relativeUrl: classes-objects/class-properties.html
+                contents:
+                    get_class_properties:
+                        text: get_class_properties()
+                        relativeUrl: classes-objects/get_class_properties.html
+                    has_class_properties:
+                        text: has_class_properties()
+                        relativeUrl: classes-objects/has_class_properties.html
+                    FilterClassProperties:
+                        text: FilterClassProperties::from()
+                        relativeUrl: classes-objects/FilterClassProperties.from.html
+                    HasClassProperties:
+                        text: HasClassProperties::check()
+                        relativeUrl: classes-objects/HasClassProperties.check.html
+                    IsClassProperty:
+                        text: IsClassProperty::check()
+                        relativeUrl: classes-objects/IsClassProperty.check.html
+            object-properties:
+                text: Object Properties
+                relativeUrl: classes-objects/object-properties.html
+                contents:
+                    get_object_properties:
+                        text: get_object_properties()
+                        relativeUrl: classes-objects/get_object_properties.html
+                    has_object_properties:
+                        text: has_object_properties()
+                        relativeUrl: classes-objects/has_object_properties.html
+                    FilterObjectProperties:
+                        text: FilterObjectProperties::from()
+                        relativeUrl: classes-objects/FilterObjectProperties.from.html
+                    HasObjectProperties:
+                        text: HasObjectProperties::check()
+                        relativeUrl: classes-objects/HasObjectProperties.check.html
+                    IsObjectProperty:
+                        text: IsObjectProperty::check()
+                        relativeUrl: classes-objects/IsObjectProperty.check.html
+            property-helpers:
+                text: Property Helpers
+                relativeUrl: classes-objects/property-helpers.html
+                contents:
+                    FilterProperties:
+                        text: FilterProperties::from()
+                        relativeUrl: classes-objects/FilterProperties.html
+                    HasFilteredProperties:
+                        text: HasFilteredProperties::check()
+                        relativeUrl: classes-objects/HasFilteredProperties.html
 
     entities:
         text: Entities

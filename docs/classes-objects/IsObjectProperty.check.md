@@ -1,11 +1,11 @@
 ---
 currentSection: classes-objects
-currentItem: IsObjectProperty
-pageflow_prev_url: IsClassProperty.html
-pageflow_prev_text: IsClassProperty class
+currentItem: object-properties
+pageflow_prev_url: HasObjectProperties.check.html
+pageflow_prev_text: HasObjectProperties::check()
 ---
 
-# IsObjectProperty()
+# IsObjectProperty::check()
 
 <div class="callout warning" markdown="1">
 Not yet in a tagged release
@@ -16,7 +16,7 @@ Not yet in a tagged release
 `IsObjectProperty::check()` - is a [`ReflectionProperty`](http://www.php.net/ReflectionProperty) an object property?
 
 ```php
-bool IsObjectProperty::check(ReferenceObject $refProp);
+bool IsObjectProperty::check(ReflectionProperty $refProp);
 ```
 
 ## Parameters
