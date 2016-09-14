@@ -1,13 +1,13 @@
 ---
 currentSection: checks
-currentItem: ListCheck
-pageflow_prev_url: Check.html
-pageflow_prev_text: Check interface
-pageflow_next_url: ListCheckHelper.html
-pageflow_next_text: ListCheckHelper trait
+currentItem: defining-checks
+pageflow_prev_url: defining-checks.html
+pageflow_prev_text: Defining Checks
+pageflow_next_url: ListCheck.class.html
+pageflow_next_text: ListCheck interface
 ---
 
-# ListCheck
+# Check
 
 <div class="callout warning" markdown="1">
 Not yet in a tagged release
@@ -15,7 +15,7 @@ Not yet in a tagged release
 
 ## Description
 
-`ListCheck` is an interface. It's the interface for `true` / `false` inspections of a list of data.
+`Check` is an interface. It's the interface for `true` / `false` inspections of data.
 
 <div class="callout info" markdown="1">
 #### What's The Difference Between A Check, And Assurances / Requirements?
@@ -33,13 +33,13 @@ _The interfaces for Assurances and Requirements can be found in Ganbaro Digital'
 
 ## Public Interface
 
-`ListCheck` has the following public interface:
+`Check` has the following public interface:
 
 ```php
-// ListCheck lives in this namespace
+// Check lives in this namespace
 namespace GanbaroDigital\MissingBits\Checks;
 
-interface ListCheck
+interface Check
 {
     /**
      * does a value pass inspection?
@@ -51,29 +51,18 @@ interface ListCheck
      *         FALSE otherwise
      */
     public function inspect($fieldOrVar);
-
-    /**
-     * does a list of values pass inspection?
-     *
-     * @param  mixed $list
-     *         the data to be examined
-     * @return bool
-     *         TRUE if the inspection passes
-     *         FALSE otherwise
-     */
-    public function inspectList($list);
 }
 ```
 
-`ListCheck` also has the following informal interface:
+`Check` also has the following informal interface:
 
 ```php
-interface ListCheck
+interface Check
 {
     /**
      * create a customised Check, ready to be used
      *
-     * @return ListCheck
+     * @return Check
      */
     public static function using(<customisation params>);
 
@@ -87,17 +76,6 @@ interface ListCheck
      *         FALSE otherwise
      */
     public static function check($fieldOrVar, <additional params>);
-
-    /**
-     * does a list of values pass inspection?
-     *
-     * @param  mixed $list
-     *         the data to be examined
-     * @return bool
-     *         TRUE if the inspection passes
-     *         FALSE otherwise
-     */
-    public static function checkList($list, <additional params>);
 }
 ```
 
@@ -105,50 +83,41 @@ _Informal interfaces_ contain methods that you must implement. However, due to P
 
 ## How To Use
 
-Every `ListCheck` can be used in two ways:
+Every `Check` can be used in two ways:
 
-* a static call to `::checkList()` for convenience,
-* as an object, calling the `->inspectList()` method
+* a static call to `::check()` for convenience,
+* as an object, calling the `->inspect()` method
 
 ### Scaffolding
 
-Most `ListCheck` classes also implement the `Check` interface too. See [the `Check` interface](Check.html) to get started.
+Every Check starts with a bit of boilerplate code:
 
-Every `ListCheck` needs a bit of boilerplate code:
-
-* add `use GanbaroDigital\MissingBits\Checks\ListCheck` to your PHP file
-* add `implements ListCheck` to your class
+* add `use GanbaroDigital\MissingBits\Checks\Check` to your PHP file
+* add `implements Check` to your class
 
 ### The Check Pattern
 
-Every `ListCheck` implements the `ListCheck::checkList()` pattern:
+Every `Check` implements the `Check::check()` pattern:
 
-* add a `public static function checkList()` method to your class. This method inspects each element in `$list`. If you're happy with `$list`, return `true`. If you're not happy with `$list`, return `false`.
-* if your check needs additional input parameters, pass these in as additional parameters to the `checkList()` method.
+* add a `public static function check()` method to your class. This method inspects `$fieldOrVar`. If you're happy with `$fieldOrVar`, return `true`. If you're not happy with `$data`, return `false`.
+* if your check needs additional input parameters, pass these in as additional parameters to the `check()` method.
 
 ### Making It Usable As An Object
 
-Every `ListCheck` can be used as an object:
+Every `Check` can be used as an object:
 
 * add a `public function __construct()` if your check needs additional input parameters
-* add a `public function inspectList()` which calls your `::inspect()` method
-
-We've provided a [`ListCheckHelper` trait](ListCheckHelper.html) that will add the `inspectList()` method to your class.
+* add a `public function inspect()` which calls your static `::check()` method
 
 ### Putting It All Together
 
-Here's a simple min / max check. It supports all the different ways that a `ListCheck` can be used.
+Here's a simple min / max check. It supports all the different ways that a Check can be used.
 
 ```php
 use GanbaroDigital\MissingBits\Checks\Check;
-use GanbaroDigital\MissingBits\Checks\ListCheck;
-use GanbaroDigital\MissingBits\Checks\ListCheckHelper;
 
-class IsInRange implements Check, ListCheck
+class IsInRange implements Check
 {
-    // saves us having to implement inspectList() ourselves
-    use ListCheckHelper;
-
     /**
      * minimum acceptable value in our range
      */
@@ -203,7 +172,7 @@ class IsInRange implements Check, ListCheck
     }
 
     /**
-     * is $data within the required range?
+     * is $data within the require range?
      *
      * @param  int $data
      *         the value to check
@@ -226,25 +195,6 @@ class IsInRange implements Check, ListCheck
 
         return true;
     }
-
-    /**
-     * are the values in $list within the required range?
-     *
-     * @param  mixed $list
-     *         the list of values to check
-     * @param  int $min
-     *         minimum value for allowed range
-     * @param  int $max
-     *         maximum value for allowed range
-     * @return bool
-     *         TRUE if the data is in range
-     *         FALSE otherwise
-     */
-    public static function checkList($list, $min, $max)
-    {
-        $check = new static($min, $max);
-        return $check->inspectList($list);
-    }
 }
 ```
 
@@ -252,14 +202,12 @@ To use this example check, you can do:
 
 ```php
 // a static call is often the most convenient
-var_dump(IsInRange::checkList($list, 10,20));
+var_dump(IsInRange::check($data, 10,20));
 
 // as an object
 $callable = new IsInRange(10, 20);
 var_dump($rangeCheck->inspect($data));
-var_dump($rangeCheck->inspectList($list));
 
 // via the using() helper
 var_dump(IsInRange::using(10,20)->inspect($data));
-var_dump(IsInRange::using(10,20)->inspectList($data));
 ```

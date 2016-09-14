@@ -1,7 +1,7 @@
 ---
 currentSection: checks
-currentItem: ListCheckHelper
-pageflow_prev_url: ListCheck.html
+currentItem: defining-checks
+pageflow_prev_url: ListCheck.class.html
 pageflow_prev_text: ListCheck interface
 ---
 
@@ -13,7 +13,7 @@ Not yet in a tagged release
 
 ## Description
 
-`ListCheckHelper` is a trait. It implements the `inspectList()` method of the [`ListCheck`](ListCheck.html) interface for you.
+`ListCheckHelper` is a trait. It implements the `inspectList()` method of the [`ListCheck`](ListCheck.class.html) interface for you.
 
 ## Public Interface
 
@@ -170,4 +170,4 @@ None at this time.
 
 ## See Also
 
-* [`ListCheck` interface](ListCheck.html)
+* [`ListCheck` interface](ListCheck.class.html)

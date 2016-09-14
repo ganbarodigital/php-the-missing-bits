@@ -75,15 +75,22 @@ menu:
             home:
                 text: Checks
                 relativeUrl: checks/index.html
-            Check:
-                text: Check
-                relativeUrl: checks/Check.html
-            ListCheck:
-                text: ListCheck
-                relativeUrl: checks/ListCheck.html
-            ListableCheck:
-                text: ListableCheck
-                relativeUrl: checks/ListableCheck.html
+            defining-checks:
+                text: Defining Checks
+                relativeUrl: checks/defining-checks.html
+                contents:
+                    Check:
+                        text: Check interface
+                        relativeUrl: checks/Check.class.html
+                    ListCheck:
+                        text: ListCheck interface
+                        relativeUrl: checks/ListCheck.class.html
+                    ListCheckHelper:
+                        text: ListCheckHelper trait
+                        relativeUrl: checks/ListCheckHelper.trait.html
+            available-checks:
+                text: Available Checks
+                relativeUrl: checks/available-checks.html
 
     classes-objects:
         text: Classes and Objects
