@@ -164,6 +164,9 @@ menu:
                     ReadOnlyException:
                         text: ReadOnlyException
                         relativeUrl: entities/ReadOnlyException.class.html
+                    ReadOnlyForeverException:
+                        text: ReadOnlyForeverException class
+                        relativeUrl: entities/ReadOnlyForeverException.class.html
                     Entity:
                         text: Entity interface
                         relativeUrl: entities/Entity.class.html

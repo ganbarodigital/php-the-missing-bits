@@ -1,34 +1,34 @@
 ---
 currentSection: entities
 currentItem: defining-entities
-pageflow_prev_url: defining-entities.html
-pageflow_prev_text: Defining Entities
-pageflow_next_url: ReadOnlyForeverException.class.html
-pageflow_next_text: ReadOnlyForeverException interface
+pageflow_prev_url: ReadOnlyException.class.html
+pageflow_prev_text: ReadOnlyException class
+pageflow_next_url: Entity.class.html
+pageflow_next_text: Entity interface
 ---
 
-# ReadOnlyException
+# ReadOnlyForeverException
 
-<div class="callout info">
-Since v1.2.0
+<div class="callout warning">
+Not yet in a tagged release
 </div>
 
 ## Description
 
-`ReadOnlyException` is an exception. It is thrown whenever you attempt to edit an entity that is currently set to read-only.
+`ReadOnlyForeverException` is an exception. It is thrown whenever you attempt to make an entity read-write, but the entity has been marked as 'read-only forever'.
 
 ## Public Interface
 
-`ReadOnlyException` has the following public interface:
+`ReadOnlyForeverException` has the following public interface:
 
 ```php
-// ReadOnlyException lives in this namespace
+// ReadOnlyForeverException lives in this namespace
 namespace GanbaroDigital\MissingBits\Entities;
 
 // our base classes and interfaces
 use LogicException;
 
-class ReadOnlyException extends LogicException
+class ReadOnlyForeverException extends LogicException
 {
 
 }
@@ -38,7 +38,7 @@ class ReadOnlyException extends LogicException
 
 Here is the contract for this class:
 
-    GanbaroDigital\MissingBits\Entities\ReadOnlyException
+    GanbaroDigital\MissingBits\Entities\ReadOnlyForeverException
      [x] Can instantiate
      [x] Is logic exception
 

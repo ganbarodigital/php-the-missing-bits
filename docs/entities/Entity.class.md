@@ -1,8 +1,8 @@
 ---
 currentSection: entities
 currentItem: defining-entities
-pageflow_prev_url: ReadOnlyException.class.html
-pageflow_prev_text: ReadOnlyException class
+pageflow_prev_url: ReadOnlyForeverException.class.html
+pageflow_prev_text: ReadOnlyForeverException class
 pageflow_next_url: WriteProtectableEntity.class.html
 pageflow_next_text: WriteProtectableEntity interface
 ---

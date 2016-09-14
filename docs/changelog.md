@@ -40,6 +40,8 @@ pageflow_next_text: Contributing
   - added `IsAssignable::check()`
 * Added type-hinting / strict type declaration support for entities:
   - added empty `Entity` interface
+* Added immutable support to entities
+  - added `ReadOnlyForeverException` exception
 
 ### Refactor
 
