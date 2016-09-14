@@ -1,13 +1,13 @@
 ---
 currentSection: types
-currentItem: IsArray
-pageflow_prev_url: GetStringTypes.html
-pageflow_prev_text: GetStringTypes class
-pageflow_next_url: is_array_list.html
-pageflow_next_text: is_array_list()
+currentItem: type-checks
+pageflow_prev_url: is_stringy.html
+pageflow_prev_text: is_stringy()
+pageflow_next_url: IsArray.checkList.html
+pageflow_next_text: IsArray::checkList()
 ---
 
-# IsArray
+# IsArray::check()
 
 <div class="callout warning" markdown="1">
 Not yet in a tagged release

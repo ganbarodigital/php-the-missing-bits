@@ -1,13 +1,13 @@
 ---
 currentSection: types
-currentItem: IsList
-pageflow_prev_url: IsAssignable.html
-pageflow_prev_text: IsAssignable class
-pageflow_next_url: IsListyObject.html
-pageflow_next_text: IsListyObject class
+currentItem: type-checks
+pageflow_prev_url: IsAssignable.checkList.html
+pageflow_prev_text: IsAssignable::checkList()
+pageflow_next_url: IsList.checkList.html
+pageflow_next_text: IsList::checkList()
 ---
 
-# IsList
+# IsList::check()
 
 <div class="callout info" markdown="1">
 Since v1.9.0
@@ -17,15 +17,9 @@ Since v1.9.0
 
 `IsList::check()` - do we have a valid PHP list?
 
-`is_list()` - global function that's a convenience wrapper around `IsList::check()`
-
 ```php
-// as static function
 use GanbaroDigital\MissingBits\TypeChecks\IsList;
 bool IsList::check(mixed $list);
-
-// as a global function
-bool is_list(mixed $list);
 ```
 
 ## Parameters
@@ -51,7 +45,7 @@ anything else | false
 
 ## Works With
 
-`IsList::check()` and `is_list()` are supported on these versions of PHP:
+`IsList::check()` is supported on these versions of PHP:
 
 PHP Version | Works?
 ------------|-------

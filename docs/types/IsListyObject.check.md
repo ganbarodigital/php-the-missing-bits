@@ -1,13 +1,13 @@
 ---
 currentSection: types
-currentItem: IsListyObject
-pageflow_prev_url: IsList.html
-pageflow_prev_text: IsList class
-pageflow_next_url: IsStringy.html
-pageflow_next_text: IsStringy class
+currentItem: type-checks
+pageflow_prev_url: IsList.check.html
+pageflow_prev_text: IsList::check()
+pageflow_next_url: IsListyObject.checkList.html
+pageflow_next_text: IsListyObject::checkList()
 ---
 
-# IsListyObject
+# IsListyObject::check()
 
 <div class="callout info" markdown="1">
 Since v1.9.0
@@ -17,15 +17,9 @@ Since v1.9.0
 
 `IsListyObject::check()` - do we have an object that's a valid PHP list?
 
-`is_listy_object()` - global function that's a convenience wrapper around `IsListyObject::check()`
-
 ```php
-// as static function
 use GanbaroDigital\MissingBits\TypeChecks\IsListyObject;
 bool IsListyObject::check(mixed $list);
-
-// as a global function
-bool is_listy_object(mixed $list);
 ```
 
 ## Parameters
@@ -50,7 +44,7 @@ anything else | false
 
 ## Works With
 
-`IsListyObject::check()` and `is_listy_object()` are supported on these versions of PHP:
+`IsListyObject::check()` is supported on these versions of PHP:
 
 PHP Version | Works?
 ------------|-------
