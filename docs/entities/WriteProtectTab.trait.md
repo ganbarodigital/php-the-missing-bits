@@ -1,7 +1,7 @@
 ---
 currentSection: entities
-currentItem: WriteProtectableEntity
-pageflow_prev_url: WriteProtectedEntity.html
+currentItem: defining-entities
+pageflow_prev_url: WriteProtectedEntity.class.html
 pageflow_prev_text: WriteProtectedEntity interface
 ---
 
@@ -13,7 +13,7 @@ Since v1.2.0
 
 ## Description
 
-`WriteProtectTab` is a trait. It provides a simple implementation of the [`WriteProtectableEntity`](WriteProtectableEntity.html) interface. It can also be used for objects that implement the [`WriteProtectedEntity`](WriteProtectedEntity.html) interface.
+`WriteProtectTab` is a trait. It provides a simple implementation of the [`WriteProtectableEntity`](WriteProtectableEntity.class.html) interface. It can also be used for objects that implement the [`WriteProtectedEntity`](WriteProtectedEntity.class.html) interface.
 
 <div class="callout info">
 The name comes from tape cassettes. The write-protect tab is a little bit of plastic that you could snap off to prevent recording over the cassette's contents. If you did want to record onto the tape again, you'd put a small piece of tape over the hole where the write-protect tab used to be.
@@ -141,6 +141,6 @@ None at this time.
 
 ## See Also
 
-* [`ReadOnlyException`](ReadOnlyException.html) - exception thrown when attempting to edit a read-only entity
-* [`WriteProtectableEntity`](WriteProtectedEntity.html) - interface implemented by entities that support switching into read-only mode
-* [`WriteProtectedEntity`](WriteProtectedEntity.html) - interface implemented by entities that are read-only after construction
+* [`ReadOnlyException`](ReadOnlyException.class.html) - exception thrown when attempting to edit a read-only entity
+* [`WriteProtectableEntity`](WriteProtectedEntity.class.html) - interface implemented by entities that support switching into read-only mode
+* [`WriteProtectedEntity`](WriteProtectedEntity.class.html) - interface implemented by entities that are read-only after construction

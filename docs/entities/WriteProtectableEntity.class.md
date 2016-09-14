@@ -1,9 +1,9 @@
 ---
 currentSection: entities
-currentItem: WriteProtectableEntity
-pageflow_prev_url: ReadOnlyException.html
+currentItem: defining-entities
+pageflow_prev_url: ReadOnlyException.class.html
 pageflow_prev_text: ReadOnlyException class
-pageflow_next_url: WriteProtectedEntity.html
+pageflow_next_url: WriteProtectedEntity.class.html
 pageflow_next_text: WriteProtectedEntity interface
 ---
 
@@ -15,7 +15,7 @@ Since v1.2.0
 
 ## Description
 
-`WriteProtectableEntity` is an interface. It is implemented by all objects that support being switched into a read-only mode.
+`WriteProtectableEntity` is an interface. It is implemented by all entities that support being switched into a read-only mode.
 
 ## Public Interface
 
@@ -92,6 +92,6 @@ None at this time.
 
 ## See Also
 
-* [`ReadOnlyException`](ReadOnlyException.html) - exception thrown when attempting to edit a read-only entity
-* [`WriteProtectedEntity`](WriteProtectedEntity.html) - interface implemented by entities that are read-only after construction
-* [`WriteProtectTab`](WriteProtectTab.html) - simple implementation of the `WriteProtectableEntity` interface, as a trait
+* [`ReadOnlyException`](ReadOnlyException.class.html) - exception thrown when attempting to edit a read-only entity
+* [`WriteProtectedEntity`](WriteProtectedEntity.class.html) - interface implemented by entities that are read-only after construction
+* [`WriteProtectTab`](WriteProtectTab.class.html) - simple implementation of the `WriteProtectableEntity` interface, as a trait

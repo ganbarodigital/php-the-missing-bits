@@ -1,9 +1,9 @@
 ---
 currentSection: entities
-currentItem: WriteProtectableEntity
-pageflow_prev_url: WriteProtectableEntity.html
+currentItem: defining-entities
+pageflow_prev_url: WriteProtectableEntity.class.html
 pageflow_prev_text: WriteProtectableEntity interface
-pageflow_next_url: WriteProtectTab.html
+pageflow_next_url: WriteProtectTab.trait.html
 pageflow_next_text: WriteProtectTab trait
 ---
 
@@ -125,6 +125,6 @@ None at this time.
 
 ## See Also
 
-* [`ReadOnlyException`](ReadOnlyException.html) - exception thrown when attempting to edit a read-only entity
-* [`WriteProtectableEntity`](WriteProtectedEntity.html) - interface implemented by entities that support switching into read-only mode
-* [`WriteProtectTab`](WriteProtectTab.html) - simple implementation of the `WriteProtectableEntity` interface, as a trait
+* [`ReadOnlyException`](ReadOnlyException.class.html) - exception thrown when attempting to edit a read-only entity
+* [`WriteProtectableEntity`](WriteProtectedEntity.class.html) - interface implemented by entities that support switching into read-only mode
+* [`WriteProtectTab`](WriteProtectTab.trait.html) - simple implementation of the `WriteProtectableEntity` interface, as a trait

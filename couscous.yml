@@ -157,18 +157,25 @@ menu:
             home:
                 text: Entities Classes and Interfaces
                 relativeUrl: entities/index.html
-            ReadOnlyException:
-                text: ReadOnlyException
-                relativeUrl: entities/ReadOnlyException.html
-            WriteProtectableEntity:
-                text: WriteProtectableEntity
-                relativeUrl: entities/WriteProtectableEntity.html
-            WriteProtectedEntity:
-                text: WriteProtectedEntity
-                relativeUrl: entities/WriteProtectedEntity.html
-            WriteProtectTab:
-                text: WriteProtectTab
-                relativeUrl: entities/WriteProtectTab.html
+            defining-entities:
+                text: Defining Entities
+                relativeUrl: entities/defining-entities.html
+                contents:
+                    ReadOnlyException:
+                        text: ReadOnlyException
+                        relativeUrl: entities/ReadOnlyException.class.html
+                    WriteProtectableEntity:
+                        text: WriteProtectableEntity
+                        relativeUrl: entities/WriteProtectableEntity.class.html
+                    WriteProtectedEntity:
+                        text: WriteProtectedEntity
+                        relativeUrl: entities/WriteProtectedEntity.class.html
+                    WriteProtectTab:
+                        text: WriteProtectTab
+                        relativeUrl: entities/WriteProtectTab.trait.html
+            available-entities:
+                text: Available Entities
+                relativeUrl: entities/available-entities.html
 
     lists:
         text: Lists

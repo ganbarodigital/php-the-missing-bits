@@ -1,8 +1,8 @@
 ---
 currentSection: entities
 currentItem: home
-pageflow_next_url: ReadOnlyException.html
-pageflow_next_text: ReadOnlyException class
+pageflow_next_url: defining-entities.html
+pageflow_next_text: Defining Entities
 ---
 
 # Entities
@@ -14,23 +14,11 @@ Entities are objects that:
 * hold data, and
 * support changing that data after construction (normally via `setXXX()` methods)
 
-Here's a list of what we feel is missing from PHP's built-in support for entities.
+Stock PHP doesn't include any standard way of defining entities or their common behaviours. And yet, the entity is probably the most common code pattern in applications today.
 
-## Available Exceptions
+## By Functional Area
 
-Exception | Description
-----------|------------
-[`ReadOnlyException`](ReadOnlyException.html) | thrown when attempting to edit an entity that is write-protected
-
-## Available Interfaces
-
-Interface | Description
-----------|------------
-[`WriteProtectableEntity`](WriteProtectableEntity.html) | entities that can be switched into read-only mode
-[`WriteProtectedEntity`](WriteProtectedEntity.html) | entities that switch into read-only mode after construction
-
-## Available Traits
-
-Trait | Description
-------|------------
-[`WriteProtectTab`](WriteProtectTab.html) | simple implementation of the `WriteProtectableEntity` interface
+Functional Area | Description
+----------------|------------
+[Defining Entities](defining-entities.html) | everything you need to create entities
+[Available Entities](available-entities.html) | a list of the entities provided by _PHP: The Missing Bits_
