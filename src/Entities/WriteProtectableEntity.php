@@ -46,7 +46,7 @@ namespace GanbaroDigital\MissingBits\Entities;
 /**
  * implemented by all entities that can be switched into read-only mode
  */
-interface WriteProtectableEntity
+interface WriteProtectableEntity extends Entity
 {
     /**
      * can we edit this entity?
@@ -69,13 +69,26 @@ interface WriteProtectableEntity
     /**
      * disable editing this entity
      *
+     * you can re-enable editing this entity by calling ::setReadWrite()
+     *
      * @return void
      */
     public function setReadOnly();
 
     /**
+     * disable editing this entity forever
+     *
+     * after calling this method, any attempt to call ::setReadWrite() will
+     * cause a ReadOnlyForever exception
+     *
+     * @return void
+     */
+    public function setReadOnlyForever();
+
+    /**
      * enable editing this entity
      *
+     * @throws ReadOnlyForeverException
      * @return void
      */
     public function setReadWrite();

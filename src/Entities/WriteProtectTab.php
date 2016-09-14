@@ -49,7 +49,17 @@ use GanbaroDigital\MissingBits\TypeInspectors\GetPrintableType;
  */
 trait WriteProtectTab
 {
+    /**
+     * we start in read-write mode
+     * @var boolean
+     */
     private $readOnly = false;
+
+    /**
+     * by default, the read-only mode can be togged on and off
+     * @var boolean
+     */
+    private $readOnlyForever = false;
 
     /**
      * can we edit this entity?
@@ -82,6 +92,8 @@ trait WriteProtectTab
     /**
      * disable editing this entity
      *
+     * you can re-enable editing this entity by calling ::setReadWrite()
+     *
      * @return void
      */
     public function setReadOnly()
@@ -90,12 +102,36 @@ trait WriteProtectTab
     }
 
     /**
+     * disable editing this entity forever
+     *
+     * after calling this method, any attempt to call ::setReadWrite() will
+     * cause a ReadOnlyForever exception
+     *
+     * @return void
+     */
+    public function setReadOnlyForever()
+    {
+        $this->readOnly = true;
+        $this->readOnlyForever = true;
+    }
+
+    /**
      * enable editing this entity
      *
+     * @throws ReadOnlyForeverException
      * @return void
      */
     public function setReadWrite()
     {
+        // make sure our wishes are respected
+        if ($this->readOnlyForever) {
+            // if we get here, we are in read-only-forver mode, and
+            // must not be turned back into a read-write entity
+            $type = GetPrintableType::of($this);
+
+            throw new ReadOnlyForeverException("{$type} cannot be made read-write");
+        }
+
         $this->readOnly = false;
     }
 

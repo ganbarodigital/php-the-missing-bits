@@ -58,6 +58,8 @@ interface WriteProtectedEntity extends WriteProtectableEntity
     /**
      * disable editing this entity
      *
+     * you can re-enable editing this entity by calling ::setReadWrite()
+     *
      * @return void
      *
      * @inheritedFrom WriteProtectableEntity
@@ -65,8 +67,21 @@ interface WriteProtectedEntity extends WriteProtectableEntity
     public function setReadOnly();
 
     /**
+     * disable editing this entity forever
+     *
+     * after calling this method, any attempt to call ::setReadWrite() will
+     * cause a ReadOnlyForever exception
+     *
+     * @return void
+     *
+     * @inheritedFrom WriteProtectableEntity
+     */
+    public function setReadOnlyForever();
+
+    /**
      * enable editing this entity
      *
+     * @throws ReadOnlyForeverException
      * @return void
      *
      * @inheritedFrom WriteProtectableEntity
@@ -123,8 +138,17 @@ class MyEntity extends WriteProtectedEntity
 
 None at this time.
 
+## Changelog
+
+### v1.10.0
+
+* Added 'read-only forever' mode
+  - added `setReadOnlyForever()` method
+  - `setReadWrite()` now throws a `ReadOnlyForeverException` if `setReadOnlyForever()` has been called
+
 ## See Also
 
 * [`ReadOnlyException`](ReadOnlyException.class.html) - exception thrown when attempting to edit a read-only entity
+* [`ReadOnlyForeverException`](ReadOnlyForeverException.class.html) - exception thrown when attempting to make an entity read-write when that is not allowed
 * [`WriteProtectableEntity`](WriteProtectedEntity.class.html) - interface implemented by entities that support switching into read-only mode
 * [`WriteProtectTab`](WriteProtectTab.trait.html) - simple implementation of the `WriteProtectableEntity` interface, as a trait

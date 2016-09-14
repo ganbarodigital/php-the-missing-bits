@@ -28,6 +28,9 @@ namespace GanbaroDigital\MissingBits\Entities;
 // our base classes and interfaces
 use GanbaroDigital\MissingBits\Entities\Entity;
 
+// the exceptions we throw
+use GanbaroDigital\MissingBits\Entities\ReadOnlyForeverException;
+
 interface WriteProtectableEntity extends Entity
 {
     /**
@@ -51,13 +54,26 @@ interface WriteProtectableEntity extends Entity
     /**
      * disable editing this entity
      *
+     * you can re-enable editing this entity by calling ::setReadWrite()
+     *
      * @return void
      */
     public function setReadOnly();
 
     /**
+     * disable editing this entity forever
+     *
+     * after calling this method, any attempt to call ::setReadWrite() will
+     * cause a ReadOnlyForever exception
+     *
+     * @return void
+     */
+    public function setReadOnlyForever();
+
+    /**
      * enable editing this entity
      *
+     * @throws ReadOnlyForeverException
      * @return void
      */
     public function setReadWrite();
@@ -93,9 +109,18 @@ class MyEntity extends WriteProtectableEntity
 
 None at this time.
 
+## Changelog
+
+### v1.10.0
+
+* Added 'read-only forever' mode
+  - added `setReadOnlyForever()` method
+  - `setReadWrite()` now throws a `ReadOnlyForeverException` if `setReadOnlyForever()` has been called
+
 ## See Also
 
 * [`ReadOnlyException`](ReadOnlyException.class.html) - exception thrown when attempting to edit a read-only entity
+* [`ReadOnlyForeverException`](ReadOnlyForeverException.class.html) - exception thrown when attempting to make an entity read-write when that is not allowed
 * [`Entity`](Entity.class.html) - empty interface for type-hinting or strict type declarations
 * [`WriteProtectedEntity`](WriteProtectedEntity.class.html) - interface implemented by entities that are read-only after construction
 * [`WriteProtectTab`](WriteProtectTab.class.html) - simple implementation of the `WriteProtectableEntity` interface, as a trait

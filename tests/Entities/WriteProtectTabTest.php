@@ -56,7 +56,7 @@ class WriteProtectTabTest extends PHPUnit_Framework_TestCase
      * @covers ::isReadOnly
      * @covers ::isReadWrite
      */
-    public function testStartsInReadWrite()
+    public function test_starts_in_read_write()
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -79,7 +79,7 @@ class WriteProtectTabTest extends PHPUnit_Framework_TestCase
      * @covers ::isReadWrite
      * @covers ::setReadOnly
      */
-    public function testCanWriteProtect()
+    public function test_can_write_protect()
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -106,7 +106,7 @@ class WriteProtectTabTest extends PHPUnit_Framework_TestCase
      *
      * @expectedException GanbaroDigital\MissingBits\Entities\ReadOnlyException
      */
-    public function testCanEnforceWriteProtection()
+    public function test_can_enforce_write_protection()
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -132,7 +132,7 @@ class WriteProtectTabTest extends PHPUnit_Framework_TestCase
      * @covers ::setReadWrite
      * @covers ::requireReadWrite
      */
-    public function testCanWriteEnable()
+    public function test_can_write_enable()
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -155,6 +155,34 @@ class WriteProtectTabTest extends PHPUnit_Framework_TestCase
 
         // this would trigger an exception if we were in read-only mode
         $unit->checkRequirement();
+    }
+
+    /**
+     * @covers ::isReadOnly
+     * @covers ::isReadWrite
+     * @covers ::setReadOnly
+     * @covers ::setReadWrite
+     *
+     * @expectedException GanbaroDigital\MissingBits\Entities\ReadOnlyForeverException
+     */
+    public function test_can_enforce_read_only_forever_protection()
+    {
+        // ----------------------------------------------------------------
+        // setup your test
+
+        $unit = new WriteProtectTabTestClass;
+        $unit->setReadOnlyForever();
+        $this->assertFalse($unit->isReadWrite());
+        $this->assertTrue($unit->isReadOnly());
+
+        // ----------------------------------------------------------------
+        // perform the change
+
+        $unit->setReadWrite();
+
+        // ----------------------------------------------------------------
+        // test the results
+
     }
 }
 
