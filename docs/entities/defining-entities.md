@@ -189,6 +189,7 @@ Exception | Description
 
 Interface | Description
 ----------|------------
+[`Entity`](Entity.class.html) | empty interface for type-hinting or strict type declarations
 [`WriteProtectableEntity`](WriteProtectableEntity.class.html) | entities that can be switched into read-only mode
 [`WriteProtectedEntity`](WriteProtectedEntity.class.html) | entities that switch into read-only mode after construction
 

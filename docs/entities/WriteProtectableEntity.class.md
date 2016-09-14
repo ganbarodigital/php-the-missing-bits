@@ -1,8 +1,8 @@
 ---
 currentSection: entities
 currentItem: defining-entities
-pageflow_prev_url: ReadOnlyException.class.html
-pageflow_prev_text: ReadOnlyException class
+pageflow_prev_url: Entity.class.html
+pageflow_prev_text: Entity class
 pageflow_next_url: WriteProtectedEntity.class.html
 pageflow_next_text: WriteProtectedEntity interface
 ---
@@ -25,7 +25,10 @@ Since v1.2.0
 // `WriteProtectableEntity` lives in this namespace
 namespace GanbaroDigital\MissingBits\Entities;
 
-interface WriteProtectableEntity
+// our base classes and interfaces
+use GanbaroDigital\MissingBits\Entities\Entity;
+
+interface WriteProtectableEntity extends Entity
 {
     /**
      * can we edit this entity?
@@ -93,5 +96,6 @@ None at this time.
 ## See Also
 
 * [`ReadOnlyException`](ReadOnlyException.class.html) - exception thrown when attempting to edit a read-only entity
+* [`Entity`](Entity.class.html) - empty interface for type-hinting or strict type declarations
 * [`WriteProtectedEntity`](WriteProtectedEntity.class.html) - interface implemented by entities that are read-only after construction
 * [`WriteProtectTab`](WriteProtectTab.class.html) - simple implementation of the `WriteProtectableEntity` interface, as a trait

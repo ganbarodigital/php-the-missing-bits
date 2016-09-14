@@ -38,6 +38,8 @@ pageflow_next_text: Contributing
   - added `IsArray::check()`
   - added `is_array_list()` convenience function
   - added `IsAssignable::check()`
+* Added type-hinting / strict type declaration support for entities:
+  - added empty `Entity` interface
 
 ### Refactor
 

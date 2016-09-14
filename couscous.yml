@@ -164,6 +164,9 @@ menu:
                     ReadOnlyException:
                         text: ReadOnlyException
                         relativeUrl: entities/ReadOnlyException.class.html
+                    Entity:
+                        text: Entity interface
+                        relativeUrl: entities/Entity.class.html
                     WriteProtectableEntity:
                         text: WriteProtectableEntity
                         relativeUrl: entities/WriteProtectableEntity.class.html
