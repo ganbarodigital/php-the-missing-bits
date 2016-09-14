@@ -1,11 +1,11 @@
 ---
 currentSection: lists
-currentItem: TraverseObject
-pageflow_prev_url: TraverseList.html
-pageflow_prev_text: TraverseList class
+currentItem: list-iterators
+pageflow_prev_url: TraverseList.using.html
+pageflow_prev_text: TraverseList::using()
 ---
 
-# TraverseObject
+# TraverseObject::using()
 
 <div class="callout info" markdown="1">
 Since v1.8.0
@@ -15,15 +15,9 @@ Since v1.8.0
 
 `TraverseObject::using()` - iterate over an object's public properties
 
-`traverse_object()` - global function that's a convenience wrapper around `TraverseObject::using()`
-
 ```php
-// as static function
 use GanbaroDigital\MissingBits\ListTraversals\TraverseObject;
 void TraverseObject::using(object $list, string $listName, callable $callable);
-
-// as a global function
-void traverse_object(object $list, string $listName, callable $callable);
 ```
 
 ## Parameters

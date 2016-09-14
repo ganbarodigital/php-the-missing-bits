@@ -191,15 +191,28 @@ menu:
             home:
                 text: List Functions and Classes
                 relativeUrl: lists/index.html
-            TraverseArray:
-                text: TraverseArray
-                relativeUrl: lists/TraverseArray.html
-            TraverseList:
-                text: TraverseList
-                relativeUrl: lists/TraverseList.html
-            TraverseObject:
-                text: TraverseObject
-                relativeUrl: lists/TraverseObject.html
+            list-iterators:
+                text: List Iterators
+                relativeUrl: lists/list-iterators.html
+                contents:
+                    traverse_array:
+                        text: traverse_array()
+                        relativeUrl: lists/traverse_array.html
+                    traverse_list:
+                        text: traverse_list()
+                        relativeUrl: lists/traverse_list.html
+                    traverse_object:
+                        text: traverse_object()
+                        relativeUrl: lists/traverse_object.html
+                    TraverseArray:
+                        text: TraverseArray::using()
+                        relativeUrl: lists/TraverseArray.using.html
+                    TraverseList:
+                        text: TraverseList::using()
+                        relativeUrl: lists/TraverseList.using.html
+                    TraverseObject:
+                        text: TraverseObject::using()
+                        relativeUrl: lists/TraverseObject.using.html
 
     strings:
         text: Strings

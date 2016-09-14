@@ -1,13 +1,13 @@
 ---
 currentSection: lists
-currentItem: TraverseList
-pageflow_prev_url: TraverseArray.html
-pageflow_prev_text: TraverseArray class
-pageflow_next_url: TraverseList.html
-pageflow_next_text: TraverseList class
+currentItem: list-iterators
+pageflow_prev_url: TraverseArray.using.html
+pageflow_prev_text: TraverseArray::using()
+pageflow_next_url: TraverseObject.using.html
+pageflow_next_text: TraverseObject::using()
 ---
 
-# TraverseList
+# TraverseList::using()
 
 <div class="callout info" markdown="1">
 Since v1.8.0
@@ -17,8 +17,6 @@ Since v1.8.0
 
 `TraverseList::using()` - iterate over a PHP list (array, `Traversable` object, or object with public properties)
 
-`traverse_list()` - global function that's a convenience wrapper around `TraverseList::using()`
-
 <div class="callout info" markdown="1">
 `TraverseList::using()` is a convenience wrapper that accepts any recognised PHP list type. Underneath, it calls `TraverseArray::using()` or `TraverseObject::using()` as appropriate.
 
@@ -26,12 +24,8 @@ If you're writing a reusable PHP library or component, use `TraverseList::using(
 </div>
 
 ```php
-// as static function
 use GanbaroDigital\MissingBits\ListTraversals\TraverseList;
 void TraverseList::using(mixed $list, string $listName, callable $callable);
-
-// as a global function
-void traverse_list(mixed $list, string $listName, callable $callable);
 ```
 
 ## Parameters
@@ -46,9 +40,9 @@ void traverse_list(mixed $list, string $listName, callable $callable);
 
 Type | Behaviour
 -----|----------
-PHP array | passed to [`TraverseArray::using()`](TraverseArray.html)
-object that implements `Traversable` | passed to [`TraverseArray::using()`](TraverseArray.html)
-any other PHP object | passed to [`TraverseObject::using()`](TraverseObject.html)
+PHP array | passed to [`TraverseArray::using()`](TraverseArray.using.html)
+object that implements `Traversable` | passed to [`TraverseArray::using()`](TraverseArray.using.html)
+any other PHP object | passed to [`TraverseObject::using()`](TraverseObject.using.html)
 anything else | `InvalidArgumentException` thrown
 
 `$callable` is any PHP `callable`. It should take three parameters:

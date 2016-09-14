@@ -1,13 +1,13 @@
 ---
 currentSection: lists
-currentItem: TraverseArray
-pageflow_prev_url: index.html
-pageflow_prev_text: Lists
-pageflow_next_url: TraverseList.html
-pageflow_next_text: TraverseList class
+currentItem: list-iterators
+pageflow_prev_url: traverse_object.html
+pageflow_prev_text: traverse_object()
+pageflow_next_url: TraverseList.using.html
+pageflow_next_text: TraverseList::using()
 ---
 
-# TraverseArray
+# TraverseArray::using()
 
 <div class="callout info" markdown="1">
 Since v1.8.0
@@ -17,15 +17,9 @@ Since v1.8.0
 
 `TraverseArray::using()` - iterate over a PHP array
 
-`traverse_array()` - global function that's a convenience wrapper around `TraverseArray::using()`
-
 ```php
-// as static function
 use GanbaroDigital\MissingBits\ListTraversals\TraverseArray;
 void TraverseArray::using(array $list, string $listName, callable $callable);
-
-// as a global function
-void traverse_array(array $list, string $listName, callable $callable);
 ```
 
 ## Parameters
