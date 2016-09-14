@@ -56,12 +56,16 @@ menu:
             home:
                 text: Array Functions and Classes
                 relativeUrl: arrays/index.html
-            array_append_values:
-                text: array_append_values
-                relativeUrl: arrays/array_append_values.html
-            array_merge_keys:
-                text: array_merge_keys
-                relativeUrl: arrays/array_merge_keys.html
+            combine-arrays:
+                text: Combine Arrays
+                relativeUrl: arrays/combine_arrays.html
+                contents:
+                    array_append_values:
+                        text: array_append_values()
+                        relativeUrl: arrays/array_append_values.html
+                    array_merge_keys:
+                        text: array_merge_keys()
+                        relativeUrl: arrays/array_merge_keys.html
 
     checks:
         text: Checks

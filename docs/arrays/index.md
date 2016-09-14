@@ -1,8 +1,8 @@
 ---
 currentSection: arrays
 currentItem: home
-pageflow_next_url: array_append_values.html
-pageflow_next_text: array_append_values()
+pageflow_next_url: combine_arrays.html
+pageflow_next_text: Combine Arrays
 ---
 
 # Array Functions
@@ -11,9 +11,8 @@ pageflow_next_text: array_append_values()
 
 Here's a list of what we find is missing from PHP's built-in support for arrays.
 
-## Available Functions
+## By Functional Area
 
-Function | Purpose
+Functional Area | Purpose
 ---------|--------
-[`array_append_values()`](array_append_values.html) | append values to an array, ignoring array keys
-[`array_merge_keys()`](array_merge_keys.html) | combine two arrays
+[Combine Arrays](combine-arrays.html) | extra ways to combine PHP arrays

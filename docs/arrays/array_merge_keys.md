@@ -1,6 +1,6 @@
 ---
 currentSection: arrays
-currentItem: array_merge_keys
+currentItem: combine-arrays
 pageflow_prev_url: array_append_values.html
 pageflow_prev_text: array_append_values()
 ---

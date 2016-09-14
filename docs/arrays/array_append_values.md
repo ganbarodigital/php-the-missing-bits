@@ -1,8 +1,8 @@
 ---
 currentSection: arrays
-currentItem: array_append_values
-pageflow_prev_url: index.html
-pageflow_prev_text: Array Functions
+currentItem: combine-arrays
+pageflow_prev_url: combine-arrays.html
+pageflow_prev_text: Combine Arrays
 pageflow_next_url: array_merge_keys.html
 pageflow_next_text: array_merge_keys()
 ---
