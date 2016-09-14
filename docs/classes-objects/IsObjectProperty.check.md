@@ -16,6 +16,10 @@ Not yet in a tagged release
 `IsObjectProperty::check()` - is a [`ReflectionProperty`](http://www.php.net/ReflectionProperty) an object property?
 
 ```php
+// remember to import first
+use GanbaroDigital\MissingBits\ClassesAndObjects\IsObjectProperty;
+
+// our method signature
 bool IsObjectProperty::check(ReflectionProperty $refProp);
 ```
 

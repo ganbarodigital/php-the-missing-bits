@@ -18,6 +18,10 @@ Not yet in a tagged release
 `HasClassProperties::check()` - does a class have static properties?
 
 ```php
+// remember to import first
+use GanbaroDigital\MissingBits\ClassesAndObjects\HasClassProperties;
+
+// our method signature
 bool HasClassProperties::check(string $target, $propTypes = ReflectionProperty::IS_PUBLIC);
 ```
 

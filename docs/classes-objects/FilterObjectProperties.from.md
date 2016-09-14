@@ -18,6 +18,10 @@ Not yet in a tagged release
 `FilterObjectProperties::from()` - get an object's non-static properties
 
 ```php
+// remember to import first
+use GanbaroDigital\MissingBits\ClassesAndObjects\FilterObjectProperties;
+
+// our method signature
 array FilterObjectProperties::from(object $target, $propTypes = ReflectionProperty::IS_PUBLIC);
 ```
 

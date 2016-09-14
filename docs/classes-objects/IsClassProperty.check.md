@@ -16,6 +16,10 @@ Not yet in a tagged release
 `IsClassProperty::check()` - is a [`ReflectionProperty`](http://www.php.net/ReflectionProperty) a class property?
 
 ```php
+// remember to import first
+use GanbaroDigital\MissingBits\ClassesAndObjects\IsClassProperty;
+
+// our method signature
 bool IsClassProperty::check(ReflectionProperty $refProp);
 ```
 

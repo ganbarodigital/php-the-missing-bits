@@ -18,6 +18,10 @@ Not yet in a tagged release
 `FilterClassProperties::from()` - get a class's static properties
 
 ```php
+// remember to import first
+use GanbaroDigital\MissingBits\ClassesAndObjects\FilterClassProperties;
+
+// our method signature
 array FilterClassProperties::from(string $target, $propTypes = ReflectionProperty::IS_PUBLIC);
 ```
 

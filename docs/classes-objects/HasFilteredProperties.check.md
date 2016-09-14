@@ -16,6 +16,10 @@ Not yet in a tagged release
 `HasFilteredProperties::check()` - does a class or object have properties that pass the filter?
 
 ```php
+// remember to import first
+use GanbaroDigital\MissingBits\ClassesAndObjects\HasFilteredProperties;
+
+// our method signature
 bool HasFilteredProperties::check(ReferenceClass $target, int $propTypes, callable $resultFilter);
 ```
 

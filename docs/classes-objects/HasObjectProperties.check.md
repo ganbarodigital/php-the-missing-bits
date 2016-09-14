@@ -18,6 +18,10 @@ Not yet in a tagged release
 `HasObjectProperties::check()` - does an object have non-static properties?
 
 ```php
+// remember to import first
+use GanbaroDigital\MissingBits\ClassesAndObjects\HasObjectProperties;
+
+// our method signature
 bool HasObjectProperties(object $target, $propTypes = ReflectionProperty::IS_PUBLIC);
 ```
 

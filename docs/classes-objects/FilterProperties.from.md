@@ -18,8 +18,10 @@ Not yet in a tagged release
 `FilterProperties::from()` - get the properties from a class or object
 
 ```php
+// remember to import first
 use GanbaroDigital\MissingBits\ClassesAndObjects\FilterProperties;
 
+// our method signature
 array FilterProperties::from(ReflectionClass $refObj, int $propTypes, callable $resultFilter);
 ```
 
