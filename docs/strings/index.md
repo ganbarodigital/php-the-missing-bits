@@ -1,10 +1,3 @@
----
-currentSection: strings
-currentItem: home
-pageflow_next_url: quote_index.html
-pageflow_next_text: quote_index()
----
-
 # String Functions
 
 ## Introduction

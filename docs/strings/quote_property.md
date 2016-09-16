@@ -1,12 +1,3 @@
----
-currentSection: strings
-currentItem: quote_property
-pageflow_prev_url: quote_index.html
-pageflow_prev_text: quote_index()
-pageflow_next_url: vnsprintf.html
-pageflow_next_text: vnsprintf()
----
-
 # quote_property()
 
 <div class="callout info" markdown="1">

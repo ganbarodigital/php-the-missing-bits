@@ -1,12 +1,3 @@
----
-currentSection: strings
-currentItem: quote_index
-pageflow_prev_url: index.html
-pageflow_prev_text: String Functions
-pageflow_next_url: quote_property.html
-pageflow_next_text: quote_property()
----
-
 # quote_index()
 
 <div class="callout info" markdown="1">

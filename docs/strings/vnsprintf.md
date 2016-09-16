@@ -1,10 +1,3 @@
----
-currentSection: strings
-currentItem: vnsprintf
-pageflow_prev_url: quote_property.html
-pageflow_prev_text: quote_property()
----
-
 # vnsprintf()
 
 <div class="callout info" markdown="1">
