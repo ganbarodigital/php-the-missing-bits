@@ -254,13 +254,13 @@ navigation:
                 text: String Functions and Classes
                 relativeUrl: strings/index.html
             quote_index:
-                text: quote_index
+                text: quote_index()
                 relativeUrl: strings/quote_index.html
             quote_property:
-                text: quote_property
+                text: quote_property()
                 relativeUrl: strings/quote_property.html
             vnsprintf:
-                text: vnsprintf
+                text: vnsprintf()
                 relativeUrl: strings/vnsprintf.html
 
     traces:
