@@ -1,0 +1,1 @@
+../types/IsStringy.checkList.md

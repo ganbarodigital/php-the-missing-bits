@@ -91,6 +91,37 @@ navigation:
             available-checks:
                 text: Available Checks
                 relativeUrl: checks/available-checks.html
+                contents:
+                    IsArray_check:
+                        text: IsArray::check()
+                        relativeUrl: checks/IsArray.check.html
+                    IsArray_checkList:
+                        text: IsArray::checkList()
+                        relativeUrl: checks/IsArray.checkList.html
+                    IsAssignable_check:
+                        text: IsAssignable::check()
+                        relativeUrl: checks/IsAssignable.check.html
+                    IsAssignable_checkList:
+                        text: IsAssignable::checkList()
+                        relativeUrl: checks/IsAssignable.checkList.html
+                    IsList_check:
+                        text: IsList::check()
+                        relativeUrl: checks/IsList.check.html
+                    IsList_checkList:
+                        text: IsList::checkList()
+                        relativeUrl: checks/IsList.checkList.html
+                    IsListyObject_check:
+                        text: IsListyObject::check()
+                        relativeUrl: checks/IsListyObject.check.html
+                    IsListyObject_checkList:
+                        text: IsListyObject::checkList()
+                        relativeUrl: checks/IsListyObject.checkList.html
+                    IsStringy_check:
+                        text: IsStringy::check()
+                        relativeUrl: checks/IsStringy.check.html
+                    IsStringy_checkList:
+                        text: IsStringy::checkList()
+                        relativeUrl: checks/IsStringy.checkList.html
 
     classes-objects:
         text: Classes and Objects

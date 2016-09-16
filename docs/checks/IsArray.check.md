@@ -1,0 +1,1 @@
+../types/IsArray.check.md
