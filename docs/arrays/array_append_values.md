@@ -1,12 +1,3 @@
----
-currentSection: arrays
-currentItem: combine-arrays
-pageflow_prev_url: combine-arrays.html
-pageflow_prev_text: Combine Arrays
-pageflow_next_url: array_merge_keys.html
-pageflow_next_text: array_merge_keys()
----
-
 # array_append_values()
 
 <div class="callout info" markdown="1">

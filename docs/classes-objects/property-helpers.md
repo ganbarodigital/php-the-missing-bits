@@ -1,10 +1,3 @@
----
-currentSection: classes-objects
-currentItem: property-helpers
-pageflow_next_url: FilterProperties.from.html
-pageflow_next_text: FilterProperties::from()
----
-
 # Property Helpers
 
 ## Introduction

@@ -1,12 +1,3 @@
----
-currentSection: entities
-currentItem: defining-entities
-pageflow_prev_url: Entity.class.html
-pageflow_prev_text: Entity class
-pageflow_next_url: WriteProtectedEntity.class.html
-pageflow_next_text: WriteProtectedEntity interface
----
-
 # WriteProtectableEntity
 
 <div class="callout info">

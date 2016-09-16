@@ -1,10 +1,3 @@
----
-currentSection: types
-currentItem: type-checks
-pageflow_prev_url: IsStringy.check.html
-pageflow_prev_text: IsStringy::check()
----
-
 # IsStringy::checkList()
 
 <div class="callout warning" markdown="1">

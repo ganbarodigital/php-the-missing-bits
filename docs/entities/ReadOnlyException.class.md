@@ -1,12 +1,3 @@
----
-currentSection: entities
-currentItem: defining-entities
-pageflow_prev_url: defining-entities.html
-pageflow_prev_text: Defining Entities
-pageflow_next_url: ReadOnlyForeverException.class.html
-pageflow_next_text: ReadOnlyForeverException interface
----
-
 # ReadOnlyException
 
 <div class="callout info">

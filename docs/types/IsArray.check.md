@@ -1,12 +1,3 @@
----
-currentSection: types
-currentItem: type-checks
-pageflow_prev_url: is_stringy.html
-pageflow_prev_text: is_stringy()
-pageflow_next_url: IsArray.checkList.html
-pageflow_next_text: IsArray::checkList()
----
-
 # IsArray::check()
 
 <div class="callout warning" markdown="1">

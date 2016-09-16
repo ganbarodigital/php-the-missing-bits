@@ -1,12 +1,3 @@
----
-currentSection: overview
-currenItem: codeofconduct
-pageflow_prev_url: contributing.html
-pageflow_prev_text: Contributing
-pageflow_next_url: authors.html
-pageflow_next_text: Authors
----
-
 # Code of Conduct
 
 ## Our Code Of Conduct

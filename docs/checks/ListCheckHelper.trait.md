@@ -1,11 +1,4 @@
----
-currentSection: checks
-currentItem: defining-checks
-pageflow_prev_url: ListCheck.class.html
-pageflow_prev_text: ListCheck interface
----
-
-# ListCheckHelper
+# ListCheckHelper trait
 
 <div class="callout warning" markdown="1">
 Not yet in a tagged release

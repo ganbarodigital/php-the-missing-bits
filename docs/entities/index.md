@@ -1,10 +1,3 @@
----
-currentSection: entities
-currentItem: home
-pageflow_next_url: defining-entities.html
-pageflow_next_text: Defining Entities
----
-
 # Entities
 
 ## Introduction

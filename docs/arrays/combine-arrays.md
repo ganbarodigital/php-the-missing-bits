@@ -1,10 +1,3 @@
----
-currentSection: arrays
-currentItem: combine-arrays
-pageflow_next_url: array_append_values.html
-pageflow_next_text: array_append_values()
----
-
 # Combine Arrays
 
 ## Introduction

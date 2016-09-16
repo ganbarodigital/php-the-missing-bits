@@ -1,12 +1,3 @@
----
-currentSection: types
-currentItem: type-checks
-pageflow_prev_url: is_list.html
-pageflow_prev_text: is_list()
-pageflow_next_url: is_stringy.html
-pageflow_next_text: is_stringy()
----
-
 # is_listy_object()
 
 <div class="callout info" markdown="1">

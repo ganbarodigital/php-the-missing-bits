@@ -1,10 +1,3 @@
----
-currentSection: classes-objects
-currentItem: class-properties
-pageflow_next_url: get_class_properties.html
-pageflow_next_text: get_class_properties()
----
-
 # Class Properties
 
 ## Introduction

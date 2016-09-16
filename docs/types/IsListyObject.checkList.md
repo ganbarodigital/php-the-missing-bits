@@ -1,12 +1,3 @@
----
-currentSection: types
-currentItem: type-checks
-pageflow_prev_url: IsListyObject.check.html
-pageflow_prev_text: IsListyObject::check()
-pageflow_next_url: IsStringy.check.html
-pageflow_next_text: IsStringy::check()
----
-
 # IsListyObject::checkList()
 
 <div class="callout info" markdown="1">

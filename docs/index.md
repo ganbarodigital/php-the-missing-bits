@@ -1,10 +1,3 @@
----
-currentSection: overview
-currentItem: home
-pageflow_next_url: license.html
-pageflow_next_text: License
----
-
 # Introduction
 
 ## What Is PHP: The Missing Bits?

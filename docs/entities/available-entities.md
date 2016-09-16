@@ -1,10 +1,3 @@
----
-currentSection: entities
-currentItem: available-entities
-pageflow_prev_url: defining-entities.html
-pageflow_prev_text: Defining Entities
----
-
 # Available Entities
 
 ## Introduction

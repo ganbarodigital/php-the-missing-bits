@@ -1,10 +1,3 @@
----
-currentSection: entities
-currentItem: defining-entities
-pageflow_prev_url: WriteProtectedEntity.class.html
-pageflow_prev_text: WriteProtectedEntity interface
----
-
 # WriteProtectTab
 
 <div class="callout info">

@@ -1,13 +1,4 @@
----
-currentSection: checks
-currentItem: defining-checks
-pageflow_prev_url: defining-checks.html
-pageflow_prev_text: Defining Checks
-pageflow_next_url: ListCheck.class.html
-pageflow_next_text: ListCheck interface
----
-
-# Check
+# Check interface
 
 <div class="callout warning" markdown="1">
 Not yet in a tagged release

@@ -1,12 +1,3 @@
----
-currentSection: classes-objects
-currentItem: property-helpers
-pageflow_prev_url: property-helpers.html
-pageflow_prev_text: Property Helpers
-pageflow_next_url: HasFilteredProperties.check.html
-pageflow_next_text: HasFilteredProperties::check()
----
-
 # FilterProperties::from()
 
 <div class="callout warning" markdown="1">

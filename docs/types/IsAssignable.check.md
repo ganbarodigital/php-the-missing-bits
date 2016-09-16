@@ -1,12 +1,3 @@
----
-currentSection: types
-currentItem: type-checks
-pageflow_prev_url: IsArray.checkList.html
-pageflow_prev_text: isArray::checkList()
-pageflow_next_url: IsAssignable.checkList.html
-pageflow_next_text: IsAssignable::checkList()
----
-
 # IsAssignable::check()
 
 <div class="callout warning" markdown="1">

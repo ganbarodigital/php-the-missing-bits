@@ -1,10 +1,3 @@
----
-currentSection: classes-objects
-currentItem: property-helpers
-pageflow_prev_url: FilterProperties.from.html
-pageflow_prev_text: FilterProperties::from()
----
-
 # HasFilteredProperties::check()
 
 <div class="callout warning" markdown="1">

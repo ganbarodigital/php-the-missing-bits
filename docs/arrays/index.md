@@ -1,10 +1,3 @@
----
-currentSection: arrays
-currentItem: home
-pageflow_next_url: combine_arrays.html
-pageflow_next_text: Combine Arrays
----
-
 # Array Functions
 
 ## Introduction

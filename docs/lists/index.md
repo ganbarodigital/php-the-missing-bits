@@ -1,10 +1,3 @@
----
-currentSection: lists
-currentItem: home
-pageflow_next_url: list-iterators.html
-pageflow_next_text: List Iterators
----
-
 # List Functions
 
 ## Introduction

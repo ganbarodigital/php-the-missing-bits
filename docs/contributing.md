@@ -1,12 +1,3 @@
----
-currentSection: overview
-currentItem: contributing
-pageflow_prev_url: changelog.html
-pageflow_prev_text: Changelog
-pageflow_next_url: code-of-conduct.html
-pageflow_next_text: Code Of Conduct
----
-
 # Contributing
 
 This library is open-source software from [Ganbaro Digital](https://ganbarodigital.com), released under [the BSD license](license.html). We welcome all contributions that further [the goals](index.md#goals) that we have for this library.

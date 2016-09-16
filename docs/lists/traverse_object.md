@@ -1,12 +1,3 @@
----
-currentSection: lists
-currentItem: list-iterators
-pageflow_prev_url: traverse_list.html
-pageflow_prev_text: traverse_list()
-pageflow_next_url: TraverseArray.using.html
-pageflow_next_text: TraverseArray::using()
----
-
 # traverse_object()
 
 <div class="callout info" markdown="1">

@@ -1,10 +1,3 @@
----
-currentSection: overview
-currentItem: authors
-pageflow_prev_url: codeofconduct
-pageflow_prev_text: Code of Conduct
----
-
 # Authors
 
 ## Maintainers

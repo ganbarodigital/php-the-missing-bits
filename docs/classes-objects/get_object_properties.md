@@ -1,12 +1,3 @@
----
-currentSection: classes-objects
-currentItem: object-properties
-pageflow_prev_url: object-properties.html
-pageflow_prev_text: Object Properties
-pageflow_next_url: has_object_properties.html
-pageflow_next_text: has_object_properties()
----
-
 # get_object_properties()
 
 <div class="callout warning" markdown="1">

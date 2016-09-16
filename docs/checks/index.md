@@ -1,10 +1,3 @@
----
-currentSection: checks
-currentItem: home
-pageflow_next_url: defining-checks.html
-pageflow_next_text: Defining Checks
----
-
 # Checks
 
 ## Introduction

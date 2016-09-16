@@ -20,12 +20,12 @@ github:
 title: "PHP: The Missing Bits"
 subTitle: Features that we wish came with PHP
 
-menu:
+navigation:
     overview:
-        text: Overview
+        text: Home
         relativeUrl: index.html
 
-        items:
+        contents:
             home:
                 text: Home
                 relativeUrl: index.html
@@ -52,13 +52,13 @@ menu:
         text: Arrays
         relativeUrl: arrays/index.html
 
-        items:
+        contents:
             home:
                 text: Array Functions and Classes
                 relativeUrl: arrays/index.html
             combine-arrays:
                 text: Combine Arrays
-                relativeUrl: arrays/combine_arrays.html
+                relativeUrl: arrays/combine-arrays.html
                 contents:
                     array_append_values:
                         text: array_append_values()
@@ -71,7 +71,7 @@ menu:
         text: Checks
         relativeUrl: checks/index.html
 
-        items:
+        contents:
             home:
                 text: Checks
                 relativeUrl: checks/index.html
@@ -96,7 +96,7 @@ menu:
         text: Classes and Objects
         relativeUrl: classes-objects/index.html
 
-        items:
+        contents:
             home:
                 text: Classes and Objects
                 relativeUrl: classes-objects/index.html
@@ -144,16 +144,16 @@ menu:
                 contents:
                     FilterProperties:
                         text: FilterProperties::from()
-                        relativeUrl: classes-objects/FilterProperties.html
+                        relativeUrl: classes-objects/FilterProperties.from.html
                     HasFilteredProperties:
                         text: HasFilteredProperties::check()
-                        relativeUrl: classes-objects/HasFilteredProperties.html
+                        relativeUrl: classes-objects/HasFilteredProperties.check.html
 
     entities:
         text: Entities
         relativeUrl: entities/index.html
 
-        items:
+        contents:
             home:
                 text: Entities Classes and Interfaces
                 relativeUrl: entities/index.html
@@ -187,7 +187,7 @@ menu:
         text: Lists
         relativeUrl: lists/index.html
 
-        items:
+        contents:
             home:
                 text: List Functions and Classes
                 relativeUrl: lists/index.html
@@ -218,7 +218,7 @@ menu:
         text: Strings
         relativeUrl: strings/index.html
 
-        items:
+        contents:
             home:
                 text: String Functions and Classes
                 relativeUrl: strings/index.html
@@ -236,7 +236,7 @@ menu:
         text: Traces
         relativeUrl: traces/index.html
 
-        items:
+        contents:
             home:
                 text: Stack Trace Functions and Classes
                 relativeUrl: traces/index.html
@@ -257,58 +257,142 @@ menu:
         text: Types
         relativeUrl: types/index.html
 
-        items:
+        contents:
             home:
                 text: Type Functions and Classes
                 relativeUrl: types/index.html
-            GetArrayTypes:
-                text: GetArrayTypes
-                relativeUrl: types/GetArrayTypes.html
-            GetClassTraits:
-                text: GetClassTraits
-                relativeUrl: types/GetClassTraits.html
-            GetClassTypes:
-                text: GetClassTypes
-                relativeUrl: types/GetClassTypes.html
-            GetDuckTypes:
-                text: GetDuckTypes
-                relativeUrl: types/GetDuckTypes.html
-            GetNamespace:
-                text: GetNamespace
-                relativeUrl: types/GetNamespace.html
-            GetNumericType:
-                text: GetNumericType
-                relativeUrl: types/GetNumericType.html
-            GetObjectTypes:
-                text: GetObjectTypes
-                relativeUrl: types/GetObjectTypes.html
-            GetPrintableType:
-                text: GetPrintableType
-                relativeUrl: types/GetPrintableType.html
-            GetStrictTypes:
-                text: GetStrictTypes
-                relativeUrl: types/GetStrictTypes.html
-            GetStringTypes:
-                text: GetStringTypes
-                relativeUrl: types/GetStringTypes.html
-            IsArray:
-                text: IsArray
-                relativeUrl: types/IsArray.html
-            is_array_list:
-                text: is_array_list
-                relativeUrl: types/is_array_list.html
-            IsAssignable:
-                text: IsAssignable
-                relativeUrl: types/IsAssignable.html
-            IsList:
-                text: IsList
-                relativeUrl: types/IsList.html
-            IsListyObject:
-                text: IsListyObject
-                relativeUrl: types/IsListyObject.html
-            IsStringy:
-                text: IsStringy
-                relativeUrl: types/IsStringy.html
-            StripNamespace:
-                text: StripNamespace
-                relativeUrl: types/StripNamespace.html
+            type-checks:
+                text: Type Checks
+                relativeUrl: types/type-checks.html
+                contents:
+                    is_array_list:
+                        text: is_array_list()
+                        relativeUrl: types/is_array_list.html
+                    is_assignable:
+                        text: is_assignable()
+                        relativeUrl: types/is_assignable.html
+                    is_list:
+                        text: is_list()
+                        relativeUrl: types/is_list.html
+                    is_listy_object:
+                        text: is_listy_object()
+                        relativeUrl: types/is_listy_object.html
+                    is_stringy:
+                        text: is_stringy()
+                        relativeUrl: types/is_stringy.html
+                    IsArray_check:
+                        text: IsArray::check()
+                        relativeUrl: types/IsArray.check.html
+                    IsArray_checkList:
+                        text: IsArray::checkList()
+                        relativeUrl: types/IsArray.checkList.html
+                    IsAssignable_check:
+                        text: IsAssignable::check()
+                        relativeUrl: types/IsAssignable.check.html
+                    IsAssignable_checkList:
+                        text: IsAssignable::checkList()
+                        relativeUrl: types/IsAssignable.checkList.html
+                    IsList_check:
+                        text: IsList::check()
+                        relativeUrl: types/IsList.check.html
+                    IsList_checkList:
+                        text: IsList::checkList()
+                        relativeUrl: types/IsList.checkList.html
+                    IsListyObject_check:
+                        text: IsListyObject::check()
+                        relativeUrl: types/IsListyObject.check.html
+                    IsListyObject_checkList:
+                        text: IsListyObject::checkList()
+                        relativeUrl: types/IsListyObject.checkList.html
+                    IsStringy_check:
+                        text: IsStringy::check()
+                        relativeUrl: types/IsStringy.check.html
+                    IsStringy_checkList:
+                        text: IsStringy::checkList()
+                        relativeUrl: types/IsStringy.checkList.html
+
+            type-inspectors:
+                text: Type Inspectors
+                relativeUrl: types/type-inspectors.html
+                contents:
+                    get_array_types:
+                        text: get_array_types()
+                        relativeUrl: types/get_array_types.html
+                    get_class_traits:
+                        text: get_class_traits()
+                        relativeUrl: types/get_class_traits.html
+                    get_class_types:
+                        text: get_class_types()
+                        relativeUrl: types/get_class_types.html
+                    get_duck_types:
+                        text: get_duck_types()
+                        relativeUrl: types/get_duck_types.html
+                    get_namespace:
+                        text: get_namespace()
+                        relativeUrl: types/get_namespace.html
+                    get_numeric_type:
+                        text: get_numeric_type()
+                        relativeUrl: types/get_numeric_type.html
+                    get_object_types:
+                        text: get_object_types()
+                        relativeUrl: types/get_object_types.html
+                    get_printable_type:
+                        text: get_printable_type()
+                        relativeUrl: types/get_printable_type.html
+                    get_strict_types:
+                        text: get_strict_types()
+                        relativeUrl: types/get_strict_types.html
+                    get_string_types:
+                        text: get_string_types()
+                        relativeUrl: types/get_string_types.html
+                    strip_namespace:
+                        text: strip_namespace()
+                        relativeUrl: types/strip_namespace.html
+
+                    GetArrayTypes:
+                        text: GetArrayTypes::from()
+                        relativeUrl: types/GetArrayTypes.from.html
+                    GetClassTraits:
+                        text: GetClassTraits::from()
+                        relativeUrl: types/GetClassTraits.from.html
+                    GetClassTypes:
+                        text: GetClassTypes::from()
+                        relativeUrl: types/GetClassTypes.from.html
+                    GetDuckTypes:
+                        text: GetDuckTypes::from()
+                        relativeUrl: types/GetDuckTypes.from.html
+                    GetNamespace:
+                        text: GetNamespace::from()
+                        relativeUrl: types/GetNamespace.from.html
+                    GetNumericType:
+                        text: GetNumericType::from()
+                        relativeUrl: types/GetNumericType.from.html
+                    GetObjectTypes:
+                        text: GetObjectTypes::from()
+                        relativeUrl: types/GetObjectTypes.from.html
+                    GetPrintableType:
+                        text: GetPrintableType::of()
+                        relativeUrl: types/GetPrintableType.of.html
+                    GetStrictTypes:
+                        text: GetStrictTypes::from()
+                        relativeUrl: types/GetStrictTypes.from.html
+                    GetStringTypes:
+                        text: GetStringTypes::from()
+                        relativeUrl: types/GetStringTypes.from.html
+                    StripNamespace:
+                        text: StripNamespace::from()
+                        relativeUrl: types/StripNamespace.from.html
+
+            type-interfaces:
+                text: Type Interfaces
+                relativeUrl: types/type-interfaces.html
+                contents:
+                    CanBeEmpty:
+                        text: CanBeEmpty interface
+                        relativeUrl: types/CanBeEmpty.class.html
+                    Listable:
+                        text: Listable interface
+                        relativeUrl: types/Listable.class.html
+                    Logical:
+                        text: Logical interface
+                        relativeUrl: types/Logical.class.html

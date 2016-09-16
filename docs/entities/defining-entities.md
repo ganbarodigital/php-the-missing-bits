@@ -1,10 +1,3 @@
----
-currentSection: entities
-currentItem: defining-entities
-pageflow_next_url: ReadOnlyException.class.html
-pageflow_next_text: ReadOnlyException class
----
-
 # Defining Entities
 
 ## Introduction

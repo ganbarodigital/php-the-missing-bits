@@ -1,10 +1,3 @@
----
-currentSection: checks
-currentItem: available-checks
-pageflow_prev_url: defining-checks.html
-pageflow_prev_text: Defining Checks
----
-
 # Available Checks
 
 Here's a (probably incomplete) list of checks available across _PHP: The Missing Bits_:

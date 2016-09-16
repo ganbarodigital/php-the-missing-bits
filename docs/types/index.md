@@ -1,10 +1,3 @@
----
-currentSection: types
-currentItem: home
-pageflow_next_url: GetArrayTypes.html
-pageflow_next_text: GetArrayTypes class
----
-
 # Type Functions and Classes
 
 ## Introduction
@@ -21,20 +14,25 @@ Here's the list of global functions you can use for inspecting types:
 
 Function | Purpose
 ---------|--------
-[`is_array_list`](is_array_list.html) | can every item in the list be used as a PHP array?
-[`is_list`](IsList.html) | can we use the variable in foreach() loop?
-[`is_listy_object`](IsListyObject.html) | can we use the variable in foreach() loop?
-[`is_stringy`](IsStringy.html) | can we use the variable as a string?
+[`is_array_list()`](is_array_list.html) | can every item in the list be used as a PHP array?
+[`is_list()`](IsList.html) | can we use the variable in a `foreach()` loop?
+[`is_listy_object()`](IsListyObject.html) | can we use the variable in a `foreach()` loop?
+[`is_stringy()`](IsStringy.html) | can we use the variable as a string?
 
 Here's the list of classes you can use for inspecting types:
 
 Class | Purpose
 ------|--------
-[`IsArray`](IsArray.html) | can we use the variable with PHP's `array_xxx` functions?
-[`IsAssignable`](IsAssignable.html) | can we use the variable with PHP's object notation?
-[`IsList`](IsList.html) | can we use the variable in foreach() loop?
-[`IsListyObject`](IsListyObject.html) | can we use the variable in foreach() loop?
-[`IsStringy`](IsStringy.html) | can we use the variable as a string?
+[`IsArray::check()`](IsArray.check.html) | can we use the variable with PHP's `array_xxx` functions?
+[`IsArray::checkList()`](IsArray.checkList.html) | can we use every entry in the list with PHP's `array_xxx` functions?
+[`IsAssignable::check()`](IsAssignable.check.html) | can we use the variable with PHP's object notation?
+[`IsAssignable::checkList()`](IsAssignable.checkList.html) | can we use every entry in the list with PHP's object notation?
+[`IsList::check()`](IsList.check.html) | can we use the variable in a `foreach()` loop?
+[`IsList::checkList()`](IsList.checkList.html) | can we use every entry in the list in a `foreach()` loop?
+[`IsListyObject::check()`](IsListyObject.check.html) | can we use the variable in a `foreach()` loop?
+[`IsListyObject::checkList()`](IsListyObject.check.html) | can we use every entry in the list in a `foreach()` loop?
+[`IsStringy::check()`](IsStringy.check.html) | can we use the variable as a string?
+[`IsStringy::checkList()`](IsStringy.checkList.html) | can we use every entry in the list as a string?
 
 
 ## Type Inspectors

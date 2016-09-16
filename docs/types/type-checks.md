@@ -1,12 +1,3 @@
----
-currentSection: types
-currentItem: type-checks
-pageflow_prev_url: index.html
-pageflow_prev_text: Type Functions and Classes
-pageflow_next_url: type-inspectors.html
-pageflow_next_text: Type Inspectors
----
-
 # Type Checks
 
 ## Introduction

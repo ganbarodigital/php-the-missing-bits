@@ -1,12 +1,3 @@
----
-currentSection: types
-currentItem: type-checks
-pageflow_prev_url: is_array_list.html
-pageflow_prev_text: is_array_list()
-pageflow_next_url: is_list.html
-pageflow_next_text: is_list()
----
-
 # is_assignable()
 
 <div class="callout warning" markdown="1">

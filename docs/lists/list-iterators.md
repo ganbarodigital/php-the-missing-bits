@@ -1,10 +1,3 @@
----
-currentSection: lists
-currentItem: list-iterators
-pageflow_next_url: traverse_array.html
-pageflow_next_text: traverse_array()
----
-
 # List Iterators
 
 ## Introduction

@@ -1,12 +1,3 @@
----
-currentSection: overview
-currentItem: installation
-pageflow_prev_url: license.html
-pageflow_prev_text: License
-pageflow_next_url: changelog.html
-pageflow_next_text: Changelog
----
-
 # Installation
 
 ## Via Composer

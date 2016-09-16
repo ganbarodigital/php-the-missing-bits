@@ -1,10 +1,3 @@
----
-currentSection: classes-objects
-currentItem: class-properties
-pageflow_prev_url: HasClassProperties.check.html
-pageflow_prev_text: HasClassProperties::check()
----
-
 # IsClassProperty::check()
 
 <div class="callout warning" markdown="1">
