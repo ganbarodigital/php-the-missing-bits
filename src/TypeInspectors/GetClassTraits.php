@@ -56,7 +56,7 @@ class GetClassTraits
      * @return string[]
      *         the class's traits list
      */
-    public function __invoke($item)
+    public function getClassTraits($item)
     {
         return self::from($item);
     }

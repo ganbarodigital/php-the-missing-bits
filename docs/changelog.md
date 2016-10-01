@@ -52,6 +52,7 @@ Before refactoring, we checked Packagist to make sure that these changes would n
   - `FilterBacktrace::__invoke()` is now `FilterBacktrace::filterBacktrace()`
   - `GetArrayTypes::__invoke()` is now `GetArrayTypes::getArrayTypes()`
   - `GetCaller::__invoke()` is now `GetCaller::getCaller()`
+  - `GetClassTraits::__invoke()` is now `GetClassTraits::getClassTraits()`
 
 ## v1.9.0
 

@@ -71,7 +71,7 @@ class GetClassTraitsTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__invoke
+     * @covers ::getClassTraits
      * @covers ::from
      * @covers ::getTraits
      * @dataProvider provideDataToTest
@@ -86,7 +86,7 @@ class GetClassTraitsTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualTypes = $unit($data);
+        $actualTypes = $unit->getClassTraits($data);
 
         // ----------------------------------------------------------------
         // test the results
@@ -95,7 +95,6 @@ class GetClassTraitsTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__invoke
      * @covers ::from
      * @covers ::getTraits
      * @dataProvider provideDataToTest
@@ -118,7 +117,6 @@ class GetClassTraitsTest extends PHPUnit_Framework_TestCase
 
     /**
      * @covers \get_class_traits
-     * @covers ::__invoke
      * @covers ::from
      * @covers ::getTraits
      * @dataProvider provideDataToTest
