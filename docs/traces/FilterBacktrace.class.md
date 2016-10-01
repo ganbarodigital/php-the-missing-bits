@@ -108,4 +108,4 @@ None at this time.
 
 ### v1.10.0
 
-* The undocumented `FilterBacktrace::__invoke()` was replaced by `FilterBacktrace::filter()`.
+* `FilterBacktrace::__invoke()` was replaced by `FilterBacktrace::filterBacktrace()`.
