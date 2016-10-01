@@ -1,11 +1,4 @@
----
-currentSection: traces
-currentItem: StackFrame
-pageflow_prev_url: GetCaller.html
-pageflow_prev_text: GetCaller class
----
-
-# StackFrame
+# StackFrame class
 
 <div class="callout info">
 Since v1.4.0
