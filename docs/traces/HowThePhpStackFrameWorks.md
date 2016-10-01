@@ -1,17 +1,8 @@
----
-currentSection: traces
-currentItem: HowThePhpStackFrameWorks
-pageflow_prev_url: index.html
-pageflow_prev_text: Stack Trace Functions and Classes
-pageflow_next_url: FilterBacktrace.html
-pageflow_next_text: FilterBacktrace class
----
-
 # How The PHP Stack Frame Works
 
 ## Introduction
 
-The PHP stack frame isn't as straight-forward as you might think. This caught us out when building [`FilterBacktrace`](FilterBacktrace.html).
+The PHP stack frame isn't as straight-forward as you might think. This caught us out when building [`FilterBacktrace`](FilterBacktrace.class.html).
 
 ## What's In A Stack Frame
 
@@ -253,6 +244,6 @@ type | ->
 
 ## Automatically Handled For You
 
-Our [`FilterBacktrace`](FilterBacktrace.html) class automatically handles this for you. All of our other classes in the `TraceInspectors` namespace use `FilterBacktrace` to understand the PHP stack.
+Our [`FilterBacktrace`](FilterBacktrace.class.html) class automatically handles this for you. All of our other classes in the `TraceInspectors` namespace use `FilterBacktrace` to understand the PHP stack.
 
 As long as you use our classes, you won't have to worry about this PHP behaviour in your own code.
