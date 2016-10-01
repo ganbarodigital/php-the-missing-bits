@@ -50,6 +50,7 @@ Before refactoring, we checked Packagist to make sure that these changes would n
   - in practice, using objects via their `__invoke()` methods results in code that's hard to read and understand
   - we're switching to having the object's main method be the same as the class name
   - `FilterBacktrace::__invoke()` is now `FilterBacktrace::filterBacktrace()`
+  - `GetArrayTypes::__invoke()` is now `GetArrayTypes::getArrayTypes()`
   - `GetCaller::__invoke()` is now `GetCaller::getCaller()`
 
 ## v1.9.0

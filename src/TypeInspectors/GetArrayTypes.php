@@ -56,7 +56,7 @@ class GetArrayTypes
      * @return string[]
      *         the array's list of types
      */
-    public function __invoke($item)
+    public function getArrayTypes($item)
     {
         return self::from($item);
     }

@@ -70,7 +70,7 @@ class GetArrayTypesTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__invoke
+     * @covers ::getArrayTypes
      * @covers ::from
      * @dataProvider provideDataToTest
      */
@@ -84,7 +84,7 @@ class GetArrayTypesTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualTypes = $unit($data);
+        $actualTypes = $unit->getArrayTypes($data);
 
         // ----------------------------------------------------------------
         // test the results
