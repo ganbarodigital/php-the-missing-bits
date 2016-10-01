@@ -71,7 +71,7 @@ class FilterBacktraceTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__invoke
+     * @covers ::filterBacktrace
      * @covers ::from
      * @covers ::isClassNameOkay
      * @covers ::extractFrameDetails
@@ -87,7 +87,7 @@ class FilterBacktraceTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $result = $unit($backtrace);
+        $result = $unit->filterBacktrace($backtrace);
 
         // ----------------------------------------------------------------
         // test the results

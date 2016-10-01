@@ -63,7 +63,7 @@ class FilterBacktrace
      *         how far down the stack do we want to start looking from?
      * @return array
      */
-    public function __invoke($backtrace, $filterList = [], $index = 1)
+    public function filterBacktrace($backtrace, $filterList = [], $index = 1)
     {
         return self::from($backtrace, $filterList, $index);
     }

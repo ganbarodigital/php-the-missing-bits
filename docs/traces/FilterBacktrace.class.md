@@ -36,7 +36,7 @@ class FilterBacktrace
      *         how far down the stack do we want to start looking from?
      * @return array
      */
-    public function filter($backtrace, $filterList = [], $index = 1);
+    public function filterBacktrace($backtrace, $filterList = [], $index = 1);
 
     /**
      * find first complete stack frame, optionally skipping over classes
@@ -58,7 +58,7 @@ class FilterBacktrace
 
 Method | Use
 -------|----
-[`FilterBacktrace::filter()`](FilterBacktrace.filter.html) | object
+[`FilterBacktrace::filterBacktrace()`](FilterBacktrace.filterBacktrace.html) | object
 [`FilterBacktrace::from()`](FilterBacktrace.from.html) | static
 
 ## Class Contract
