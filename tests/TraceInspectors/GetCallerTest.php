@@ -72,7 +72,7 @@ class GetCallerTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__invoke
+     * @covers ::getCaller
      * @covers ::from
      */
     public function testCanUseAsObject()
@@ -86,7 +86,7 @@ class GetCallerTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $result = $unit($backtrace);
+        $result = $unit->getCaller($backtrace);
 
         // ----------------------------------------------------------------
         // test the results

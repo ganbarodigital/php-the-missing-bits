@@ -60,7 +60,7 @@ class GetCaller
      *         a list of namespaces and classes to skip over
      * @return StackFrame
      */
-    public function __invoke($backtrace, $filterList = [])
+    public function getCaller($backtrace, $filterList = [])
     {
         return self::from($backtrace, $filterList);
     }
