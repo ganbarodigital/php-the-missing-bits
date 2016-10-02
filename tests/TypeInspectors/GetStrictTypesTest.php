@@ -44,6 +44,7 @@
 namespace GanbaroDigitalTest\MissingBits\TypeInspectors;
 
 use ArrayObject;
+use Closure;
 use Exception;
 use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
 use PHPUnit_Framework_TestCase;
@@ -71,7 +72,7 @@ class GetStrictTypesTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__invoke
+     * @covers ::getStrictTypes
      * @covers ::from
      * @dataProvider provideDataToTest
      */
@@ -85,7 +86,7 @@ class GetStrictTypesTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualTypes = $unit($data);
+        $actualTypes = $unit->getStrictTypes($data);
 
         // ----------------------------------------------------------------
         // test the results
@@ -94,7 +95,6 @@ class GetStrictTypesTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__invoke
      * @covers ::from
      * @dataProvider provideDataToTest
      */
@@ -116,7 +116,6 @@ class GetStrictTypesTest extends PHPUnit_Framework_TestCase
 
     /**
      * @covers \get_strict_types
-     * @covers ::__invoke
      * @covers ::from
      * @dataProvider provideDataToTest
      */
@@ -219,9 +218,9 @@ class GetStrictTypesTest extends PHPUnit_Framework_TestCase
                 ]
             ],
             [
-                new GetStrictTypes(),
+                function(){},
                 [
-                    GetStrictTypes::class => GetStrictTypes::class,
+                    Closure::class => Closure::class,
                     'callable' => 'callable',
                 ]
             ],
@@ -325,7 +324,7 @@ class GetStrictTypesTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__invoke
+     * @covers ::getStrictTypes
      * @covers ::from
      * @dataProvider provideTestClasses
      */
@@ -339,7 +338,7 @@ class GetStrictTypesTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualTypes = $unit($data);
+        $actualTypes = $unit->getStrictTypes($data);
 
         // ----------------------------------------------------------------
         // test the results
@@ -418,9 +417,9 @@ class GetStrictTypesTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // setup your test
 
-        $data = new GetStrictTypes;
+        $data = function(){};
         $expectedResult = [
-            GetStrictTypes::class => GetStrictTypes::class,
+            Closure::class => Closure::class,
             'callable' => 'callable',
         ];
 

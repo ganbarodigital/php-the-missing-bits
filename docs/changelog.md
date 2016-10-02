@@ -59,6 +59,7 @@ Before refactoring, we checked Packagist to make sure that these changes would n
   - `GetNumericType::__invoke()` is now `GetNumericType::getNumericType()`
   - `GetObjectTypes::__invoke()` is now `GetObjectTypes::getObjectTypes()`
   - `GetPrintableType::__invoke()` is now `GetPrintableType::getPrintableType()`
+  - `GetStrictTypes::__invoke()` is now `GetStrictTypes::getStrictTypes()`
 
 ## v1.9.0
 
