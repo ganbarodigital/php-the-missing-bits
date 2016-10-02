@@ -71,7 +71,7 @@ class GetNamespaceTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__invoke
+     * @covers ::getNamespace
      * @covers ::from
      * @dataProvider provideDataToTest
      */
@@ -85,7 +85,7 @@ class GetNamespaceTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualNamespace = $unit($data);
+        $actualNamespace = $unit->getNamespace($data);
 
         // ----------------------------------------------------------------
         // test the results
@@ -135,7 +135,7 @@ class GetNamespaceTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__invoke
+     * @covers ::getNamespace
      * @covers ::from
      * @dataProvider provideClassesWithNamespacesToTest
      */
@@ -150,7 +150,7 @@ class GetNamespaceTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualNamespace = $unit($data);
+        $actualNamespace = $unit->getNamespace($data);
 
         // ----------------------------------------------------------------
         // test the results
@@ -159,7 +159,7 @@ class GetNamespaceTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__invoke
+     * @covers ::getNamespace
      * @covers ::from
      * @dataProvider provideObjectsToTest
      */
@@ -174,7 +174,7 @@ class GetNamespaceTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualNamespace = $unit($data);
+        $actualNamespace = $unit->getNamespace($data);
 
         // ----------------------------------------------------------------
         // test the results
@@ -183,7 +183,7 @@ class GetNamespaceTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__invoke
+     * @covers ::getNamespace
      * @covers ::from
      * @dataProvider provideClassesWithoutNamespacesToTest
      */
@@ -198,7 +198,7 @@ class GetNamespaceTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualNamespace = $unit($data);
+        $actualNamespace = $unit->getNamespace($data);
 
         // ----------------------------------------------------------------
         // test the results
@@ -207,7 +207,7 @@ class GetNamespaceTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__invoke
+     * @covers ::getNamespace
      * @covers ::from
      * @dataProvider provideNonDefinedClassesToTest
      * @expectedException InvalidArgumentException
@@ -223,7 +223,7 @@ class GetNamespaceTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $unit($data);
+        $unit->getNamespace($data);
 
         // ----------------------------------------------------------------
         // test the results
@@ -231,7 +231,7 @@ class GetNamespaceTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__invoke
+     * @covers ::getNamespace
      * @covers ::from
      * @dataProvider provideEverythingElseToTest
      * @expectedException InvalidArgumentException
@@ -247,7 +247,7 @@ class GetNamespaceTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $unit($data);
+        $unit->getNamespace($data);
 
         // ----------------------------------------------------------------
         // test the results
