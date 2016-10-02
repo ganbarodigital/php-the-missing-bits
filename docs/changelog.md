@@ -53,6 +53,7 @@ Before refactoring, we checked Packagist to make sure that these changes would n
   - `GetArrayTypes::__invoke()` is now `GetArrayTypes::getArrayTypes()`
   - `GetCaller::__invoke()` is now `GetCaller::getCaller()`
   - `GetClassTraits::__invoke()` is now `GetClassTraits::getClassTraits()`
+  - `GetClassTypes::__invoke()` is now `GetClassTypes::getClassTypes()`
 
 ## v1.9.0
 

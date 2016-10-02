@@ -56,7 +56,7 @@ class GetClassTypes
      * @return string[]
      *         the class's inheritence hierarchy
      */
-    public function __invoke($item)
+    public function getClassTypes($item)
     {
         return self::from($item);
     }
@@ -75,7 +75,7 @@ class GetClassTypes
         if (is_object($item)) {
             $item = get_class($item);
         }
-        
+
         // robustness!
         if (!is_string($item)) {
             return [];

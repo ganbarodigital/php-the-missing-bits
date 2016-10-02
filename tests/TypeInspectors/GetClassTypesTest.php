@@ -71,7 +71,7 @@ class GetClassTypesTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__invoke
+     * @covers ::getClassTypes
      * @covers ::from
      * @covers ::getClassHierarchy
      * @covers ::getInterfaceHierarchy
@@ -87,7 +87,7 @@ class GetClassTypesTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualTypes = $unit($data);
+        $actualTypes = $unit->getClassTypes($data);
 
         // ----------------------------------------------------------------
         // test the results
@@ -96,7 +96,6 @@ class GetClassTypesTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__invoke
      * @covers ::from
      * @covers ::getClassHierarchy
      * @covers ::getInterfaceHierarchy
@@ -120,7 +119,6 @@ class GetClassTypesTest extends PHPUnit_Framework_TestCase
 
     /**
      * @covers \get_class_types
-     * @covers ::__invoke
      * @covers ::from
      * @covers ::getClassHierarchy
      * @covers ::getInterfaceHierarchy
