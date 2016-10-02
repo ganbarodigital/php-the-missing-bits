@@ -58,7 +58,7 @@ class GetNumericType
      * @return string|null
      *         the numeric type, or null if it is not numeric
      */
-    public function __invoke($item)
+    public function getNumericType($item)
     {
         return self::from($item);
     }

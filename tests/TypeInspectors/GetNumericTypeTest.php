@@ -71,7 +71,7 @@ class GetNumericTypeTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__invoke
+     * @covers ::getNumericType
      * @covers ::from
      * @dataProvider provideDataToTest
      */
@@ -85,7 +85,7 @@ class GetNumericTypeTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualTypes = $unit($data);
+        $actualTypes = $unit->getNumericType($data);
 
         // ----------------------------------------------------------------
         // test the results
@@ -135,7 +135,7 @@ class GetNumericTypeTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__invoke
+     * @covers ::getNumericType
      * @covers ::from
      * @dataProvider provideRealIntegersToTest
      */
@@ -149,7 +149,7 @@ class GetNumericTypeTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualTypes = $unit($data);
+        $actualTypes = $unit->getNumericType($data);
 
         // ----------------------------------------------------------------
         // test the results
@@ -158,7 +158,7 @@ class GetNumericTypeTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__invoke
+     * @covers ::getNumericType
      * @covers ::from
      * @dataProvider provideRealDoublesToTest
      */
@@ -172,7 +172,7 @@ class GetNumericTypeTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualTypes = $unit($data);
+        $actualTypes = $unit->getNumericType($data);
 
         // ----------------------------------------------------------------
         // test the results
@@ -181,7 +181,7 @@ class GetNumericTypeTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__invoke
+     * @covers ::getNumericType
      * @covers ::from
      * @dataProvider provideNumericStringsToTest
      */
@@ -195,7 +195,7 @@ class GetNumericTypeTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualTypes = $unit($data);
+        $actualTypes = $unit->getNumericType($data);
 
         // ----------------------------------------------------------------
         // test the results
@@ -204,7 +204,7 @@ class GetNumericTypeTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__invoke
+     * @covers ::getNumericType
      * @covers ::from
      * @dataProvider provideEverythingElseToTest
      */
@@ -218,7 +218,7 @@ class GetNumericTypeTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualTypes = $unit($data);
+        $actualTypes = $unit->getNumericType($data);
 
         // ----------------------------------------------------------------
         // test the results
