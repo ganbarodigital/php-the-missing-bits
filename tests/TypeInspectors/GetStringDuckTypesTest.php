@@ -71,7 +71,7 @@ class GetStringDuckTypesTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__invoke
+     * @covers ::getStringDuckTypes
      * @covers ::from
      * @covers ::detectClassNames
      * @covers ::detectNumbers
@@ -88,7 +88,7 @@ class GetStringDuckTypesTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualTypes = $unit($data);
+        $actualTypes = $unit->getStringDuckTypes($data);
 
         // ----------------------------------------------------------------
         // test the results
@@ -144,7 +144,7 @@ class GetStringDuckTypesTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__invoke
+     * @covers ::getStringDuckTypes
      * @covers ::from
      * @covers ::detectNumbers
      * @dataProvider provideCallableStringsToTest
@@ -159,7 +159,7 @@ class GetStringDuckTypesTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualTypes = $unit($data);
+        $actualTypes = $unit->getStringDuckTypes($data);
 
         // ----------------------------------------------------------------
         // test the results
@@ -168,7 +168,7 @@ class GetStringDuckTypesTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__invoke
+     * @covers ::getStringDuckTypes
      * @covers ::from
      * @covers ::detectNumbers
      * @dataProvider provideNumericStringsToTest
@@ -183,7 +183,7 @@ class GetStringDuckTypesTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualTypes = $unit($data);
+        $actualTypes = $unit->getStringDuckTypes($data);
 
         // ----------------------------------------------------------------
         // test the results
@@ -213,7 +213,7 @@ class GetStringDuckTypesTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__invoke
+     * @covers ::getStringDuckTypes
      * @covers ::from
      * @dataProvider provideEverythingElseToTest
      */
@@ -227,7 +227,7 @@ class GetStringDuckTypesTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualTypes = $unit($data);
+        $actualTypes = $unit->getStringDuckTypes($data);
 
         // ----------------------------------------------------------------
         // test the results
