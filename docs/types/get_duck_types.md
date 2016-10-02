@@ -1,13 +1,4 @@
----
-currentSection: types
-currentItem: GetDuckTypes
-pageflow_prev_url: GetClassTypes.html
-pageflow_prev_text: GetClassTypes class
-pageflow_next_url: GetNamespace.html
-pageflow_next_text: GetNamespace class
----
-
-# GetDuckTypes
+# get_duck_types()
 
 <div class="callout info">
 Since v1.3.0
@@ -15,38 +6,21 @@ Since v1.3.0
 
 ## Description
 
-`GetDuckTypes` returns a list of all possible PHP types for a given variable. The list is ordered with the most specific match first.
+`get_duck_types()` returns a list of all possible PHP types for a given variable. The list is ordered with the most specific match first.
 
 ```php
-// how to import
-use GanbaroDigital\MissingBits\TypeInspectors\GetDuckTypes;
-
-// call directly
-//
-// returns an array
-var_dump(GetDuckTypes::of($data));
-
-// use as an object
-//
-// returns an array
-$inspector = new GetDuckTypes;
-var_dump($inspector($data));
-
-// use as a global function
-//
-// returns an array
-var_dump(get_duck_types($data));
+public array get_duck_types(mixed $item);
 ```
 
 ## Parameters
 
 The input parameters are:
 
-- `$data` - the item to examine
+- `$item` - the item to examine
 
 ## Return Value
 
-`GetDuckTypes` returns an array. It is a list of the types that `$data` could substitute for.
+`get_duck_types()` returns an array. It is a list of the types that `$item` could substitute for.
 
 * For basic scalar types, the list contains the result of PHP's `gettype()`
 * For arrays and objects, we check to see if the array is a valid PHP `callable`
@@ -57,9 +31,9 @@ The input parameters are:
 * For strings that are valid class or interface names, we include the class name, a list of all parent classes, and a list of all interfaces that the class implements
 * For strings, we check if the string is a valid `double` or `integer`
 
-The resulting list describes how you can safely treat `$data`, as long as you are not calling strictly-typed functions and methods.
+The resulting list describes how you can safely treat `$item`, as long as you are not calling strictly-typed functions and methods.
 
-Use [`GetStrictTypes`](GetStrictTypes.html) instead if you want a list of types that won't cause an error when used with PHP 7's strict type-hinting support.
+Use [`get_strict_types()`](get_strict_types.html) instead if you want a list of types that won't cause an error when used with PHP 7's strict type-hinting support.
 
 ### Example Return Values
 
@@ -241,8 +215,6 @@ var_dump(get_duck_types(new GetStrictTypes));
 // array(3) {
 //   ["GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes"]=>
 //   string(56) "GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes"
-//   ["callable"]=>
-//   string(8) "callable"
 //   ["object"]=>
 //   string(6) "object"
 // }
@@ -426,14 +398,14 @@ var_dump(get_duck_types(Traversable::class));
 
 ## Throws
 
-`GetDuckTypes` does not throw any exceptions.
+`get_duck_types()` does not throw any exceptions.
 
 ## Changelog
 
 ### v1.5.1
 
 - Now returns the `numeric` duck type for `double` and `integer` PHP types.
-- 
+
 ### v1.5.0
 
 - Now returns the `numeric` duck type for strings that can be doubles or integers.
