@@ -58,7 +58,7 @@ class GetStringTypes
      * @return string[]
      *         the list of type(s) that this item can be
      */
-    public function __invoke($item)
+    public function getStringTypes($item)
     {
         return self::from($item);
     }

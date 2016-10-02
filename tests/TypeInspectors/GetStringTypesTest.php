@@ -71,7 +71,7 @@ class GetStringTypesTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__invoke
+     * @covers ::getStringTypes
      * @covers ::from
      * @covers ::detectNumbers
      * @covers ::fromObject
@@ -87,7 +87,7 @@ class GetStringTypesTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualTypes = $unit($data);
+        $actualTypes = $unit->getStringTypes($data);
 
         // ----------------------------------------------------------------
         // test the results
@@ -141,7 +141,7 @@ class GetStringTypesTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__invoke
+     * @covers ::getStringTypes
      * @covers ::from
      * @covers ::detectNumbers
      * @dataProvider provideCallableStringsToTest
@@ -156,7 +156,7 @@ class GetStringTypesTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualTypes = $unit($data);
+        $actualTypes = $unit->getStringTypes($data);
 
         // ----------------------------------------------------------------
         // test the results
@@ -165,7 +165,7 @@ class GetStringTypesTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__invoke
+     * @covers ::getStringTypes
      * @covers ::from
      * @covers ::detectNumbers
      * @dataProvider provideNumericStringsToTest
@@ -180,7 +180,7 @@ class GetStringTypesTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualTypes = $unit($data);
+        $actualTypes = $unit->getStringTypes($data);
 
         // ----------------------------------------------------------------
         // test the results
@@ -210,7 +210,7 @@ class GetStringTypesTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__invoke
+     * @covers ::getStringTypes
      * @covers ::from
      * @dataProvider provideEverythingElseToTest
      */
@@ -224,7 +224,7 @@ class GetStringTypesTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualTypes = $unit($data);
+        $actualTypes = $unit->getStringTypes($data);
 
         // ----------------------------------------------------------------
         // test the results

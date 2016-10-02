@@ -61,6 +61,7 @@ Before refactoring, we checked Packagist to make sure that these changes would n
   - `GetPrintableType::__invoke()` is now `GetPrintableType::getPrintableType()`
   - `GetStrictTypes::__invoke()` is now `GetStrictTypes::getStrictTypes()`
   - `GetStringDuckTypes::__invoke()` is now `GetStringDuckTypes::getStringDuckTypes()`
+  - `GetStringTypes::__invoke()` is now `GetStringTypes::getStringTypes()`
 
 ## v1.9.0
 
