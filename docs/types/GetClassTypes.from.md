@@ -1,13 +1,4 @@
----
-currentSection: types
-currentItem: GetClassTypes
-pageflow_prev_url: GetClassTraits.html
-pageflow_prev_text: GetClassTraits class
-pageflow_next_url: GetDuckTypes.html
-pageflow_next_text: GetDuckTypes class
----
-
-# GetClassTypes
+# GetClassTypes::from()
 
 <div class="callout info">
 Since v1.3.0
@@ -15,50 +6,34 @@ Since v1.3.0
 
 ## Description
 
-`GetClassTypes` returns a list of all strict PHP types for a given class or interface. The list is ordered with the most specific match first.
+`GetClassTypes::from()` returns a list of all strict PHP types for a given class or interface. The list is ordered with the most specific match first.
 
 ```php
-// how to import
 use GanbaroDigital\MissingBits\TypeInspectors\GetClassTypes;
-
-// call directly
-//
-// returns an array
-var_dump(GetClassTypes::from($data));
-
-// use as an object
-//
-// returns an array
-$inspector = new GetClassTypes;
-var_dump($inspector($data));
-
-// use as a global function
-//
-// returns an array
-var_dump(get_class_types($data));
+public static array GetClassTypes::from(mixed $item);
 ```
 
 ## Parameters
 
 The input parameters are:
 
-- `mixed $data` - the item to examine
+- `mixed $item` - the item to examine
 
 ## Return Value
 
-`GetClassTypes` returns an array.
+`GetClassTypes::from()` returns an array.
 
-* If `$data` is not a string or an object, an empty list `[]` is returned
-* For strings, if `$data` is not a valid class or interface name, an empty list `[]` is returned
+* If `$item` is not a string or an object, an empty list `[]` is returned
+* For strings, if `$item` is not a valid class or interface name, an empty list `[]` is returned
 * For classes and objects, we return a list of the class, its parents, and all interfaces it implements (directly or otherwise)
 * For interfaces, we return a list of the interface and its parents
 
-The resulting list is a complete list of strict types where it is safe to use `$data`.
+The resulting list is a complete list of strict types where it is safe to use `$item`.
 
 <div class="callout warning" markdown="1">
 PHP doesn't support using traits as type-hints or type declarations.
 
-That's why `GetClassTypes` does not include any traits in the returned list.
+That's why `GetClassTypes::from()` does not include any traits in the returned list.
 </div>
 
 ### Example Return Values
@@ -66,7 +41,7 @@ That's why `GetClassTypes` does not include any traits in the returned list.
 Here's a list of examples of accepted input values:
 
 ```php
-var_dump(get_class_types(function(){}));
+var_dump(GetClassTypes::from(function(){}));
 
 // outputs
 //
@@ -77,7 +52,7 @@ var_dump(get_class_types(function(){}));
 ```
 
 ```php
-var_dump(get_class_types(new ArrayObject));
+var_dump(GetClassTypes::from(new ArrayObject));
 
 // outputs
 //
@@ -100,7 +75,7 @@ var_dump(get_class_types(new ArrayObject));
 ```php
 use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
 
-var_dump(get_class_types(new GetStrictTypes));
+var_dump(GetClassTypes::from(new GetStrictTypes));
 
 // outputs
 //
@@ -111,7 +86,7 @@ var_dump(get_class_types(new GetStrictTypes));
 ```
 
 ```php
-var_dump(get_class_types((object)[]));
+var_dump(GetClassTypes::from((object)[]));
 
 // outputs
 //
@@ -122,7 +97,7 @@ var_dump(get_class_types((object)[]));
 ```
 
 ```php
-var_dump(get_class_types(new Exception(__FILE__)));
+var_dump(GetClassTypes::from(new Exception(__FILE__)));
 
 // outputs
 //
@@ -135,7 +110,7 @@ var_dump(get_class_types(new Exception(__FILE__)));
 ```
 
 ```php
-var_dump(get_class_types(ArrayObject::class));
+var_dump(GetClassTypes::from(ArrayObject::class));
 
 // outputs
 //
@@ -156,7 +131,7 @@ var_dump(get_class_types(ArrayObject::class));
 ```
 
 ```php
-var_dump(get_class_types(Traversable::class));
+var_dump(GetClassTypes::from(Traversable::class));
 
 // outputs
 //
@@ -169,7 +144,7 @@ var_dump(get_class_types(Traversable::class));
 Here's a list of examples of ingored input values:
 
 ```php
-var_dump(get_class_types(null));
+var_dump(GetClassTypes::from(null));
 
 // outputs
 //
@@ -178,7 +153,7 @@ var_dump(get_class_types(null));
 ```
 
 ```php
-var_dump(get_class_types([1,2,3]));
+var_dump(GetClassTypes::from([1,2,3]));
 
 // outputs
 //
@@ -189,7 +164,7 @@ var_dump(get_class_types([1,2,3]));
 ```php
 use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
 
-var_dump(get_class_types([GetStrictTypes::class, "from"]));
+var_dump(GetClassTypes::from([GetStrictTypes::class, "from"]));
 
 // outputs
 //
@@ -198,7 +173,7 @@ var_dump(get_class_types([GetStrictTypes::class, "from"]));
 ```
 
 ```php
-var_dump(get_class_types(true));
+var_dump(GetClassTypes::from(true));
 
 // outputs
 //
@@ -207,7 +182,7 @@ var_dump(get_class_types(true));
 ```
 
 ```php
-var_dump(get_class_types(false));
+var_dump(GetClassTypes::from(false));
 
 // outputs
 //
@@ -216,7 +191,7 @@ var_dump(get_class_types(false));
 ```
 
 ```php
-var_dump(get_class_types(0.0));
+var_dump(GetClassTypes::from(0.0));
 
 // outputs
 //
@@ -225,7 +200,7 @@ var_dump(get_class_types(0.0));
 ```
 
 ```php
-var_dump(get_class_types(3.1415927));
+var_dump(GetClassTypes::from(3.1415927));
 
 // outputs
 //
@@ -234,7 +209,7 @@ var_dump(get_class_types(3.1415927));
 ```
 
 ```php
-var_dump(get_class_types(0));
+var_dump(GetClassTypes::from(0));
 
 // outputs
 //
@@ -243,7 +218,7 @@ var_dump(get_class_types(0));
 ```
 
 ```php
-var_dump(get_class_types(100));
+var_dump(GetClassTypes::from(100));
 
 // outputs
 //
@@ -252,7 +227,7 @@ var_dump(get_class_types(100));
 ```
 
 ```php
-var_dump(get_class_types(-100));
+var_dump(GetClassTypes::from(-100));
 
 // outputs
 //
@@ -261,7 +236,7 @@ var_dump(get_class_types(-100));
 ```
 
 ```php
-var_dump(get_class_types(STDIN));
+var_dump(GetClassTypes::from(STDIN));
 
 // outputs
 //
@@ -270,7 +245,7 @@ var_dump(get_class_types(STDIN));
 ```
 
 ```php
-var_dump(get_class_types("true"));
+var_dump(GetClassTypes::from("true"));
 
 // outputs
 //
@@ -279,7 +254,7 @@ var_dump(get_class_types("true"));
 ```
 
 ```php
-var_dump(get_class_types("false"));
+var_dump(GetClassTypes::from("false"));
 
 // outputs
 //
@@ -288,7 +263,7 @@ var_dump(get_class_types("false"));
 ```
 
 ```php
-var_dump(get_class_types("0.0"));
+var_dump(GetClassTypes::from("0.0"));
 
 // outputs
 //
@@ -297,7 +272,7 @@ var_dump(get_class_types("0.0"));
 ```
 
 ```php
-var_dump(get_class_types("3.1415927"));
+var_dump(GetClassTypes::from("3.1415927"));
 
 // outputs
 //
@@ -306,7 +281,7 @@ var_dump(get_class_types("3.1415927"));
 ```
 
 ```php
-var_dump(get_class_types("0"));
+var_dump(GetClassTypes::from("0"));
 
 // outputs
 //
@@ -315,7 +290,7 @@ var_dump(get_class_types("0"));
 ```
 
 ```php
-var_dump(get_class_types("100"));
+var_dump(GetClassTypes::from("100"));
 
 // outputs
 //
@@ -324,7 +299,7 @@ var_dump(get_class_types("100"));
 ```
 
 ```php
-var_dump(get_class_types("hello, world!"));
+var_dump(GetClassTypes::from("hello, world!"));
 
 // outputs
 //
@@ -334,11 +309,11 @@ var_dump(get_class_types("hello, world!"));
 
 ## Throws
 
-`GetClassTypes` does not throw any exceptions.
+`GetClassTypes::from()` does not throw any exceptions.
 
 ## Works With
 
-`GetClassTypes` is supported on these versions of PHP:
+`GetClassTypes::from()` is supported on these versions of PHP:
 
 PHP Version | Works?
 ------------|-------
