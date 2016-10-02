@@ -51,7 +51,7 @@ class GetClassTypes
     /**
      * get a full list of a class's inheritence hierarchy
      *
-     * @param  string $item
+     * @param  mixed $item
      *         the item to examine
      * @return string[]
      *         the class's inheritence hierarchy
@@ -64,7 +64,7 @@ class GetClassTypes
     /**
      * get a full list of a class's inheritence hierarchy
      *
-     * @param  string $item
+     * @param  mixed $item
      *         the item to examine
      * @return string[]
      *         the class's inheritence hierarchy
