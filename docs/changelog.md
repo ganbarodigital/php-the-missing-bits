@@ -54,6 +54,7 @@ Before refactoring, we checked Packagist to make sure that these changes would n
   - `GetCaller::__invoke()` is now `GetCaller::getCaller()`
   - `GetClassTraits::__invoke()` is now `GetClassTraits::getClassTraits()`
   - `GetClassTypes::__invoke()` is now `GetClassTypes::getClassTypes()`
+  - `GetDuckTypes::__invoke()` is now `GetDuckTypes::getDuckTypes()`
 
 ## v1.9.0
 

@@ -71,7 +71,7 @@ class GetDuckTypes
      * @return string[]
      *         the list of type(s) that this item can be
      */
-    public function __invoke($item)
+    public function getDuckTypes($item)
     {
         return self::from($item);
     }

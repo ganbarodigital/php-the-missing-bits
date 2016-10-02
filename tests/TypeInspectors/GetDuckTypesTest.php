@@ -44,6 +44,7 @@
 namespace GanbaroDigitalTest\MissingBits\TypeInspectors;
 
 use ArrayObject;
+use Closure;
 use Exception;
 use GanbaroDigital\MissingBits\TypeInspectors\GetDuckTypes;
 use PHPUnit_Framework_TestCase;
@@ -72,7 +73,7 @@ class GetDuckTypesTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__invoke
+     * @covers ::getDuckTypes
      * @covers ::from
      * @covers ::fromArray
      * @covers ::fromDouble
@@ -91,7 +92,7 @@ class GetDuckTypesTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualTypes = $unit($data);
+        $actualTypes = $unit->getDuckTypes($data);
 
         // ----------------------------------------------------------------
         // test the results
@@ -100,7 +101,6 @@ class GetDuckTypesTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__invoke
      * @covers ::from
      * @covers ::fromArray
      * @covers ::fromDouble
@@ -127,7 +127,6 @@ class GetDuckTypesTest extends PHPUnit_Framework_TestCase
 
     /**
      * @covers \get_duck_types
-     * @covers ::__invoke
      * @covers ::from
      * @covers ::fromArray
      * @covers ::fromDouble
@@ -243,9 +242,9 @@ class GetDuckTypesTest extends PHPUnit_Framework_TestCase
                 ]
             ],
             [
-                new GetDuckTypes(),
+                function(){},
                 [
-                    GetDuckTypes::class => GetDuckTypes::class,
+                    Closure::class => Closure::class,
                     'callable' => 'callable',
                     'object' => 'object',
                 ]
@@ -370,7 +369,7 @@ class GetDuckTypesTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__invoke
+     * @covers ::getDuckTypes
      * @covers ::from
      * @covers ::fromString
      * @dataProvider provideTestClasses
@@ -385,7 +384,7 @@ class GetDuckTypesTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualTypes = $unit($data);
+        $actualTypes = $unit->getDuckTypes($data);
 
         // ----------------------------------------------------------------
         // test the results
@@ -469,9 +468,9 @@ class GetDuckTypesTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // setup your test
 
-        $data = new GetDuckTypes;
+        $data = function(){};
         $expectedResult = [
-            GetDuckTypes::class => GetDuckTypes::class,
+            Closure::class => Closure::class,
             'callable' => 'callable',
             'object' => 'object',
         ];
