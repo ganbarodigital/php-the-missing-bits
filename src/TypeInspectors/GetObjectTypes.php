@@ -65,7 +65,7 @@ class GetObjectTypes
      * @return string[]
      *         the object's list of types
      */
-    public function __invoke($item)
+    public function getObjectTypes($item)
     {
         return self::from($item);
     }

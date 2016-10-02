@@ -44,6 +44,7 @@
 namespace GanbaroDigitalTest\MissingBits\TypeInspectors;
 
 use ArrayObject;
+use Closure;
 use GanbaroDigital\MissingBits\TypeInspectors\GetObjectTypes;
 use PHPUnit_Framework_TestCase;
 use stdClass;
@@ -70,7 +71,7 @@ class GetObjectTypesTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__invoke
+     * @covers ::getObjectTypes
      * @covers ::from
      * @covers ::getObjectConditionalTypes
      * @dataProvider provideDataToTest
@@ -85,7 +86,7 @@ class GetObjectTypesTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualTypes = $unit($data);
+        $actualTypes = $unit->getObjectTypes($data);
 
         // ----------------------------------------------------------------
         // test the results
@@ -94,7 +95,6 @@ class GetObjectTypesTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__invoke
      * @covers ::from
      * @covers ::getObjectConditionalTypes
      * @dataProvider provideDataToTest
@@ -117,7 +117,6 @@ class GetObjectTypesTest extends PHPUnit_Framework_TestCase
 
     /**
      * @covers \get_object_types
-     * @covers ::__invoke
      * @covers ::from
      * @covers ::getObjectConditionalTypes
      * @dataProvider provideDataToTest
@@ -139,6 +138,7 @@ class GetObjectTypesTest extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers ::getObjectTypes
      * @covers ::from
      * @covers ::getObjectConditionalTypes
      * @dataProvider provideTestClasses
@@ -153,7 +153,7 @@ class GetObjectTypesTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualTypes = $unit($data);
+        $actualTypes = $unit->getObjectTypes($data);
 
         // ----------------------------------------------------------------
         // test the results
@@ -208,9 +208,9 @@ class GetObjectTypesTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // setup your test
 
-        $data = new GetObjectTypes;
+        $data = function(){};
         $expectedResult = [
-            GetObjectTypes::class => GetObjectTypes::class,
+            Closure::class => Closure::class,
             'callable' => 'callable',
         ];
 
@@ -256,6 +256,7 @@ class GetObjectTypesTest extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers ::getObjectTypes
      * @covers ::from
      * @covers ::getObjectConditionalTypes
      * @dataProvider provideEverythingElseToTest
@@ -270,7 +271,7 @@ class GetObjectTypesTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualTypes = $unit($data);
+        $actualTypes = $unit->getObjectTypes($data);
 
         // ----------------------------------------------------------------
         // test the results
@@ -301,9 +302,9 @@ class GetObjectTypesTest extends PHPUnit_Framework_TestCase
                 ]
             ],
             [
-                new GetObjectTypes(),
+                function(){},
                 [
-                    GetObjectTypes::class => GetObjectTypes::class,
+                    Closure::class => Closure::class,
                     'callable' => 'callable',
                 ]
             ],

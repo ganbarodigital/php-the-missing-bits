@@ -57,6 +57,7 @@ Before refactoring, we checked Packagist to make sure that these changes would n
   - `GetDuckTypes::__invoke()` is now `GetDuckTypes::getDuckTypes()`
   - `GetNamespace::__invoke()` is now `GetNamespace::getNamespace()`
   - `GetNumericType::__invoke()` is now `GetNumericType::getNumericType()`
+  - `GetObjectTypes::__invoke()` is now `GetObjectTypes::getObjectTypes()`
 
 ## v1.9.0
 
