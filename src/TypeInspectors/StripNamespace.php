@@ -62,7 +62,7 @@ class StripNamespace
      *         - if the string does not contain the name of a defined
      *           class / interface / trait
      */
-    public function __invoke($item)
+    public function stripNamespace($item)
     {
         return self::from($item);
     }

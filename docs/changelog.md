@@ -62,6 +62,7 @@ Before refactoring, we checked Packagist to make sure that these changes would n
   - `GetStrictTypes::__invoke()` is now `GetStrictTypes::getStrictTypes()`
   - `GetStringDuckTypes::__invoke()` is now `GetStringDuckTypes::getStringDuckTypes()`
   - `GetStringTypes::__invoke()` is now `GetStringTypes::getStringTypes()`
+  - `StripNamespace::__invoke()` is now `StripNamespace::stripNamespace()`
 
 ## v1.9.0
 
