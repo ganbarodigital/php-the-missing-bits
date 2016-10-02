@@ -68,7 +68,7 @@ class GetPrintableType
      * @return string
      *         the data type of $data
      */
-    public function __invoke($data, $flags = self::FLAG_DEFAULTS)
+    public function getPrintableType($data, $flags = self::FLAG_DEFAULTS)
     {
         return self::of($data, $flags);
     }

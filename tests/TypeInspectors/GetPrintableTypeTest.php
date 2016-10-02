@@ -71,7 +71,7 @@ class GetPrintableTypeTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__invoke
+     * @covers ::getPrintableType
      * @covers ::of
      * @covers ::returnCallableType
      * @covers ::returnObjectType
@@ -88,7 +88,7 @@ class GetPrintableTypeTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualType = $unit($data, $flags);
+        $actualType = $unit->getPrintableType($data, $flags);
 
         // ----------------------------------------------------------------
         // test the results

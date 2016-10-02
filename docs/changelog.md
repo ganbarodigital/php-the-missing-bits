@@ -58,6 +58,7 @@ Before refactoring, we checked Packagist to make sure that these changes would n
   - `GetNamespace::__invoke()` is now `GetNamespace::getNamespace()`
   - `GetNumericType::__invoke()` is now `GetNumericType::getNumericType()`
   - `GetObjectTypes::__invoke()` is now `GetObjectTypes::getObjectTypes()`
+  - `GetPrintableType::__invoke()` is now `GetPrintableType::getPrintableType()`
 
 ## v1.9.0
 
