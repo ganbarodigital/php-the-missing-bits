@@ -73,6 +73,12 @@
   - added `IsDefinedObjectType::inspectList()`
   - added `is_defined_object_type()` convenience function
   - added `is_defined_object_type_list()` convenience function
+  - added `IsDefinedTrait::check()`
+  - added `IsDefinedTrait::checkList()`
+  - added `IsDefinedTrait::inspect()`
+  - added `IsDefinedTrait::inspectList()`
+  - added `is_defined_trait()` convenience function
+  - added `is_defined_trait_list()` convenience function
 * Added type-hinting / strict type declaration support for entities:
   - added empty `Entity` interface
 * Added immutable support to entities

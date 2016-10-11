@@ -52,6 +52,7 @@ use GanbaroDigital\MissingBits\TypeChecks\IsCompatibleWith;
 use GanbaroDigital\MissingBits\TypeChecks\IsDefinedClass;
 use GanbaroDigital\MissingBits\TypeChecks\IsDefinedInterface;
 use GanbaroDigital\MissingBits\TypeChecks\IsDefinedObjectType;
+use GanbaroDigital\MissingBits\TypeChecks\IsDefinedTrait;
 use GanbaroDigital\MissingBits\TypeInspectors\GetArrayTypes;
 use GanbaroDigital\MissingBits\TypeInspectors\GetClassTraits;
 use GanbaroDigital\MissingBits\TypeInspectors\GetClassTypes;
@@ -417,6 +418,34 @@ function is_defined_object_type($fieldOrVar)
 function is_defined_object_type_list($list)
 {
     return IsDefinedObjectType::checkList($list);
+}
+
+/**
+ * do we have the name of a trait that has been defined?
+ *
+ * @param mixed $fieldOrVar
+ *        the name to check
+ * @return bool
+ *         TRUE if $fieldOrVar is a trait that has been defined
+ *         FALSE otherwise
+ */
+function is_defined_trait($fieldOrVar)
+{
+    return IsDefinedTrait::check($fieldOrVar);
+}
+
+/**
+ * is every entry in $list a defined class?
+ *
+ * @param  mixed $list
+ *         the list of items to be checked
+ * @return bool
+ *         TRUE if every item in $list is a defined class
+ *         FALSE otherwise
+ */
+function is_defined_trait_list($list)
+{
+    return IsDefinedTrait::checkList($list);
 }
 
 /**
