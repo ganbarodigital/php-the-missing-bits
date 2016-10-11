@@ -55,6 +55,12 @@
   - added `IsCompatibleWith::inspectList()`
   - added `is_compatible_with()` convenience function
   - added `is_compatible_with_list()` convenience function
+  - added `IsDefinedClass::check()`
+  - added `IsDefinedClass::checkList()`
+  - added `IsDefinedClass::inspect()`
+  - added `IsDefinedClass::inspectList()`
+  - added `is_defined_class()` convenience function
+  - added `is_defined_class_list()` convenience function
 * Added type-hinting / strict type declaration support for entities:
   - added empty `Entity` interface
 * Added immutable support to entities
