@@ -54,6 +54,7 @@ use GanbaroDigital\MissingBits\TypeChecks\IsDefinedInterface;
 use GanbaroDigital\MissingBits\TypeChecks\IsDefinedObjectType;
 use GanbaroDigital\MissingBits\TypeChecks\IsDefinedTrait;
 use GanbaroDigital\MissingBits\TypeChecks\IsDouble;
+use GanbaroDigital\MissingBits\TypeChecks\IsEmpty;
 use GanbaroDigital\MissingBits\TypeInspectors\GetArrayTypes;
 use GanbaroDigital\MissingBits\TypeInspectors\GetClassTraits;
 use GanbaroDigital\MissingBits\TypeInspectors\GetClassTypes;
@@ -461,6 +462,20 @@ function is_defined_trait_list($list)
 function is_double_list($list)
 {
     return IsDouble::checkList($list);
+}
+
+/**
+ * is every entry in $list empty?
+ *
+ * @param  mixed $list
+ *         the list of items to be checked
+ * @return bool
+ *         TRUE if every item in $list is empty
+ *         FALSE otherwise
+ */
+function is_empty_list($list)
+{
+    return IsEmpty::checkList($list);
 }
 
 /**

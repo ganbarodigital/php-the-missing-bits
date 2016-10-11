@@ -84,6 +84,11 @@
   - added `IsDouble::inspect()`
   - added `IsDouble::inspectList()`
   - added `is_double_list()` convenience function
+  - added `IsEmpty::check()`
+  - added `IsEmpty::checkList()`
+  - added `IsEmpty::inspect()`
+  - added `IsEmpty::inspectList()`
+  - added `is_empty_list()` convenience function
 * Added type-hinting / strict type declaration support for entities:
   - added empty `Entity` interface
 * Added immutable support to entities
