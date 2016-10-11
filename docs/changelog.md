@@ -135,6 +135,12 @@
   - added `IsObjectOfType::inspectList()`
   - added `check_is_object_of_type()` convenience function
   - added `check_is_object_of_type_list()` convenience function
+  - added `IsPcreRegex::check()`
+  - added `IsPcreRegex::checkList()`
+  - added `IsPcreRegex::inspect()`
+  - added `IsPcreRegex::inspectList()`
+  - added `check_is_pcre_regex()` convenience function
+  - added `check_is_pcre_regex_list()` convenience function
 * Added type-hinting / strict type declaration support for entities:
   - added empty `Entity` interface
 * Added immutable support to entities

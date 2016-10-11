@@ -667,6 +667,34 @@ function check_is_object_of_type_list($list, $expectedType)
 }
 
 /**
+ * do we have a valid PCRE regex?
+ *
+ * @param  string $fieldOrVar
+ *         the item to be checked
+ * @return bool
+ *         TRUE if the item is a valid PCRE regex
+ *         FALSE otherwise
+ */
+function check_is_pcre_regex($fieldOrVar)
+{
+    return IsPcreRegex::check($fieldOrVar);
+}
+
+/**
+ * is every entry in $list a valid PCRE regex?
+ *
+ * @param  mixed $list
+ *         the list of items to be checked
+ * @return bool
+ *         TRUE if every item in $list is a valid PCRE regex
+ *         FALSE otherwise
+ */
+function check_is_pcre_regex_list($list)
+{
+    return IsPcreRegex::checkList($list);
+}
+
+/**
  * is $item something that PHP will accept as a string?
  *
  * @param  mixed $item
