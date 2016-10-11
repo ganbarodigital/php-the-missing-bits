@@ -57,6 +57,7 @@ use GanbaroDigital\MissingBits\TypeChecks\IsDouble;
 use GanbaroDigital\MissingBits\TypeChecks\IsEmpty;
 use GanbaroDigital\MissingBits\TypeChecks\IsIndexable;
 use GanbaroDigital\MissingBits\TypeChecks\IsInteger;
+use GanbaroDigital\MissingBits\TypeChecks\IsLogical;
 use GanbaroDigital\MissingBits\TypeInspectors\GetArrayTypes;
 use GanbaroDigital\MissingBits\TypeInspectors\GetClassTraits;
 use GanbaroDigital\MissingBits\TypeInspectors\GetClassTypes;
@@ -456,6 +457,34 @@ function check_is_integer_list($list)
 }
 
 /**
+ * do we have something that is an integer?
+ *
+ * @param  mixed $fieldOrVar
+ *         the item to be checked
+ * @return bool
+ *         TRUE if the item is an integer, or can be used as an integer
+ *         FALSE otherwise
+ */
+function check_is_integer($fieldOrVar)
+{
+    return IsInteger::check($fieldOrVar);
+}
+
+/**
+ * is every entry in $list an integer?
+ *
+ * @param  mixed $list
+ *         the list of items to be checked
+ * @return bool
+ *         TRUE if every item in $list is an integer
+ *         FALSE otherwise
+ */
+function check_is_integer_list($list)
+{
+    return IsInteger::checkList($list);
+}
+
+/**
  * can $list be safely (and sensibly) used in a foreach() loop?
  *
  * @param  mixed $list
@@ -481,6 +510,34 @@ function check_is_list($list)
 function check_is_listy_object($list)
 {
     return IsListyObject::check($list);
+}
+
+/**
+ * do we have something that can be used as a boolean value?
+ *
+ * @param  mixed $fieldOrVar
+ *         the item to be checked
+ * @return bool
+ *         TRUE if the item can be used as a boolean
+ *         FALSE otherwise
+ */
+function check_is_logical($fieldOrVar)
+{
+    return IsLogical::check($fieldOrVar);
+}
+
+/**
+ * is every entry in $list something that can be used as a boolean value?
+ *
+ * @param  mixed $list
+ *         the list of items to be checked
+ * @return bool
+ *         TRUE if every item in $list can be used as a boolean
+ *         FALSE otherwise
+ */
+function check_is_logical_list($list)
+{
+    return IsLogical::checkList($list);
 }
 
 /**

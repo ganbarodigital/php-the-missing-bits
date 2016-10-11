@@ -105,6 +105,12 @@
   - added `IsInteger::inspectList()`
   - added `check_is_integer()` convenience function
   - added `check_is_integer_list()` convenience function
+  - added `IsLogical::check()`
+  - added `IsLogical::checkList()`
+  - added `IsLogical::inspect()`
+  - added `IsLogical::inspectList()`
+  - added `check_is_logical()` convenience function
+  - added `check_is_logical_list()` convenience function
 * Added type-hinting / strict type declaration support for entities:
   - added empty `Entity` interface
 * Added immutable support to entities
