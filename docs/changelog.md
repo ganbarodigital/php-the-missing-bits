@@ -89,6 +89,12 @@
   - added `IsEmpty::inspect()`
   - added `IsEmpty::inspectList()`
   - added `is_empty_list()` convenience function
+  - added `IsIndexable::check()`
+  - added `IsIndexable::checkList()`
+  - added `IsIndexable::inspect()`
+  - added `IsIndexable::inspectList()`
+  - added `is_indexable()` convenience function
+  - added `is_indexable_list()` convenience function
 * Added type-hinting / strict type declaration support for entities:
   - added empty `Entity` interface
 * Added immutable support to entities

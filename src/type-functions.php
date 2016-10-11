@@ -55,6 +55,7 @@ use GanbaroDigital\MissingBits\TypeChecks\IsDefinedObjectType;
 use GanbaroDigital\MissingBits\TypeChecks\IsDefinedTrait;
 use GanbaroDigital\MissingBits\TypeChecks\IsDouble;
 use GanbaroDigital\MissingBits\TypeChecks\IsEmpty;
+use GanbaroDigital\MissingBits\TypeChecks\IsIndexable;
 use GanbaroDigital\MissingBits\TypeInspectors\GetArrayTypes;
 use GanbaroDigital\MissingBits\TypeInspectors\GetClassTraits;
 use GanbaroDigital\MissingBits\TypeInspectors\GetClassTypes;
@@ -476,6 +477,35 @@ function is_double_list($list)
 function is_empty_list($list)
 {
     return IsEmpty::checkList($list);
+}
+
+/**
+ * is $fieldOrVar something that can be used by PHP code that uses array
+ * index notation?
+ *
+ * @param  mixed $fieldOrVar
+ *         the item to examine
+ * @return bool
+ *         true if the item is compatible
+ *         false otherwise
+ */
+function is_indexable($fieldOrVar)
+{
+    return IsIndexable::check($fieldOrVar);
+}
+
+/**
+ * is every entry in $list indexable?
+ *
+ * @param  mixed $list
+ *         the list of items to be checked
+ * @return bool
+ *         TRUE if every item in $list is indexable
+ *         FALSE otherwise
+ */
+function is_indexable_list($list)
+{
+    return IsIndexable::checkList($list);
 }
 
 /**
