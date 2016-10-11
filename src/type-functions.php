@@ -48,6 +48,7 @@ use GanbaroDigital\MissingBits\TypeChecks\IsCallable;
 use GanbaroDigital\MissingBits\TypeChecks\IsList;
 use GanbaroDigital\MissingBits\TypeChecks\IsListyObject;
 use GanbaroDigital\MissingBits\TypeChecks\IsStringy;
+use GanbaroDigital\MissingBits\TypeChecks\IsCompatibleWith;
 use GanbaroDigital\MissingBits\TypeInspectors\GetArrayTypes;
 use GanbaroDigital\MissingBits\TypeInspectors\GetClassTraits;
 use GanbaroDigital\MissingBits\TypeInspectors\GetClassTypes;
@@ -296,6 +297,39 @@ function is_boolean_list($list)
 function is_callable_list($list)
 {
     return IsCallable::checkList($list);
+}
+
+/**
+ * is $fieldOrVar compatible with $expectedType?
+ *
+ * @param  mixed $fieldOrVar
+ *         the classname or object to check
+ * @param  string|object $expectedType
+ *         the classname or object that we want to check for
+ * @return bool
+ *         TRUE if $fieldOrVar is compatible
+ *         FALSE otherwise
+ */
+function is_compatible_with($fieldOrVar, $expectedType)
+{
+    return IsCompatibleWith::check($fieldOrVar, $expectedType);
+}
+
+/**
+ * is every entry in $list compatible with $expectedType?
+ *
+ * @param  mixed $list
+ *         the list of items to be checked
+ * @param  string $expectedType
+ *         the class or interface that we want to check against
+ * @return bool
+ *         TRUE if every item in $list is a classname or object of
+ *         a given type
+ *         FALSE otherwise
+ */
+function is_compatible_with_list($list, $expectedType)
+{
+    return IsCompatibleWith::checkList($list, $expectedType);
 }
 
 /**

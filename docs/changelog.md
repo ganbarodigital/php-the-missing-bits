@@ -28,15 +28,33 @@
   - `IsListyObject` now implements `Check` and `ListCheck`
 * Added a whole bunch of type checks, originally from our Defensive library:
   - added `IsArray::check()`
+  - added `IsArray::checkList()`
+  - added `IsArray::inspect()`
+  - added `IsArray::inspectList()`
   - added `is_array_list()` convenience function
   - added `IsAssignable::check()`
+  - added `IsAssignable::checkList()`
+  - added `IsAssignable::inspect()`
+  - added `IsAssignable::inspectList()`
   - added `is_assignable()` convenience function
   - added `is_assignable_list()` convenience function
   - added `IsBoolean::check()`
+  - added `IsBoolean::checkList()`
+  - added `IsBoolean::inspect()`
+  - added `IsBoolean::inspectList()`
   - added `is_boolean()` convenience function
   - added `is_boolean_list()` convenience function
   - added `IsCallable::check()`
+  - added `IsCallable::checkList()`
+  - added `IsCallable::inspect()`
+  - added `IsCallable::inspectList()`
   - added `is_callable_list()` convenience function
+  - added `IsCompatibleWith::check()`
+  - added `IsCompatibleWith::checkList()`
+  - added `IsCompatibleWith::inspect()`
+  - added `IsCompatibleWith::inspectList()`
+  - added `is_compatible_with()` convenience function
+  - added `is_compatible_with_list()` convenience function
 * Added type-hinting / strict type declaration support for entities:
   - added empty `Entity` interface
 * Added immutable support to entities
