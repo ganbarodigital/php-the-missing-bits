@@ -155,6 +155,8 @@
   - `WriteProtectableEntity::setReadWrite()` must now throw `ReadOnlyForeverException` if `setReadOnlyForever()` has been called
   - added `setReadOnlyForever()` to `WriteProtectTab` trait
   - `WriteProtectTab::setReadWrite()` now throws `ReadOnlyForeverException` if `WriteProtectTab::setReadOnlyForever()` has been called
+* Added support for iterating into the contents of lists
+  - added `RecursiveTraverse::using()`
 
 ### Refactor
 
