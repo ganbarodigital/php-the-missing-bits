@@ -70,7 +70,7 @@ function quote_index($key) {
  */
 function quote_property($propertyName) {
     // robustness!
-    if (!is_stringy($propertyName)) {
+    if (!check_is_stringy($propertyName)) {
         throw new InvalidArgumentException('$propertyName is not a valid class or object property name');
     }
 

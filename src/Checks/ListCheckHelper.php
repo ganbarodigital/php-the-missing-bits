@@ -43,6 +43,7 @@
 
 namespace GanbaroDigital\MissingBits\Checks;
 
+use GanbaroDigital\MissingBits\TypeChecks\IsList;
 use GanbaroDigital\MissingBits\TypeInspectors\GetPrintableType;
 use InvalidArgumentException;
 
@@ -63,7 +64,7 @@ trait ListCheckHelper
     public function inspectList($list)
     {
         // robustness
-        if (!is_list($list)) {
+        if (!IsList::check($list)) {
             throw new InvalidArgumentException('$list is not a list, is a ' . GetPrintableType::of($list));
         }
 

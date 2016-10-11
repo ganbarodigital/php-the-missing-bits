@@ -70,6 +70,434 @@ use GanbaroDigital\MissingBits\TypeInspectors\GetStringTypes;
 use GanbaroDigital\MissingBits\TypeInspectors\StripNamespace;
 
 /**
+ * do we have something that is an array?
+ *
+ * by array, we mean something that you can pass to any of PHP's
+ * array_xxx() functions
+ *
+ * @param  mixed $fieldOrVar
+ *         the item to be checked
+ * @return bool
+ *         TRUE if the item is an array
+ *         FALSE otherwise
+ */
+function check_is_array($fieldOrVar)
+{
+    return IsArray::check($fieldOrVar);
+}
+
+/**
+ * is every entry in $list an array?
+ *
+ * by array, we mean something that you can pass to any of PHP's
+ * array_xxx() functions
+ *
+ * @param  mixed $list
+ *         the list of items to be checked
+ * @return bool
+ *         TRUE if every item in $list is an array
+ *         FALSE otherwise
+ */
+function check_is_array_list($list)
+{
+    return IsArray::checkList($list);
+}
+
+/**
+ * do we have something that can be used with PHP's object notation
+ * for assigning the value of variables?
+ *
+ * @param  mixed $fieldOrVar
+ *         the item to examine
+ * @return bool
+ *         true if the item is compatible
+ *         false otherwise
+ */
+function check_is_assignable($fieldOrVar)
+{
+    return IsAssignable::check($fieldOrVar);
+}
+
+/**
+ * can every item in $list be used with PHP's object notation for
+ * assigning the valule of variables?
+ *
+ * @param  mixed $list
+ *         the list to examine
+ * @return bool
+ *         true if every item in $list is compatible
+ *         false otherwise
+ */
+function check_is_assignable_list($list)
+{
+    return IsAssignable::checkList($list);
+}
+
+/**
+ * do we have something that is a boolean?
+ *
+ * @param  mixed $fieldOrVar
+ *         the item to be checked
+ * @return bool
+ *         TRUE if the item is a boolean
+ *         FALSE otherwise
+ */
+function check_is_boolean($fieldOrVar)
+{
+    return IsBoolean::check($fieldOrVar);
+}
+
+/**
+ * do we have a list of booleans?
+ *
+ * @param  mixed $list
+ *         the list to be checked
+ * @return bool
+ *         TRUE if every item in the list is a boolean
+ *         FALSE otherwise
+ */
+function check_is_boolean_list($list)
+{
+    return IsBoolean::checkList($list);
+}
+
+/**
+ * do we have something that can be used as a PHP callable?
+ *
+ * @param  mixed $fieldOrVar
+ *         the value to check
+ * @return bool
+ *         TRUE if $fieldOrVar is a callable
+ *         FALSE otherwise
+ */
+function check_is_callable($fieldOrVar)
+{
+    return IsCallable::check($fieldOrVar);
+}
+
+/**
+ * is every entry in $list a callable?
+ *
+ * @param  mixed $list
+ *         the list of items to be checked
+ * @return bool
+ *         TRUE if every item in $list is a callable
+ *         FALSE otherwise
+ */
+function check_is_callable_list($list)
+{
+    return IsCallable::checkList($list);
+}
+
+/**
+ * is $fieldOrVar compatible with $expectedType?
+ *
+ * @param  mixed $fieldOrVar
+ *         the classname or object to check
+ * @param  string|object $expectedType
+ *         the classname or object that we want to check for
+ * @return bool
+ *         TRUE if $fieldOrVar is compatible
+ *         FALSE otherwise
+ */
+function check_is_compatible_with($fieldOrVar, $expectedType)
+{
+    return IsCompatibleWith::check($fieldOrVar, $expectedType);
+}
+
+/**
+ * is every entry in $list compatible with $expectedType?
+ *
+ * @param  mixed $list
+ *         the list of items to be checked
+ * @param  string $expectedType
+ *         the class or interface that we want to check against
+ * @return bool
+ *         TRUE if every item in $list is a classname or object of
+ *         a given type
+ *         FALSE otherwise
+ */
+function check_is_compatible_with_list($list, $expectedType)
+{
+    return IsCompatibleWith::checkList($list, $expectedType);
+}
+
+/**
+ * do we have the name of a class that has been defined?
+ *
+ * @param mixed $fieldOrVar
+ *        the name to check
+ * @return bool
+ *         TRUE if $fieldOrVar is a class that has been defined
+ *         FALSE otherwise
+ */
+function check_is_defined_class($fieldOrVar)
+{
+    return IsDefinedClass::check($fieldOrVar);
+}
+
+/**
+ * is every entry in $list a defined class?
+ *
+ * @param  mixed $list
+ *         the list of items to be checked
+ * @return bool
+ *         TRUE if every item in $list is a defined class
+ *         FALSE otherwise
+ */
+function check_is_defined_class_list($list)
+{
+    return IsDefinedClass::checkList($list);
+}
+
+/**
+ * do we have the name of an interface that has been defined?
+ *
+ * @param mixed $fieldOrVar
+ *        the name to check
+ * @return bool
+ *         TRUE if $fieldOrVar is an interface that has been defined
+ *         FALSE otherwise
+ */
+function check_is_defined_interface($fieldOrVar)
+{
+    return IsDefinedInterface::check($fieldOrVar);
+}
+
+/**
+ * is every entry in $list a defined interface?
+ *
+ * @param  mixed $list
+ *         the list of items to be checked
+ * @return bool
+ *         TRUE if every item in $list is a defined interface
+ *         FALSE otherwise
+ */
+function is_defined_interface_list($list)
+{
+    return IsDefinedInterface::checkList($list);
+}
+
+/**
+ * is $fieldOrVar a valid type for an object?
+ *
+ * @param mixed $fieldOrVar
+ *        the name to check
+ * @return bool
+ *         TRUE if $fieldOrVar is a class or interface name
+ *         FALSE otherwise
+ */
+function check_is_defined_object_type($fieldOrVar)
+{
+    return IsDefinedObjectType::check($fieldOrVar);
+}
+
+/**
+ * is every entry in $list a valid type for an object?
+ *
+ * @param  mixed $list
+ *         the list of items to be checked
+ * @return bool
+ *         TRUE if every item in $list is a a valid type for an object
+ *         FALSE otherwise
+ */
+function check_is_defined_object_type_list($list)
+{
+    return IsDefinedObjectType::checkList($list);
+}
+
+/**
+ * do we have the name of a trait that has been defined?
+ *
+ * @param mixed $fieldOrVar
+ *        the name to check
+ * @return bool
+ *         TRUE if $fieldOrVar is a trait that has been defined
+ *         FALSE otherwise
+ */
+function check_is_defined_trait($fieldOrVar)
+{
+    return IsDefinedTrait::check($fieldOrVar);
+}
+
+/**
+ * is every entry in $list a defined class?
+ *
+ * @param  mixed $list
+ *         the list of items to be checked
+ * @return bool
+ *         TRUE if every item in $list is a defined class
+ *         FALSE otherwise
+ */
+function check_is_defined_trait_list($list)
+{
+    return IsDefinedTrait::checkList($list);
+}
+
+/**
+ * do we have something that is a double?
+ *
+ * @param  mixed $fieldOrVar
+ *         the item to be checked
+ * @return bool
+ *         TRUE if the item is a double, or can be used as a double
+ *         FALSE otherwise
+ */
+function check_is_double($fieldOrVar)
+{
+    return IsDouble::check($fieldOrVar);
+}
+
+/**
+ * is every entry in $list a double?
+ *
+ * @param  mixed $list
+ *         the list of items to be checked
+ * @return bool
+ *         TRUE if every item in $list is a defined class
+ *         FALSE otherwise
+ */
+function check_is_double_list($list)
+{
+    return IsDouble::checkList($list);
+}
+
+/**
+ * check if an item is empty
+ *
+ * empty means one of:
+ * - item itself is empty
+ * - item is a data container, and only contains empty data items
+ *
+ * BE AWARE that this check WILL descend down into the contents of $fieldOrVar
+ * until it finds the first piece of non-empty data. This has the potential
+ * to be computationally expensive.
+ *
+ * @param  mixed $fieldOrVar
+ *         the item to check
+ * @return bool
+ *         TRUE if the item is empty
+ *         FALSE otherwise
+ */
+function check_is_empty($fieldOrVar)
+{
+    return IsEmpty::check($fieldOrVar);
+}
+
+/**
+ * is every entry in $list empty?
+ *
+ * @param  mixed $list
+ *         the list of items to be checked
+ * @return bool
+ *         TRUE if every item in $list is empty
+ *         FALSE otherwise
+ */
+function check_is_empty_list($list)
+{
+    return IsEmpty::checkList($list);
+}
+
+/**
+ * is $fieldOrVar something that can be used by PHP code that uses array
+ * index notation?
+ *
+ * @param  mixed $fieldOrVar
+ *         the item to examine
+ * @return bool
+ *         true if the item is compatible
+ *         false otherwise
+ */
+function check_is_indexable($fieldOrVar)
+{
+    return IsIndexable::check($fieldOrVar);
+}
+
+/**
+ * is every entry in $list indexable?
+ *
+ * @param  mixed $list
+ *         the list of items to be checked
+ * @return bool
+ *         TRUE if every item in $list is indexable
+ *         FALSE otherwise
+ */
+function check_is_indexable_list($list)
+{
+    return IsIndexable::checkList($list);
+}
+
+/**
+ * do we have something that is an integer?
+ *
+ * @param  mixed $fieldOrVar
+ *         the item to be checked
+ * @return bool
+ *         TRUE if the item is an integer, or can be used as an integer
+ *         FALSE otherwise
+ */
+function check_is_integer($fieldOrVar)
+{
+    return IsInteger::check($fieldOrVar);
+}
+
+/**
+ * is every entry in $list an integer?
+ *
+ * @param  mixed $list
+ *         the list of items to be checked
+ * @return bool
+ *         TRUE if every item in $list is an integer
+ *         FALSE otherwise
+ */
+function check_is_integer_list($list)
+{
+    return IsInteger::checkList($list);
+}
+
+/**
+ * can $list be safely (and sensibly) used in a foreach() loop?
+ *
+ * @param  mixed $list
+ *         the value to inspect
+ * @return bool
+ *         TRUE if $list can be used in a foreach() loop
+ *         FALSE otherwise
+ */
+function check_is_list($list)
+{
+    return IsList::check($list);
+}
+
+/**
+ * can $list be safely (and sensibly) used in a foreach() loop?
+ *
+ * @param  object $list
+ *         the value to inspect
+ * @return bool
+ *         TRUE if $list can be used in a foreach() loop
+ *         FALSE otherwise
+ */
+function check_is_listy_object($list)
+{
+    return IsListyObject::check($list);
+}
+
+/**
+ * is $item something that PHP will accept as a string?
+ *
+ * @param  mixed $item
+ *         the variable to examine
+ * @return bool
+ *         TRUE if PHP will happily use $item as a string
+ *         FALSE otherwise
+ */
+function check_is_stringy($item)
+{
+    return IsStringy::check($item);
+}
+
+/**
  * get a full list of strict types than an array can satisfy
  *
  * @param  array $item
@@ -216,367 +644,6 @@ function get_string_duck_types($item)
 function get_string_types($item)
 {
     return GetStringTypes::from($item);
-}
-
-/**
- * is every entry in $list an array?
- *
- * by array, we mean something that you can pass to any of PHP's
- * array_xxx() functions
- *
- * @param  mixed $list
- *         the list of items to be checked
- * @return boolean
- *         TRUE if every item in $list is an array
- *         FALSE otherwise
- */
-function is_array_list($list)
-{
-    return IsArray::checkList($list);
-}
-
-/**
- * do we have something that can be used with PHP's object notation
- * for assigning the value of variables?
- *
- * @param  mixed $fieldOrVar
- *         the item to examine
- * @return bool
- *         true if the item is compatible
- *         false otherwise
- */
-function is_assignable($fieldOrVar)
-{
-    return IsAssignable::check($fieldOrVar);
-}
-
-/**
- * can every item in $list be used with PHP's object notation for
- * assigning the valule of variables?
- *
- * @param  mixed $list
- *         the list to examine
- * @return bool
- *         true if every item in $list is compatible
- *         false otherwise
- */
-function is_assignable_list($list)
-{
-    return IsAssignable::checkList($list);
-}
-
-/**
- * do we have something that is a boolean?
- *
- * @param  mixed $fieldOrVar
- *         the item to be checked
- * @return bool
- *         TRUE if the item is a boolean
- *         FALSE otherwise
- */
-function is_boolean($fieldOrVar)
-{
-    return IsBoolean::check($fieldOrVar);
-}
-
-/**
- * do we have a list of booleans?
- *
- * @param  mixed $list
- *         the list to be checked
- * @return bool
- *         TRUE if every item in the list is a boolean
- *         FALSE otherwise
- */
-function is_boolean_list($list)
-{
-    return IsBoolean::checkList($list);
-}
-
-/**
- * is every entry in $list a callable?
- *
- * @param  mixed $list
- *         the list of items to be checked
- * @return bool
- *         TRUE if every item in $list is a callable
- *         FALSE otherwise
- */
-function is_callable_list($list)
-{
-    return IsCallable::checkList($list);
-}
-
-/**
- * is $fieldOrVar compatible with $expectedType?
- *
- * @param  mixed $fieldOrVar
- *         the classname or object to check
- * @param  string|object $expectedType
- *         the classname or object that we want to check for
- * @return bool
- *         TRUE if $fieldOrVar is compatible
- *         FALSE otherwise
- */
-function is_compatible_with($fieldOrVar, $expectedType)
-{
-    return IsCompatibleWith::check($fieldOrVar, $expectedType);
-}
-
-/**
- * is every entry in $list compatible with $expectedType?
- *
- * @param  mixed $list
- *         the list of items to be checked
- * @param  string $expectedType
- *         the class or interface that we want to check against
- * @return bool
- *         TRUE if every item in $list is a classname or object of
- *         a given type
- *         FALSE otherwise
- */
-function is_compatible_with_list($list, $expectedType)
-{
-    return IsCompatibleWith::checkList($list, $expectedType);
-}
-
-/**
- * do we have the name of a class that has been defined?
- *
- * @param mixed $fieldOrVar
- *        the name to check
- * @return bool
- *         TRUE if $fieldOrVar is a class that has been defined
- *         FALSE otherwise
- */
-function is_defined_class($fieldOrVar)
-{
-    return IsDefinedClass::check($fieldOrVar);
-}
-
-/**
- * is every entry in $list a defined class?
- *
- * @param  mixed $list
- *         the list of items to be checked
- * @return bool
- *         TRUE if every item in $list is a defined class
- *         FALSE otherwise
- */
-function is_defined_class_list($list)
-{
-    return IsDefinedClass::checkList($list);
-}
-
-/**
- * do we have the name of an interface that has been defined?
- *
- * @param mixed $fieldOrVar
- *        the name to check
- * @return bool
- *         TRUE if $fieldOrVar is an interface that has been defined
- *         FALSE otherwise
- */
-function is_defined_interface($fieldOrVar)
-{
-    return IsDefinedInterface::check($fieldOrVar);
-}
-
-/**
- * is every entry in $list a defined interface?
- *
- * @param  mixed $list
- *         the list of items to be checked
- * @return bool
- *         TRUE if every item in $list is a defined interface
- *         FALSE otherwise
- */
-function is_defined_interface_list($list)
-{
-    return IsDefinedInterface::checkList($list);
-}
-
-/**
- * is $fieldOrVar a valid type for an object?
- *
- * @param mixed $fieldOrVar
- *        the name to check
- * @return bool
- *         TRUE if $fieldOrVar is a class or interface name
- *         FALSE otherwise
- */
-function is_defined_object_type($fieldOrVar)
-{
-    return IsDefinedObjectType::check($fieldOrVar);
-}
-
-/**
- * is every entry in $list a valid type for an object?
- *
- * @param  mixed $list
- *         the list of items to be checked
- * @return bool
- *         TRUE if every item in $list is a a valid type for an object
- *         FALSE otherwise
- */
-function is_defined_object_type_list($list)
-{
-    return IsDefinedObjectType::checkList($list);
-}
-
-/**
- * do we have the name of a trait that has been defined?
- *
- * @param mixed $fieldOrVar
- *        the name to check
- * @return bool
- *         TRUE if $fieldOrVar is a trait that has been defined
- *         FALSE otherwise
- */
-function is_defined_trait($fieldOrVar)
-{
-    return IsDefinedTrait::check($fieldOrVar);
-}
-
-/**
- * is every entry in $list a defined class?
- *
- * @param  mixed $list
- *         the list of items to be checked
- * @return bool
- *         TRUE if every item in $list is a defined class
- *         FALSE otherwise
- */
-function is_defined_trait_list($list)
-{
-    return IsDefinedTrait::checkList($list);
-}
-
-/**
- * is every entry in $list a double?
- *
- * @param  mixed $list
- *         the list of items to be checked
- * @return bool
- *         TRUE if every item in $list is a defined class
- *         FALSE otherwise
- */
-function is_double_list($list)
-{
-    return IsDouble::checkList($list);
-}
-
-/**
- * is every entry in $list empty?
- *
- * @param  mixed $list
- *         the list of items to be checked
- * @return bool
- *         TRUE if every item in $list is empty
- *         FALSE otherwise
- */
-function is_empty_list($list)
-{
-    return IsEmpty::checkList($list);
-}
-
-/**
- * is $fieldOrVar something that can be used by PHP code that uses array
- * index notation?
- *
- * @param  mixed $fieldOrVar
- *         the item to examine
- * @return bool
- *         true if the item is compatible
- *         false otherwise
- */
-function is_indexable($fieldOrVar)
-{
-    return IsIndexable::check($fieldOrVar);
-}
-
-/**
- * is every entry in $list indexable?
- *
- * @param  mixed $list
- *         the list of items to be checked
- * @return bool
- *         TRUE if every item in $list is indexable
- *         FALSE otherwise
- */
-function is_indexable_list($list)
-{
-    return IsIndexable::checkList($list);
-}
-
-/**
- * do we have something that is an integer?
- *
- * @param  mixed $fieldOrVar
- *         the item to be checked
- * @return bool
- *         TRUE if the item is an integer, or can be used as an integer
- *         FALSE otherwise
- */
-function check_is_integer($fieldOrVar)
-{
-    return IsInteger::check($fieldOrVar);
-}
-
-/**
- * is every entry in $list an integer?
- *
- * @param  mixed $list
- *         the list of items to be checked
- * @return bool
- *         TRUE if every item in $list is an integer
- *         FALSE otherwise
- */
-function check_is_integer_list($list)
-{
-    return IsInteger::checkList($list);
-}
-
-/**
- * can $list be safely (and sensibly) used in a foreach() loop?
- *
- * @param  mixed $list
- *         the value to inspect
- * @return bool
- *         TRUE if $list can be used in a foreach() loop
- *         FALSE otherwise
- */
-function is_list($list)
-{
-    return IsList::check($list);
-}
-
-/**
- * can $list be safely (and sensibly) used in a foreach() loop?
- *
- * @param  object $list
- *         the value to inspect
- * @return bool
- *         TRUE if $list can be used in a foreach() loop
- *         FALSE otherwise
- */
-function is_listy_object($list)
-{
-    return IsListyObject::check($list);
-}
-
-/**
- * is $item something that PHP will accept as a string?
- *
- * @param  mixed $item
- *         the variable to examine
- * @return boolean
- *         TRUE if PHP will happily use $item as a string
- *         FALSE otherwise
- */
-function is_stringy($item)
-{
-    return IsStringy::check($item);
 }
 
 /**

@@ -65,7 +65,7 @@ class FilterClassProperties
     public static function from($target, $filter = ReflectionProperty::IS_PUBLIC)
     {
         // robustness!!
-        if (!is_stringy($target)) {
+        if (!check_is_stringy($target)) {
             throw new InvalidArgumentException('$target is not a string, is a ' . get_printable_type($target));
         }
 

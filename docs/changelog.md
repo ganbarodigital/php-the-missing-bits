@@ -31,70 +31,74 @@
   - added `IsArray::checkList()`
   - added `IsArray::inspect()`
   - added `IsArray::inspectList()`
-  - added `is_array_list()` convenience function
+  - added `check_is_array()` convenience function
+  - added `check_is_array_list()` convenience function
   - added `IsAssignable::check()`
   - added `IsAssignable::checkList()`
   - added `IsAssignable::inspect()`
   - added `IsAssignable::inspectList()`
-  - added `is_assignable()` convenience function
-  - added `is_assignable_list()` convenience function
+  - added `check_is_assignable()` convenience function
+  - added `check_is_assignable_list()` convenience function
   - added `IsBoolean::check()`
   - added `IsBoolean::checkList()`
   - added `IsBoolean::inspect()`
   - added `IsBoolean::inspectList()`
-  - added `is_boolean()` convenience function
-  - added `is_boolean_list()` convenience function
+  - added `check_is_boolean()` convenience function
+  - added `check_is_boolean_list()` convenience function
   - added `IsCallable::check()`
   - added `IsCallable::checkList()`
   - added `IsCallable::inspect()`
   - added `IsCallable::inspectList()`
-  - added `is_callable_list()` convenience function
+  - added `check_is_callable()` convenience function
+  - added `check_is_callable_list()` convenience function
   - added `IsCompatibleWith::check()`
   - added `IsCompatibleWith::checkList()`
   - added `IsCompatibleWith::inspect()`
   - added `IsCompatibleWith::inspectList()`
-  - added `is_compatible_with()` convenience function
-  - added `is_compatible_with_list()` convenience function
+  - added `check_is_compatible_with()` convenience function
+  - added `check_is_compatible_with_list()` convenience function
   - added `IsDefinedClass::check()`
   - added `IsDefinedClass::checkList()`
   - added `IsDefinedClass::inspect()`
   - added `IsDefinedClass::inspectList()`
-  - added `is_defined_class()` convenience function
-  - added `is_defined_class_list()` convenience function
+  - added `check_is_defined_class()` convenience function
+  - added `check_is_defined_class_list()` convenience function
   - added `IsDefinedInterface::check()`
   - added `IsDefinedInterface::checkList()`
   - added `IsDefinedInterface::inspect()`
   - added `IsDefinedInterface::inspectList()`
-  - added `is_defined_interface()` convenience function
-  - added `is_defined_interface_list()` convenience function
+  - added `check_is_defined_interface()` convenience function
+  - added `check_is_defined_interface_list()` convenience function
   - added `IsDefinedObjectType::check()`
   - added `IsDefinedObjectType::checkList()`
   - added `IsDefinedObjectType::inspect()`
   - added `IsDefinedObjectType::inspectList()`
-  - added `is_defined_object_type()` convenience function
-  - added `is_defined_object_type_list()` convenience function
+  - added `check_is_defined_object_type()` convenience function
+  - added `check_is_defined_object_type_list()` convenience function
   - added `IsDefinedTrait::check()`
   - added `IsDefinedTrait::checkList()`
   - added `IsDefinedTrait::inspect()`
   - added `IsDefinedTrait::inspectList()`
-  - added `is_defined_trait()` convenience function
-  - added `is_defined_trait_list()` convenience function
+  - added `check_is_defined_trait()` convenience function
+  - added `check_is_defined_trait_list()` convenience function
   - added `IsDouble::check()`
   - added `IsDouble::checkList()`
   - added `IsDouble::inspect()`
   - added `IsDouble::inspectList()`
-  - added `is_double_list()` convenience function
+  - added `check_is_double()` convenience function
+  - added `check_is_double_list()` convenience function
   - added `IsEmpty::check()`
   - added `IsEmpty::checkList()`
   - added `IsEmpty::inspect()`
   - added `IsEmpty::inspectList()`
-  - added `is_empty_list()` convenience function
+  - added `check_is_empty()` convenience function
+  - added `check_is_empty_list()` convenience function
   - added `IsIndexable::check()`
   - added `IsIndexable::checkList()`
   - added `IsIndexable::inspect()`
   - added `IsIndexable::inspectList()`
-  - added `is_indexable()` convenience function
-  - added `is_indexable_list()` convenience function
+  - added `check_is_indexable()` convenience function
+  - added `check_is_indexable_list()` convenience function
   - added `IsInteger::check()`
   - added `IsInteger::checkList()`
   - added `IsInteger::inspect()`
@@ -134,6 +138,11 @@ Before refactoring, we checked Packagist to make sure that these changes would n
   - `GetStringDuckTypes::__invoke()` is now `GetStringDuckTypes::getStringDuckTypes()`
   - `GetStringTypes::__invoke()` is now `GetStringTypes::getStringTypes()`
   - `StripNamespace::__invoke()` is now `StripNamespace::stripNamespace()`
+* Move away from 'is_XXX()' for check functions
+  - we want to avoid current and future clashes with PHP core
+  - moved `is_list()` to `check_is_list()`
+  - moved `is_listy_object()` to `check_is_listy_object()`
+  - moved `is_stringy()` to `check_is_stringy()`
 
 ## v1.9.0
 

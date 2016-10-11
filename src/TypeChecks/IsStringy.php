@@ -48,7 +48,7 @@ use GanbaroDigital\MissingBits\Checks\ListCheck;
 use GanbaroDigital\MissingBits\Checks\ListCheckHelper;
 
 /**
- * is $item something that PHP will accept as a string?
+ * is $fieldOrVar something that PHP will accept as a string?
  */
 class IsStringy implements Check, ListCheck
 {
