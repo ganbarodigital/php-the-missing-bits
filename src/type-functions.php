@@ -42,6 +42,7 @@
  */
 
 use GanbaroDigital\MissingBits\TypeChecks\IsArray;
+use GanbaroDigital\MissingBits\TypeChecks\IsBoolean;
 use GanbaroDigital\MissingBits\TypeChecks\IsAssignable;
 use GanbaroDigital\MissingBits\TypeChecks\IsList;
 use GanbaroDigital\MissingBits\TypeChecks\IsListyObject;
@@ -252,6 +253,34 @@ function is_assignable($fieldOrVar)
 function is_assignable_list($list)
 {
     return IsAssignable::checkList($list);
+}
+
+/**
+ * do we have something that is a boolean?
+ *
+ * @param  mixed $fieldOrVar
+ *         the item to be checked
+ * @return bool
+ *         TRUE if the item is a boolean
+ *         FALSE otherwise
+ */
+function is_boolean($fieldOrVar)
+{
+    return IsBoolean::check($fieldOrVar);
+}
+
+/**
+ * do we have a list of booleans?
+ *
+ * @param  mixed $list
+ *         the list to be checked
+ * @return bool
+ *         TRUE if every item in the list is a boolean
+ *         FALSE otherwise
+ */
+function is_boolean_list($list)
+{
+    return IsBoolean::checkList($list);
 }
 
 /**

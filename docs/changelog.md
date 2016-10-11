@@ -32,7 +32,9 @@
   - added `IsAssignable::check()`
   - added `is_assignable()` convenience function
   - added `is_assignable_list()` convenience function
-
+  - added `IsBoolean::check()`
+  - added `is_boolean()` convenience function
+  - added `is_boolean_list()` convenience function
 * Added type-hinting / strict type declaration support for entities:
   - added empty `Entity` interface
 * Added immutable support to entities
