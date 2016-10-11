@@ -61,6 +61,12 @@
   - added `IsDefinedClass::inspectList()`
   - added `is_defined_class()` convenience function
   - added `is_defined_class_list()` convenience function
+  - added `IsDefinedInterface::check()`
+  - added `IsDefinedInterface::checkList()`
+  - added `IsDefinedInterface::inspect()`
+  - added `IsDefinedInterface::inspectList()`
+  - added `is_defined_interface()` convenience function
+  - added `is_defined_interface_list()` convenience function
 * Added type-hinting / strict type declaration support for entities:
   - added empty `Entity` interface
 * Added immutable support to entities

@@ -50,6 +50,7 @@ use GanbaroDigital\MissingBits\TypeChecks\IsListyObject;
 use GanbaroDigital\MissingBits\TypeChecks\IsStringy;
 use GanbaroDigital\MissingBits\TypeChecks\IsCompatibleWith;
 use GanbaroDigital\MissingBits\TypeChecks\IsDefinedClass;
+use GanbaroDigital\MissingBits\TypeChecks\IsDefinedInterface;
 use GanbaroDigital\MissingBits\TypeInspectors\GetArrayTypes;
 use GanbaroDigital\MissingBits\TypeInspectors\GetClassTraits;
 use GanbaroDigital\MissingBits\TypeInspectors\GetClassTypes;
@@ -359,6 +360,34 @@ function is_defined_class($fieldOrVar)
 function is_defined_class_list($list)
 {
     return IsDefinedClass::checkList($list);
+}
+
+/**
+ * do we have the name of an interface that has been defined?
+ *
+ * @param mixed $fieldOrVar
+ *        the name to check
+ * @return bool
+ *         TRUE if $fieldOrVar is an interface that has been defined
+ *         FALSE otherwise
+ */
+function is_defined_interface($fieldOrVar)
+{
+    return IsDefinedInterface::check($fieldOrVar);
+}
+
+/**
+ * is every entry in $list a defined interface?
+ *
+ * @param  mixed $list
+ *         the list of items to be checked
+ * @return bool
+ *         TRUE if every item in $list is a defined interface
+ *         FALSE otherwise
+ */
+function is_defined_interface_list($list)
+{
+    return IsDefinedInterface::checkList($list);
 }
 
 /**
