@@ -463,34 +463,6 @@ function check_is_integer_list($list)
 }
 
 /**
- * do we have something that is an integer?
- *
- * @param  mixed $fieldOrVar
- *         the item to be checked
- * @return bool
- *         TRUE if the item is an integer, or can be used as an integer
- *         FALSE otherwise
- */
-function check_is_integer($fieldOrVar)
-{
-    return IsInteger::check($fieldOrVar);
-}
-
-/**
- * is every entry in $list an integer?
- *
- * @param  mixed $list
- *         the list of items to be checked
- * @return bool
- *         TRUE if every item in $list is an integer
- *         FALSE otherwise
- */
-function check_is_integer_list($list)
-{
-    return IsInteger::checkList($list);
-}
-
-/**
  * can $list be safely (and sensibly) used in a foreach() loop?
  *
  * @param  mixed $list
