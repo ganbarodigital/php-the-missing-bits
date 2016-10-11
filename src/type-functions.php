@@ -47,7 +47,6 @@ use GanbaroDigital\MissingBits\TypeChecks\IsBoolean;
 use GanbaroDigital\MissingBits\TypeChecks\IsCallable;
 use GanbaroDigital\MissingBits\TypeChecks\IsList;
 use GanbaroDigital\MissingBits\TypeChecks\IsListyObject;
-use GanbaroDigital\MissingBits\TypeChecks\IsStringy;
 use GanbaroDigital\MissingBits\TypeChecks\IsCompatibleWith;
 use GanbaroDigital\MissingBits\TypeChecks\IsDefinedClass;
 use GanbaroDigital\MissingBits\TypeChecks\IsDefinedInterface;
@@ -58,6 +57,13 @@ use GanbaroDigital\MissingBits\TypeChecks\IsEmpty;
 use GanbaroDigital\MissingBits\TypeChecks\IsIndexable;
 use GanbaroDigital\MissingBits\TypeChecks\IsInteger;
 use GanbaroDigital\MissingBits\TypeChecks\IsLogical;
+use GanbaroDigital\MissingBits\TypeChecks\IsNull;
+use GanbaroDigital\MissingBits\TypeChecks\IsNumeric;
+use GanbaroDigital\MissingBits\TypeChecks\IsObject;
+use GanbaroDigital\MissingBits\TypeChecks\IsObjectOfType;
+use GanbaroDigital\MissingBits\TypeChecks\IsPcreRegex;
+use GanbaroDigital\MissingBits\TypeChecks\IsResource;
+use GanbaroDigital\MissingBits\TypeChecks\IsStringy;
 use GanbaroDigital\MissingBits\TypeInspectors\GetArrayTypes;
 use GanbaroDigital\MissingBits\TypeInspectors\GetClassTraits;
 use GanbaroDigital\MissingBits\TypeInspectors\GetClassTypes;
@@ -538,6 +544,34 @@ function check_is_logical($fieldOrVar)
 function check_is_logical_list($list)
 {
     return IsLogical::checkList($list);
+}
+
+/**
+ * do we have something that is null?
+ *
+ * @param  mixed $fieldOrVar
+ *         the item to be checked
+ * @return bool
+ *         TRUE if the item is null
+ *         FALSE otherwise
+ */
+function check_is_null($fieldOrVar)
+{
+    return IsNull::check($fieldOrVar);
+}
+
+/**
+ * is every entry in $list a NULL value?
+ *
+ * @param  mixed $list
+ *         the list of items to be checked
+ * @return bool
+ *         TRUE if every item in $list is a NULL value
+ *         FALSE otherwise
+ */
+function check_is_null_list($list)
+{
+    return IsNull::checkList($list);
 }
 
 /**
