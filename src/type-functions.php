@@ -42,8 +42,9 @@
  */
 
 use GanbaroDigital\MissingBits\TypeChecks\IsArray;
-use GanbaroDigital\MissingBits\TypeChecks\IsBoolean;
 use GanbaroDigital\MissingBits\TypeChecks\IsAssignable;
+use GanbaroDigital\MissingBits\TypeChecks\IsBoolean;
+use GanbaroDigital\MissingBits\TypeChecks\IsCallable;
 use GanbaroDigital\MissingBits\TypeChecks\IsList;
 use GanbaroDigital\MissingBits\TypeChecks\IsListyObject;
 use GanbaroDigital\MissingBits\TypeChecks\IsStringy;
@@ -281,6 +282,20 @@ function is_boolean($fieldOrVar)
 function is_boolean_list($list)
 {
     return IsBoolean::checkList($list);
+}
+
+/**
+ * is every entry in $list a callable?
+ *
+ * @param  mixed $list
+ *         the list of items to be checked
+ * @return bool
+ *         TRUE if every item in $list is a callable
+ *         FALSE otherwise
+ */
+function is_callable_list($list)
+{
+    return IsCallable::checkList($list);
 }
 
 /**
