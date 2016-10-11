@@ -575,6 +575,38 @@ function check_is_null_list($list)
 }
 
 /**
+ * do we have something that can be used as a number?
+ *
+ * NOTE that we don't guarantee an int, a float, or even a base-10
+ * number in this check, even though that might be what you're hoping
+ * for
+ *
+ * @param  mixed $fieldOrVar
+ *         the item to be checked
+ * @return bool
+ *         TRUE if the item can be used as a number
+ *         FALSE otherwise
+ */
+function check_is_numeric($fieldOrVar)
+{
+    return IsNumeric::check($fieldOrVar);
+}
+
+/**
+ * is every entry in $list a number of some kind?
+ *
+ * @param  mixed $list
+ *         the list of items to be checked
+ * @return bool
+ *         TRUE if every item in $list can be used as a number
+ *         FALSE otherwise
+ */
+function check_is_numeric_list($list)
+{
+    return IsNumeric::checkList($list);
+}
+
+/**
  * is $item something that PHP will accept as a string?
  *
  * @param  mixed $item
