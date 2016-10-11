@@ -607,6 +607,34 @@ function check_is_numeric_list($list)
 }
 
 /**
+ * do we have something that is an object?
+ *
+ * @param  mixed $fieldOrVar
+ *         the item to be checked
+ * @return bool
+ *         TRUE if the item is an object
+ *         FALSE otherwise
+ */
+function check_is_object($fieldOrVar)
+{
+    return IsObject::check($fieldOrVar);
+}
+
+/**
+ * is every entry in $list an object?
+ *
+ * @param  mixed $list
+ *         the list of items to be checked
+ * @return bool
+ *         TRUE if every item in $list is an object
+ *         FALSE otherwise
+ */
+function check_is_object_list($list)
+{
+    return IsObject::checkList($list);
+}
+
+/**
  * is $item something that PHP will accept as a string?
  *
  * @param  mixed $item

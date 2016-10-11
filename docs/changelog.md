@@ -123,6 +123,12 @@
   - added `IsNumeric::inspectList()`
   - added `check_is_numeric()` convenience function
   - added `check_is_numeric_list()` convenience function
+  - added `IsObject::check()`
+  - added `IsObject::checkList()`
+  - added `IsObject::inspect()`
+  - added `IsObject::inspectList()`
+  - added `check_is_object()` convenience function
+  - added `check_is_object_list()` convenience function
 * Added type-hinting / strict type declaration support for entities:
   - added empty `Entity` interface
 * Added immutable support to entities
