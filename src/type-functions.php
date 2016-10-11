@@ -695,6 +695,34 @@ function check_is_pcre_regex_list($list)
 }
 
 /**
+ * do we have something that is a PHP resource?
+ *
+ * @param  mixed $fieldOrVar
+ *         the item to be checked
+ * @return bool
+ *         TRUE if the item is a resource
+ *         FALSE otherwise
+ */
+function check_is_resource($fieldOrVar)
+{
+    return IsResource::check($fieldOrVar);
+}
+
+/**
+ * is every entry in $list a PHP resource?
+ *
+ * @param  mixed $list
+ *         the list of items to be checked
+ * @return bool
+ *         TRUE if every item in $list is a PHP resource
+ *         FALSE otherwise
+ */
+function check_is_resource_list($list)
+{
+    return IsResource::checkList($list);
+}
+
+/**
  * is $item something that PHP will accept as a string?
  *
  * @param  mixed $item

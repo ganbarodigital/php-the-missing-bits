@@ -141,6 +141,12 @@
   - added `IsPcreRegex::inspectList()`
   - added `check_is_pcre_regex()` convenience function
   - added `check_is_pcre_regex_list()` convenience function
+  - added `IsResource::check()`
+  - added `IsResource::checkList()`
+  - added `IsResource::inspect()`
+  - added `IsResource::inspectList()`
+  - added `check_is_resource()` convenience function
+  - added `check_is_resource_list()` convenience function
 * Added type-hinting / strict type declaration support for entities:
   - added empty `Entity` interface
 * Added immutable support to entities
