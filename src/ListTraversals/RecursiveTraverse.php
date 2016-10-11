@@ -96,7 +96,7 @@ class RecursiveTraverse
         foreach ($item as $key => $data) {
             $callback($data, $key, $path);
             $newPath = $path . $key . '.';
-            self::iterateOver($data, $newPath, $callable);
+            self::iterateOver($data, $newPath, $callback);
         }
     }
 }
