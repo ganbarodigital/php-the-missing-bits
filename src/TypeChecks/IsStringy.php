@@ -56,25 +56,25 @@ class IsStringy implements Check, ListCheck
     use ListCheckHelper;
 
     /**
-     * is $item something that PHP will accept as a string?
+     * is $fieldOrVar something that PHP will accept as a string?
      *
-     * @param  mixed $item
+     * @param  mixed $fieldOrVar
      *         the variable to examine
-     * @return boolean
-     *         TRUE if PHP will happily use $item as a string
+     * @return bool
+     *         TRUE if PHP will happily use $fieldOrVar as a string
      *         FALSE otherwise
      */
-    public static function check($item)
+    public static function check($fieldOrVar)
     {
         // PHP will auto-convert these to strings without generating
         // any errors
-        if (is_string($item) || is_int($item) || is_double($item)) {
+        if (is_string($fieldOrVar) || is_int($fieldOrVar) || is_double($fieldOrVar)) {
             return true;
         }
 
         // depends if the object has the __toString() method or not
-        if (is_object($item)) {
-            return method_exists($item, '__toString');
+        if (is_object($fieldOrVar)) {
+            return method_exists($fieldOrVar, '__toString');
         }
 
         // there's no point turning these into strings
@@ -88,17 +88,17 @@ class IsStringy implements Check, ListCheck
     }
 
     /**
-     * is $item something that PHP will accept as a string?
+     * is $fieldOrVar something that PHP will accept as a string?
      *
-     * @param  mixed $item
+     * @param  mixed $fieldOrVar
      *         the variable to examine
-     * @return boolean
-     *         TRUE if PHP will happily use $item as a string
+     * @return bool
+     *         TRUE if PHP will happily use $fieldOrVar as a string
      *         FALSE otherwise
      */
-    public function inspect($item)
+    public function inspect($fieldOrVar)
     {
-        return static::check($item);
+        return static::check($fieldOrVar);
     }
 
     /**
@@ -106,7 +106,7 @@ class IsStringy implements Check, ListCheck
      *
      * @param  mixed $list
      *         the variable to examine
-     * @return boolean
+     * @return bool
      *         TRUE if PHP will happily use all the items in $list as a string
      *         FALSE otherwise
      */

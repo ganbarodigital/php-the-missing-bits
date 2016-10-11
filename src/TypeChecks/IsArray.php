@@ -62,9 +62,9 @@ class IsArray implements Check, ListCheck
      * by array, we mean something that you can pass to any of PHP's
      * array_xxx() functions
      *
-     * @param  mixed $item
+     * @param  mixed $fieldOrVar
      *         the item to be checked
-     * @return boolean
+     * @return bool
      *         TRUE if the item is an array
      *         FALSE otherwise
      */
@@ -87,7 +87,7 @@ class IsArray implements Check, ListCheck
      *
      * @param  mixed $fieldOrVar
      *         the item to be checked
-     * @return boolean
+     * @return bool
      *         TRUE if the item is an array
      *         FALSE otherwise
      */
@@ -104,7 +104,7 @@ class IsArray implements Check, ListCheck
      *
      * @param  mixed $list
      *         the list of items to be checked
-     * @return boolean
+     * @return bool
      *         TRUE if every item in $list is an array
      *         FALSE otherwise
      */
