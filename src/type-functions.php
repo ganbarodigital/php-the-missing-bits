@@ -53,6 +53,7 @@ use GanbaroDigital\MissingBits\TypeChecks\IsDefinedClass;
 use GanbaroDigital\MissingBits\TypeChecks\IsDefinedInterface;
 use GanbaroDigital\MissingBits\TypeChecks\IsDefinedObjectType;
 use GanbaroDigital\MissingBits\TypeChecks\IsDefinedTrait;
+use GanbaroDigital\MissingBits\TypeChecks\IsDouble;
 use GanbaroDigital\MissingBits\TypeInspectors\GetArrayTypes;
 use GanbaroDigital\MissingBits\TypeInspectors\GetClassTraits;
 use GanbaroDigital\MissingBits\TypeInspectors\GetClassTypes;
@@ -446,6 +447,20 @@ function is_defined_trait($fieldOrVar)
 function is_defined_trait_list($list)
 {
     return IsDefinedTrait::checkList($list);
+}
+
+/**
+ * is every entry in $list a double?
+ *
+ * @param  mixed $list
+ *         the list of items to be checked
+ * @return bool
+ *         TRUE if every item in $list is a defined class
+ *         FALSE otherwise
+ */
+function is_double_list($list)
+{
+    return IsDouble::checkList($list);
 }
 
 /**

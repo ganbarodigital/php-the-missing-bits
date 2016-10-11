@@ -79,6 +79,11 @@
   - added `IsDefinedTrait::inspectList()`
   - added `is_defined_trait()` convenience function
   - added `is_defined_trait_list()` convenience function
+  - added `IsDouble::check()`
+  - added `IsDouble::checkList()`
+  - added `IsDouble::inspect()`
+  - added `IsDouble::inspectList()`
+  - added `is_double_list()` convenience function
 * Added type-hinting / strict type declaration support for entities:
   - added empty `Entity` interface
 * Added immutable support to entities
