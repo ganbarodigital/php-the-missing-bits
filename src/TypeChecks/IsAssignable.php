@@ -63,7 +63,7 @@ class IsAssignable implements Check, ListCheck
      *
      * @param  mixed $fieldOrVar
      *         the item to examine
-     * @return boolean
+     * @return bool
      *         true if the item is compatible
      *         false otherwise
      */
@@ -93,7 +93,7 @@ class IsAssignable implements Check, ListCheck
      *
      * @param  mixed $fieldOrVar
      *         the item to examine
-     * @return boolean
+     * @return bool
      *         true if the item is compatible
      *         false otherwise
      */
@@ -108,7 +108,7 @@ class IsAssignable implements Check, ListCheck
      *
      * @param  mixed $list
      *         the list to examine
-     * @return boolean
+     * @return bool
      *         true if every item in $list is compatible
      *         false otherwise
      */

@@ -30,6 +30,9 @@
   - added `IsArray::check()`
   - added `is_array_list()` convenience function
   - added `IsAssignable::check()`
+  - added `is_assignable()` convenience function
+  - added `is_assignable_list()` convenience function
+
 * Added type-hinting / strict type declaration support for entities:
   - added empty `Entity` interface
 * Added immutable support to entities

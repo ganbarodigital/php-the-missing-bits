@@ -42,6 +42,7 @@
  */
 
 use GanbaroDigital\MissingBits\TypeChecks\IsArray;
+use GanbaroDigital\MissingBits\TypeChecks\IsAssignable;
 use GanbaroDigital\MissingBits\TypeChecks\IsList;
 use GanbaroDigital\MissingBits\TypeChecks\IsListyObject;
 use GanbaroDigital\MissingBits\TypeChecks\IsStringy;
@@ -221,6 +222,36 @@ function get_string_types($item)
 function is_array_list($list)
 {
     return IsArray::checkList($list);
+}
+
+/**
+ * do we have something that can be used with PHP's object notation
+ * for assigning the value of variables?
+ *
+ * @param  mixed $fieldOrVar
+ *         the item to examine
+ * @return bool
+ *         true if the item is compatible
+ *         false otherwise
+ */
+function is_assignable($fieldOrVar)
+{
+    return IsAssignable::check($fieldOrVar);
+}
+
+/**
+ * can every item in $list be used with PHP's object notation for
+ * assigning the valule of variables?
+ *
+ * @param  mixed $list
+ *         the list to examine
+ * @return bool
+ *         true if every item in $list is compatible
+ *         false otherwise
+ */
+function is_assignable_list($list)
+{
+    return IsAssignable::checkList($list);
 }
 
 /**
