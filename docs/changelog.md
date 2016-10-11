@@ -129,6 +129,12 @@
   - added `IsObject::inspectList()`
   - added `check_is_object()` convenience function
   - added `check_is_object_list()` convenience function
+  - added `IsObjectOfType::check()`
+  - added `IsObjectOfType::checkList()`
+  - added `IsObjectOfType::inspect()`
+  - added `IsObjectOfType::inspectList()`
+  - added `check_is_object_of_type()` convenience function
+  - added `check_is_object_of_type_list()` convenience function
 * Added type-hinting / strict type declaration support for entities:
   - added empty `Entity` interface
 * Added immutable support to entities

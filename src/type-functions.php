@@ -635,6 +635,38 @@ function check_is_object_list($list)
 }
 
 /**
+ * do we have something that is a specific type of object?
+ *
+ * @param  mixed $fieldOrVar
+ *         the item to be checked
+ * @param  string $expectedType
+ *         the class or interface that we want to check against
+ * @return bool
+ *         TRUE if the item is the requested type
+ *         FALSE otherwise
+ */
+function check_is_object_of_type($fieldOrVar, $expectedType)
+{
+    return IsObjectOfType::check($fieldOrVar, $expectedType);
+}
+
+/**
+ * is every entry in $list an object of a given type?
+ *
+ * @param  mixed $list
+ *         the list of items to be checked
+ * @param  string $expectedType
+ *         the class or interface that we want to check against
+ * @return bool
+ *         TRUE if every item in $list is an object of a given type
+ *         FALSE otherwise
+ */
+function check_is_object_of_type_list($list, $expectedType)
+{
+    return IsObjectOfType::checkList($list, $expectedType);
+}
+
+/**
  * is $item something that PHP will accept as a string?
  *
  * @param  mixed $item
