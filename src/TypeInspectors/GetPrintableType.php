@@ -50,40 +50,68 @@ use Closure;
  */
 class GetPrintableType
 {
+    /**
+     * use this flag for minimum output
+     * @var int
+     */
     const FLAG_NONE = 0;
+
+    /**
+     * use this flag to see classnames in the return value
+     * @var int
+     */
     const FLAG_CLASSNAME = 1;
+
+    /**
+     * use this flag to see what kind of callable `$item` is
+     * @var int
+     */
     const FLAG_CALLABLE_DETAILS = 2;
+
+    /**
+     * use this flag to see the value of `$item`
+     * @var int
+     */
     const FLAG_SCALAR_VALUE = 4;
+
+    /**
+     * current maximum possible value for `$flags`
+     * @var int
+     */
     const FLAG_MAX_VALUE = 7;
 
+    /**
+     * default value for `$flags` if you don't provide one
+     * @var int
+     */
     const FLAG_DEFAULTS = 7;
 
     /**
-     * what PHP type is $data?
+     * what PHP type is $item?
      *
-     * @param  mixed $data
+     * @param  mixed $item
      *         the data to examine
      * @param  int $flags
      *         options to change what we put in the return value
      * @return string
-     *         the data type of $data
+     *         the data type of $item
      */
-    public function getPrintableType($data, $flags = self::FLAG_DEFAULTS)
+    public function getPrintableType($item, $flags = self::FLAG_DEFAULTS)
     {
-        return self::of($data, $flags);
+        return self::of($item, $flags);
     }
 
     /**
-     * what PHP type is $data?
+     * what PHP type is $item?
      *
-     * @param  mixed $data
+     * @param  mixed $item
      *         the data to examine
      * @param  int $flags
      *         options to change what we put in the return value
      * @return string
-     *         the data type of $data
+     *         the data type of $item
      */
-    public static function of($data, $flags = self::FLAG_DEFAULTS)
+    public static function of($item, $flags = self::FLAG_DEFAULTS)
     {
         // make sure we have a usable set of flags
         if (!is_int($flags)) {
@@ -93,72 +121,72 @@ class GetPrintableType
             $flags = self::FLAG_DEFAULTS;
         }
 
-        if (is_object($data)) {
-            return self::returnObjectType($data, $flags);
+        if (is_object($item)) {
+            return self::returnObjectType($item, $flags);
         }
 
-        if (is_callable($data)) {
-            return self::returnCallableType($data, $flags);
+        if (is_callable($item)) {
+            return self::returnCallableType($item, $flags);
         }
 
-        if (is_scalar($data)) {
-            return self::returnScalarType($data, $flags);
+        if (is_scalar($item)) {
+            return self::returnScalarType($item, $flags);
         }
 
-        return gettype($data);
+        return gettype($item);
     }
 
     /**
      * extract the details about a PHP callable array
      *
-     * @param  array|string $data
+     * @param  array|string $item
      *         the callable() to examine
      * @param  int $flags
      *         options to change what we put in the return value
      * @return string
-     *         the data type of $data
+     *         the data type of $item
      */
-    private static function returnCallableType($data, $flags)
+    private static function returnCallableType($item, $flags)
     {
         // user doesn't want the details
         if (!($flags & self::FLAG_CALLABLE_DETAILS)) {
             return "callable";
         }
 
-        // $data may contain the name of a function
-        if (!is_array($data)) {
-            return "callable<" . $data . ">";
+        // $item may contain the name of a function
+        if (!is_array($item)) {
+            return "callable<" . $item . ">";
         }
 
-        // $data may contain a <classname, method> pair
-        if (is_string($data[0])) {
-            return "callable<" . $data[0] . "::" . $data[1] . ">";
+        // $item may contain a <classname, method> pair
+        if (is_string($item[0])) {
+            return "callable<" . $item[0] . "::" . $item[1] . ">";
         }
 
-        // $data contains an <object, method> pair
-        return "callable<" . get_class($data[0]). "::" . $data[1] . ">";
+        // $item contains an <object, method> pair
+        return "callable<" . get_class($item[0]). "::" . $item[1] . ">";
     }
 
     /**
      * turn a PHP object into the underlying PHP data type
      *
-     * @param  object $data
+     * @param  object $item
      *         the data to inspect
      * @param  int $flags
      *         options to change what we put in the return value
      * @return string
-     *         the data type of $data
+     *         the data type of $item
      */
-    private static function returnObjectType($data, $flags)
+    private static function returnObjectType($item, $flags)
     {
         // special case - PHP Closure objects
-        if ($data instanceof Closure) {
+        if ($item instanceof Closure) {
             return 'callable';
         }
 
         // does the caller want to know what kind of object?
         if ($flags & self::FLAG_CLASSNAME) {
-            return 'object<' . get_class($data) . '>';
+            return 'object<' . get_class($item) . '>';
         }
 
         // if we get here, then a plain 'object' will suffice
@@ -168,29 +196,32 @@ class GetPrintableType
     /**
      * extract the details about a PHP scalar value
      *
-     * @param  boolean|double|int|string $data
+     * @param  bool|float|int|string $item
      *         the data to examine
      * @param  int $flags
      *         options to change what we put in the return value
      * @return string
-     *         the data type of $data
+     *         the data type of $item
      */
-    private static function returnScalarType($data, $flags)
+    private static function returnScalarType($item, $flags)
     {
+        // what do we have?
+        $prefix = gettype($item);
+
         // user doesn't want the details
         if (!($flags & self::FLAG_SCALAR_VALUE)) {
-            return gettype($data);
+            return $prefix;
         }
 
         // special case - boolean values
-        if (is_bool($data)) {
-            if ($data) {
-                return "boolean<true>";
+        if (is_bool($item)) {
+            if ($item) {
+                return $prefix . "<true>";
             }
-            return "boolean<false>";
+            return $prefix . "<false>";
         }
 
         // general case
-        return gettype($data) . "<{$data}>";
+        return $prefix . "<{$item}>";
     }
 }
