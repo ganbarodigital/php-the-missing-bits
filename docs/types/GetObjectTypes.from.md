@@ -1,13 +1,4 @@
----
-currentSection: types
-currentItem: GetObjectTypes
-pageflow_prev_url: GetNumericType.html
-pageflow_prev_text: GetNumericType class
-pageflow_next_url: GetPrintableType.html
-pageflow_next_text: GetPrintableType class
----
-
-# GetObjectTypes
+# GetObjectTypes::from()
 
 <div class="callout info">
 Since v1.3.0
@@ -15,48 +6,32 @@ Since v1.3.0
 
 ## Description
 
-`GetObjectTypes` returns a list of all strict PHP types for a given PHP object. The list is ordered with the most specific match first.
+`GetObjectTypes::from()` returns a list of all strict PHP types for a given PHP object. The list is ordered with the most specific match first.
 
 ```php
-// how to import
 use GanbaroDigital\MissingBits\TypeInspectors\GetObjectTypes;
-
-// call directly
-//
-// returns an array
-var_dump(GetObjectTypes::from($data));
-
-// use as an object
-//
-// returns an array
-$inspector = new GetObjectTypes;
-var_dump($inspector($data));
-
-// use as a global function
-//
-// returns an array
-var_dump(get_object_types($data));
+public static array GetObjectTypes::from(object $item);
 ```
 
 ## Parameters
 
 The input parameters are:
 
-- `mixed $data` - the item to examine
+- `object $item` - the item to examine
 
 ## Return Value
 
-`GetObjectTypes` returns an array.
+`GetObjectTypes::from()` returns an array.
 
-* If `$data` is not an object, an empty list `[]` is returned
-* We return a list of the object's class, the class's parents, and all interfaces it implements (directly or otherwise)
-* We detect if the object is invokeable
-* We detect if the object supports automatic conversion to a string
+* If `$item` is not an object, an empty list `[]` is returned
+* We return a list of `$item`'s' class, the class's parents, and all interfaces it implements (directly or otherwise)
+* We detect if `$item` is invokeable
+* We detect if `$item` supports automatic conversion to a string
 
-The resulting list is a complete list of strict types where it is safe to use `$data`.
+The resulting list is a complete list of strict types where it is safe to use `$item`.
 
 <div class="callout warning" markdown="1">
-In PHP 7.0, `object` is not valid type declaration. That's why `GetObjectTypes` does not include `object` in the returned list.
+In PHP 7.0, `object` is not valid type declaration. That's why `GetObjectTypes::from()` does not include `object` in the returned list.
 </div>
 
 ### Example Return Values
@@ -64,7 +39,7 @@ In PHP 7.0, `object` is not valid type declaration. That's why `GetObjectTypes` 
 Here's a list of examples of accepted input values:
 
 ```php
-var_dump(get_object_types(function(){}));
+var_dump(GetObjectTypes::from(function(){}));
 
 // outputs
 //
@@ -77,7 +52,7 @@ var_dump(get_object_types(function(){}));
 ```
 
 ```php
-var_dump(get_object_types(new ArrayObject));
+var_dump(GetObjectTypes::from(new ArrayObject));
 
 // outputs
 //
@@ -100,7 +75,7 @@ var_dump(get_object_types(new ArrayObject));
 ```php
 use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
 
-var_dump(get_object_types(new GetStrictTypes));
+var_dump(GetObjectTypes::from(new GetStrictTypes));
 
 // outputs
 //
@@ -113,7 +88,7 @@ var_dump(get_object_types(new GetStrictTypes));
 ```
 
 ```php
-var_dump(get_object_types((object)[]));
+var_dump(GetObjectTypes::from((object)[]));
 
 // outputs
 //
@@ -124,7 +99,7 @@ var_dump(get_object_types((object)[]));
 ```
 
 ```php
-var_dump(get_object_types(new Exception(__FILE__)));
+var_dump(GetObjectTypes::from(new Exception(__FILE__)));
 
 // outputs
 //
@@ -141,7 +116,7 @@ var_dump(get_object_types(new Exception(__FILE__)));
 Here's a list of examples of ingored input values:
 
 ```php
-var_dump(get_object_types(null));
+var_dump(GetObjectTypes::from(null));
 
 // outputs
 //
@@ -150,7 +125,7 @@ var_dump(get_object_types(null));
 ```
 
 ```php
-var_dump(get_object_types([1,2,3]));
+var_dump(GetObjectTypes::from([1,2,3]));
 
 // outputs
 //
@@ -161,7 +136,7 @@ var_dump(get_object_types([1,2,3]));
 ```php
 use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
 
-var_dump(get_object_types([GetStrictTypes::class, "from"]));
+var_dump(GetObjectTypes::from([GetStrictTypes::class, "from"]));
 
 // outputs
 //
@@ -170,7 +145,7 @@ var_dump(get_object_types([GetStrictTypes::class, "from"]));
 ```
 
 ```php
-var_dump(get_object_types(true));
+var_dump(GetObjectTypes::from(true));
 
 // outputs
 //
@@ -179,7 +154,7 @@ var_dump(get_object_types(true));
 ```
 
 ```php
-var_dump(get_object_types(false));
+var_dump(GetObjectTypes::from(false));
 
 // outputs
 //
@@ -188,7 +163,7 @@ var_dump(get_object_types(false));
 ```
 
 ```php
-var_dump(get_object_types(0.0));
+var_dump(GetObjectTypes::from(0.0));
 
 // outputs
 //
@@ -197,7 +172,7 @@ var_dump(get_object_types(0.0));
 ```
 
 ```php
-var_dump(get_object_types(3.1415927));
+var_dump(GetObjectTypes::from(3.1415927));
 
 // outputs
 //
@@ -206,7 +181,7 @@ var_dump(get_object_types(3.1415927));
 ```
 
 ```php
-var_dump(get_object_types(0));
+var_dump(GetObjectTypes::from(0));
 
 // outputs
 //
@@ -215,7 +190,7 @@ var_dump(get_object_types(0));
 ```
 
 ```php
-var_dump(get_object_types(100));
+var_dump(GetObjectTypes::from(100));
 
 // outputs
 //
@@ -224,7 +199,7 @@ var_dump(get_object_types(100));
 ```
 
 ```php
-var_dump(get_object_types(-100));
+var_dump(GetObjectTypes::from(-100));
 
 // outputs
 //
@@ -233,7 +208,7 @@ var_dump(get_object_types(-100));
 ```
 
 ```php
-var_dump(get_object_types(STDIN));
+var_dump(GetObjectTypes::from(STDIN));
 
 // outputs
 //
@@ -242,7 +217,7 @@ var_dump(get_object_types(STDIN));
 ```
 
 ```php
-var_dump(get_object_types("true"));
+var_dump(GetObjectTypes::from("true"));
 
 // outputs
 //
@@ -251,7 +226,7 @@ var_dump(get_object_types("true"));
 ```
 
 ```php
-var_dump(get_object_types("false"));
+var_dump(GetObjectTypes::from("false"));
 
 // outputs
 //
@@ -260,7 +235,7 @@ var_dump(get_object_types("false"));
 ```
 
 ```php
-var_dump(get_object_types("0.0"));
+var_dump(GetObjectTypes::from("0.0"));
 
 // outputs
 //
@@ -269,7 +244,7 @@ var_dump(get_object_types("0.0"));
 ```
 
 ```php
-var_dump(get_object_types("3.1415927"));
+var_dump(GetObjectTypes::from("3.1415927"));
 
 // outputs
 //
@@ -278,7 +253,7 @@ var_dump(get_object_types("3.1415927"));
 ```
 
 ```php
-var_dump(get_object_types("0"));
+var_dump(GetObjectTypes::from("0"));
 
 // outputs
 //
@@ -287,7 +262,7 @@ var_dump(get_object_types("0"));
 ```
 
 ```php
-var_dump(get_object_types("100"));
+var_dump(GetObjectTypes::from("100"));
 
 // outputs
 //
@@ -296,7 +271,7 @@ var_dump(get_object_types("100"));
 ```
 
 ```php
-var_dump(get_object_types("hello, world!"));
+var_dump(GetObjectTypes::from("hello, world!"));
 
 // outputs
 //
@@ -305,7 +280,7 @@ var_dump(get_object_types("hello, world!"));
 ```
 
 ```php
-var_dump(get_object_types(ArrayObject::class));
+var_dump(GetObjectTypes::from(ArrayObject::class));
 
 // outputs
 //
@@ -314,7 +289,7 @@ var_dump(get_object_types(ArrayObject::class));
 ```
 
 ```php
-var_dump(get_object_types(Traversable::class));
+var_dump(GetObjectTypes::from(Traversable::class));
 
 // outputs
 //
@@ -324,11 +299,11 @@ var_dump(get_object_types(Traversable::class));
 
 ## Throws
 
-`GetObjectTypes` does not throw any exceptions.
+`GetObjectTypes::from()` does not throw any exceptions.
 
 ## Works With
 
-`GetObjectTypes` is supported on these versions of PHP:
+`GetObjectTypes::from()` is supported on these versions of PHP:
 
 PHP Version | Works?
 ------------|-------
