@@ -4,91 +4,10 @@
 
 Here's a list of what we find is missing from PHP's built-in support for data types.
 
-## Type Checks
+## By Functional Area
 
-These functions and classes provide a way to check for common data types.
-
-Click on the function or class below for more details.
-
-Here's the list of global functions you can use for inspecting types:
-
-Function | Purpose
----------|--------
-[`is_array_list()`](is_array_list.html) | can every item in the list be used as a PHP array?
-[`is_list()`](IsList.html) | can we use the variable in a `foreach()` loop?
-[`is_listy_object()`](IsListyObject.html) | can we use the variable in a `foreach()` loop?
-[`is_stringy()`](IsStringy.html) | can we use the variable as a string?
-
-Here's the list of classes you can use for inspecting types:
-
-Class | Purpose
-------|--------
-[`IsArray::check()`](IsArray.check.html) | can we use the variable with PHP's `array_xxx` functions?
-[`IsArray::checkList()`](IsArray.checkList.html) | can we use every entry in the list with PHP's `array_xxx` functions?
-[`IsAssignable::check()`](IsAssignable.check.html) | can we use the variable with PHP's object notation?
-[`IsAssignable::checkList()`](IsAssignable.checkList.html) | can we use every entry in the list with PHP's object notation?
-[`IsList::check()`](IsList.check.html) | can we use the variable in a `foreach()` loop?
-[`IsList::checkList()`](IsList.checkList.html) | can we use every entry in the list in a `foreach()` loop?
-[`IsListyObject::check()`](IsListyObject.check.html) | can we use the variable in a `foreach()` loop?
-[`IsListyObject::checkList()`](IsListyObject.check.html) | can we use every entry in the list in a `foreach()` loop?
-[`IsStringy::check()`](IsStringy.check.html) | can we use the variable as a string?
-[`IsStringy::checkList()`](IsStringy.checkList.html) | can we use every entry in the list as a string?
-
-
-## Type Inspectors
-
-These functions and classes provide information about
-
-* a variable's duck types or strict types
-* a class's parents, traits, and namespace
-
-Click on the function or class below for more details.
-
-Here's the list of global functions you can use for inspecting types:
-
-Function | Purpose
----------|--------
-[`get_array_types`](GetArrayTypes.html) | returns a list of all strict PHP types for a given array
-[`get_class_traits`](GetClassTraits.html) | returns a list of all traits used by a class or object, its parents, and its traits
-[`get_class_types`](GetClassTypes.html) | returns a list of all strict PHP types for a given class or interface
-[`get_duck_types`](GetDuckTypes.html) | returns a list of all practical PHP types for a given value or variable
-[`get_namespace`](GetNamespace.html) | returns a class's or object's namespace
-[`get_numeric_type`](GetNumericType.html) | returns which PHP `integer` or `double` a given value might be
-[`get_object_types`](GetObjectTypes.html) | returns a list of all strict PHP types for a given object
-[`get_printable_type`](GetPrintableType.html) | `gettype()` for error logging / exception messages
-[`get_strict_types`](GetStrictTypes.html) | returns a list of all strict PHP types for a given value or variable
-[`get_string_duck_types`](GetStringDuckTypes.html) | returns a list of all PHP duck types for a given string
-[`get_string_types`](GetStringTypes.html) | returns a list of all strict PHP types for a given string
-[`strip_namespace`](StripNamespace.html) | returns a class's or object's classname without the namespace
-
-Here's the list of classes you can use for inspecting types:
-
-Class | Purpose
-------|--------
-[`GetArrayTypes`](GetArrayTypes.html) | returns a list of all strict PHP types for a given array
-[`GetClassTraits`](GetClassTraits.html) | returns a list of all traits used by a class or object, its parents, and its traits
-[`GetClassTypes`](GetClassTypes.html) | returns a list of all strict PHP types for a given class or interface
-[`GetDuckTypes`](GetDuckTypes.html) | returns a list of all practical PHP types for a given value or variable
-[`GetNamespace`](GetNamespace.html) | returns a class's or object's namespace
-[`GetNumericType`](GetNumericType.html) | returns which PHP `integer` or `double` a given value might be
-[`GetObjectTypes`](GetObjectTypes.html) | returns a list of all strict PHP types for a given object
-[`GetPrintableType`](GetPrintableType.html) | `gettype()` for error logging / exception messages
-[`GetStrictTypes`](GetStrictTypes.html) | returns a list of all strict PHP types for a given value or variable
-[`GetStringDuckTypes`](GetStringDuckTypes.html) | returns a list of all PHP duck types for a given string
-[`GetStringTypes`](GetStringTypes.html) | returns a list of all strict PHP types for a given string
-[`StripNamespace`](StripNamespace.html) | returns a class's or object's classname without the namespace
-
-## Type Interfaces
-
-These interfaces provide:
-
-* ways to convert an object to built-in PHP data types
-* ways to inspect an object just like you'd inspect built-in PHP data types
-
-Click on the interface below for more details.
-
-Interface | Purpose
-----------|--------
-[`CanBeEmpty`](CanBeEmpty.html) | adds `isEmpty()` to an object
-[`Listable`](Listable.html) | adds `toArray()` to an object
-[`Logical`](Logical.html) | adds `isTrue()` to an object
+Functional Area | Purpose
+----------------|--------
+[Type Checks](type-checks.html) | Check for common data types
+[Type Inspectors](type-inspectors.html) | Discover a variable's type, or a class's parents, traits and namespace
+[Type Interfaces](type-interfaces.html) | Extra types that we wish PHP had
