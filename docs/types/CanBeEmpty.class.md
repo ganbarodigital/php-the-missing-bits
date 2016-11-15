@@ -1,13 +1,4 @@
----
-currentSection: types
-currentItem: CanBeEmpty
-pageflow_prev_url: StripNamespace.html
-pageflow_prev_text: StripNamespace class
-pageflow_next_url: Listable.html
-pageflow_next_text: Listable interface
----
-
-# CanBeEmpty
+# CanBeEmpty interface
 
 <div class="callout info">
 Since v1.6.0
