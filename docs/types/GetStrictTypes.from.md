@@ -1,13 +1,4 @@
----
-currentSection: types
-currentItem: GetStrictTypes
-pageflow_prev_url: GetPrintableType.html
-pageflow_prev_text: GetPrintableType class
-pageflow_next_url: GetStringDuckTypes.html
-pageflow_next_text: GetStringDuckTypes class
----
-
-# GetStrictTypes
+# GetStrictTypes::from()
 
 <div class="callout info">
 Since v1.3.0
@@ -15,45 +6,29 @@ Since v1.3.0
 
 ## Description
 
-`GetStrictTypes` returns a list of all strict PHP types for a given value or variable. The list is ordered with the most specific match first.
+`GetStrictTypes::from()` returns a list of all strict PHP types for a given value or variable. The list is ordered with the most specific match first.
 
 ```php
-// how to import
 use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
-
-// call directly
-//
-// returns an array
-var_dump(GetStrictTypes::from($data));
-
-// use as an object
-//
-// returns an array
-$inspector = new GetStrictTypes;
-var_dump($inspector($data));
-
-// use as a global function
-//
-// returns an array
-var_dump(get_strict_types($data));
+public static array GetStrictTypes::from($item);
 ```
 
 ## Parameters
 
 The input parameters are:
 
-- `mixed $data` - the item to examine
+- `mixed $item` - the item to examine
 
 ## Return Value
 
-`GetStrictTypes` returns an array. It contains a list of all valid PHP types for `$data`.
+`GetStrictTypes::from()` returns an array. It contains a list of all valid PHP types for `$item`.
 
 ### Example Return Values
 
 Here's a list of examples of accepted input values:
 
 ```php
-var_dump(get_strict_types(null));
+var_dump(GetStrictTypes::from(null));
 
 // outputs
 //
@@ -64,7 +39,7 @@ var_dump(get_strict_types(null));
 ```
 
 ```php
-var_dump(get_strict_types([1,2,3]));
+var_dump(GetStrictTypes::from([1,2,3]));
 
 // outputs
 //
@@ -75,9 +50,7 @@ var_dump(get_strict_types([1,2,3]));
 ```
 
 ```php
-use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
-
-var_dump(get_strict_types([GetStrictTypes::class, "from"]));
+var_dump(GetStrictTypes::from([GetStrictTypes::class, "from"]));
 
 // outputs
 //
@@ -90,7 +63,7 @@ var_dump(get_strict_types([GetStrictTypes::class, "from"]));
 ```
 
 ```php
-var_dump(get_strict_types(function(){}));
+var_dump(GetStrictTypes::from(function(){}));
 
 // outputs
 //
@@ -103,7 +76,7 @@ var_dump(get_strict_types(function(){}));
 ```
 
 ```php
-var_dump(get_strict_types(true));
+var_dump(GetStrictTypes::from(true));
 
 // outputs
 //
@@ -114,7 +87,7 @@ var_dump(get_strict_types(true));
 ```
 
 ```php
-var_dump(get_strict_types(false));
+var_dump(GetStrictTypes::from(false));
 
 // outputs
 //
@@ -125,7 +98,7 @@ var_dump(get_strict_types(false));
 ```
 
 ```php
-var_dump(get_strict_types(0.0));
+var_dump(GetStrictTypes::from(0.0));
 
 // outputs
 //
@@ -136,7 +109,7 @@ var_dump(get_strict_types(0.0));
 ```
 
 ```php
-var_dump(get_strict_types(3.1415927));
+var_dump(GetStrictTypes::from(3.1415927));
 
 // outputs
 //
@@ -147,7 +120,7 @@ var_dump(get_strict_types(3.1415927));
 ```
 
 ```php
-var_dump(get_strict_types(0));
+var_dump(GetStrictTypes::from(0));
 
 // outputs
 //
@@ -158,7 +131,7 @@ var_dump(get_strict_types(0));
 ```
 
 ```php
-var_dump(get_strict_types(100));
+var_dump(GetStrictTypes::from(100));
 
 // outputs
 //
@@ -169,7 +142,7 @@ var_dump(get_strict_types(100));
 ```
 
 ```php
-var_dump(get_strict_types(-100));
+var_dump(GetStrictTypes::from(-100));
 
 // outputs
 //
@@ -180,7 +153,7 @@ var_dump(get_strict_types(-100));
 ```
 
 ```php
-var_dump(get_strict_types(new ArrayObject));
+var_dump(GetStrictTypes::from(new ArrayObject));
 
 // outputs
 //
@@ -201,9 +174,7 @@ var_dump(get_strict_types(new ArrayObject));
 ```
 
 ```php
-use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
-
-var_dump(get_strict_types(new GetStrictTypes));
+var_dump(GetStrictTypes::from(new GetStrictTypes));
 
 // outputs
 //
@@ -216,7 +187,7 @@ var_dump(get_strict_types(new GetStrictTypes));
 ```
 
 ```php
-var_dump(get_strict_types((object)[]));
+var_dump(GetStrictTypes::from((object)[]));
 
 // outputs
 //
@@ -227,7 +198,7 @@ var_dump(get_strict_types((object)[]));
 ```
 
 ```php
-var_dump(get_strict_types(STDIN));
+var_dump(GetStrictTypes::from(STDIN));
 
 // outputs
 //
@@ -238,7 +209,7 @@ var_dump(get_strict_types(STDIN));
 ```
 
 ```php
-var_dump(get_strict_types("true"));
+var_dump(GetStrictTypes::from("true"));
 
 // outputs
 //
@@ -249,7 +220,7 @@ var_dump(get_strict_types("true"));
 ```
 
 ```php
-var_dump(get_strict_types("false"));
+var_dump(GetStrictTypes::from("false"));
 
 // outputs
 //
@@ -260,7 +231,7 @@ var_dump(get_strict_types("false"));
 ```
 
 ```php
-var_dump(get_strict_types("0.0"));
+var_dump(GetStrictTypes::from("0.0"));
 
 // outputs
 //
@@ -273,7 +244,7 @@ var_dump(get_strict_types("0.0"));
 ```
 
 ```php
-var_dump(get_strict_types("3.1415927"));
+var_dump(GetStrictTypes::from("3.1415927"));
 
 // outputs
 //
@@ -286,7 +257,7 @@ var_dump(get_strict_types("3.1415927"));
 ```
 
 ```php
-var_dump(get_strict_types("0"));
+var_dump(GetStrictTypes::from("0"));
 
 // outputs
 //
@@ -299,7 +270,7 @@ var_dump(get_strict_types("0"));
 ```
 
 ```php
-var_dump(get_strict_types("100"));
+var_dump(GetStrictTypes::from("100"));
 
 // outputs
 //
@@ -312,7 +283,7 @@ var_dump(get_strict_types("100"));
 ```
 
 ```php
-var_dump(get_strict_types(new Exception(__FILE__)));
+var_dump(GetStrictTypes::from(new Exception(__FILE__)));
 
 // outputs
 //
@@ -327,7 +298,7 @@ var_dump(get_strict_types(new Exception(__FILE__)));
 ```
 
 ```php
-var_dump(get_strict_types("hello, world!"));
+var_dump(GetStrictTypes::from("hello, world!"));
 
 // outputs
 //
@@ -338,7 +309,7 @@ var_dump(get_strict_types("hello, world!"));
 ```
 
 ```php
-var_dump(get_strict_types(ArrayObject::class));
+var_dump(GetStrictTypes::from(ArrayObject::class));
 
 // outputs
 //
@@ -349,7 +320,7 @@ var_dump(get_strict_types(ArrayObject::class));
 ```
 
 ```php
-var_dump(get_strict_types(Traversable::class));
+var_dump(GetStrictTypes::from(Traversable::class));
 
 // outputs
 //
@@ -361,11 +332,11 @@ var_dump(get_strict_types(Traversable::class));
 
 ## Throws
 
-`GetStrictTypes` does not throw any exceptions.
+`GetStrictTypes::from()` does not throw any exceptions.
 
 ## Works With
 
-`GetStrictTypes` is supported on these versions of PHP:
+`GetStrictTypes::from()` is supported on these versions of PHP:
 
 PHP Version | Works?
 ------------|-------
