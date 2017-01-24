@@ -1,13 +1,4 @@
----
-currentSection: types
-currentItem: GetStringTypes
-pageflow_prev_url: GetStringDuckTypes.html
-pageflow_prev_text: GetStringDuckTypes class
-pageflow_next_url: IsArray.html
-pageflow_next_text: IsArray class
----
-
-# GetStringTypes
+# GetStringTypes::from()
 
 <div class="callout info">
 Since v1.3.0
@@ -15,49 +6,33 @@ Since v1.3.0
 
 ## Description
 
-`GetStringTypes` returns a list of all strict PHP types for a given string. The list is ordered with the most specific match first.
+`GetStringTypes::from()` returns a list of all strict PHP types for a given string. The list is ordered with the most specific match first.
 
 ```php
-// how to import
 use GanbaroDigital\MissingBits\TypeInspectors\GetStringTypes;
-
-// call directly
-//
-// returns an array
-var_dump(GetStringTypes::from($data));
-
-// use as an object
-//
-// returns an array
-$inspector = new GetStringTypes;
-var_dump($inspector($data));
-
-// use as a global function
-//
-// returns an array
-var_dump(get_string_types($data));
+public static array GetStringTypes::from(mixed $item);
 ```
 
 ## Parameters
 
-The input parameters are:
+`GetStringTypes::from()` takes one parameter:
 
-- `mixed $data` - the item to examine
+- `mixed $item` - the item to examine
 
 ## Return Value
 
-`GetStringTypes` returns an array.
+`GetStringTypes::from()` returns an array of strings.
 
-* If `$data` is an object that implements `::__toString()`, the list `[ 'string' ]` is returned.
-* Otherwise, if `$data` is not a string, an empty list `[]` is returned
-* We check `$data` to see if it can be automatically coerced into an `integer` or a `double`
+* If `$item` is an object that implements `::__toString()`, the list `[ 'string' ]` is returned.
+* Otherwise, if `$item` is not a string, an empty list `[]` is returned
+* We check `item` to see if it can be automatically coerced into an `integer` or a `double`
 
-The resulting list is a complete list of strict types where it is safe to use `$data`.
+The resulting list is a complete list of strict types where it is safe to use `$item`.
 
 <div class="callout warning" markdown="1">
 PHP does not automatically convert `'true'` or `'false'` into booleans.
 
-That's why `GetStringTypes` doesn't add `'boolean'` to the list of returned types if a string contains the text of a boolean value.
+That's why `GetStringTypes::from()` doesn't add `'boolean'` to the list of returned types if a string contains the text of a boolean value.
 </div>
 
 <div class="callout warning" markdown="1">
@@ -69,7 +44,7 @@ Use [`GetClassTypes`](GetClassTypes.html) if want to get list of a class's paren
 Here's a list of examples of accepted input values:
 
 ```php
-var_dump(get_string_types("true"));
+var_dump(GetStringTypes::from("true"));
 
 // outputs
 //
@@ -80,7 +55,7 @@ var_dump(get_string_types("true"));
 ```
 
 ```php
-var_dump(get_string_types("false"));
+var_dump(GetStringTypes::from("false"));
 
 // outputs
 //
@@ -91,7 +66,7 @@ var_dump(get_string_types("false"));
 ```
 
 ```php
-var_dump(get_string_types("0.0"));
+var_dump(GetStringTypes::from("0.0"));
 
 // outputs
 //
@@ -104,7 +79,7 @@ var_dump(get_string_types("0.0"));
 ```
 
 ```php
-var_dump(get_string_types("3.1415927"));
+var_dump(GetStringTypes::from("3.1415927"));
 
 // outputs
 //
@@ -117,7 +92,7 @@ var_dump(get_string_types("3.1415927"));
 ```
 
 ```php
-var_dump(get_string_types("0"));
+var_dump(GetStringTypes::from("0"));
 
 // outputs
 //
@@ -130,7 +105,7 @@ var_dump(get_string_types("0"));
 ```
 
 ```php
-var_dump(get_string_types("100"));
+var_dump(GetStringTypes::from("100"));
 
 // outputs
 //
@@ -143,7 +118,7 @@ var_dump(get_string_types("100"));
 ```
 
 ```php
-var_dump(get_string_types(new Exception(__FILE__)));
+var_dump(GetStringTypes::from(new Exception(__FILE__)));
 
 // outputs
 //
@@ -154,7 +129,7 @@ var_dump(get_string_types(new Exception(__FILE__)));
 ```
 
 ```php
-var_dump(get_string_types("hello, world!"));
+var_dump(GetStringTypes::from("hello, world!"));
 
 // outputs
 //
@@ -165,7 +140,7 @@ var_dump(get_string_types("hello, world!"));
 ```
 
 ```php
-var_dump(get_string_types(ArrayObject::class));
+var_dump(GetStringTypes::from(ArrayObject::class));
 
 // outputs
 //
@@ -176,7 +151,7 @@ var_dump(get_string_types(ArrayObject::class));
 ```
 
 ```php
-var_dump(get_string_types(Traversable::class));
+var_dump(GetStringTypes::from(Traversable::class));
 
 // outputs
 //
@@ -189,7 +164,7 @@ var_dump(get_string_types(Traversable::class));
 Here's a list of examples of ingored input values:
 
 ```php
-var_dump(get_string_types(null));
+var_dump(GetStringTypes::from(null));
 
 // outputs
 //
@@ -198,99 +173,7 @@ var_dump(get_string_types(null));
 ```
 
 ```php
-var_dump(get_string_types([1,2,3]));
-
-// outputs
-//
-// array(0) {
-// }
-```
-
-```php
-use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
-
-var_dump(get_string_types([GetStrictTypes::class, "from"]));
-
-// outputs
-//
-// array(0) {
-// }
-```
-
-```php
-var_dump(get_string_types(function(){}));
-
-// outputs
-//
-// array(0) {
-// }
-```
-
-```php
-var_dump(get_string_types(true));
-
-// outputs
-//
-// array(0) {
-// }
-```
-
-```php
-var_dump(get_string_types(false));
-
-// outputs
-//
-// array(0) {
-// }
-```
-
-```php
-var_dump(get_string_types(0.0));
-
-// outputs
-//
-// array(0) {
-// }
-```
-
-```php
-var_dump(get_string_types(3.1415927));
-
-// outputs
-//
-// array(0) {
-// }
-```
-
-```php
-var_dump(get_string_types(0));
-
-// outputs
-//
-// array(0) {
-// }
-```
-
-```php
-var_dump(get_string_types(100));
-
-// outputs
-//
-// array(0) {
-// }
-```
-
-```php
-var_dump(get_string_types(-100));
-
-// outputs
-//
-// array(0) {
-// }
-```
-
-```php
-var_dump(get_string_types(new ArrayObject));
+var_dump(GetStringTypes::from([1,2,3]));
 
 // outputs
 //
@@ -301,7 +184,7 @@ var_dump(get_string_types(new ArrayObject));
 ```php
 use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
 
-var_dump(get_string_types(new GetStrictTypes));
+var_dump(GetStringTypes::from([GetStrictTypes::class, "from"]));
 
 // outputs
 //
@@ -310,7 +193,7 @@ var_dump(get_string_types(new GetStrictTypes));
 ```
 
 ```php
-var_dump(get_string_types((object)[]));
+var_dump(GetStringTypes::from(function(){}));
 
 // outputs
 //
@@ -319,7 +202,99 @@ var_dump(get_string_types((object)[]));
 ```
 
 ```php
-var_dump(get_string_types(STDIN));
+var_dump(GetStringTypes::from(true));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(GetStringTypes::from(false));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(GetStringTypes::from(0.0));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(GetStringTypes::from(3.1415927));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(GetStringTypes::from(0));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(GetStringTypes::from(100));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(GetStringTypes::from(-100));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(GetStringTypes::from(new ArrayObject));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
+
+var_dump(GetStringTypes::from(new GetStrictTypes));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(GetStringTypes::from((object)[]));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(GetStringTypes::from(STDIN));
 
 // outputs
 //
@@ -329,11 +304,11 @@ var_dump(get_string_types(STDIN));
 
 ## Throws
 
-`GetStringTypes` does not throw any exceptions.
+`GetStringTypes::from()` does not throw any exceptions.
 
 ## Works With
 
-`GetStringTypes` is supported on these versions of PHP:
+`GetStringTypes::from()` is supported on these versions of PHP:
 
 PHP Version | Works?
 ------------|-------
