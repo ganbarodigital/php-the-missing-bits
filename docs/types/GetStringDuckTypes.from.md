@@ -1,13 +1,4 @@
----
-currentSection: types
-currentItem: GetStringDuckTypes
-pageflow_prev_url: GetStrictTypes.html
-pageflow_prev_text: GetStrictTypes class
-pageflow_next_url: GetStringTypes.html
-pageflow_next_text: GetStringTypes class
----
-
-# GetStringDuckTypes
+# GetStringDuckTypes::from()
 
 <div class="callout info">
 Since v1.5.0
@@ -15,45 +6,29 @@ Since v1.5.0
 
 ## Description
 
-`GetStringDuckTypes` returns a list of all strict PHP types for a given string. The list is ordered with the most specific match first.
+`GetStringDuckTypes::from()` returns a list of all possible PHP types for a given string. The list is ordered with the most specific match first.
 
 ```php
-// how to import
 use GanbaroDigital\MissingBits\TypeInspectors\GetStringDuckTypes;
-
-// call directly
-//
-// returns an array
-var_dump(GetStringDuckTypes::from($data));
-
-// use as an object
-//
-// returns an array
-$inspector = new GetStringDuckTypes;
-var_dump($inspector($data));
-
-// use as a global function
-//
-// returns an array
-var_dump(get_string_duck_types($data));
+public static array GetStringDuckTypes::from(mixed $item);
 ```
 
 ## Parameters
 
 The input parameters are:
 
-- `mixed $data` - the item to examine
+- `mixed $item` - the item to examine
 
 ## Return Value
 
-`GetStringDuckTypes` returns an array.
+`GetStringDuckTypes::from()` returns an array.
 
-* If `$data` is an object that implements `::__toString()`, the list `[ 'string' ]` is returned.
-* Otherwise, if `$data` is not a string, an empty list `[]` is returned.
-* We check `$data` to see if it can be automatically coerced into an `integer` or a `double`. If it can, we return `integer` or `double`, and we also return `numeric`.
-* We check `$data` to see if it contains a class name or an interface name. If it does, we return the full class hierarchy, plus also `class` or `interface` as appropriate.
+* If `$item` is an object that implements `::__toString()`, the list `[ 'string' ]` is returned.
+* Otherwise, if `$item` is not a string, an empty list `[]` is returned.
+* We check `$item` to see if it can be automatically coerced into an `integer` or a `double`. If it can, we return `integer` or `double`, and we also return `numeric`.
+* We check `$item` to see if it contains a class name or an interface name. If it does, we return the full class hierarchy, plus also `class` or `interface` as appropriate.
 
-The resulting list is a complete list of string-related duck types for `$data`.
+The resulting list is a complete list of string-related duck types for `$item`.
 
 <div class="callout warning" markdown="1">
 PHP does not automatically convert `'true'` or `'false'` into booleans.
@@ -66,7 +41,7 @@ That's why `GetStringDuckTypes` doesn't add `'boolean'` to the list of returned 
 Here's a list of examples of accepted input values:
 
 ```php
-var_dump(get_string_duck_types("true"));
+var_dump(GetStringDuckTypes::from("true"));
 
 // outputs
 //
@@ -77,7 +52,7 @@ var_dump(get_string_duck_types("true"));
 ```
 
 ```php
-var_dump(get_string_duck_types("false"));
+var_dump(GetStringDuckTypes::from("false"));
 
 // outputs
 //
@@ -88,7 +63,7 @@ var_dump(get_string_duck_types("false"));
 ```
 
 ```php
-var_dump(get_string_duck_types("0.0"));
+var_dump(GetStringDuckTypes::from("0.0"));
 
 // outputs
 //
@@ -103,7 +78,7 @@ var_dump(get_string_duck_types("0.0"));
 ```
 
 ```php
-var_dump(get_string_duck_types("3.1415927"));
+var_dump(GetStringDuckTypes::from("3.1415927"));
 
 // outputs
 //
@@ -118,7 +93,7 @@ var_dump(get_string_duck_types("3.1415927"));
 ```
 
 ```php
-var_dump(get_string_duck_types("0"));
+var_dump(GetStringDuckTypes::from("0"));
 
 // outputs
 //
@@ -133,7 +108,7 @@ var_dump(get_string_duck_types("0"));
 ```
 
 ```php
-var_dump(get_string_duck_types("100"));
+var_dump(GetStringDuckTypes::from("100"));
 
 // outputs
 //
@@ -148,7 +123,7 @@ var_dump(get_string_duck_types("100"));
 ```
 
 ```php
-var_dump(get_string_duck_types(new Exception(__FILE__)));
+var_dump(GetStringDuckTypes::from(new Exception(__FILE__)));
 
 // outputs
 //
@@ -159,7 +134,7 @@ var_dump(get_string_duck_types(new Exception(__FILE__)));
 ```
 
 ```php
-var_dump(get_string_duck_types("hello, world!"));
+var_dump(GetStringDuckTypes::from("hello, world!"));
 
 // outputs
 //
@@ -170,7 +145,7 @@ var_dump(get_string_duck_types("hello, world!"));
 ```
 
 ```php
-var_dump(get_string_duck_types(ArrayObject::class));
+var_dump(GetStringDuckTypes::from(ArrayObject::class));
 
 // outputs
 //
@@ -195,7 +170,7 @@ var_dump(get_string_duck_types(ArrayObject::class));
 ```
 
 ```php
-var_dump(get_string_duck_types(Traversable::class));
+var_dump(GetStringDuckTypes::from(Traversable::class));
 
 // outputs
 //
@@ -212,7 +187,7 @@ var_dump(get_string_duck_types(Traversable::class));
 Here's a list of examples of ingored input values:
 
 ```php
-var_dump(get_string_duck_types(null));
+var_dump(GetStringDuckTypes::from(null));
 
 // outputs
 //
@@ -221,99 +196,7 @@ var_dump(get_string_duck_types(null));
 ```
 
 ```php
-var_dump(get_string_duck_types([1,2,3]));
-
-// outputs
-//
-// array(0) {
-// }
-```
-
-```php
-use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
-
-var_dump(get_string_duck_types([GetStrictTypes::class, "from"]));
-
-// outputs
-//
-// array(0) {
-// }
-```
-
-```php
-var_dump(get_string_duck_types(function(){}));
-
-// outputs
-//
-// array(0) {
-// }
-```
-
-```php
-var_dump(get_string_duck_types(true));
-
-// outputs
-//
-// array(0) {
-// }
-```
-
-```php
-var_dump(get_string_duck_types(false));
-
-// outputs
-//
-// array(0) {
-// }
-```
-
-```php
-var_dump(get_string_duck_types(0.0));
-
-// outputs
-//
-// array(0) {
-// }
-```
-
-```php
-var_dump(get_string_duck_types(3.1415927));
-
-// outputs
-//
-// array(0) {
-// }
-```
-
-```php
-var_dump(get_string_duck_types(0));
-
-// outputs
-//
-// array(0) {
-// }
-```
-
-```php
-var_dump(get_string_duck_types(100));
-
-// outputs
-//
-// array(0) {
-// }
-```
-
-```php
-var_dump(get_string_duck_types(-100));
-
-// outputs
-//
-// array(0) {
-// }
-```
-
-```php
-var_dump(get_string_duck_types(new ArrayObject));
+var_dump(GetStringDuckTypes::from([1,2,3]));
 
 // outputs
 //
@@ -324,7 +207,7 @@ var_dump(get_string_duck_types(new ArrayObject));
 ```php
 use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
 
-var_dump(get_string_duck_types(new GetStrictTypes));
+var_dump(GetStringDuckTypes::from([GetStrictTypes::class, "from"]));
 
 // outputs
 //
@@ -333,7 +216,7 @@ var_dump(get_string_duck_types(new GetStrictTypes));
 ```
 
 ```php
-var_dump(get_string_duck_types((object)[]));
+var_dump(GetStringDuckTypes::from(function(){}));
 
 // outputs
 //
@@ -342,7 +225,99 @@ var_dump(get_string_duck_types((object)[]));
 ```
 
 ```php
-var_dump(get_string_duck_types(STDIN));
+var_dump(GetStringDuckTypes::from(true));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(GetStringDuckTypes::from(false));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(GetStringDuckTypes::from(0.0));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(GetStringDuckTypes::from(3.1415927));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(GetStringDuckTypes::from(0));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(GetStringDuckTypes::from(100));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(GetStringDuckTypes::from(-100));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(GetStringDuckTypes::from(new ArrayObject));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
+
+var_dump(GetStringDuckTypes::from(new GetStrictTypes));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(GetStringDuckTypes::from((object)[]));
+
+// outputs
+//
+// array(0) {
+// }
+```
+
+```php
+var_dump(GetStringDuckTypes::from(STDIN));
 
 // outputs
 //
@@ -352,11 +327,11 @@ var_dump(get_string_duck_types(STDIN));
 
 ## Throws
 
-`GetStringDuckTypes` does not throw any exceptions.
+`GetStringDuckTypes::from()` does not throw any exceptions.
 
 ## Works With
 
-`GetStringDuckTypes` is supported on these versions of PHP:
+`GetStringDuckTypes::from()` is supported on these versions of PHP:
 
 PHP Version | Works?
 ------------|-------
