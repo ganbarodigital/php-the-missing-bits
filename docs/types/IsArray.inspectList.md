@@ -1,4 +1,4 @@
-# IsArray::checkList()
+# IsArray::inspectList()
 
 <div class="callout warning" markdown="1">
 Not yet in a tagged release
@@ -6,35 +6,35 @@ Not yet in a tagged release
 
 ## Description
 
-`IsArray::checkList()` - is every entry in the list a PHP array?
+`IsArray::inspectList()` - is every entry in the list a PHP array?
 
 ```php
 use GanbaroDigital\MissingBits\TypeChecks\IsArray;
-public static bool IsArray::checkList(mixed $list);
+public bool IsArray::inspectList(mixed $list);
 ```
 
 ## Parameters
 
-`IsArray::checkList()` takes one parameter:
+`IsArray::inspectList()` takes one parameter:
 
 * `mixed $list` - the list of values to inspect
 
 ## Return Value
 
-`IsArray::checkList()` returns a boolean:
+`IsArray::inspectList()` returns a boolean:
 
 * `true` if every entry in `$list` can be used as a PHP array
 * `false` otherwise
 
 ## Throws
 
-`IsArray::checkList()` throws an `InvalidArgumentException` if:
+`IsArray::inspectList()` throws an `InvalidArgumentException` if:
 
 * `$list` is not a valid list (see [`IsList`](IsList.class.html) for details)
 
 ## Works With
 
-`IsArray::checkList()` is supported on these versions of PHP:
+`IsArray::inspectList()` is supported on these versions of PHP:
 
 PHP Version | Works?
 ------------|-------
