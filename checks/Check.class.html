@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!--[if lt IE 9]>
+            <script src="assets/html5shiv.js"></script>
+            <script src="assets/html5printshiv.js"></script>
+        <![endif]-->
+        <meta charset="utf-8"/>
+        <title>PHP: The Missing Bits from Ganbaro Digital</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="http://ganbarodigital.github.io/php-the-missing-bits/assets/docs.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="http://ganbarodigital.github.io/php-the-missing-bits/assets/prism.css">
+        <script src="http://ganbarodigital.github.io/php-the-missing-bits/assets/prism.js"></script>
+    </head>
+    <body data-ishi-anchors="1">
+        <header role="banner">
+            <div>
+                <p style="font-size: 34px; padding-top: 10px">PHP: The Missing Bits</p>
+                <p style="font-size: 18px; border-bottom: 1px solid; padding-bottom: 10px">Features that we wish came with PHP</p>
+            </div>
+            <!--<a href="http://ganbarodigital.github.io/php-the-missing-bits/index.html">
+                <img src="http://ganbarodigital.github.io/php-the-missing-bits/assets/ganbarodigital.svg" width="60" height="60" style="vertical-align: middle; float: left; margin-right: 15px">
+            </a>-->
+            <nav class="navbar topbar">
+                <ul>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/index.html">Home</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/arrays/index.html">Arrays</a>
+                        </li>
+                                            <li class="current">
+                            <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/checks/index.html">Checks</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/classes-objects/index.html">Classes and Objects</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/entities/index.html">Entities</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/lists/index.html">Lists</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/strings/index.html">Strings</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/traces/index.html">Traces</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/index.html">Types</a>
+                        </li>
+                                    </ul>
+            </nav>
+        </header>
+                    <header role="subnav">
+                <nav class="navbar">
+                    <ul>
+                                                    <li class="">
+                                <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/checks/index.html">Checks</a>
+                            </li>
+                                                    <li class="current">
+                                <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/checks/defining-checks.html">Defining Checks</a>
+                            </li>
+                                                    <li class="">
+                                <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/checks/available-checks.html">Available Checks</a>
+                            </li>
+                                            </ul>
+                </nav>
+            </header>
+                <main role="main">
+                        <nav class="pageflow">
+              <ul>
+                                    <li><a href="http://ganbarodigital.github.io/php-the-missing-bits/checks/defining-checks.html">Prev: Defining Checks</a></li>
+                                                      <li><a href="http://ganbarodigital.github.io/php-the-missing-bits/checks/ListCheck.class.html">Next: ListCheck interface</a></li>
+                                </ul>
+            </nav>
+            
+            <article>
+                <h1 id="check-interface">Check interface</h1>
+<div class="callout warning">
+<p>Not yet in a tagged release</p>
+</div>
+<h2 id="description">Description</h2>
+<p><code>Check</code> is an interface. It's the interface for <code>true</code> / <code>false</code> inspections of data.</p>
+<div class="callout info">
+<h4 id="whats-the-difference-between-a-check-and-assurances--requirements">What's The Difference Between A Check, And Assurances / Requirements?</h4>
+<p>Checks are <em>questions</em>, Assurances and Requirements are <em>quality inspections</em>.</p>
+<p>Checks are <code>IsXXX()</code>-type calls. Their job is to look at your data, and say if your data &quot;is&quot; something or not. For example, <code>IsStringy()</code> will tell you if your data can be used as a string or not. It isn't necessarily an error if a check returns <code>false</code>. That's why checks never throw exceptions.</p>
+<p>Assurances and Requirements are looking at your data to make sure everything is okay. For example, <code>RequireStringy()</code> makes sure that your data can be used as a string. A failed Assurance or Requirement is treated as an error, complete with exceptions thrown and dreams dashed.</p>
+<p>It's good practice for your Assurances and Requirements to be built on top of your Checks wherever possible.</p>
+<p><em>The interfaces for Assurances and Requirements can be found in Ganbaro Digital's <a href="https://ganbarodigital.github.io/php-mv-defensive/">Defensive Library</a>.</em></p>
+</div>
+<h2 id="public-interface">Public Interface</h2>
+<p><code>Check</code> has the following public interface:</p>
+<pre><code class="language-php">// Check lives in this namespace
+namespace GanbaroDigital\MissingBits\Checks;
+
+interface Check
+{
+    /**
+     * does a value pass inspection?
+     *
+     * @param  mixed $fieldOrVar
+     *         the data to be examined
+     * @return bool
+     *         TRUE if the inspection passes
+     *         FALSE otherwise
+     */
+    public function inspect($fieldOrVar);
+}</code></pre>
+<p><code>Check</code> also has the following informal interface:</p>
+<pre><code class="language-php">interface Check
+{
+    /**
+     * create a customised Check, ready to be used
+     *
+     * @return Check
+     */
+    public static function using(&lt;customisation params&gt;);
+
+    /**
+     * does a value pass inspection?
+     *
+     * @param  mixed $fieldOrVar
+     *         the data to be examined
+     * @return bool
+     *         TRUE if the inspection passes
+     *         FALSE otherwise
+     */
+    public static function check($fieldOrVar, &lt;additional params&gt;);
+}</code></pre>
+<p><em>Informal interfaces</em> contain methods that you must implement. However, due to PHP limitations, we can't add these methods to the <code>interface</code> at this time.</p>
+<h2 id="how-to-use">How To Use</h2>
+<p>Every <code>Check</code> can be used in two ways:</p>
+<ul>
+<li>a static call to <code>::check()</code> for convenience,</li>
+<li>as an object, calling the <code>-&gt;inspect()</code> method</li>
+</ul>
+<h3 id="scaffolding">Scaffolding</h3>
+<p>Every Check starts with a bit of boilerplate code:</p>
+<ul>
+<li>add <code>use GanbaroDigital\MissingBits\Checks\Check</code> to your PHP file</li>
+<li>add <code>implements Check</code> to your class</li>
+</ul>
+<h3 id="the-check-pattern">The Check Pattern</h3>
+<p>Every <code>Check</code> implements the <code>Check::check()</code> pattern:</p>
+<ul>
+<li>add a <code>public static function check()</code> method to your class. This method inspects <code>$fieldOrVar</code>. If you're happy with <code>$fieldOrVar</code>, return <code>true</code>. If you're not happy with <code>$data</code>, return <code>false</code>.</li>
+<li>if your check needs additional input parameters, pass these in as additional parameters to the <code>check()</code> method.</li>
+</ul>
+<h3 id="making-it-usable-as-an-object">Making It Usable As An Object</h3>
+<p>Every <code>Check</code> can be used as an object:</p>
+<ul>
+<li>add a <code>public function __construct()</code> if your check needs additional input parameters</li>
+<li>add a <code>public function inspect()</code> which calls your static <code>::check()</code> method</li>
+</ul>
+<h3 id="putting-it-all-together">Putting It All Together</h3>
+<p>Here's a simple min / max check. It supports all the different ways that a Check can be used.</p>
+<pre><code class="language-php">use GanbaroDigital\MissingBits\Checks\Check;
+
+class IsInRange implements Check
+{
+    /**
+     * minimum acceptable value in our range
+     */
+    private $min;
+
+    /**
+     * maximum acceptable value in our range
+     */
+    private $max;
+
+    /**
+     * constructor. used to create a customised check
+     *
+     * @param  int $min
+     *         minimum value for allowed range
+     * @param  int $max
+     *         maximum value for allowed range
+     */
+    public function __construct($min, $max)
+    {
+        $this-&gt;min = $min;
+        $this-&gt;max = $max;
+    }
+
+    /**
+     * generates a Check
+     *
+     * @param  int $min
+     *         minimum value for allowed range
+     * @param  int $max
+     *         maximum value for allowed range
+     * @return Check
+     *         returns a check to use
+     */
+    public static function using($min, $max)
+    {
+        return new static($min, $max);
+    }
+
+    /**
+     * is $data within the require range?
+     *
+     * @param  int $data
+     *         the value to check
+     * @return bool
+     *         TRUE if the data is in range
+     *         FALSE otherwise
+     */
+    public function inspect($data)
+    {
+        return static::check($data, $this-&gt;min, $this-&gt;max);
+    }
+
+    /**
+     * is $data within the require range?
+     *
+     * @param  int $data
+     *         the value to check
+     * @param  int $min
+     *         minimum value for allowed range
+     * @param  int $max
+     *         maximum value for allowed range
+     * @return bool
+     *         TRUE if the data is in range
+     *         FALSE otherwise
+     */
+    public static function check($data, $min, $max)
+    {
+        if ($data &lt; $this-&gt;min) {
+            return false;
+        }
+        if ($data &gt; $this-&gt;max) {
+            return false;
+        }
+
+        return true;
+    }
+}</code></pre>
+<p>To use this example check, you can do:</p>
+<pre><code class="language-php">// a static call is often the most convenient
+var_dump(IsInRange::check($data, 10,20));
+
+// as an object
+$callable = new IsInRange(10, 20);
+var_dump($rangeCheck-&gt;inspect($data));
+
+// via the using() helper
+var_dump(IsInRange::using(10,20)-&gt;inspect($data));</code></pre>
+            </article>
+
+                        <nav class="pageflow">
+              <ul>
+                                    <li><a href="http://ganbarodigital.github.io/php-the-missing-bits/checks/defining-checks.html">Prev: Defining Checks</a></li>
+                                                      <li><a href="http://ganbarodigital.github.io/php-the-missing-bits/checks/ListCheck.class.html">Next: ListCheck interface</a></li>
+                                </ul>
+            </nav>
+                    </main>
+
+        <aside class="sidebar">
+                            <h2>This Section</h2>
+                <nav>
+                    <ul>
+                                                                                <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/checks/defining-checks.html">Defining Checks</a>
+                            </li>
+                                                                                                            <li>
+                                <strong>Check interface</strong>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/checks/ListCheck.class.html">ListCheck interface</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/checks/ListCheckHelper.trait.html">ListCheckHelper trait</a>
+                            </li>
+                                                                        </ul>
+                </nav>
+            
+            <h2>This Page</h2>
+            <nav class="toc" data-type="ishi-toc" data-max-depth="3">
+            </nav>
+        </aside>
+
+        <footer>
+            <div class="strapline">
+                                <p>                    Copyright &copy; 2015-present <a href="http://ganbarodigital.com">Ganbaro Digital Ltd</a>.
+                    &nbsp;
+                                        Released under an open-source license.
+                    &nbsp;
+                                    </p>
+                                                    <p>Find PHP: The Missing Bits on <a href="https://github.com/ganbarodigital/php-the-missing-bits">GitHub</a>.</p>
+                                </p>
+            </div>
+        </footer>
+    <script src="http://ganbarodigital.github.io/php-the-missing-bits/assets/laroux.js"></script>
+    <script src="http://ganbarodigital.github.io/php-the-missing-bits/assets/ishi.js"></script>
+    </body>
+</html>

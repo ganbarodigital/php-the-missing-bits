@@ -16,7 +16,7 @@
         <header role="banner">
             <div>
                 <p style="font-size: 34px; padding-top: 10px">PHP: The Missing Bits</p>
-                <p style="font-size: 18px; border-bottom: 1px solid; padding-bottom: 10px">Functions that we wish came with PHP</p>
+                <p style="font-size: 18px; border-bottom: 1px solid; padding-bottom: 10px">Features that we wish came with PHP</p>
             </div>
             <!--<a href="http://ganbarodigital.github.io/php-the-missing-bits/index.html">
                 <img src="http://ganbarodigital.github.io/php-the-missing-bits/assets/ganbarodigital.svg" width="60" height="60" style="vertical-align: middle; float: left; margin-right: 15px">
@@ -24,10 +24,16 @@
             <nav class="navbar topbar">
                 <ul>
                                             <li class="">
-                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/index.html">Overview</a>
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/index.html">Home</a>
                         </li>
                                             <li class="">
                             <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/arrays/index.html">Arrays</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/checks/index.html">Checks</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/classes-objects/index.html">Classes and Objects</a>
                         </li>
                                             <li class="">
                             <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/entities/index.html">Entities</a>
@@ -47,29 +53,23 @@
                                     </ul>
             </nav>
         </header>
-                                                                                                                    <header role="subnav">
-                        <nav class="navbar">
-                            <ul>
-                                                                    <li class="current">
-                                        <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/lists/index.html">List Functions and Classes</a>
-                                    </li>
-                                                                    <li class="">
-                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/lists/TraverseArray.html">TraverseArray</a>
-                                    </li>
-                                                                    <li class="">
-                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/lists/TraverseList.html">TraverseList</a>
-                                    </li>
-                                                                    <li class="">
-                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/lists/TraverseObject.html">TraverseObject</a>
-                                    </li>
-                                                            </ul>
-                        </nav>
-                    </header>
-                                                                                                        <main role="main">
+                    <header role="subnav">
+                <nav class="navbar">
+                    <ul>
+                                                    <li class="current">
+                                <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/lists/index.html">List Functions and Classes</a>
+                            </li>
+                                                    <li class="">
+                                <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/lists/list-iterators.html">List Iterators</a>
+                            </li>
+                                            </ul>
+                </nav>
+            </header>
+                <main role="main">
                         <nav class="pageflow">
               <ul>
-                                    <li></li>
-                                                      <li><a href="TraverseArray.html">Next: TraverseArray</a></li>
+                                    <li><a href="http://ganbarodigital.github.io/php-the-missing-bits/entities/available-entities.html">Prev: Available Entities</a></li>
+                                                      <li><a href="http://ganbarodigital.github.io/php-the-missing-bits/lists/list-iterators.html">Next: List Iterators</a></li>
                                 </ul>
             </nav>
             
@@ -83,50 +83,18 @@
 <li>PHP objects with public properties</li>
 </ul>
 <p>Here's a list of what we find is missing from PHP's built-in support for lists.</p>
-<h2 id="available-functions">Available Functions</h2>
+<h2 id="by-functional-area">By Functional Area</h2>
 <table>
 <thead>
 <tr>
-<th>Function</th>
+<th>Functional Area</th>
 <th>Purpose</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="TraverseArray.html"><code>traverse_array</code></a></td>
-<td>iterate over an array</td>
-</tr>
-<tr>
-<td><a href="TraverseList.html"><code>traverse_list</code></a></td>
-<td>iterate over anything that <code>foreach()</code> will accept</td>
-</tr>
-<tr>
-<td><a href="TraverseObject.html"><code>traverse_object</code></a></td>
-<td>iterate over the public properties of any object</td>
-</tr>
-</tbody>
-</table>
-<p>Click on a function name for more details.</p>
-<h2 id="available-classes">Available Classes</h2>
-<table>
-<thead>
-<tr>
-<th>Class</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="TraverseArray.html"><code>TraverseArray</code></a></td>
-<td>iterate over an array</td>
-</tr>
-<tr>
-<td><a href="TraverseList.html"><code>TraverseList</code></a></td>
-<td>iterate over anything that <code>foreach()</code> will accept</td>
-</tr>
-<tr>
-<td><a href="TraverseObject.html"><code>TraverseObject</code></a></td>
-<td>iterate over the public properties of any object</td>
+<td><a href="list-iterators.html">List iterators</a></td>
+<td>iterate over a PHP list</td>
 </tr>
 </tbody>
 </table>
@@ -134,23 +102,39 @@
 
                         <nav class="pageflow">
               <ul>
-                                    <li></li>
-                                                      <li><a href="TraverseArray.html">Next: TraverseArray</a></li>
+                                    <li><a href="http://ganbarodigital.github.io/php-the-missing-bits/entities/available-entities.html">Prev: Available Entities</a></li>
+                                                      <li><a href="http://ganbarodigital.github.io/php-the-missing-bits/lists/list-iterators.html">Next: List Iterators</a></li>
                                 </ul>
             </nav>
                     </main>
 
         <aside class="sidebar">
+                            <h2>This Section</h2>
+                <nav>
+                    <ul>
+                                                                                <li>
+                                <strong>List Functions and Classes</strong>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/lists/list-iterators.html">List Iterators</a>
+                            </li>
+                                                                        </ul>
+                </nav>
+            
             <h2>This Page</h2>
             <nav class="toc" data-type="ishi-toc" data-max-depth="3">
             </nav>
         </aside>
+
         <footer>
             <div class="strapline">
-                <p>Copyright &copy; 2015 <a href="http://ganbarodigital.com">Ganbaro Digital Ltd</a>. Released under the <a href="http://ganbarodigital.github.io/php-the-missing-bits/license.html">New BSD</a> license.
-                                            Find PHP: The Missing Bits on <a href="https://github.com/ganbarodigital/php-the-missing-bits">GitHub</a>.
-                                        Built with <a href="http://couscous.io/">Couscous</a>.
-                </p>
+                                <p>                    Copyright &copy; 2015-present <a href="http://ganbarodigital.com">Ganbaro Digital Ltd</a>.
+                    &nbsp;
+                                        Released under an open-source license.
+                    &nbsp;
+                                    </p>
+                                                    <p>Find PHP: The Missing Bits on <a href="https://github.com/ganbarodigital/php-the-missing-bits">GitHub</a>.</p>
+                                </p>
             </div>
         </footer>
     <script src="http://ganbarodigital.github.io/php-the-missing-bits/assets/laroux.js"></script>

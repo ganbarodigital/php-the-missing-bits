@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!--[if lt IE 9]>
+            <script src="assets/html5shiv.js"></script>
+            <script src="assets/html5printshiv.js"></script>
+        <![endif]-->
+        <meta charset="utf-8"/>
+        <title>PHP: The Missing Bits from Ganbaro Digital</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="http://ganbarodigital.github.io/php-the-missing-bits/assets/docs.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="http://ganbarodigital.github.io/php-the-missing-bits/assets/prism.css">
+        <script src="http://ganbarodigital.github.io/php-the-missing-bits/assets/prism.js"></script>
+    </head>
+    <body data-ishi-anchors="1">
+        <header role="banner">
+            <div>
+                <p style="font-size: 34px; padding-top: 10px">PHP: The Missing Bits</p>
+                <p style="font-size: 18px; border-bottom: 1px solid; padding-bottom: 10px">Features that we wish came with PHP</p>
+            </div>
+            <!--<a href="http://ganbarodigital.github.io/php-the-missing-bits/index.html">
+                <img src="http://ganbarodigital.github.io/php-the-missing-bits/assets/ganbarodigital.svg" width="60" height="60" style="vertical-align: middle; float: left; margin-right: 15px">
+            </a>-->
+            <nav class="navbar topbar">
+                <ul>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/index.html">Home</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/arrays/index.html">Arrays</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/checks/index.html">Checks</a>
+                        </li>
+                                            <li class="current">
+                            <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/classes-objects/index.html">Classes and Objects</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/entities/index.html">Entities</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/lists/index.html">Lists</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/strings/index.html">Strings</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/traces/index.html">Traces</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/index.html">Types</a>
+                        </li>
+                                    </ul>
+            </nav>
+        </header>
+                    <header role="subnav">
+                <nav class="navbar">
+                    <ul>
+                                                    <li class="">
+                                <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/classes-objects/index.html">Classes and Objects</a>
+                            </li>
+                                                    <li class="">
+                                <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/classes-objects/class-properties.html">Class Properties</a>
+                            </li>
+                                                    <li class="">
+                                <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/classes-objects/object-properties.html">Object Properties</a>
+                            </li>
+                                                    <li class="current">
+                                <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/classes-objects/property-helpers.html">Property Helpers</a>
+                            </li>
+                                            </ul>
+                </nav>
+            </header>
+                <main role="main">
+                        <nav class="pageflow">
+              <ul>
+                                    <li><a href="http://ganbarodigital.github.io/php-the-missing-bits/classes-objects/FilterProperties.from.html">Prev: FilterProperties::from()</a></li>
+                                                      <li><a href="http://ganbarodigital.github.io/php-the-missing-bits/entities/index.html">Next: Entities Classes and Interfaces</a></li>
+                                </ul>
+            </nav>
+            
+            <article>
+                <h1 id="hasfilteredpropertiescheck">HasFilteredProperties::check()</h1>
+<div class="callout warning">
+<p>Not yet in a tagged release</p>
+</div>
+<h2 id="description">Description</h2>
+<p><code>HasFilteredProperties::check()</code> - does a class or object have properties that pass the filter?</p>
+<pre><code class="language-php">// remember to import first
+use GanbaroDigital\MissingBits\ClassesAndObjects\HasFilteredProperties;
+
+// our method signature
+bool HasFilteredProperties::check(ReferenceClass $target, int $propTypes, callable $resultFilter);</code></pre>
+<h2 id="parameters">Parameters</h2>
+<p><code>HasFilteredProperties::check()</code> takes three parameters:</p>
+<ul>
+<li><code>$refObj</code> (<a href="http://www.php.net/ReflectionClass">ReflectionClass</a>) - the class or object to examine</li>
+<li><code>$propTypes</code> (int) - scope filter (uses the <a href="http://www.php.net/ReflectionProperty">ReflectionProperty</a> constants)</li>
+<li><code>$resultFilter</code> (callable) - function to filter the properties and decide the final result (see below)</li>
+</ul>
+<h3 id="the-result-filter">The Result Filter</h3>
+<p>The <code>$resultFilter</code> parameter is a callable. It must have this function signature:</p>
+<pre><code class="language-php">boolean function(ReflectionProperty $refProp);</code></pre>
+<p>where:</p>
+<ul>
+<li><code>$refProp</code> (<a href="http://www.php.net/ReflectionProperty">ReflectionProperty</a>) is a property discovered by <code>FilterProperties::from()</code></li>
+</ul>
+<p><code>HasFilteredProperties::check()</code> will call <code>$resultFilter()</code> with each discovered property. If your <code>$resultFilter</code> callable returns <code>true</code>, <code>HasFilteredProperties::check()</code> will stop discovering properties and return <code>true</code> to the caller.</p>
+<p>For example:</p>
+<pre><code class="language-php">// in this example, $target is the object that we want to filter
+$resultFilter = function(ReflectionProperty $refProp) use($target) {
+    // only store object properties
+    if (!$refProp-&gt;isStatic()) {
+        return false;
+    }
+
+    return true;
+};</code></pre>
+<h2 id="return-value">Return Value</h2>
+<p><code>HasFilteredProperties::check()</code> returns a boolean:</p>
+<ul>
+<li><code>true</code> if a property passes the <code>$resultFilter</code>,</li>
+<li><code>false</code> otherwise.</li>
+</ul>
+<h2 id="throws">Throws</h2>
+<p><code>HasFilteredProperties::check()</code> does not throw any exceptions.</p>
+            </article>
+
+                        <nav class="pageflow">
+              <ul>
+                                    <li><a href="http://ganbarodigital.github.io/php-the-missing-bits/classes-objects/FilterProperties.from.html">Prev: FilterProperties::from()</a></li>
+                                                      <li><a href="http://ganbarodigital.github.io/php-the-missing-bits/entities/index.html">Next: Entities Classes and Interfaces</a></li>
+                                </ul>
+            </nav>
+                    </main>
+
+        <aside class="sidebar">
+                            <h2>This Section</h2>
+                <nav>
+                    <ul>
+                                                                                <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/classes-objects/property-helpers.html">Property Helpers</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/classes-objects/FilterProperties.from.html">FilterProperties::from()</a>
+                            </li>
+                                                                                                            <li>
+                                <strong>HasFilteredProperties::check()</strong>
+                            </li>
+                                                                        </ul>
+                </nav>
+            
+            <h2>This Page</h2>
+            <nav class="toc" data-type="ishi-toc" data-max-depth="3">
+            </nav>
+        </aside>
+
+        <footer>
+            <div class="strapline">
+                                <p>                    Copyright &copy; 2015-present <a href="http://ganbarodigital.com">Ganbaro Digital Ltd</a>.
+                    &nbsp;
+                                        Released under an open-source license.
+                    &nbsp;
+                                    </p>
+                                                    <p>Find PHP: The Missing Bits on <a href="https://github.com/ganbarodigital/php-the-missing-bits">GitHub</a>.</p>
+                                </p>
+            </div>
+        </footer>
+    <script src="http://ganbarodigital.github.io/php-the-missing-bits/assets/laroux.js"></script>
+    <script src="http://ganbarodigital.github.io/php-the-missing-bits/assets/ishi.js"></script>
+    </body>
+</html>

@@ -16,7 +16,7 @@
         <header role="banner">
             <div>
                 <p style="font-size: 34px; padding-top: 10px">PHP: The Missing Bits</p>
-                <p style="font-size: 18px; border-bottom: 1px solid; padding-bottom: 10px">Functions that we wish came with PHP</p>
+                <p style="font-size: 18px; border-bottom: 1px solid; padding-bottom: 10px">Features that we wish came with PHP</p>
             </div>
             <!--<a href="http://ganbarodigital.github.io/php-the-missing-bits/index.html">
                 <img src="http://ganbarodigital.github.io/php-the-missing-bits/assets/ganbarodigital.svg" width="60" height="60" style="vertical-align: middle; float: left; margin-right: 15px">
@@ -24,10 +24,16 @@
             <nav class="navbar topbar">
                 <ul>
                                             <li class="current">
-                            <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/index.html">Overview</a>
+                            <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/index.html">Home</a>
                         </li>
                                             <li class="">
                             <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/arrays/index.html">Arrays</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/checks/index.html">Checks</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/classes-objects/index.html">Classes and Objects</a>
                         </li>
                                             <li class="">
                             <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/entities/index.html">Entities</a>
@@ -47,47 +53,252 @@
                                     </ul>
             </nav>
         </header>
-                                                        <header role="subnav">
-                        <nav class="navbar">
-                            <ul>
-                                                                    <li class="">
-                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/index.html">Home</a>
-                                    </li>
-                                                                    <li class="">
-                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/license.html">License</a>
-                                    </li>
-                                                                    <li class="">
-                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/installation.html">Installation</a>
-                                    </li>
-                                                                    <li class="current">
-                                        <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/changelog.html">Changelog</a>
-                                    </li>
-                                                                    <li class="">
-                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/contributing.html">Contributing</a>
-                                    </li>
-                                                                    <li class="">
-                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/code-of-conduct.html">Code Of Conduct</a>
-                                    </li>
-                                                                    <li class="">
-                                        <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/authors.html">Authors</a>
-                                    </li>
-                                                            </ul>
-                        </nav>
-                    </header>
-                                                                                                                                                                    <main role="main">
+                    <header role="subnav">
+                <nav class="navbar">
+                    <ul>
+                                                    <li class="">
+                                <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/index.html">Home</a>
+                            </li>
+                                                    <li class="">
+                                <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/license.html">License</a>
+                            </li>
+                                                    <li class="">
+                                <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/installation.html">Installation</a>
+                            </li>
+                                                    <li class="current">
+                                <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/changelog.html">Changelog</a>
+                            </li>
+                                                    <li class="">
+                                <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/contributing.html">Contributing</a>
+                            </li>
+                                                    <li class="">
+                                <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/code-of-conduct.html">Code Of Conduct</a>
+                            </li>
+                                                    <li class="">
+                                <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/authors.html">Authors</a>
+                            </li>
+                                            </ul>
+                </nav>
+            </header>
+                <main role="main">
                         <nav class="pageflow">
               <ul>
-                                    <li><a href="installation.html">Prev: Installation</a></li>
-                                                      <li><a href="contributing.html">Next: Contributing</a></li>
+                                    <li><a href="http://ganbarodigital.github.io/php-the-missing-bits/installation.html">Prev: Installation</a></li>
+                                                      <li><a href="http://ganbarodigital.github.io/php-the-missing-bits/contributing.html">Next: Contributing</a></li>
                                 </ul>
             </nav>
             
             <article>
                 <h1 id="changelog">CHANGELOG</h1>
 <h2 id="develop-branch">develop branch</h2>
+<h3 id="new">New</h3>
+<ul>
+<li>Added support for inspecting class and object properties
+<ul>
+<li>added <code>get_class_properties()</code></li>
+<li>added <code>get_object_properties()</code></li>
+<li>added <code>has_class_properties()</code></li>
+<li>added <code>has_object_properties()</code></li>
+<li>added <code>FilterClassProperties::from()</code></li>
+<li>added <code>FilterObjectProperties::from()</code></li>
+<li>added <code>FilterProperties</code> helper class</li>
+<li>added <code>HasClassProperties::check()</code></li>
+<li>added <code>HasObjectProperties::check()</code></li>
+<li>added <code>HasFilteredProperties</code> helper class</li>
+<li>added <code>IsClassProperty</code> helper class</li>
+<li>added <code>IsObjectProperty</code> helper class</li>
+</ul></li>
+<li>Added support for a formal approach to writing IsXXX() classes
+<ul>
+<li>added <code>Check</code> interface</li>
+<li>added <code>ListCheck</code> interface</li>
+<li>added <code>ListCheckHelper</code> trait</li>
+</ul></li>
+<li>Added <code>Check</code> and <code>ListCheck</code> support to existing classes
+<ul>
+<li>added <code>IsStringy::check()</code></li>
+<li><code>is_stringy()</code> now uses <code>IsStringy::check()</code></li>
+<li><code>IsList</code> now implements <code>Check</code> and <code>ListCheck</code></li>
+<li><code>IsListyObject</code> now implements <code>Check</code> and <code>ListCheck</code></li>
+</ul></li>
+<li>Added a whole bunch of type checks, originally from our Defensive library:
+<ul>
+<li>added <code>IsArray::check()</code></li>
+<li>added <code>IsArray::checkList()</code></li>
+<li>added <code>IsArray::inspect()</code></li>
+<li>added <code>IsArray::inspectList()</code></li>
+<li>added <code>check_is_array()</code> convenience function</li>
+<li>added <code>check_is_array_list()</code> convenience function</li>
+<li>added <code>IsAssignable::check()</code></li>
+<li>added <code>IsAssignable::checkList()</code></li>
+<li>added <code>IsAssignable::inspect()</code></li>
+<li>added <code>IsAssignable::inspectList()</code></li>
+<li>added <code>check_is_assignable()</code> convenience function</li>
+<li>added <code>check_is_assignable_list()</code> convenience function</li>
+<li>added <code>IsBoolean::check()</code></li>
+<li>added <code>IsBoolean::checkList()</code></li>
+<li>added <code>IsBoolean::inspect()</code></li>
+<li>added <code>IsBoolean::inspectList()</code></li>
+<li>added <code>check_is_boolean()</code> convenience function</li>
+<li>added <code>check_is_boolean_list()</code> convenience function</li>
+<li>added <code>IsCallable::check()</code></li>
+<li>added <code>IsCallable::checkList()</code></li>
+<li>added <code>IsCallable::inspect()</code></li>
+<li>added <code>IsCallable::inspectList()</code></li>
+<li>added <code>check_is_callable()</code> convenience function</li>
+<li>added <code>check_is_callable_list()</code> convenience function</li>
+<li>added <code>IsCompatibleWith::check()</code></li>
+<li>added <code>IsCompatibleWith::checkList()</code></li>
+<li>added <code>IsCompatibleWith::inspect()</code></li>
+<li>added <code>IsCompatibleWith::inspectList()</code></li>
+<li>added <code>check_is_compatible_with()</code> convenience function</li>
+<li>added <code>check_is_compatible_with_list()</code> convenience function</li>
+<li>added <code>IsDefinedClass::check()</code></li>
+<li>added <code>IsDefinedClass::checkList()</code></li>
+<li>added <code>IsDefinedClass::inspect()</code></li>
+<li>added <code>IsDefinedClass::inspectList()</code></li>
+<li>added <code>check_is_defined_class()</code> convenience function</li>
+<li>added <code>check_is_defined_class_list()</code> convenience function</li>
+<li>added <code>IsDefinedInterface::check()</code></li>
+<li>added <code>IsDefinedInterface::checkList()</code></li>
+<li>added <code>IsDefinedInterface::inspect()</code></li>
+<li>added <code>IsDefinedInterface::inspectList()</code></li>
+<li>added <code>check_is_defined_interface()</code> convenience function</li>
+<li>added <code>check_is_defined_interface_list()</code> convenience function</li>
+<li>added <code>IsDefinedObjectType::check()</code></li>
+<li>added <code>IsDefinedObjectType::checkList()</code></li>
+<li>added <code>IsDefinedObjectType::inspect()</code></li>
+<li>added <code>IsDefinedObjectType::inspectList()</code></li>
+<li>added <code>check_is_defined_object_type()</code> convenience function</li>
+<li>added <code>check_is_defined_object_type_list()</code> convenience function</li>
+<li>added <code>IsDefinedTrait::check()</code></li>
+<li>added <code>IsDefinedTrait::checkList()</code></li>
+<li>added <code>IsDefinedTrait::inspect()</code></li>
+<li>added <code>IsDefinedTrait::inspectList()</code></li>
+<li>added <code>check_is_defined_trait()</code> convenience function</li>
+<li>added <code>check_is_defined_trait_list()</code> convenience function</li>
+<li>added <code>IsDouble::check()</code></li>
+<li>added <code>IsDouble::checkList()</code></li>
+<li>added <code>IsDouble::inspect()</code></li>
+<li>added <code>IsDouble::inspectList()</code></li>
+<li>added <code>check_is_double()</code> convenience function</li>
+<li>added <code>check_is_double_list()</code> convenience function</li>
+<li>added <code>IsEmpty::check()</code></li>
+<li>added <code>IsEmpty::checkList()</code></li>
+<li>added <code>IsEmpty::inspect()</code></li>
+<li>added <code>IsEmpty::inspectList()</code></li>
+<li>added <code>check_is_empty()</code> convenience function</li>
+<li>added <code>check_is_empty_list()</code> convenience function</li>
+<li>added <code>IsIndexable::check()</code></li>
+<li>added <code>IsIndexable::checkList()</code></li>
+<li>added <code>IsIndexable::inspect()</code></li>
+<li>added <code>IsIndexable::inspectList()</code></li>
+<li>added <code>check_is_indexable()</code> convenience function</li>
+<li>added <code>check_is_indexable_list()</code> convenience function</li>
+<li>added <code>IsInteger::check()</code></li>
+<li>added <code>IsInteger::checkList()</code></li>
+<li>added <code>IsInteger::inspect()</code></li>
+<li>added <code>IsInteger::inspectList()</code></li>
+<li>added <code>check_is_integer()</code> convenience function</li>
+<li>added <code>check_is_integer_list()</code> convenience function</li>
+<li>added <code>IsLogical::check()</code></li>
+<li>added <code>IsLogical::checkList()</code></li>
+<li>added <code>IsLogical::inspect()</code></li>
+<li>added <code>IsLogical::inspectList()</code></li>
+<li>added <code>check_is_logical()</code> convenience function</li>
+<li>added <code>check_is_logical_list()</code> convenience function</li>
+<li>added <code>IsNull::check()</code></li>
+<li>added <code>IsNull::checkList()</code></li>
+<li>added <code>IsNull::inspect()</code></li>
+<li>added <code>IsNull::inspectList()</code></li>
+<li>added <code>check_is_null()</code> convenience function</li>
+<li>added <code>check_is_null_list()</code> convenience function</li>
+<li>added <code>IsNumeric::check()</code></li>
+<li>added <code>IsNumeric::checkList()</code></li>
+<li>added <code>IsNumeric::inspect()</code></li>
+<li>added <code>IsNumeric::inspectList()</code></li>
+<li>added <code>check_is_numeric()</code> convenience function</li>
+<li>added <code>check_is_numeric_list()</code> convenience function</li>
+<li>added <code>IsObject::check()</code></li>
+<li>added <code>IsObject::checkList()</code></li>
+<li>added <code>IsObject::inspect()</code></li>
+<li>added <code>IsObject::inspectList()</code></li>
+<li>added <code>check_is_object()</code> convenience function</li>
+<li>added <code>check_is_object_list()</code> convenience function</li>
+<li>added <code>IsObjectOfType::check()</code></li>
+<li>added <code>IsObjectOfType::checkList()</code></li>
+<li>added <code>IsObjectOfType::inspect()</code></li>
+<li>added <code>IsObjectOfType::inspectList()</code></li>
+<li>added <code>check_is_object_of_type()</code> convenience function</li>
+<li>added <code>check_is_object_of_type_list()</code> convenience function</li>
+<li>added <code>IsPcreRegex::check()</code></li>
+<li>added <code>IsPcreRegex::checkList()</code></li>
+<li>added <code>IsPcreRegex::inspect()</code></li>
+<li>added <code>IsPcreRegex::inspectList()</code></li>
+<li>added <code>check_is_pcre_regex()</code> convenience function</li>
+<li>added <code>check_is_pcre_regex_list()</code> convenience function</li>
+<li>added <code>IsResource::check()</code></li>
+<li>added <code>IsResource::checkList()</code></li>
+<li>added <code>IsResource::inspect()</code></li>
+<li>added <code>IsResource::inspectList()</code></li>
+<li>added <code>check_is_resource()</code> convenience function</li>
+<li>added <code>check_is_resource_list()</code> convenience function</li>
+</ul></li>
+<li>Added type-hinting / strict type declaration support for entities:
+<ul>
+<li>added empty <code>Entity</code> interface</li>
+</ul></li>
+<li>Added immutable support to entities
+<ul>
+<li>added <code>ReadOnlyForeverException</code> exception</li>
+<li>added <code>setReadOnlyForever()</code> to <code>WriteProtectableEntity</code> interface</li>
+<li><code>WriteProtectableEntity::setReadWrite()</code> must now throw <code>ReadOnlyForeverException</code> if <code>setReadOnlyForever()</code> has been called</li>
+<li>added <code>setReadOnlyForever()</code> to <code>WriteProtectTab</code> trait</li>
+<li><code>WriteProtectTab::setReadWrite()</code> now throws <code>ReadOnlyForeverException</code> if <code>WriteProtectTab::setReadOnlyForever()</code> has been called</li>
+</ul></li>
+<li>Added support for iterating into the contents of lists
+<ul>
+<li>added <code>RecursiveTraverse::using()</code></li>
+</ul></li>
+</ul>
+<h3 id="refactor">Refactor</h3>
+<p>Before refactoring, we checked Packagist to make sure that these changes would not break anything that depends upon The Missing Bits.</p>
+<ul>
+<li>Moved several classes from <code>TypeInspectors</code> to <code>TypeChecks</code>
+<ul>
+<li>moved <code>IsList</code></li>
+<li>moved <code>IsListyObject</code></li>
+</ul></li>
+<li>Move away from <code>__invoke()</code> methods for objects
+<ul>
+<li>in practice, using objects via their <code>__invoke()</code> methods results in code that's hard to read and understand</li>
+<li>we're switching to having the object's main method be the same as the class name</li>
+<li><code>FilterBacktrace::__invoke()</code> is now <code>FilterBacktrace::filterBacktrace()</code></li>
+<li><code>GetArrayTypes::__invoke()</code> is now <code>GetArrayTypes::getArrayTypes()</code></li>
+<li><code>GetCaller::__invoke()</code> is now <code>GetCaller::getCaller()</code></li>
+<li><code>GetClassTraits::__invoke()</code> is now <code>GetClassTraits::getClassTraits()</code></li>
+<li><code>GetClassTypes::__invoke()</code> is now <code>GetClassTypes::getClassTypes()</code></li>
+<li><code>GetDuckTypes::__invoke()</code> is now <code>GetDuckTypes::getDuckTypes()</code></li>
+<li><code>GetNamespace::__invoke()</code> is now <code>GetNamespace::getNamespace()</code></li>
+<li><code>GetNumericType::__invoke()</code> is now <code>GetNumericType::getNumericType()</code></li>
+<li><code>GetObjectTypes::__invoke()</code> is now <code>GetObjectTypes::getObjectTypes()</code></li>
+<li><code>GetPrintableType::__invoke()</code> is now <code>GetPrintableType::getPrintableType()</code></li>
+<li><code>GetStrictTypes::__invoke()</code> is now <code>GetStrictTypes::getStrictTypes()</code></li>
+<li><code>GetStringDuckTypes::__invoke()</code> is now <code>GetStringDuckTypes::getStringDuckTypes()</code></li>
+<li><code>GetStringTypes::__invoke()</code> is now <code>GetStringTypes::getStringTypes()</code></li>
+<li><code>StripNamespace::__invoke()</code> is now <code>StripNamespace::stripNamespace()</code></li>
+</ul></li>
+<li>Move away from 'is_XXX()' for check functions
+<ul>
+<li>we want to avoid current and future clashes with PHP core</li>
+<li>moved <code>is_list()</code> to <code>check_is_list()</code></li>
+<li>moved <code>is_listy_object()</code> to <code>check_is_listy_object()</code></li>
+<li>moved <code>is_stringy()</code> to <code>check_is_stringy()</code></li>
+</ul></li>
+</ul>
 <h2 id="v190">v1.9.0</h2>
 <p>Released Sun 31st July 2016.</p>
-<h3 id="new">New</h3>
+<h3 id="new-1">New</h3>
 <ul>
 <li>Added support for detecting lists
 <ul>
@@ -99,7 +310,7 @@
 </ul>
 <h2 id="v180">v1.8.0</h2>
 <p>Released Sun 31st July 2016.</p>
-<h3 id="new-1">New</h3>
+<h3 id="new-2">New</h3>
 <ul>
 <li>Added support for iterating over lists
 <ul>
@@ -122,7 +333,7 @@
 </ul>
 <h2 id="v170">v1.7.0</h2>
 <p>Released Sun 19th June 2016.</p>
-<h3 id="new-2">New</h3>
+<h3 id="new-3">New</h3>
 <ul>
 <li>Added some helpers to overcome <code>array_merge()</code> performance issues.
 <ul>
@@ -141,7 +352,7 @@
 </ul>
 <h2 id="v160">v1.6.0</h2>
 <p>Released Sun 12th June 2016.</p>
-<h3 id="new-3">New</h3>
+<h3 id="new-4">New</h3>
 <ul>
 <li>Added some interfaces to map objects to PHP types / inspect objects as you'd inspect a PHP type
 <ul>
@@ -158,7 +369,7 @@
 </ul>
 <h2 id="v150">v1.5.0</h2>
 <p>Released Tue 31st May 2016.</p>
-<h3 id="new-4">New</h3>
+<h3 id="new-5">New</h3>
 <ul>
 <li>Extra duck type features
 <ul>
@@ -188,7 +399,7 @@
 </ul>
 <h2 id="v140">v1.4.0</h2>
 <p>Released Tue 24th May 2016.</p>
-<h3 id="new-5">New</h3>
+<h3 id="new-6">New</h3>
 <ul>
 <li>Added support for inspecting class, interface, trait and object names
 <ul>
@@ -206,7 +417,7 @@
 </ul>
 <h2 id="v130">v1.3.0</h2>
 <p>Released Sunday 22nd May 2016.</p>
-<h3 id="new-6">New</h3>
+<h3 id="new-7">New</h3>
 <ul>
 <li>Added a richer set of type inspectors, based on code originally from <code>ganbarodigital/php-defensive</code>
 <ul>
@@ -222,7 +433,7 @@
 </ul>
 <h2 id="v120">v1.2.0</h2>
 <p>Released Monday 9th May 2016.</p>
-<h3 id="new-7">New</h3>
+<h3 id="new-8">New</h3>
 <ul>
 <li>Added support for entities that can switch between a read-only mode and read-write
 <ul>
@@ -241,13 +452,13 @@
 </ul>
 <h2 id="v110">v1.1.0</h2>
 <p>Released Sunday 17th April 2016.</p>
-<h3 id="new-8">New</h3>
+<h3 id="new-9">New</h3>
 <ul>
 <li>Added <a href="types/GetPrintableType.html"><code>GetPrintableType</code></a></li>
 </ul>
 <h2 id="v100">v1.0.0</h2>
 <p>Released Sunday 17th April 2016.</p>
-<h3 id="new-9">New</h3>
+<h3 id="new-10">New</h3>
 <ul>
 <li>Added <a href="strings/vnsprintf.html"><code>vnsprint()</code></a></li>
 </ul>
@@ -255,23 +466,54 @@
 
                         <nav class="pageflow">
               <ul>
-                                    <li><a href="installation.html">Prev: Installation</a></li>
-                                                      <li><a href="contributing.html">Next: Contributing</a></li>
+                                    <li><a href="http://ganbarodigital.github.io/php-the-missing-bits/installation.html">Prev: Installation</a></li>
+                                                      <li><a href="http://ganbarodigital.github.io/php-the-missing-bits/contributing.html">Next: Contributing</a></li>
                                 </ul>
             </nav>
                     </main>
 
         <aside class="sidebar">
+                            <h2>This Section</h2>
+                <nav>
+                    <ul>
+                                                                                <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/index.html">Home</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/license.html">License</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/installation.html">Installation</a>
+                            </li>
+                                                                                                            <li>
+                                <strong>Changelog</strong>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/contributing.html">Contributing</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/code-of-conduct.html">Code Of Conduct</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/authors.html">Authors</a>
+                            </li>
+                                                                        </ul>
+                </nav>
+            
             <h2>This Page</h2>
             <nav class="toc" data-type="ishi-toc" data-max-depth="3">
             </nav>
         </aside>
+
         <footer>
             <div class="strapline">
-                <p>Copyright &copy; 2015 <a href="http://ganbarodigital.com">Ganbaro Digital Ltd</a>. Released under the <a href="http://ganbarodigital.github.io/php-the-missing-bits/license.html">New BSD</a> license.
-                                            Find PHP: The Missing Bits on <a href="https://github.com/ganbarodigital/php-the-missing-bits">GitHub</a>.
-                                        Built with <a href="http://couscous.io/">Couscous</a>.
-                </p>
+                                <p>                    Copyright &copy; 2015-present <a href="http://ganbarodigital.com">Ganbaro Digital Ltd</a>.
+                    &nbsp;
+                                        Released under an open-source license.
+                    &nbsp;
+                                    </p>
+                                                    <p>Find PHP: The Missing Bits on <a href="https://github.com/ganbarodigital/php-the-missing-bits">GitHub</a>.</p>
+                                </p>
             </div>
         </footer>
     <script src="http://ganbarodigital.github.io/php-the-missing-bits/assets/laroux.js"></script>

@@ -5052,7 +5052,7 @@ iframe {
     -webkit-order: 2;
         -ms-flex-order: 2;
             order: 2;
-    width: 250px;
+    min-width: 250px;
     padding-left: 16px;
     padding-right: 16px;
     padding-top: 16px;

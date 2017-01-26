@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!--[if lt IE 9]>
+            <script src="assets/html5shiv.js"></script>
+            <script src="assets/html5printshiv.js"></script>
+        <![endif]-->
+        <meta charset="utf-8"/>
+        <title>PHP: The Missing Bits from Ganbaro Digital</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="http://ganbarodigital.github.io/php-the-missing-bits/assets/docs.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="http://ganbarodigital.github.io/php-the-missing-bits/assets/prism.css">
+        <script src="http://ganbarodigital.github.io/php-the-missing-bits/assets/prism.js"></script>
+    </head>
+    <body data-ishi-anchors="1">
+        <header role="banner">
+            <div>
+                <p style="font-size: 34px; padding-top: 10px">PHP: The Missing Bits</p>
+                <p style="font-size: 18px; border-bottom: 1px solid; padding-bottom: 10px">Features that we wish came with PHP</p>
+            </div>
+            <!--<a href="http://ganbarodigital.github.io/php-the-missing-bits/index.html">
+                <img src="http://ganbarodigital.github.io/php-the-missing-bits/assets/ganbarodigital.svg" width="60" height="60" style="vertical-align: middle; float: left; margin-right: 15px">
+            </a>-->
+            <nav class="navbar topbar">
+                <ul>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/index.html">Home</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/arrays/index.html">Arrays</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/checks/index.html">Checks</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/classes-objects/index.html">Classes and Objects</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/entities/index.html">Entities</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/lists/index.html">Lists</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/strings/index.html">Strings</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/traces/index.html">Traces</a>
+                        </li>
+                                            <li class="current">
+                            <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/types/index.html">Types</a>
+                        </li>
+                                    </ul>
+            </nav>
+        </header>
+                    <header role="subnav">
+                <nav class="navbar">
+                    <ul>
+                                                    <li class="">
+                                <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/index.html">Type Functions and Classes</a>
+                            </li>
+                                                    <li class="">
+                                <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/type-checks.html">Type Checks</a>
+                            </li>
+                                                    <li class="current">
+                                <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/types/type-inspectors.html">Type Inspectors</a>
+                            </li>
+                                                    <li class="">
+                                <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/type-interfaces.html">Type Interfaces</a>
+                            </li>
+                                            </ul>
+                </nav>
+            </header>
+                <main role="main">
+                        <nav class="pageflow">
+              <ul>
+                                    <li><a href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetObjectTypes.getObjectTypes.html">Prev: GetObjectTypes::getObjectTypes()</a></li>
+                                                      <li><a href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetPrintableType.getPrintableType.html">Next: GetPrintableType::getPrintableType()</a></li>
+                                </ul>
+            </nav>
+            
+            <article>
+                <h1 id="getprintabletype-class">GetPrintableType class</h1>
+<div class="callout info">
+<p>Since version 1.1.0</p>
+</div>
+<h2 id="description">Description</h2>
+<p><code>GetPrintableType</code> returns the PHP type of the data that you pass to it.</p>
+<p>It is designed for use in error logging and exception messages. It is a replacement for PHP's built-in <code>gettype()</code> function.</p>
+<h2 id="public-interface">Public Interface</h2>
+<p><code>GetPrintableType</code> has the following public interface:</p>
+<pre><code class="language-php">namespace GanbaroDigital\MissingBits\TypeInspectors;
+
+/**
+ * GetPrintableType will tell you the PHP data type of any given input data.
+ */
+class GetPrintableType
+{
+    /**
+     * use this flag for minimum output
+     * @var int
+     */
+    const FLAG_NONE = 0;
+
+    /**
+     * use this flag to see classnames in the return value
+     * @var int
+     */
+    const FLAG_CLASSNAME = 1;
+
+    /**
+     * use this flag to see what kind of callable `$item` is
+     * @var int
+     */
+    const FLAG_CALLABLE_DETAILS = 2;
+
+    /**
+     * use this flag to see the value of `$item`
+     * @var int
+     */
+    const FLAG_SCALAR_VALUE = 4;
+
+    /**
+     * current maximum possible value for `$flags`
+     * @var int
+     */
+    const FLAG_MAX_VALUE = 7;
+
+    /**
+     * default value for `$flags` if you don't provide one
+     * @var int
+     */
+    const FLAG_DEFAULTS = 7;
+
+    /**
+     * what PHP type is $item?
+     *
+     * @param  mixed $item
+     *         the data to examine
+     * @param  int $flags
+     *         options to change what we put in the return value
+     * @return string
+     *         the data type of $item
+     */
+    public function getPrintableType($item, $flags = self::FLAG_DEFAULTS);
+
+    /**
+     * what PHP type is $item?
+     *
+     * @param  mixed $item
+     *         the data to examine
+     * @param  int $flags
+     *         options to change what we put in the return value
+     * @return string
+     *         the data type of $item
+     */
+    public static function of($item, $flags = self::FLAG_DEFAULTS);
+}</code></pre>
+<h2 id="methods">Methods</h2>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="GetPrintableType.getPrintableType.html"><code>GetPrintableType::getPrintableType()</code></a></td>
+<td>object</td>
+</tr>
+<tr>
+<td><a href="GetPrintableType.of.html"><code>GetPrintableType::of()</code></a></td>
+<td>static</td>
+</tr>
+</tbody>
+</table>
+<h2 id="class-contract">Class Contract</h2>
+<p>Here is the contract for this class:</p>
+<pre><code>GanbaroDigital\MissingBits\TypeInspectors\GetPrintableType
+ [x] Can instantiate
+ [x] Can use as object
+ [x] Can call statically
+ [x] Can call as function
+ [x] Will use default flags if invalid flags provided</code></pre>
+<p>Class contracts are built from this class's unit tests.</p>
+<div class="callout success">
+Future releases of this class will not break this contract.
+</div>
+<div class="callout info">
+<p>Future releases of this class may add to this contract. New additions may include:</p>
+<ul>
+<li>clarifying existing behaviour (e.g. stricter contract around input or return types)</li>
+<li>add new behaviours (e.g. extra trait methods)</li>
+</ul>
+</div>
+<div class="callout warning">
+<p>When you use this class, you can only rely on the behaviours documented by this contract.</p>
+<p>If you:</p>
+<ul>
+<li>find other ways to use this class,</li>
+<li>or depend on behaviours that are not covered by a unit test,</li>
+<li>or depend on undocumented internal states of this class,</li>
+</ul>
+<p>... your code may not work in the future.</p>
+</div>
+<h2 id="notes">Notes</h2>
+<p>None at this time.</p>
+            </article>
+
+                        <nav class="pageflow">
+              <ul>
+                                    <li><a href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetObjectTypes.getObjectTypes.html">Prev: GetObjectTypes::getObjectTypes()</a></li>
+                                                      <li><a href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetPrintableType.getPrintableType.html">Next: GetPrintableType::getPrintableType()</a></li>
+                                </ul>
+            </nav>
+                    </main>
+
+        <aside class="sidebar">
+                            <h2>This Section</h2>
+                <nav>
+                    <ul>
+                                                                                <li>
+                                <strong>GetPrintableType class</strong>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetPrintableType.getPrintableType.html">GetPrintableType::getPrintableType()</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetPrintableType.of.html">GetPrintableType::of()</a>
+                            </li>
+                                                                        </ul>
+                </nav>
+            
+            <h2>This Page</h2>
+            <nav class="toc" data-type="ishi-toc" data-max-depth="3">
+            </nav>
+        </aside>
+
+        <footer>
+            <div class="strapline">
+                                <p>                    Copyright &copy; 2015-present <a href="http://ganbarodigital.com">Ganbaro Digital Ltd</a>.
+                    &nbsp;
+                                        Released under an open-source license.
+                    &nbsp;
+                                    </p>
+                                                    <p>Find PHP: The Missing Bits on <a href="https://github.com/ganbarodigital/php-the-missing-bits">GitHub</a>.</p>
+                                </p>
+            </div>
+        </footer>
+    <script src="http://ganbarodigital.github.io/php-the-missing-bits/assets/laroux.js"></script>
+    <script src="http://ganbarodigital.github.io/php-the-missing-bits/assets/ishi.js"></script>
+    </body>
+</html>

@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!--[if lt IE 9]>
+            <script src="assets/html5shiv.js"></script>
+            <script src="assets/html5printshiv.js"></script>
+        <![endif]-->
+        <meta charset="utf-8"/>
+        <title>PHP: The Missing Bits from Ganbaro Digital</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="http://ganbarodigital.github.io/php-the-missing-bits/assets/docs.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="http://ganbarodigital.github.io/php-the-missing-bits/assets/prism.css">
+        <script src="http://ganbarodigital.github.io/php-the-missing-bits/assets/prism.js"></script>
+    </head>
+    <body data-ishi-anchors="1">
+        <header role="banner">
+            <div>
+                <p style="font-size: 34px; padding-top: 10px">PHP: The Missing Bits</p>
+                <p style="font-size: 18px; border-bottom: 1px solid; padding-bottom: 10px">Features that we wish came with PHP</p>
+            </div>
+            <!--<a href="http://ganbarodigital.github.io/php-the-missing-bits/index.html">
+                <img src="http://ganbarodigital.github.io/php-the-missing-bits/assets/ganbarodigital.svg" width="60" height="60" style="vertical-align: middle; float: left; margin-right: 15px">
+            </a>-->
+            <nav class="navbar topbar">
+                <ul>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/index.html">Home</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/arrays/index.html">Arrays</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/checks/index.html">Checks</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/classes-objects/index.html">Classes and Objects</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/entities/index.html">Entities</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/lists/index.html">Lists</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/strings/index.html">Strings</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/traces/index.html">Traces</a>
+                        </li>
+                                            <li class="current">
+                            <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/types/index.html">Types</a>
+                        </li>
+                                    </ul>
+            </nav>
+        </header>
+                    <header role="subnav">
+                <nav class="navbar">
+                    <ul>
+                                                    <li class="">
+                                <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/index.html">Type Functions and Classes</a>
+                            </li>
+                                                    <li class="">
+                                <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/type-checks.html">Type Checks</a>
+                            </li>
+                                                    <li class="current">
+                                <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/types/type-inspectors.html">Type Inspectors</a>
+                            </li>
+                                                    <li class="">
+                                <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/type-interfaces.html">Type Interfaces</a>
+                            </li>
+                                            </ul>
+                </nav>
+            </header>
+                <main role="main">
+                        <nav class="pageflow">
+              <ul>
+                                    <li><a href="http://ganbarodigital.github.io/php-the-missing-bits/types/get_printable_type.html">Prev: get_printable_type()</a></li>
+                                                      <li><a href="http://ganbarodigital.github.io/php-the-missing-bits/types/get_string_duck_types.html">Next: get_string_duck_types()</a></li>
+                                </ul>
+            </nav>
+            
+            <article>
+                <h1 id="get_strict_types">get_strict_types()</h1>
+<div class="callout info">
+Since v1.3.0
+</div>
+<h2 id="description">Description</h2>
+<p><code>get_strict_types()</code> returns a list of all strict PHP types for a given value or variable. The list is ordered with the most specific match first.</p>
+<pre><code class="language-php">use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
+public static array get_strict_types($item);</code></pre>
+<h2 id="parameters">Parameters</h2>
+<p>The input parameters are:</p>
+<ul>
+<li><code>mixed $item</code> - the item to examine</li>
+</ul>
+<h2 id="return-value">Return Value</h2>
+<p><code>get_strict_types()</code> returns an array. It contains a list of all valid PHP types for <code>$item</code>.</p>
+<h3 id="example-return-values">Example Return Values</h3>
+<p>Here's a list of examples of accepted input values:</p>
+<pre><code class="language-php">var_dump(get_strict_types(null));
+
+// outputs
+//
+// array(1) {
+//   ["NULL"]=&gt;
+//   string(4) "NULL"
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_strict_types([1,2,3]));
+
+// outputs
+//
+// array(1) {
+//   ["array"]=&gt;
+//   string(5) "array"
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_strict_types([GetStrictTypes::class, "from"]));
+
+// outputs
+//
+// array(2) {
+//   ["callable"]=&gt;
+//   string(8) "callable"
+//   ["array"]=&gt;
+//   string(5) "array"
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_strict_types(function(){}));
+
+// outputs
+//
+// array(2) {
+//   ["Closure"]=&gt;
+//   string(7) "Closure"
+//   ["callable"]=&gt;
+//   string(8) "callable"
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_strict_types(true));
+
+// outputs
+//
+// array(1) {
+//   ["boolean"]=&gt;
+//   string(7) "boolean"
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_strict_types(false));
+
+// outputs
+//
+// array(1) {
+//   ["boolean"]=&gt;
+//   string(7) "boolean"
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_strict_types(0.0));
+
+// outputs
+//
+// array(1) {
+//   ["double"]=&gt;
+//   string(6) "double"
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_strict_types(3.1415927));
+
+// outputs
+//
+// array(1) {
+//   ["double"]=&gt;
+//   string(6) "double"
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_strict_types(0));
+
+// outputs
+//
+// array(1) {
+//   ["integer"]=&gt;
+//   string(7) "integer"
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_strict_types(100));
+
+// outputs
+//
+// array(1) {
+//   ["integer"]=&gt;
+//   string(7) "integer"
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_strict_types(-100));
+
+// outputs
+//
+// array(1) {
+//   ["integer"]=&gt;
+//   string(7) "integer"
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_strict_types(new ArrayObject));
+
+// outputs
+//
+// array(6) {
+//   ["ArrayObject"]=&gt;
+//   string(11) "ArrayObject"
+//   ["IteratorAggregate"]=&gt;
+//   string(17) "IteratorAggregate"
+//   ["Traversable"]=&gt;
+//   string(11) "Traversable"
+//   ["ArrayAccess"]=&gt;
+//   string(11) "ArrayAccess"
+//   ["Serializable"]=&gt;
+//   string(12) "Serializable"
+//   ["Countable"]=&gt;
+//   string(9) "Countable"
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_strict_types(new GetStrictTypes));
+
+// outputs
+//
+// array(2) {
+//   ["GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes"]=&gt;
+//   string(56) "GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes"
+//   ["callable"]=&gt;
+//   string(8) "callable"
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_strict_types((object)[]));
+
+// outputs
+//
+// array(1) {
+//   ["stdClass"]=&gt;
+//   string(8) "stdClass"
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_strict_types(STDIN));
+
+// outputs
+//
+// array(1) {
+//   ["resource"]=&gt;
+//   string(8) "resource"
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_strict_types("true"));
+
+// outputs
+//
+// array(1) {
+//   ["string"]=&gt;
+//   string(6) "string"
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_strict_types("false"));
+
+// outputs
+//
+// array(1) {
+//   ["string"]=&gt;
+//   string(6) "string"
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_strict_types("0.0"));
+
+// outputs
+//
+// array(2) {
+//   ["double"]=&gt;
+//   string(6) "double"
+//   ["string"]=&gt;
+//   string(6) "string"
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_strict_types("3.1415927"));
+
+// outputs
+//
+// array(2) {
+//   ["double"]=&gt;
+//   string(6) "double"
+//   ["string"]=&gt;
+//   string(6) "string"
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_strict_types("0"));
+
+// outputs
+//
+// array(2) {
+//   ["integer"]=&gt;
+//   string(7) "integer"
+//   ["string"]=&gt;
+//   string(6) "string"
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_strict_types("100"));
+
+// outputs
+//
+// array(2) {
+//   ["integer"]=&gt;
+//   string(7) "integer"
+//   ["string"]=&gt;
+//   string(6) "string"
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_strict_types(new Exception(__FILE__)));
+
+// outputs
+//
+// array(3) {
+//   ["Exception"]=&gt;
+//   string(9) "Exception"
+//   ["Throwable"]=&gt;
+//   string(9) "Throwable"
+//   ["string"]=&gt;
+//   string(6) "string"
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_strict_types("hello, world!"));
+
+// outputs
+//
+// array(1) {
+//   ["string"]=&gt;
+//   string(6) "string"
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_strict_types(ArrayObject::class));
+
+// outputs
+//
+// array(1) {
+//   ["string"]=&gt;
+//   string(6) "string"
+// }</code></pre>
+<pre><code class="language-php">var_dump(get_strict_types(Traversable::class));
+
+// outputs
+//
+// array(1) {
+//   ["string"]=&gt;
+//   string(6) "string"
+// }</code></pre>
+<h2 id="throws">Throws</h2>
+<p><code>get_strict_types()</code> does not throw any exceptions.</p>
+<h2 id="works-with">Works With</h2>
+<p><code>get_strict_types()</code> is supported on these versions of PHP:</p>
+<table>
+<thead>
+<tr>
+<th>PHP Version</th>
+<th>Works?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5.5</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>5.6</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>7.0</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>HHVM</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+            </article>
+
+                        <nav class="pageflow">
+              <ul>
+                                    <li><a href="http://ganbarodigital.github.io/php-the-missing-bits/types/get_printable_type.html">Prev: get_printable_type()</a></li>
+                                                      <li><a href="http://ganbarodigital.github.io/php-the-missing-bits/types/get_string_duck_types.html">Next: get_string_duck_types()</a></li>
+                                </ul>
+            </nav>
+                    </main>
+
+        <aside class="sidebar">
+                            <h2>This Section</h2>
+                <nav>
+                    <ul>
+                                                                                <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/type-inspectors.html">Type Inspectors</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetArrayTypes.class.html">GetArrayTypes class</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetClassTraits.class.html">GetClassTraits class</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetClassTypes.class.html">GetClassTypes class</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetDuckTypes.class.html">GetDuckTypes class</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetNamespace.class.html">GetNamespace class</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetNumericType.class.html">GetNumericType class</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetObjectTypes.class.html">GetObjectTypes class</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetPrintableType.class.html">GetPrintableType class</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetStrictTypes.class.html">GetStrictTypes class</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetStringDuckTypes.class.html">GetStringDuckTypes class</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetStringTypes.class.html">GetStringTypes class</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/StripNamespace.class.html">StripNamespace class</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/get_array_types.html">get_array_types()</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/get_class_traits.html">get_class_traits()</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/get_class_types.html">get_class_types()</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/get_duck_types.html">get_duck_types()</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/get_namespace.html">get_namespace()</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/get_numeric_type.html">get_numeric_type()</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/get_object_types.html">get_object_types()</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/get_printable_type.html">get_printable_type()</a>
+                            </li>
+                                                                                                            <li>
+                                <strong>get_strict_types()</strong>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/get_string_duck_types.html">get_string_duck_types()</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/get_string_types.html">get_string_types()</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/strip_namespace.html">strip_namespace()</a>
+                            </li>
+                                                                        </ul>
+                </nav>
+            
+            <h2>This Page</h2>
+            <nav class="toc" data-type="ishi-toc" data-max-depth="3">
+            </nav>
+        </aside>
+
+        <footer>
+            <div class="strapline">
+                                <p>                    Copyright &copy; 2015-present <a href="http://ganbarodigital.com">Ganbaro Digital Ltd</a>.
+                    &nbsp;
+                                        Released under an open-source license.
+                    &nbsp;
+                                    </p>
+                                                    <p>Find PHP: The Missing Bits on <a href="https://github.com/ganbarodigital/php-the-missing-bits">GitHub</a>.</p>
+                                </p>
+            </div>
+        </footer>
+    <script src="http://ganbarodigital.github.io/php-the-missing-bits/assets/laroux.js"></script>
+    <script src="http://ganbarodigital.github.io/php-the-missing-bits/assets/ishi.js"></script>
+    </body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!--[if lt IE 9]>
+            <script src="assets/html5shiv.js"></script>
+            <script src="assets/html5printshiv.js"></script>
+        <![endif]-->
+        <meta charset="utf-8"/>
+        <title>PHP: The Missing Bits from Ganbaro Digital</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="http://ganbarodigital.github.io/php-the-missing-bits/assets/docs.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="http://ganbarodigital.github.io/php-the-missing-bits/assets/prism.css">
+        <script src="http://ganbarodigital.github.io/php-the-missing-bits/assets/prism.js"></script>
+    </head>
+    <body data-ishi-anchors="1">
+        <header role="banner">
+            <div>
+                <p style="font-size: 34px; padding-top: 10px">PHP: The Missing Bits</p>
+                <p style="font-size: 18px; border-bottom: 1px solid; padding-bottom: 10px">Features that we wish came with PHP</p>
+            </div>
+            <!--<a href="http://ganbarodigital.github.io/php-the-missing-bits/index.html">
+                <img src="http://ganbarodigital.github.io/php-the-missing-bits/assets/ganbarodigital.svg" width="60" height="60" style="vertical-align: middle; float: left; margin-right: 15px">
+            </a>-->
+            <nav class="navbar topbar">
+                <ul>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/index.html">Home</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/arrays/index.html">Arrays</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/checks/index.html">Checks</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/classes-objects/index.html">Classes and Objects</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/entities/index.html">Entities</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/lists/index.html">Lists</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/strings/index.html">Strings</a>
+                        </li>
+                                            <li class="current">
+                            <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/traces/index.html">Traces</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/index.html">Types</a>
+                        </li>
+                                    </ul>
+            </nav>
+        </header>
+                    <header role="subnav">
+                <nav class="navbar">
+                    <ul>
+                                                    <li class="">
+                                <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/traces/index.html">Stack Trace Functions and Classes</a>
+                            </li>
+                                                    <li class="">
+                                <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/traces/HowThePhpStackFrameWorks.html">How The PHP Stack Frame Works</a>
+                            </li>
+                                                    <li class="current">
+                                <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/traces/trace-inspectors.html">Stack Trace Inspectors</a>
+                            </li>
+                                            </ul>
+                </nav>
+            </header>
+                <main role="main">
+                        <nav class="pageflow">
+              <ul>
+                                    <li><a href="http://ganbarodigital.github.io/php-the-missing-bits/traces/GetCaller.from.html">Prev: GetCaller::from()</a></li>
+                                                      <li><a href="http://ganbarodigital.github.io/php-the-missing-bits/traces/StackFrame.class.html">Next: StackFrame class</a></li>
+                                </ul>
+            </nav>
+            
+            <article>
+                <h1 id="getcallergetcaller">GetCaller::getCaller()</h1>
+<div class="callout warning">
+Not yet in a tagged release
+</div>
+<h2 id="description">Description</h2>
+<p><code>GetCaller::getCaller()</code> examines a <code>debug_backtrace()</code> to work out who has called your code.</p>
+<p>It was introduced for use in error logging and exception messages.</p>
+<pre><code class="language-php">use GanbaroDigital\MissingBits\TraceInspectors\GetCaller;
+use GanbaroDigital\MissingBits\TraceInspectors\StackFrame;
+
+public StackFrame GetCaller::getCaller($backtrace, $filterList = []);</code></pre>
+<h2 id="parameters">Parameters</h2>
+<p>The input parameters are:</p>
+<ul>
+<li><code>$backtrace</code> - a <code>debug_backtrace()</code> return value to examine</li>
+<li><code>$filterList</code> - optional list of namespaces and classes to skip over</li>
+</ul>
+<h2 id="return-value">Return Value</h2>
+<p><code>GetCaller::getCaller()</code> returns a <a href="StackFrame.class.html"><code>StackFrame</code></a>.</p>
+<h2 id="how-to-use">How To Use</h2>
+<h3 id="find-out-who-called-you">Find Out Who Called You</h3>
+<p>Use <code>GetCaller::getCaller()</code> to extract the first full stack frame from a <code>debug_backtrace()</code> array.</p>
+<pre><code class="language-php">// import
+use GanbaroDigital\MissingBits\TraceInspectors\GetCaller;
+
+// call directly
+//
+// returns a StackFrame
+$trace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
+$finder = new GetCaller();
+$caller = $finder-&gt;getCaller($trace);
+echo (string)$caller;</code></pre>
+<h3 id="skip-callers-youre-not-interested-in">Skip Callers You're Not Interested In</h3>
+<p>You can give <code>GetCaller::getCaller()</code> a list of fully-qualified class names or namespaces to ignore. This allows you to put caller-finding code in a shared private method, like this:</p>
+<pre><code class="language-php">// imports
+use GanbaroDigital\MissingBits\TraceInspectors\GetCaller;
+use GanbaroDigital\MissingBits\TypeInspectors\GetNamespace;
+
+class RejectStrings
+{
+    public function check($item)
+    {
+        if (!is_stringy($item)) {
+            return;
+        }
+
+        // if we get here, we have rejected the input value
+        $caller = $this-&gt;findCaller();
+
+        // tell people who does not accept strings
+        throw new \RuntimeException("{$caller} - items cannot be strings");
+    }
+
+    private function findCaller()
+    {
+        $trace  = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
+        $finder = new GetCaller();
+        $frame  = $finder-&gt;getCaller($trace, [
+            self::class,
+            GetNamespace::from(self::class),
+        ]);
+
+        return (string)$frame;
+    }
+}</code></pre>
+<h2 id="throws">Throws</h2>
+<p><code>GetCaller::getCaller()</code> does not throw any exceptions.</p>
+<h2 id="notes">Notes</h2>
+<p>None at this time.</p>
+            </article>
+
+                        <nav class="pageflow">
+              <ul>
+                                    <li><a href="http://ganbarodigital.github.io/php-the-missing-bits/traces/GetCaller.from.html">Prev: GetCaller::from()</a></li>
+                                                      <li><a href="http://ganbarodigital.github.io/php-the-missing-bits/traces/StackFrame.class.html">Next: StackFrame class</a></li>
+                                </ul>
+            </nav>
+                    </main>
+
+        <aside class="sidebar">
+                            <h2>This Section</h2>
+                <nav>
+                    <ul>
+                                                                                <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/traces/GetCaller.class.html">GetCaller class</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/traces/GetCaller.from.html">GetCaller::from()</a>
+                            </li>
+                                                                                                            <li>
+                                <strong>GetCaller::getCaller()</strong>
+                            </li>
+                                                                        </ul>
+                </nav>
+            
+            <h2>This Page</h2>
+            <nav class="toc" data-type="ishi-toc" data-max-depth="3">
+            </nav>
+        </aside>
+
+        <footer>
+            <div class="strapline">
+                                <p>                    Copyright &copy; 2015-present <a href="http://ganbarodigital.com">Ganbaro Digital Ltd</a>.
+                    &nbsp;
+                                        Released under an open-source license.
+                    &nbsp;
+                                    </p>
+                                                    <p>Find PHP: The Missing Bits on <a href="https://github.com/ganbarodigital/php-the-missing-bits">GitHub</a>.</p>
+                                </p>
+            </div>
+        </footer>
+    <script src="http://ganbarodigital.github.io/php-the-missing-bits/assets/laroux.js"></script>
+    <script src="http://ganbarodigital.github.io/php-the-missing-bits/assets/ishi.js"></script>
+    </body>
+</html>

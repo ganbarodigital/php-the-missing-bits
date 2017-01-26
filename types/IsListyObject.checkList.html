@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!--[if lt IE 9]>
+            <script src="assets/html5shiv.js"></script>
+            <script src="assets/html5printshiv.js"></script>
+        <![endif]-->
+        <meta charset="utf-8"/>
+        <title>PHP: The Missing Bits from Ganbaro Digital</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="http://ganbarodigital.github.io/php-the-missing-bits/assets/docs.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="http://ganbarodigital.github.io/php-the-missing-bits/assets/prism.css">
+        <script src="http://ganbarodigital.github.io/php-the-missing-bits/assets/prism.js"></script>
+    </head>
+    <body data-ishi-anchors="1">
+        <header role="banner">
+            <div>
+                <p style="font-size: 34px; padding-top: 10px">PHP: The Missing Bits</p>
+                <p style="font-size: 18px; border-bottom: 1px solid; padding-bottom: 10px">Features that we wish came with PHP</p>
+            </div>
+            <!--<a href="http://ganbarodigital.github.io/php-the-missing-bits/index.html">
+                <img src="http://ganbarodigital.github.io/php-the-missing-bits/assets/ganbarodigital.svg" width="60" height="60" style="vertical-align: middle; float: left; margin-right: 15px">
+            </a>-->
+            <nav class="navbar topbar">
+                <ul>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/index.html">Home</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/arrays/index.html">Arrays</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/checks/index.html">Checks</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/classes-objects/index.html">Classes and Objects</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/entities/index.html">Entities</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/lists/index.html">Lists</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/strings/index.html">Strings</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/traces/index.html">Traces</a>
+                        </li>
+                                            <li class="current">
+                            <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/types/index.html">Types</a>
+                        </li>
+                                    </ul>
+            </nav>
+        </header>
+                    <header role="subnav">
+                <nav class="navbar">
+                    <ul>
+                                                    <li class="">
+                                <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/index.html">Type Functions and Classes</a>
+                            </li>
+                                                    <li class="current">
+                                <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/types/type-checks.html">Type Checks</a>
+                            </li>
+                                                    <li class="">
+                                <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/type-inspectors.html">Type Inspectors</a>
+                            </li>
+                                                    <li class="">
+                                <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/type-interfaces.html">Type Interfaces</a>
+                            </li>
+                                            </ul>
+                </nav>
+            </header>
+                <main role="main">
+                        <nav class="pageflow">
+              <ul>
+                                    <li><a href="http://ganbarodigital.github.io/php-the-missing-bits/types/IsListyObject.check.html">Prev: IsListyObject::check()</a></li>
+                                                      <li><a href="http://ganbarodigital.github.io/php-the-missing-bits/types/IsStringy.check.html">Next: IsStringy::check()</a></li>
+                                </ul>
+            </nav>
+            
+            <article>
+                <h1 id="islistyobjectchecklist">IsListyObject::checkList()</h1>
+<div class="callout info">
+<p>Since v1.9.0</p>
+</div>
+<h2 id="description">Description</h2>
+<p><code>IsListyObject::checkList()</code> - is every item in the list an object that's a valid PHP list?</p>
+<pre><code class="language-php">use GanbaroDigital\MissingBits\TypeChecks\IsListyObject;
+bool IsListyObject::checkList(mixed $list);</code></pre>
+<h2 id="parameters">Parameters</h2>
+<p><code>IsListyObject::checkList()</code> takes one parameter:</p>
+<ul>
+<li><code>mixed $list</code> - the value to inspect</li>
+</ul>
+<h2 id="return-value">Return Value</h2>
+<p><code>IsListyObject::checkList()</code> returns a boolean:</p>
+<ul>
+<li><code>true</code> if every value in <code>$list</code> is a <a href="IsListyObject.check.html">listy object</a></li>
+<li><code>false</code> otherwise</li>
+</ul>
+<h2 id="throws">Throws</h2>
+<p><code>IsListyObject::checkList()</code> throws an <code>InvalidArgumentException</code> if:</p>
+<ul>
+<li><code>$list</code> is not a valid list (see <a href="IsList.check.html"><code>IsList::check()</code></a> for details)</li>
+</ul>
+<h2 id="works-with">Works With</h2>
+<p><code>IsListyObject::checkList()</code> is supported on these versions of PHP:</p>
+<table>
+<thead>
+<tr>
+<th>PHP Version</th>
+<th>Works?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5.5</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>5.6</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>7.0</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>HHVM</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+            </article>
+
+                        <nav class="pageflow">
+              <ul>
+                                    <li><a href="http://ganbarodigital.github.io/php-the-missing-bits/types/IsListyObject.check.html">Prev: IsListyObject::check()</a></li>
+                                                      <li><a href="http://ganbarodigital.github.io/php-the-missing-bits/types/IsStringy.check.html">Next: IsStringy::check()</a></li>
+                                </ul>
+            </nav>
+                    </main>
+
+        <aside class="sidebar">
+                            <h2>This Section</h2>
+                <nav>
+                    <ul>
+                                                                                <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/type-checks.html">Type Checks</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/is_array_list.html">is_array_list()</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/is_assignable.html">is_assignable()</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/is_list.html">is_list()</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/is_listy_object.html">is_listy_object()</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/is_stringy.html">is_stringy()</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/IsArray.check.html">IsArray::check()</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/IsArray.checkList.html">IsArray::checkList()</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/IsAssignable.check.html">IsAssignable::check()</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/IsAssignable.checkList.html">IsAssignable::checkList()</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/IsList.check.html">IsList::check()</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/IsList.checkList.html">IsList::checkList()</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/IsListyObject.check.html">IsListyObject::check()</a>
+                            </li>
+                                                                                                            <li>
+                                <strong>IsListyObject::checkList()</strong>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/IsStringy.check.html">IsStringy::check()</a>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/IsStringy.checkList.html">IsStringy::checkList()</a>
+                            </li>
+                                                                        </ul>
+                </nav>
+            
+            <h2>This Page</h2>
+            <nav class="toc" data-type="ishi-toc" data-max-depth="3">
+            </nav>
+        </aside>
+
+        <footer>
+            <div class="strapline">
+                                <p>                    Copyright &copy; 2015-present <a href="http://ganbarodigital.com">Ganbaro Digital Ltd</a>.
+                    &nbsp;
+                                        Released under an open-source license.
+                    &nbsp;
+                                    </p>
+                                                    <p>Find PHP: The Missing Bits on <a href="https://github.com/ganbarodigital/php-the-missing-bits">GitHub</a>.</p>
+                                </p>
+            </div>
+        </footer>
+    <script src="http://ganbarodigital.github.io/php-the-missing-bits/assets/laroux.js"></script>
+    <script src="http://ganbarodigital.github.io/php-the-missing-bits/assets/ishi.js"></script>
+    </body>
+</html>

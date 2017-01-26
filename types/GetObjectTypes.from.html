@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!--[if lt IE 9]>
+            <script src="assets/html5shiv.js"></script>
+            <script src="assets/html5printshiv.js"></script>
+        <![endif]-->
+        <meta charset="utf-8"/>
+        <title>PHP: The Missing Bits from Ganbaro Digital</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="http://ganbarodigital.github.io/php-the-missing-bits/assets/docs.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="http://ganbarodigital.github.io/php-the-missing-bits/assets/prism.css">
+        <script src="http://ganbarodigital.github.io/php-the-missing-bits/assets/prism.js"></script>
+    </head>
+    <body data-ishi-anchors="1">
+        <header role="banner">
+            <div>
+                <p style="font-size: 34px; padding-top: 10px">PHP: The Missing Bits</p>
+                <p style="font-size: 18px; border-bottom: 1px solid; padding-bottom: 10px">Features that we wish came with PHP</p>
+            </div>
+            <!--<a href="http://ganbarodigital.github.io/php-the-missing-bits/index.html">
+                <img src="http://ganbarodigital.github.io/php-the-missing-bits/assets/ganbarodigital.svg" width="60" height="60" style="vertical-align: middle; float: left; margin-right: 15px">
+            </a>-->
+            <nav class="navbar topbar">
+                <ul>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/index.html">Home</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/arrays/index.html">Arrays</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/checks/index.html">Checks</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/classes-objects/index.html">Classes and Objects</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/entities/index.html">Entities</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/lists/index.html">Lists</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/strings/index.html">Strings</a>
+                        </li>
+                                            <li class="">
+                            <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/traces/index.html">Traces</a>
+                        </li>
+                                            <li class="current">
+                            <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/types/index.html">Types</a>
+                        </li>
+                                    </ul>
+            </nav>
+        </header>
+                    <header role="subnav">
+                <nav class="navbar">
+                    <ul>
+                                                    <li class="">
+                                <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/index.html">Type Functions and Classes</a>
+                            </li>
+                                                    <li class="">
+                                <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/type-checks.html">Type Checks</a>
+                            </li>
+                                                    <li class="current">
+                                <a class="current" href="http://ganbarodigital.github.io/php-the-missing-bits/types/type-inspectors.html">Type Inspectors</a>
+                            </li>
+                                                    <li class="">
+                                <a class="" href="http://ganbarodigital.github.io/php-the-missing-bits/types/type-interfaces.html">Type Interfaces</a>
+                            </li>
+                                            </ul>
+                </nav>
+            </header>
+                <main role="main">
+                        <nav class="pageflow">
+              <ul>
+                                    <li><a href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetObjectTypes.class.html">Prev: GetObjectTypes class</a></li>
+                                                      <li><a href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetObjectTypes.getObjectTypes.html">Next: GetObjectTypes::getObjectTypes()</a></li>
+                                </ul>
+            </nav>
+            
+            <article>
+                <h1 id="getobjecttypesfrom">GetObjectTypes::from()</h1>
+<div class="callout info">
+Since v1.3.0
+</div>
+<h2 id="description">Description</h2>
+<p><code>GetObjectTypes::from()</code> returns a list of all strict PHP types for a given PHP object. The list is ordered with the most specific match first.</p>
+<pre><code class="language-php">use GanbaroDigital\MissingBits\TypeInspectors\GetObjectTypes;
+public static array GetObjectTypes::from(object $item);</code></pre>
+<h2 id="parameters">Parameters</h2>
+<p>The input parameters are:</p>
+<ul>
+<li><code>object $item</code> - the item to examine</li>
+</ul>
+<h2 id="return-value">Return Value</h2>
+<p><code>GetObjectTypes::from()</code> returns an array.</p>
+<ul>
+<li>If <code>$item</code> is not an object, an empty list <code>[]</code> is returned</li>
+<li>We return a list of <code>$item</code>'s' class, the class's parents, and all interfaces it implements (directly or otherwise)</li>
+<li>We detect if <code>$item</code> is invokeable</li>
+<li>We detect if <code>$item</code> supports automatic conversion to a string</li>
+</ul>
+<p>The resulting list is a complete list of strict types where it is safe to use <code>$item</code>.</p>
+<div class="callout warning">
+<p>In PHP 7.0, <code>object</code> is not valid type declaration. That's why <code>GetObjectTypes::from()</code> does not include <code>object</code> in the returned list.</p>
+</div>
+<h3 id="example-return-values">Example Return Values</h3>
+<p>Here's a list of examples of accepted input values:</p>
+<pre><code class="language-php">var_dump(GetObjectTypes::from(function(){}));
+
+// outputs
+//
+// array(2) {
+//   ["Closure"]=&gt;
+//   string(7) "Closure"
+//   ["callable"]=&gt;
+//   string(8) "callable"
+// }</code></pre>
+<pre><code class="language-php">var_dump(GetObjectTypes::from(new ArrayObject));
+
+// outputs
+//
+// array(6) {
+//   ["ArrayObject"]=&gt;
+//   string(11) "ArrayObject"
+//   ["IteratorAggregate"]=&gt;
+//   string(17) "IteratorAggregate"
+//   ["Traversable"]=&gt;
+//   string(11) "Traversable"
+//   ["ArrayAccess"]=&gt;
+//   string(11) "ArrayAccess"
+//   ["Serializable"]=&gt;
+//   string(12) "Serializable"
+//   ["Countable"]=&gt;
+//   string(9) "Countable"
+// }</code></pre>
+<pre><code class="language-php">use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
+
+var_dump(GetObjectTypes::from(new GetStrictTypes));
+
+// outputs
+//
+// array(2) {
+//   ["GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes"]=&gt;
+//   string(56) "GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes"
+//   ["callable"]=&gt;
+//   string(8) "callable"
+// }</code></pre>
+<pre><code class="language-php">var_dump(GetObjectTypes::from((object)[]));
+
+// outputs
+//
+// array(1) {
+//   ["stdClass"]=&gt;
+//   string(8) "stdClass"
+// }</code></pre>
+<pre><code class="language-php">var_dump(GetObjectTypes::from(new Exception(__FILE__)));
+
+// outputs
+//
+// array(3) {
+//   ["Exception"]=&gt;
+//   string(9) "Exception"
+//   ["Throwable"]=&gt;
+//   string(9) "Throwable"
+//   ["string"]=&gt;
+//   string(6) "string"
+// }</code></pre>
+<p>Here's a list of examples of ingored input values:</p>
+<pre><code class="language-php">var_dump(GetObjectTypes::from(null));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(GetObjectTypes::from([1,2,3]));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
+
+var_dump(GetObjectTypes::from([GetStrictTypes::class, "from"]));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(GetObjectTypes::from(true));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(GetObjectTypes::from(false));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(GetObjectTypes::from(0.0));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(GetObjectTypes::from(3.1415927));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(GetObjectTypes::from(0));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(GetObjectTypes::from(100));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(GetObjectTypes::from(-100));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(GetObjectTypes::from(STDIN));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(GetObjectTypes::from("true"));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(GetObjectTypes::from("false"));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(GetObjectTypes::from("0.0"));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(GetObjectTypes::from("3.1415927"));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(GetObjectTypes::from("0"));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(GetObjectTypes::from("100"));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(GetObjectTypes::from("hello, world!"));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(GetObjectTypes::from(ArrayObject::class));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<pre><code class="language-php">var_dump(GetObjectTypes::from(Traversable::class));
+
+// outputs
+//
+// array(0) {
+// }</code></pre>
+<h2 id="throws">Throws</h2>
+<p><code>GetObjectTypes::from()</code> does not throw any exceptions.</p>
+<h2 id="works-with">Works With</h2>
+<p><code>GetObjectTypes::from()</code> is supported on these versions of PHP:</p>
+<table>
+<thead>
+<tr>
+<th>PHP Version</th>
+<th>Works?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5.5</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>5.6</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>7.0</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>HHVM</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+            </article>
+
+                        <nav class="pageflow">
+              <ul>
+                                    <li><a href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetObjectTypes.class.html">Prev: GetObjectTypes class</a></li>
+                                                      <li><a href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetObjectTypes.getObjectTypes.html">Next: GetObjectTypes::getObjectTypes()</a></li>
+                                </ul>
+            </nav>
+                    </main>
+
+        <aside class="sidebar">
+                            <h2>This Section</h2>
+                <nav>
+                    <ul>
+                                                                                <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetObjectTypes.class.html">GetObjectTypes class</a>
+                            </li>
+                                                                                                            <li>
+                                <strong>GetObjectTypes::from()</strong>
+                            </li>
+                                                                                                            <li>
+                                <a href="http://ganbarodigital.github.io/php-the-missing-bits/types/GetObjectTypes.getObjectTypes.html">GetObjectTypes::getObjectTypes()</a>
+                            </li>
+                                                                        </ul>
+                </nav>
+            
+            <h2>This Page</h2>
+            <nav class="toc" data-type="ishi-toc" data-max-depth="3">
+            </nav>
+        </aside>
+
+        <footer>
+            <div class="strapline">
+                                <p>                    Copyright &copy; 2015-present <a href="http://ganbarodigital.com">Ganbaro Digital Ltd</a>.
+                    &nbsp;
+                                        Released under an open-source license.
+                    &nbsp;
+                                    </p>
+                                                    <p>Find PHP: The Missing Bits on <a href="https://github.com/ganbarodigital/php-the-missing-bits">GitHub</a>.</p>
+                                </p>
+            </div>
+        </footer>
+    <script src="http://ganbarodigital.github.io/php-the-missing-bits/assets/laroux.js"></script>
+    <script src="http://ganbarodigital.github.io/php-the-missing-bits/assets/ishi.js"></script>
+    </body>
+</html>
