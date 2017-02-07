@@ -45,12 +45,11 @@ namespace GanbaroDigitalTest\MissingBits\ListTraversals;
 
 use stdClass;
 use GanbaroDigital\MissingBits\ListTraversals\TraverseArray;
-use PHPUnit_Framework_TestCase;
 
 /**
  * @coversDefaultClass GanbaroDigital\MissingBits\ListTraversals\TraverseArray
  */
-class TraverseArrayTest extends PHPUnit_Framework_TestCase
+class TraverseArrayTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @covers ::using

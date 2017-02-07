@@ -41,18 +41,17 @@
  * @link      http://ganbarodigital.github.io/php-the-missing-bits
  */
 
-namespace GanbaroDigital\MissingBits\TypeChecks;
+namespace GanbaroDigitalTest\MissingBits\TypeChecks;
 
-use PHPUnit_Framework_TestCase;
 use stdClass;
 use GanbaroDigital\MissingBits\Checks\Check;
 use GanbaroDigital\MissingBits\Checks\ListCheck;
-use GanbaroDigital\MissingBits\Checks\ListCheckHelper;
+use GanbaroDigital\MissingBits\TypeChecks\IsAssignable;
 
 /**
  * @coversDefaultClass GanbaroDigital\MissingBits\TypeChecks\IsAssignable
  */
-class IsAssignableTest extends PHPUnit_Framework_TestCase
+class IsAssignableTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @covers ::check

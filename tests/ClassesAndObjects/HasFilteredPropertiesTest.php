@@ -45,7 +45,6 @@ namespace GanbaroDigitalTest\MissingBits\ClassesAndObjects;
 
 use GanbaroDigital\MissingBits\ClassesAndObjects\HasFilteredProperties;
 use InvalidArgumentException;
-use PHPUnit_Framework_TestCase;
 use ReflectionClass;
 use ReflectionObject;
 use ReflectionProperty;
@@ -54,7 +53,7 @@ use stdClass;
 /**
  * @coversDefaultClass GanbaroDigital\MissingBits\ClassesAndObjects\HasFilteredProperties
  */
-class HasFilteredPropertiesTest extends PHPUnit_Framework_TestCase
+class HasFilteredPropertiesTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @covers ::check

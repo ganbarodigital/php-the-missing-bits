@@ -44,12 +44,11 @@
 namespace GanbaroDigitalTest\MissingBits\ListTraversals\TraverseObject;
 use GanbaroDigital\MissingBits\ListTraversals\TraverseObject;
 use InvalidArgumentException;
-use PHPUnit_Framework_TestCase;
 
 /**
  * @coversDefaultClass GanbaroDigital\MissingBits\ListTraversals\TraverseObject
  */
-class TraverseObjectTest extends PHPUnit_Framework_TestCase
+class TraverseObjectTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @covers ::using

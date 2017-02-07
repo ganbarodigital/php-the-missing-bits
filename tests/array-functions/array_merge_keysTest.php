@@ -41,7 +41,7 @@
  * @link      http://ganbarodigital.github.io/php-the-missing-bits
  */
 
-class array_merge_keysTest extends PHPUnit_Framework_TestCase
+class array_merge_keysTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @covers ::array_merge_keys

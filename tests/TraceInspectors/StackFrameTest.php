@@ -44,12 +44,11 @@
 namespace GanbaroDigitalTest\MissingBits\TraceInspectors;
 
 use GanbaroDigital\MissingBits\TraceInspectors\StackFrame;
-use PHPUnit_Framework_TestCase;
 
 /**
  * @coversDefaultClass GanbaroDigital\MissingBits\TraceInspectors\StackFrame
  */
-class StackFrameTest extends PHPUnit_Framework_TestCase
+class StackFrameTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @covers ::__construct

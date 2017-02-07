@@ -41,7 +41,7 @@
  * @link      http://ganbarodigital.github.io/php-the-missing-bits
  */
 
-class traverse_objectTest extends PHPUnit_Framework_TestCase
+class traverse_objectTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @covers ::traverse_object

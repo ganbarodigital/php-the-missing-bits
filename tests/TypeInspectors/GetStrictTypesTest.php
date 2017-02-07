@@ -47,13 +47,12 @@ use ArrayObject;
 use Closure;
 use Exception;
 use GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes;
-use PHPUnit_Framework_TestCase;
 use stdClass;
 
 /**
  * @coversDefaultClass GanbaroDigital\MissingBits\TypeInspectors\GetStrictTypes
  */
-class GetStrictTypesTest extends PHPUnit_Framework_TestCase
+class GetStrictTypesTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @coversNone

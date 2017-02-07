@@ -45,12 +45,11 @@ namespace GanbaroDigitalTest\MissingBits\Entities;
 
 use GanbaroDigital\MissingBits\Entities\ReadOnlyException;
 use LogicException;
-use PHPUnit_Framework_TestCase;
 
 /**
  * @coversDefaultClass GanbaroDigital\MissingBits\Entities\ReadOnlyException
  */
-class ReadOnlyExceptionTest extends PHPUnit_Framework_TestCase
+class ReadOnlyExceptionTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @covers ::__construct

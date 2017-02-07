@@ -41,7 +41,7 @@
  * @link      http://ganbarodigital.github.io/php-the-missing-bits
  */
 
-class get_class_propertiesTest extends PHPUnit_Framework_TestCase
+class get_class_propertiesTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @covers ::get_class_properties

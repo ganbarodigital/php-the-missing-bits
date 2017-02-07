@@ -46,13 +46,12 @@ namespace GanbaroDigitalTest\MissingBits\TypeChecks;
 use GanbaroDigital\MissingBits\Checks\Check;
 use GanbaroDigital\MissingBits\Checks\ListCheck;
 use GanbaroDigital\MissingBits\TypeChecks\IsStringy;
-use PHPUnit_Framework_TestCase;
 use stdClass;
 
 /**
  * @coversDefaultClass GanbaroDigital\MissingBits\TypeChecks\IsStringy
  */
-class IsStringyTest extends PHPUnit_Framework_TestCase
+class IsStringyTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @covers ::check

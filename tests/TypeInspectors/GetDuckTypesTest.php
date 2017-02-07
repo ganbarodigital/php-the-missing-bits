@@ -47,14 +47,13 @@ use ArrayObject;
 use Closure;
 use Exception;
 use GanbaroDigital\MissingBits\TypeInspectors\GetDuckTypes;
-use PHPUnit_Framework_TestCase;
 use stdClass;
 use Traversable;
 
 /**
  * @coversDefaultClass GanbaroDigital\MissingBits\TypeInspectors\GetDuckTypes
  */
-class GetDuckTypesTest extends PHPUnit_Framework_TestCase
+class GetDuckTypesTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @coversNone

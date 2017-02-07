@@ -50,12 +50,11 @@ use Traversable;
 use GanbaroDigital\MissingBits\Checks\Check;
 use GanbaroDigital\MissingBits\Checks\ListCheck;
 use GanbaroDigital\MissingBits\TypeChecks\IsList;
-use PHPUnit_Framework_TestCase;
 
 /**
  * @coversDefaultClass GanbaroDigital\MissingBits\TypeChecks\IsList
  */
-class IsListTest extends PHPUnit_Framework_TestCase
+class IsListTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @covers ::check
@@ -199,10 +198,12 @@ class IsListTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        IsList::check($list, '$list');
+        $actualResult = IsList::check($list, '$list');
 
         // ----------------------------------------------------------------
         // test the results
+
+        $this->assertFalse($actualResult);
     }
 
     /**

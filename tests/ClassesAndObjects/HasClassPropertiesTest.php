@@ -41,17 +41,16 @@
  * @link      http://ganbarodigital.github.io/php-the-missing-bits
  */
 
- namespace GanbaroDigitalTest\MissingBits\ClassesAndObjects;
+namespace GanbaroDigitalTest\MissingBits\ClassesAndObjects;
 
- use GanbaroDigital\MissingBits\ClassesAndObjects\HasClassProperties;
- use InvalidArgumentException;
- use PHPUnit_Framework_TestCase;
- use stdClass;
+use GanbaroDigital\MissingBits\ClassesAndObjects\HasClassProperties;
+use InvalidArgumentException;
+use stdClass;
 
  /**
   * @coversDefaultClass GanbaroDigital\MissingBits\ClassesAndObjects\HasClassProperties
   */
-class HasClassPropertiesTest extends PHPUnit_Framework_TestCase
+class HasClassPropertiesTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @covers ::check

@@ -46,13 +46,12 @@ namespace GanbaroDigitalTest\MissingBits\TypeInspectors;
 use Traversable;
 use ArrayObject;
 use GanbaroDigital\MissingBits\TypeInspectors\GetNamespace;
-use PHPUnit_Framework_TestCase;
 use stdClass;
 
 /**
  * @coversDefaultClass GanbaroDigital\MissingBits\TypeInspectors\GetNamespace
  */
-class GetNamespaceTest extends PHPUnit_Framework_TestCase
+class GetNamespaceTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @coversNone

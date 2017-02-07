@@ -48,12 +48,11 @@ use ArrayObject;
 use GanbaroDigital\MissingBits\Checks\Check;
 use GanbaroDigital\MissingBits\Checks\ListCheck;
 use GanbaroDigital\MissingBits\Checks\ListCheckHelper;
-use PHPUnit_Framework_TestCase;
 
 /**
  * @coversDefaultClass GanbaroDigital\MissingBits\Checks\ListCheckHelper
  */
-class ListCheckHelperTest extends PHPUnit_Framework_TestCase
+class ListCheckHelperTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @coversNothing

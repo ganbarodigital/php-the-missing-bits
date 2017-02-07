@@ -45,12 +45,11 @@ namespace GanbaroDigitalTest\MissingBits\Entities;
 
 use GanbaroDigital\MissingBits\Entities\ReadOnlyException;
 use GanbaroDigital\MissingBits\Entities\WriteProtectTab;
-use PHPUnit_Framework_TestCase;
 
 /**
  * @coversDefaultClass GanbaroDigital\MissingBits\Entities\WriteProtectTab
  */
-class WriteProtectTabTest extends PHPUnit_Framework_TestCase
+class WriteProtectTabTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @covers ::isReadOnly

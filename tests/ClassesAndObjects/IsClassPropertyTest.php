@@ -41,19 +41,18 @@
  * @link      http://ganbarodigital.github.io/php-the-missing-bits
  */
 
- namespace GanbaroDigitalTest\MissingBits\ClassesAndObjects;
+namespace GanbaroDigitalTest\MissingBits\ClassesAndObjects;
 
 use GanbaroDigital\MissingBits\Checks\Check;
 use GanbaroDigital\MissingBits\Checks\ListCheck;
 use GanbaroDigital\MissingBits\ClassesAndObjects\IsClassProperty;
-use PHPUnit_Framework_TestCase;
 use ReflectionClass;
 use ReflectionProperty;
 
  /**
   * @coversDefaultClass GanbaroDigital\MissingBits\ClassesAndObjects\IsClassProperty
   */
-class IsClassPropertyTest extends PHPUnit_Framework_TestCase
+class IsClassPropertyTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @covers ::check

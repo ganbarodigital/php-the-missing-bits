@@ -46,13 +46,12 @@ namespace GanbaroDigitalTest\MissingBits\TypeInspectors;
 use Traversable;
 use ArrayObject;
 use GanbaroDigital\MissingBits\TypeInspectors\GetClassTypes;
-use PHPUnit_Framework_TestCase;
 use stdClass;
 
 /**
  * @coversDefaultClass GanbaroDigital\MissingBits\TypeInspectors\GetClassTypes
  */
-class GetClassTypesTest extends PHPUnit_Framework_TestCase
+class GetClassTypesTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @coversNone

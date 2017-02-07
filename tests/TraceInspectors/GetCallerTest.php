@@ -45,12 +45,11 @@ namespace GanbaroDigitalTest\MissingBits\TraceInspectors;
 
 use GanbaroDigital\MissingBits\TraceInspectors\GetCaller;
 use GanbaroDigital\MissingBits\TraceInspectors\StackFrame;
-use PHPUnit_Framework_TestCase;
 
 /**
  * @coversDefaultClass GanbaroDigital\MissingBits\TraceInspectors\GetCaller
  */
-class GetCallerTest extends PHPUnit_Framework_TestCase
+class GetCallerTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @coversNothing
@@ -228,7 +227,7 @@ class GetCallerTest extends PHPUnit_Framework_TestCase
             'ReflectionMethod'
         ];
 
-        $expectedClass = 'PHPUnit_Framework_TestCase';
+        $expectedClass = 'PHPUnit\Framework\TestCase';
         $expectedMethod = 'runTest';
 
         // ----------------------------------------------------------------
@@ -256,11 +255,11 @@ class GetCallerTest extends PHPUnit_Framework_TestCase
         $partials = [
             __CLASS__,
             'ReflectionMethod',
-            'PHPUnit_Framework_TestCase',
-            'PHPUnit_Framework_TestResult',
-            'PHPUnit_Framework_TestSuite',
-            'PHPUnit_TextUI_TestRunner',
-            'PHPUnit_TextUI_Command',
+            'PHPUnit\Framework\TestCase',
+            'PHPUnit\Framework\TestResult',
+            'PHPUnit\Framework\TestSuite',
+            'PHPUnit\TextUI\TestRunner',
+            'PHPUnit\TextUI\Command',
         ];
 
         $expectedClass = 'ReflectionMethod';

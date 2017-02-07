@@ -46,13 +46,12 @@ namespace GanbaroDigitalTest\MissingBits\TypeInspectors;
 use Traversable;
 use ArrayObject;
 use GanbaroDigital\MissingBits\TypeInspectors\GetStringDuckTypes;
-use PHPUnit_Framework_TestCase;
 use stdClass;
 
 /**
  * @coversDefaultClass GanbaroDigital\MissingBits\TypeInspectors\GetStringDuckTypes
  */
-class GetStringDuckTypesTest extends PHPUnit_Framework_TestCase
+class GetStringDuckTypesTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @coversNone

@@ -41,7 +41,7 @@
  * @link      http://ganbarodigital.github.io/php-the-missing-bits
  */
 
-class quote_indexTest extends PHPUnit_Framework_TestCase
+class quote_indexTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @covers ::quote_index

@@ -49,15 +49,13 @@ use GanbaroDigital\MissingBits\Checks\Check;
 use GanbaroDigital\MissingBits\Checks\ListCheck;
 use GanbaroDigital\MissingBits\TypeChecks\IsArray;
 use GanbaroDigital\UnitTestHelpers\ClassesAndObjects\InvokeMethod;
-
 use IteratorAggregate;
-use PHPUnit_Framework_TestCase;
 use stdClass;
 
 /**
  * @coversDefaultClass GanbaroDigital\MissingBits\TypeChecks\IsArray
  */
-class IsArrayTest extends PHPUnit_Framework_TestCase
+class IsArrayTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @coversNothing

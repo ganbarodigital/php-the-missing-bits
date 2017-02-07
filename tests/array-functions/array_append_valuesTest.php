@@ -41,7 +41,7 @@
  * @link      http://ganbarodigital.github.io/php-the-missing-bits
  */
 
-class array_append_valuesTest extends PHPUnit_Framework_TestCase
+class array_append_valuesTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @covers ::array_append_values

@@ -43,13 +43,12 @@
 
 namespace GanbaroDigitalTest\MissingBits\TypeInspectors;
 
-use PHPUnit_Framework_TestCase;
 use GanbaroDigital\MissingBits\TypeInspectors\GetPrintableType;
 
 /**
  * @coversDefaultClass GanbaroDigital\MissingBits\TypeInspectors\GetPrintableType
  */
-class GetPrintableTypeTest extends PHPUnit_Framework_TestCase
+class GetPrintableTypeTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @coversNothing

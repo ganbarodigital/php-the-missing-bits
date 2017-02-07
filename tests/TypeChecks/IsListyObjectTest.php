@@ -50,12 +50,11 @@ use Traversable;
 use GanbaroDigital\MissingBits\Checks\Check;
 use GanbaroDigital\MissingBits\Checks\ListCheck;
 use GanbaroDigital\MissingBits\TypeChecks\IsListyObject;
-use PHPUnit_Framework_TestCase;
 
 /**
  * @coversDefaultClass GanbaroDigital\MissingBits\TypeChecks\IsListyObject
  */
-class IsListyObjectTest extends PHPUnit_Framework_TestCase
+class IsListyObjectTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @covers ::check
@@ -172,10 +171,12 @@ class IsListyObjectTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        IsListyObject::check($list, '$list');
+        $actualResult = IsListyObject::check($list, '$list');
 
         // ----------------------------------------------------------------
         // test the results
+
+        $this->assertFalse($actualResult);
     }
 
     /**

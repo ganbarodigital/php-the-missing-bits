@@ -41,7 +41,7 @@
  * @link      http://ganbarodigital.github.io/php-the-missing-bits
  */
 
-class VnsprintfTest extends PHPUnit_Framework_TestCase
+class VnsprintfTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @covers ::vnsprintf

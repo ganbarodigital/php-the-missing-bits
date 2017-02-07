@@ -45,13 +45,12 @@ namespace GanbaroDigitalTest\MissingBits\ClassesAndObjects;
 
 use GanbaroDigital\MissingBits\ClassesAndObjects\FilterObjectProperties;
 use InvalidArgumentException;
-use PHPUnit_Framework_TestCase;
 use stdClass;
 
 /**
  * @coversDefaultClass GanbaroDigital\MissingBits\ClassesAndObjects\FilterObjectProperties
  */
-class FilterObjectPropertiesTest extends PHPUnit_Framework_TestCase
+class FilterObjectPropertiesTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @covers ::from
