@@ -74,10 +74,11 @@ _Informal interfaces_ contain methods that you must implement. However, due to P
 
 ## How To Use
 
-Every `Check` can be used in two ways:
+Every `Check` can be used in three ways:
 
 * a static call to `::check()` for convenience,
-* as an object, calling the `->inspect()` method
+* as a temporary object, calling the `::using()->inspect()` pattern,
+* or as an object, calling the `->inspect()` method
 
 ### Scaffolding
 
@@ -98,6 +99,7 @@ Every `Check` implements the `Check::check()` pattern:
 Every `Check` can be used as an object:
 
 * add a `public function __construct()` if your check needs additional input parameters
+* add a `public static function using()`, which takes the same parameters as your `__construct()`
 * add a `public function inspect()` which calls your static `::check()` method
 
 ### Putting It All Together
@@ -196,9 +198,21 @@ To use this example check, you can do:
 var_dump(IsInRange::check($data, 10,20));
 
 // as an object
+//
+// you can use this to apply the same conditions
+// to multiple pieces of data
 $callable = new IsInRange(10, 20);
-var_dump($rangeCheck->inspect($data));
+var_dump($rangeCheck->inspect($data1));
+var_dump($rangeCheck->inspect($data2));
 
 // via the using() helper
 var_dump(IsInRange::using(10,20)->inspect($data));
 ```
+
+## Supported PHP Versions
+
+PHP Version | Supported?
+------------|-----------
+5.6.x | yes
+7.0.x | yes
+7.1.x | yes
