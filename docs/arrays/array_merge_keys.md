@@ -30,30 +30,14 @@ It's a good idea to only call `array_merge_keys()` if both `$target` and `$extra
 * `$extra` overwrites `$target` where the same key exists in both arrays
 * otherwise, the values of unique keys from both arrays are added to the new array
 
-## Example
+## Examples
 
-```php
-$target = [
-    "fish" => "trout",
-    "name" => "harry",
-    "action" => "met",
-];
+{% include ".i/examples/array_merge_keys/Example-1--Merge-Two-Arrays.twig" %}
 
-$extra = [
-    "fish" => "salmon",
-    "name" => "sally"
-];
+## Supported PHP Versions
 
-var_dump(array_merge_keys($target, $extra));
-```
-
-Outputs:
-
-    array(4) {
-      'fish' =>
-      string(6) "salmon"
-      'name' =>
-      string(5) "sally"
-      'action' =>
-      string(3) "met"
-    }
+PHP Version | Supported?
+------------|-----------
+5.6.x | yes
+7.0.x | yes
+7.1.x | yes
