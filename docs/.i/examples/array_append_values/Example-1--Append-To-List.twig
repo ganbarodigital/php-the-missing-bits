@@ -1,0 +1,32 @@
+<h3 id="example-1--append-to-list">Example 1: Append To List</h3>
+
+<p>This example shows what happens when we combine two lists.</p>
+
+<pre><code class="language-php">
+$target = [
+    "trout",
+    "harry"
+];
+
+$extra = [
+    "salmon",
+    "sally"
+];
+
+$newList = array_append_values($target, $extra);
+var_dump($newList);
+</code></pre>
+<p>The code above produces this output on PHP v5.6.30, PHP v7.0.18, PHP v7.1.4:</p>
+
+<pre>
+array(4) {
+  [0]=>
+  string(5) "trout"
+  [1]=>
+  string(5) "harry"
+  [2]=>
+  string(6) "salmon"
+  [3]=>
+  string(5) "sally"
+}
+</pre>

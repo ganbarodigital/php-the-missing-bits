@@ -1,0 +1,35 @@
+<h3 id="example-2--append-to-associative-array">Example 2: Append To Associative Array</h3>
+
+<p>This example shows what happens when we use <code>array_append_values()</code>
+to append to an associative array.
+
+As you can see, the result isn't all that useful!</p>
+
+<pre><code class="language-php">
+$target = [
+    "fish" => "trout",
+    "name" => "harry"
+];
+
+$extra = [
+    "fish" => "salmon",
+    "name" => "sally"
+];
+
+$newList = array_append_values($target, $extra);
+var_dump($newList);
+</code></pre>
+<p>The code above produces this output on PHP v5.6.30, PHP v7.0.18, PHP v7.1.4:</p>
+
+<pre>
+array(4) {
+  ["fish"]=>
+  string(5) "trout"
+  ["name"]=>
+  string(5) "harry"
+  [0]=>
+  string(6) "salmon"
+  [1]=>
+  string(5) "sally"
+}
+</pre>

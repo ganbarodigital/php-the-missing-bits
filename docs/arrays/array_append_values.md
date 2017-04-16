@@ -31,31 +31,15 @@ It's a good idea to only call `array_append_values()` if both `$target` and `$ex
 * The values from `$extra` are appended
 * The keys from `$extra` are ignored
 
-## Example
+## Examples
 
-```php
-$target = [
-    "fish" => "trout",
-    "name" => "harry"
-];
+{% include ".i/examples/array_append_values/Example-1--Append-To-List.twig" %}
+{% include ".i/examples/array_append_values/Example-2--Append-To-Associative-Array.twig" %}
 
-$extra = [
-    "fish" => "salmon",
-    "name" => "sally"
-];
+## Supported PHP Versions
 
-var_dump(array_append_values($target, $extra));
-```
-
-Outputs:
-
-    array(4) {
-      'fish' =>
-      string(5) "trout"
-      'name' =>
-      string(5) "harry"
-      [0] =>
-      string(6) "salmon"
-      [1] =>
-      string(5) "sally"
-    }
+PHP Version | Supported?
+------------|-----------
+5.6.x | yes
+7.0.x | yes
+7.1.x | yes
