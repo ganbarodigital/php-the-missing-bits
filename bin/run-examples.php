@@ -172,7 +172,7 @@ foreach ($supportedPhpVersions as $key => $cmd) {
 // step 2 - find our example files
 
 $finder = new Finder();
-$examples = $finder->files()->name("*.php")->in($examplesDir);
+$examples = $finder->files()->name("*.php")->notName('*.inc.php')->in($examplesDir);
 
 // step 3 - run them
 //
@@ -214,4 +214,26 @@ foreach ($examples as $exampleFile) {
     $exampleId = strtolower(basename($sourceFile, '.php'));
     $docContents = buildExampleDoc($exampleTitle, $exampleId, $preamble, $source, $combinedOutput);
     file_put_contents($destFile, $docContents);
+}
+
+// step 4 - find the included code examples
+//
+// we want the option of including them in our documentation
+
+$finder = new Finder();
+$examples = $finder->files()->name("*.inc.php")->in($examplesDir);
+
+foreach ($examples as $exampleFile) {
+    $sourceFile = $exampleFile->getRelativePathname();
+    $destFile = "docs/.i/examples/" . $exampleFile->getRelativePath() . '/' . basename($exampleFile->getFilename(), '.php') . '.twig';
+
+    // build our source
+    echo $destFile . PHP_EOL;
+    $contents = file_get_contents($examplesDir . $sourceFile);
+
+    if (substr($contents, 0, 5) == '<?php') {
+        $contents = ltrim(substr($contents, 6));
+    }
+
+    file_put_contents($destFile, '<pre><code class="language-php">' . PHP_EOL . $contents . PHP_EOL . '</code></pre>' . PHP_EOL);
 }
