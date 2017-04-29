@@ -1,0 +1,84 @@
+<?php
+
+use GanbaroDigital\MissingBits\Checks\Check;
+
+class IsInRange implements Check
+{
+    /**
+     * minimum acceptable value in our range
+     */
+    private $min;
+
+    /**
+     * maximum acceptable value in our range
+     */
+    private $max;
+
+    /**
+     * constructor. used to create a customised check
+     *
+     * @param  int $min
+     *         minimum value for allowed range
+     * @param  int $max
+     *         maximum value for allowed range
+     */
+    public function __construct($min, $max)
+    {
+        $this->min = $min;
+        $this->max = $max;
+    }
+
+    /**
+     * generates a Check
+     *
+     * @param  int $min
+     *         minimum value for allowed range
+     * @param  int $max
+     *         maximum value for allowed range
+     * @return Check
+     *         returns a check to use
+     */
+    public static function using($min, $max)
+    {
+        return new static($min, $max);
+    }
+
+    /**
+     * is $data within the require range?
+     *
+     * @param  int $data
+     *         the value to check
+     * @return bool
+     *         TRUE if the data is in range
+     *         FALSE otherwise
+     */
+    public function inspect($data)
+    {
+        return static::check($data, $this->min, $this->max);
+    }
+
+    /**
+     * is $data within the require range?
+     *
+     * @param  int $data
+     *         the value to check
+     * @param  int $min
+     *         minimum value for allowed range
+     * @param  int $max
+     *         maximum value for allowed range
+     * @return bool
+     *         TRUE if the data is in range
+     *         FALSE otherwise
+     */
+    public static function check($data, $min, $max)
+    {
+        if ($data < $min) {
+            return false;
+        }
+        if ($data > $max) {
+            return false;
+        }
+
+        return true;
+    }
+}

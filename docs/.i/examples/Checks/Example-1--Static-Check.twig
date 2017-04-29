@@ -1,0 +1,13 @@
+<h3 id="example-1--static-check">Example 1: Static Check</h3>
+
+<p>Most of the time, a static call is the most convenient way to use a Check.</p>
+
+<pre><code class="language-php">
+$data = 15;
+var_dump(IsInRange::check($data, 10,20));
+</code></pre>
+<p>The code above produces this output on PHP v5.6.30, PHP v7.0.18, PHP v7.1.4:</p>
+
+<pre>
+bool(true)
+</pre>

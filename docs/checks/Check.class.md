@@ -102,112 +102,15 @@ Every `Check` can be used as an object:
 * add a `public static function using()`, which takes the same parameters as your `__construct()`
 * add a `public function inspect()` which calls your static `::check()` method
 
-### Putting It All Together
+## Putting It All Together
 
 Here's a simple min / max check. It supports all the different ways that a Check can be used.
 
-```php
-use GanbaroDigital\MissingBits\Checks\Check;
+{% include ".i/examples/Checks/IsInRange.inc.twig" %}
 
-class IsInRange implements Check
-{
-    /**
-     * minimum acceptable value in our range
-     */
-    private $min;
-
-    /**
-     * maximum acceptable value in our range
-     */
-    private $max;
-
-    /**
-     * constructor. used to create a customised check
-     *
-     * @param  int $min
-     *         minimum value for allowed range
-     * @param  int $max
-     *         maximum value for allowed range
-     */
-    public function __construct($min, $max)
-    {
-        $this->min = $min;
-        $this->max = $max;
-    }
-
-    /**
-     * generates a Check
-     *
-     * @param  int $min
-     *         minimum value for allowed range
-     * @param  int $max
-     *         maximum value for allowed range
-     * @return Check
-     *         returns a check to use
-     */
-    public static function using($min, $max)
-    {
-        return new static($min, $max);
-    }
-
-    /**
-     * is $data within the require range?
-     *
-     * @param  int $data
-     *         the value to check
-     * @return bool
-     *         TRUE if the data is in range
-     *         FALSE otherwise
-     */
-    public function inspect($data)
-    {
-        return static::check($data, $this->min, $this->max);
-    }
-
-    /**
-     * is $data within the require range?
-     *
-     * @param  int $data
-     *         the value to check
-     * @param  int $min
-     *         minimum value for allowed range
-     * @param  int $max
-     *         maximum value for allowed range
-     * @return bool
-     *         TRUE if the data is in range
-     *         FALSE otherwise
-     */
-    public static function check($data, $min, $max)
-    {
-        if ($data < $this->min) {
-            return false;
-        }
-        if ($data > $this->max) {
-            return false;
-        }
-
-        return true;
-    }
-}
-```
-
-To use this example check, you can do:
-
-```php
-// a static call is often the most convenient
-var_dump(IsInRange::check($data, 10,20));
-
-// as an object
-//
-// you can use this to apply the same conditions
-// to multiple pieces of data
-$callable = new IsInRange(10, 20);
-var_dump($rangeCheck->inspect($data1));
-var_dump($rangeCheck->inspect($data2));
-
-// via the using() helper
-var_dump(IsInRange::using(10,20)->inspect($data));
-```
+{% include ".i/examples/Checks/Example-1--Static-Check.twig" %}
+{% include ".i/examples/Checks/Example-2--Reusable-Object.twig" %}
+{% include ".i/examples/Checks/Example-3--Via-Factory-Method.twig" %}
 
 ## Supported PHP Versions
 

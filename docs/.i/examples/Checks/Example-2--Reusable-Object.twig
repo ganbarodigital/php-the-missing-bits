@@ -1,0 +1,20 @@
+<h3 id="example-2--reusable-object">Example 2: Reusable Object</h3>
+
+<p>You can instantiate a Check object. Use this to apply the same conditions
+to multiple pieces of data.</p>
+
+<pre><code class="language-php">
+$rangeCheck = new IsInRange(10, 20);
+
+$data1 = 5;
+$data2 = 15;
+
+var_dump($rangeCheck->inspect($data1));
+var_dump($rangeCheck->inspect($data2));
+</code></pre>
+<p>The code above produces this output on PHP v5.6.30, PHP v7.0.18, PHP v7.1.4:</p>
+
+<pre>
+bool(false)
+bool(true)
+</pre>
