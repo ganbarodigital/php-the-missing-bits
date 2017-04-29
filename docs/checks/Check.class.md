@@ -106,11 +106,11 @@ Every `Check` can be used as an object:
 
 Here's a simple min / max check. It supports all the different ways that a Check can be used.
 
-{% include ".i/examples/Checks/IsInRange.inc.twig" %}
+{% include ".i/examples/Check/IsInRange.inc.twig" %}
 
-{% include ".i/examples/Checks/Example-1--Static-Check.twig" %}
-{% include ".i/examples/Checks/Example-2--Reusable-Object.twig" %}
-{% include ".i/examples/Checks/Example-3--Via-Factory-Method.twig" %}
+{% include ".i/examples/Check/Example-1--Static-Check.twig" %}
+{% include ".i/examples/Check/Example-2--Reusable-Object.twig" %}
+{% include ".i/examples/Check/Example-3--Via-Factory-Method.twig" %}
 
 ## Supported PHP Versions
 
