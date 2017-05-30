@@ -47,6 +47,9 @@ use InvalidArgumentException;
 use ReflectionClass;
 use ReflectionProperty;
 
+/**
+ * get a class's static properties
+ */
 class FilterClassProperties
 {
     /**
@@ -74,16 +77,33 @@ class FilterClassProperties
             throw new InvalidArgumentException("class/interface '" . $target . "' not found");
         }
 
+        // we must remove IS_STATIC from the filter mask, otherwise
+        // our $resultFilter function down below cannot work
+        if ($filter & ReflectionProperty::IS_STATIC) {
+            $filter = $filter ^ ReflectionProperty::IS_STATIC;
+        }
+
         // if we get here, then we want to do this
         $refObj = new ReflectionClass($target);
-        $resultFilter = function(ReflectionProperty $refProp, &$finalResult) {
+        $appliedFilter = $filter | ReflectionProperty::IS_STATIC;
+
+        $resultFilter = function(ReflectionProperty $refProp, &$finalResult) use($filter) {
+            // filter out the potential object properties
             if (!IsClassProperty::check($refProp)) {
                 return;
             }
 
-            $refProp->setAccessible(true);
+            // now filter out any properties that don't match our initial
+            // filter bitmask
+            //
+            // this can happen when $filer = ReflectionProperty::IS_PUBLIC
+            if (!(int)($refProp->getModifiers() & $filter)) {
+                return;
+            }
+
+            // $refProp->setAccessible(true);
             $finalResult[$refProp->getName()] = $refProp->getValue();
         };
-        return FilterProperties::from($refObj, $filter + ReflectionProperty::IS_STATIC, $resultFilter);
+        return FilterProperties::from($refObj, $appliedFilter, $resultFilter);
     }
 }
