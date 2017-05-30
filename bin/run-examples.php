@@ -159,8 +159,8 @@ EOS;
 $examplesDir = __DIR__ . '/../doc-examples/';
 $supportedPhpVersions = [
     '5.6' => '$HOME/.phpbrew/php/php-5.6.30/bin/php',
-    '7.0' => '$HOME/.phpbrew/php/php-7.0.18/bin/php',
-    '7.1' => '$HOME/.phpbrew/php/php-7.1.4/bin/php'
+    '7.0' => '$HOME/.phpbrew/php/php-7.0.19/bin/php',
+    '7.1' => '$HOME/.phpbrew/php/php-7.1.5/bin/php'
 ];
 $shortVersions=[];
 $fullVersions=[];
