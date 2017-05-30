@@ -11,7 +11,10 @@
 use GanbaroDigital\MissingBits\ClassesAndObjects\HasClassProperties;
 
 // our method signature
-bool HasClassProperties::check(string $target, $propTypes = ReflectionProperty::IS_PUBLIC);
+HasClassProperties::check(
+    string $target,
+    int $propTypes = ReflectionProperty::IS_PUBLIC
+) : bool
 ```
 
 ## Parameters
@@ -20,6 +23,12 @@ bool HasClassProperties::check(string $target, $propTypes = ReflectionProperty::
 
 * `$target` (string) - the class to examine
 * `$propTypes` (int) - optional scope filter
+
+  `$propTypes` can be any of:
+
+  - `ReflectionProperty::IS_PUBLIC`
+  - `ReflectionProperty::IS_PROTECTED`
+  - `ReflectionProperty::IS_PRIVATE`
 
 ## Return Values
 
@@ -34,6 +43,14 @@ bool HasClassProperties::check(string $target, $propTypes = ReflectionProperty::
 
 * `$target` is not a string, or something that PHP will automatically convert to a string,
 * `$target` refers to a class that has not been defined
+
+Here's a simple class to examine:
+
+{% include ".i/examples/HasClassProperties/check/ExampleClass.inc.twig" %}
+
+{% include ".i/examples/HasClassProperties/check/Example-1--Has-Public-Properties.twig" %}
+{% include ".i/examples/HasClassProperties/check/Example-2--Has-Protected-Properties.twig" %}
+{% include ".i/examples/HasClassProperties/check/Example-3--Has-Private-Properties.twig" %}
 
 ## Notes
 

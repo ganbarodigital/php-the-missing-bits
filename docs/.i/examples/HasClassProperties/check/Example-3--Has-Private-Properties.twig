@@ -1,0 +1,18 @@
+<h3 id="example-3--has-private-properties">Example 3: Has Private Properties</h3>
+
+<p>This example shows you how to check if a class has private properties.</p>
+
+<pre><code class="language-php">
+use GanbaroDigital\MissingBits\ClassesAndObjects\HasClassProperties;
+
+$props = HasClassProperties::check(
+    ExampleClass::class,
+    ReflectionProperty::IS_PRIVATE
+);
+var_dump($props);
+</code></pre>
+<p>The code above produces this output on PHP v5.6.30, PHP v7.0.19, PHP v7.1.5:</p>
+
+<pre>
+bool(true)
+</pre>
