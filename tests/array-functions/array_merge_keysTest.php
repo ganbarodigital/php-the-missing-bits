@@ -47,7 +47,7 @@ class array_merge_keysTest extends \PHPUnit\Framework\TestCase
      * @covers ::array_merge_keys
      * @dataProvider provideArraysToMerge
      */
-    public function testCanMergeTwoArrays($target, $extra, $expectedResult)
+    public function test_can_merge_two_arrays($target, $extra, $expectedResult)
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -61,6 +61,28 @@ class array_merge_keysTest extends \PHPUnit\Framework\TestCase
         // test the results
 
         $this->assertEquals($expectedResult, $actualResult);
+    }
+
+    /**
+     * @covers ::array_merge_keys
+     * @dataProvider provideArraysToMerge
+     */
+    public function test_original_array_is_unchanged($target, $extra, $expectedResult)
+    {
+        // ----------------------------------------------------------------
+        // setup your test
+
+        $expectedResult = $target;
+
+        // ----------------------------------------------------------------
+        // perform the change
+
+        array_merge_keys($target, $extra);
+
+        // ----------------------------------------------------------------
+        // test the results
+
+        $this->assertEquals($expectedResult, $target);
     }
 
     public function provideArraysToMerge()
