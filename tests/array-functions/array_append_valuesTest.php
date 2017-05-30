@@ -47,7 +47,7 @@ class array_append_valuesTest extends \PHPUnit\Framework\TestCase
      * @covers ::array_append_values
      * @dataProvider provideArraysToAppend
      */
-    public function testCanAppendToArray($target, $extra, $expectedResult)
+    public function test_can_append_to_array($target, $extra, $expectedResult)
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -61,6 +61,29 @@ class array_append_valuesTest extends \PHPUnit\Framework\TestCase
         // test the results
 
         $this->assertEquals($expectedResult, $actualResult);
+    }
+
+    /**
+     * @covers ::array_append_values
+     * @dataProvider provideArraysToAppend
+     */
+    public function test_original_array_is_unmodified($target, $extra, $expectedResult)
+    {
+        // ----------------------------------------------------------------
+        // setup your test
+
+        // we expect $target to remain unchanged
+        $expectedResult = $target;
+
+        // ----------------------------------------------------------------
+        // perform the change
+
+        array_append_values($target, $extra);
+
+        // ----------------------------------------------------------------
+        // test the results
+
+        $this->assertEquals($expectedResult, $target);
     }
 
     public function provideArraysToAppend()
