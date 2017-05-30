@@ -5,9 +5,6 @@ use GanbaroDigital\MissingBits\Checks\ListCheckHelper;
 
 class IsInRange implements Check, ListCheck
 {
-    // saves us having to implement inspectList() ourselves
-    use ListCheckHelper;
-
     /**
      * minimum acceptable value in our range
      */
@@ -85,6 +82,16 @@ class IsInRange implements Check, ListCheck
 
         return true;
     }
+
+    // ==============================================
+    //
+    // EVERYTHING BELOW HERE HAS BEEN ADDED TO TURN
+    // OUR CHECK INTO A LISTCHECK
+    //
+    // ----------------------------------------------
+
+    // saves us having to implement inspectList() ourselves
+    use ListCheckHelper;
 
     /**
      * are the values in $list within the required range?

@@ -1,8 +1,6 @@
 # ListCheck interface
 
-<div class="callout warning" markdown="1">
-Not yet in a tagged release
-</div>
+{% include ".i/since/1.10.0.twig" %}
 
 ## Description
 
@@ -94,41 +92,71 @@ interface ListCheck
 
 _Informal interfaces_ contain methods that you must implement. However, due to PHP limitations, we can't add these methods to the `interface` at this time.
 
-## How To Use
+## How To Build A ListCheck
 
 Every `ListCheck` can be used in two ways:
 
 * a static call to `::checkList()` for convenience,
 * as an object, calling the `->inspectList()` method
 
-### Scaffolding
+### Step 1: Build A Check
 
-Most `ListCheck` classes also implement the `Check` interface too. See [the `Check` interface](Check.class.html) to get started.
+Start off by implementing [the `Check` interface](Check.class.html) first. Re-using that saves us a lot of duplication and effort!
 
-Every `ListCheck` needs a bit of boilerplate code:
+Here's a working `IsInRange` check:
+
+{% include ".i/examples/Check/IsInRange.inc.twig" %}
+
+### Step 2: Implement ListCheck
+
+Extend your existing Check into a ListCheck by:
 
 * add `use GanbaroDigital\MissingBits\Checks\ListCheck` to your PHP file
+* add `use GanbaroDigital\MissingBits\Checks\ListCheckHelper` to your PHP file
 * add `implements ListCheck` to your class
+* add `use ListCheckHelper` to your class
+* add a `pubilc static checkList()` method to your class
 
-### The Check Pattern
+The `checkList()` method simply calls `inspectList()` on a temporary object.
 
-Every `ListCheck` implements the `ListCheck::checkList()` pattern:
+Here's what the `IsInRange` check looks like after we've done all of that:
 
-* add a `public static function checkList()` method to your class. This method inspects each element in `$list`. If you're happy with `$list`, return `true`. If you're not happy with `$list`, return `false`.
-* if your check needs additional input parameters, pass these in as additional parameters to the `checkList()` method.
+{% include ".i/examples/ListCheck/IsInRange.inc.twig" %}
 
-### Making It Usable As An Object
+Hopefully, you can see that it doesn't take much effort to do.
 
-Every `ListCheck` can be used as an object:
+<div class="callout info" markdown="1">
+#### Check Seems Backwards To ListCheck?
 
-* add a `public function __construct()` if your check needs additional input parameters
-* add a `public function inspectList()` which calls your `::inspect()` method
+You may have noticed that `Check` and `ListCheck` are implemented in the exact opposite way to each other:
 
-We've provided a [`ListCheckHelper` trait](ListCheckHelper.trait.html) that will add the `inspectList()` method to your class.
+* With the `Check` interface, your object's `inspect()` method calls the static `check()` method.
+* With the `ListCheck` interface, your object's static `checkList()` method creates a temporary object, and calls its `inspectList()` method.
 
-### Putting It All Together
+Why is this?
 
-Here's a simple min / max check. It supports all the different ways that a Check can be used.
+We wanted to use traits to reduce the amount of code that you have to duplicate. We can only use traits where a method's parameters and internal code can be standardised.
+
+* There's nothing in the `Check` interface that fits in a trait. Every line of code is unique to each `Check`.
+* A `ListCheck` is a bit different. At some point, every `ListCheck` needs to iterate over a list, checking its contents as it goes along. (It's also a good idea if each `ListCheck` makes sure it's looking at a list to begin with!)
+
+We don't want to repeat that code over every single `ListCheck` that we write. If we do repeat that code over an over, mistakes and inconsistencies *will* creep in over time. PHP traits were invented to solve this exact problem. But how can we do it?
+
+* We can't put `checkList()` into a trait. It's parameters are unique to each `ListCheck` implementation class.
+* `inspectList()` can go into a trait. It's parameters are the same (a single list), and it's behaviour is the same (check everything in the list).
+* If we make `checkList()` call `inspectList()`, we avoid duplicating any of the code in `inspectList()`.
+
+That's how we ended up with `Check` implemented one way, and `ListCheck` implemented the other way.
+</div>
+
+## How To Use A ListCheck
+
+Every `ListCheck` can be used in two ways:
+
+* a static call to `::checkList()` for convenience,
+* as an object, calling the `->inspectList()` method
+
+Here's our example simple min / max check again.
 
 {% include ".i/examples/ListCheck/IsInRange.inc.twig" %}
 
@@ -143,3 +171,7 @@ PHP Version | Supported?
 5.6.x | yes
 7.0.x | yes
 7.1.x | yes
+
+## See Also
+
+* [`ListCheckHelper` trait](ListCheckHelper.trait.html)
