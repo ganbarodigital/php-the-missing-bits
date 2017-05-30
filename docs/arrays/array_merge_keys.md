@@ -28,6 +28,15 @@ It's a good idea to only call `array_merge_keys()` if both `$target` and `$extra
 * `$extra` overwrites `$target` where the same key exists in both arrays
 * otherwise, the values of unique keys from both arrays are added to the new array
 
+## Functional Contract
+
+Here is the contract for this function:
+
+    array_merge_keys
+     [x] can merge two arrays
+     [x] original array is unchanged
+
+{% include ".i/boilerplate/function-contract.twig" %}
 ## Examples
 
 {% include ".i/examples/array_merge_keys/Example-1--Merge-Two-Arrays.twig" %}
