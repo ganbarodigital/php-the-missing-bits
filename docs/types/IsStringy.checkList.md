@@ -31,13 +31,4 @@ boolean IsStringy::checkList(mixed $list);
 
 * `$list` is not a valid list (see [`IsList::check()`](IsList.check.html) for details)
 
-## Works With
-
-`IsStringy::checkList()` is supported on these versions of PHP:
-
-PHP Version | Works?
-------------|-------
-5.5 | Yes
-5.6 | Yes
-7.0 | Yes
-HHVM | Yes
+{% include ".i/supports/5.6-7.x.twig" %}

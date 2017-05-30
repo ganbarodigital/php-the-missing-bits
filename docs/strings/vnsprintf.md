@@ -59,3 +59,5 @@ You __cannot__ do the following:
 * use a mix of _positional parameters_ and normal (non-positional) parameters in `$format`
 
 If you do so, you'll get an error message from PHP.
+
+{% include ".i/supports/5.6-7.x.twig" %}

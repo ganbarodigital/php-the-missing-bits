@@ -309,13 +309,4 @@ var_dump(get_class_types("hello, world!"));
 
 `get_class_types()` does not throw any exceptions.
 
-## Works With
-
-`get_class_types()` is supported on these versions of PHP:
-
-PHP Version | Works?
-------------|-------
-5.5 | Yes
-5.6 | Yes
-7.0 | Yes
-HHVM | Yes
+{% include ".i/supports/5.6-7.x.twig" %}

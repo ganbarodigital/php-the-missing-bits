@@ -37,3 +37,5 @@ bool HasObjectProperties(object $target, $propTypes = ReflectionProperty::IS_PUB
 ## Constraints
 
 `HasObjectProperties::check()` only works on objects. Use [`HasClassProperties::check()`](HasClassProperties.check.html) to check for static properties.
+
+{% include ".i/supports/5.6-7.x.twig" %}

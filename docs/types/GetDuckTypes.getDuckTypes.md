@@ -423,3 +423,5 @@ var_dump($inspector->getDuckTypes(Traversable::class));
 ## Throws
 
 `GetDuckTypes::getDuckTypes()` does not throw any exceptions.
+
+{% include ".i/supports/5.6-7.x.twig" %}

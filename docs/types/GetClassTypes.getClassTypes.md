@@ -334,13 +334,4 @@ var_dump($inspector->getClassTypes("hello, world!"));
 
 `GetClassTypes::getClassTypes()` does not throw any exceptions.
 
-## Works With
-
-`GetClassTypes::getClassTypes()` is supported on these versions of PHP:
-
-PHP Version | Works?
-------------|-------
-5.5 | Yes
-5.6 | Yes
-7.0 | Yes
-HHVM | Yes
+{% include ".i/supports/5.6-7.x.twig" %}

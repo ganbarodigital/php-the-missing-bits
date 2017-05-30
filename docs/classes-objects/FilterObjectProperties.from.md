@@ -37,3 +37,5 @@ If the object has no non-static properties, `FilterObjectProperties::from()` ret
 
 * `FilterObjectProperties::from()` will include all non-static properties defined by the object's parents, by any traits used.
 * `FilterObjectProperties::from()` only works on objects. Use [`FilterClassProperties::from()`](FilterClassProperties.from.html) to get a class's static properties.
+
+{% include ".i/supports/5.6-7.x.twig" %}

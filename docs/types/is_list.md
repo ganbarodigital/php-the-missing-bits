@@ -11,3 +11,5 @@ bool is_list(mixed $list);
 ```
 
 `is_list()` is a convenience wrapper around `IsList::check()`. See [`IsList::check()`](IsList.check.html) for details.
+
+{% include ".i/supports/5.6-7.x.twig" %}

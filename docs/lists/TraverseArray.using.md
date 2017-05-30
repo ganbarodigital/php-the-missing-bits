@@ -63,13 +63,4 @@ If we type-hinted `TraverseArray::using()` or `traverse_array()`, we'd end up tr
 We want to avoid PHP's legacy error handling system wherever we can. In our experience, it makes it very difficult to write robust software that fails gracefully.
 </div>
 
-## Works With
-
-`TraverseArray::using()` and `traverse_array` are supported on these versions of PHP:
-
-PHP Version | Works?
-------------|-------
-5.5 | Yes
-5.6 | Yes
-7.0 | Yes
-HHVM | Yes
+{% include ".i/supports/5.6-7.x.twig" %}

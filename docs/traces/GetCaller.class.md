@@ -95,20 +95,10 @@ If you:
 
 None at this time.
 
+{% include ".i/supports/5.6-7.x.twig" %}
+
 ## Changelog
 
 ### v1.10.0
 
 * `GetCaller::__invoke()` was replaced by `GetCaller::getCaller()`.
-
-
-## Works With
-
-`GetCaller` is supported on these versions of PHP:
-
-PHP Version | Works?
-------------|-------
-5.5 | Yes
-5.6 | Yes
-7.0 | Yes
-HHVM | Untested

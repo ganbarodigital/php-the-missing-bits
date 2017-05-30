@@ -30,3 +30,5 @@ bool IsObjectProperty::check(ReflectionProperty $refProp);
 ## Throws
 
 `IsObjectProperty::check()` does not throw any exceptions.
+
+{% include ".i/supports/5.6-7.x.twig" %}

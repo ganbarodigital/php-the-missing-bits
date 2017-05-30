@@ -60,3 +60,5 @@ $resultFilter = function(ReflectionProperty $refProp) use($target) {
 ## Throws
 
 `HasFilteredProperties::check()` does not throw any exceptions.
+
+{% include ".i/supports/5.6-7.x.twig" %}

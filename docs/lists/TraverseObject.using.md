@@ -57,13 +57,4 @@ will output:
 
 `TraverseObject::using()` throws an `InvalidArgumentException` if `$list` is not a PHP object.
 
-## Works With
-
-`TraverseObject::using()` and `traverse_object()` are supported on these versions of PHP:
-
-PHP Version | Works?
-------------|-------
-5.5 | Yes
-5.6 | Yes
-7.0 | Yes
-HHVM | Yes
+{% include ".i/supports/5.6-7.x.twig" %}

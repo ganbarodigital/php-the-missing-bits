@@ -164,13 +164,7 @@ Here's our example simple min / max check again.
 {% include ".i/examples/ListCheck/Example-2--Reusable-Object.twig" %}
 {% include ".i/examples/ListCheck/Example-3--Via-Factory-Method.twig" %}
 
-## Supported PHP Versions
-
-PHP Version | Supported?
-------------|-----------
-5.6.x | yes
-7.0.x | yes
-7.1.x | yes
+{% include ".i/supports/5.6-7.x.twig" %}
 
 ## See Also
 

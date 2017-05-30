@@ -39,13 +39,4 @@ That's why `GetClassTraits::from()` always returns an empty list for an interfac
 
 `GetClassTraits::from()` does not throw any exceptions.
 
-## Works With
-
-`GetClassTraits::from()` is supported on these versions of PHP:
-
-PHP Version | Works?
-------------|-------
-5.5 | Yes
-5.6 | Yes
-7.0 | Yes
-HHVM | Yes
+{% include ".i/supports/5.6-7.x.twig" %}

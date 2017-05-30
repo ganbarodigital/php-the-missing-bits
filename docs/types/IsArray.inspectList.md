@@ -30,13 +30,4 @@ public bool IsArray::inspectList(mixed $list);
 
 * `$list` is not a valid list (see [`IsList`](IsList.class.html) for details)
 
-## Works With
-
-`IsArray::inspectList()` is supported on these versions of PHP:
-
-PHP Version | Works?
-------------|-------
-5.5 | Yes
-5.6 | Yes
-7.0 | Yes
-HHVM | Yes
+{% include ".i/supports/5.6-7.x.twig" %}

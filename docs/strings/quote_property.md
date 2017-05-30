@@ -63,13 +63,4 @@ var_dump(quote_property("total_cost"));
 
 `quote_property()` throws an `InvalidArgumentException` if `$item` is not a string or something that can be sensibly cast as a string.
 
-## Works With
-
-`quote_property()` is supported on these versions of PHP:
-
-PHP Version | Works?
-------------|-------
-5.5 | Yes
-5.6 | Yes
-7.0 | Yes
-HHVM | Yes
+{% include ".i/supports/5.6-7.x.twig" %}

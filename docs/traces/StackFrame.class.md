@@ -111,13 +111,4 @@ class StackFrame
 }
 ```
 
-## Works With
-
-`StackFrame` is supported on these versions of PHP:
-
-PHP Version | Works?
-------------|-------
-5.5 | Yes
-5.6 | Yes
-7.0 | Yes
-HHVM | Untested
+{% include ".i/supports/5.6-7.x.twig" %}

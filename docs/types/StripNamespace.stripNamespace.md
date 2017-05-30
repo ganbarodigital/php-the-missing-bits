@@ -28,13 +28,4 @@ The input parameters are:
 * if `$item` is not an object or string, `InvalidArgumentException` is thrown
 * if `$item` is a string, but does not contain a defined class, interface or trait, `InvalidArgumentException` is thrown
 
-## Works With
-
-`StripNamespace::stripNamespace()` is supported on these versions of PHP:
-
-PHP Version | Works?
-------------|-------
-5.5 | Yes
-5.6 | Yes
-7.0 | Yes
-HHVM | Yes
+{% include ".i/supports/5.6-7.x.twig" %}

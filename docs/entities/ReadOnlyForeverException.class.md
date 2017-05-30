@@ -60,6 +60,8 @@ If you:
 
 None at this time.
 
+{% include ".i/supports/5.6-7.x.twig" %}
+
 ## See Also
 
 * [`LogicException`](http://php.net/manual/en/class.logicexception.php) - SPL class included in PHP

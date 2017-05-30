@@ -398,6 +398,8 @@ var_dump(get_duck_types(Traversable::class));
 
 `get_duck_types()` does not throw any exceptions.
 
+{% include ".i/supports/5.6-7.x.twig" %}
+
 ## Changelog
 
 ### v1.5.1

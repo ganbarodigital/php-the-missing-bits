@@ -34,3 +34,5 @@ If the object has no non-static properties, `get_object_properties()` returns an
 * `get_object_properties()` will include all non-static properties defined by the class's parents, by any traits used by the class or its parents, and by any traits used by those traits.
 * `get_object_properties()` only works on objects. Use [`get_class_properties()`](get_class_properties.html) to check for static properties.
 * `get_object_properties()` is a convenience wrapper around [`FilterObjectProperties::from()`](FilterObjectProperties.from.html)
+
+{% include ".i/supports/5.6-7.x.twig" %}

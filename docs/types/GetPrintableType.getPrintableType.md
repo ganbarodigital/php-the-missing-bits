@@ -82,3 +82,5 @@ At some point in the future, we'll introduce our own `get_strict_type()` functio
 ## Notes
 
 None at this time.
+
+{% include ".i/supports/5.6-7.x.twig" %}

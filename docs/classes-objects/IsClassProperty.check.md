@@ -30,3 +30,5 @@ bool IsClassProperty::check(ReflectionProperty $refProp);
 ## Throws
 
 `IsClassProperty::check()` does not throw any exceptions.
+
+{% include ".i/supports/5.6-7.x.twig" %}

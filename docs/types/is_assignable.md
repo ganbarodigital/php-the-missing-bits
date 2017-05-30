@@ -11,3 +11,5 @@ bool is_assignable(mixed $fieldOrVar);
 ```
 
 `is_assignable()` is a convenience wrapper around `IsAssignable::check()`. See [`IsAssignable::check()`](IsAssignable.check.html) for details.
+
+{% include ".i/supports/5.6-7.x.twig" %}

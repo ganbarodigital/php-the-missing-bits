@@ -58,10 +58,4 @@ Here's a simple class to examine:
 * Discovered properties can be returned in any order.
 * `get_class_properties()` is a convenience wrapper around [`FilterClassProperties::from()`](FilterClassProperties.from.html)
 
-## Supported PHP Versions
-
-PHP Version | Supported?
-------------|-----------
-5.6.x | yes
-7.0.x | yes
-7.1.x | yes
+{% include ".i/supports/5.6-7.x.twig" %}

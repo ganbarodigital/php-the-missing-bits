@@ -60,3 +60,5 @@ Here's a simple class to examine:
 * `FilterClassProperties::from()` will include all static properties defined by the class's parents, by any traits used by the class or its parents, and by any traits used by those traits.
 * `FilterClassProperties::from()` only works on classes. Use [`FilterObjectProperties::from()`](FilterObjectProperties.from.html) to get an object's non-static properties.
 * Discovered properties can be returned in any order.
+
+{% include ".i/supports/5.6-7.x.twig" %}

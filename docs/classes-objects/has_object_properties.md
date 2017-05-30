@@ -37,3 +37,5 @@ bool has_object_properties(object $target, $propTypes = ReflectionProperty::IS_P
 ## Notes
 
 * `has_object_properties()` is a convenience wrapper around [`HasObjectProperties::check()`](HasObjectProperties.check.html)
+
+{% include ".i/supports/5.6-7.x.twig" %}

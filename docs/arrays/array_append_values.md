@@ -34,10 +34,4 @@ It's a good idea to only call `array_append_values()` if both `$target` and `$ex
 {% include ".i/examples/array_append_values/Example-1--Append-To-List.twig" %}
 {% include ".i/examples/array_append_values/Example-2--Append-To-Associative-Array.twig" %}
 
-## Supported PHP Versions
-
-PHP Version | Supported?
-------------|-----------
-5.6.x | yes
-7.0.x | yes
-7.1.x | yes
+{% include ".i/supports/5.6-7.x.twig" %}

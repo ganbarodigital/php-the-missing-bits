@@ -88,3 +88,5 @@ class RejectStrings
 ## Notes
 
 None at this time.
+
+{% include ".i/supports/5.6-7.x.twig" %}

@@ -113,3 +113,5 @@ This example code outputs:
 
     int(100)
     float(3.1415927)
+
+{% include ".i/supports/5.6-7.x.twig" %}

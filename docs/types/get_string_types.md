@@ -303,13 +303,4 @@ var_dump(get_string_types(STDIN));
 
 `get_string_types()` does not throw any exceptions.
 
-## Works With
-
-`get_string_types()` is supported on these versions of PHP:
-
-PHP Version | Works?
-------------|-------
-5.5 | Yes
-5.6 | Yes
-7.0 | Yes
-HHVM | Yes
+{% include ".i/supports/5.6-7.x.twig" %}

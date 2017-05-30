@@ -399,6 +399,8 @@ var_dump(GetDuckTypes::from(Traversable::class));
 
 `GetDuckTypes::from()` does not throw any exceptions.
 
+{% include ".i/supports/5.6-7.x.twig" %}
+
 ## Changelog
 
 ### v1.5.1

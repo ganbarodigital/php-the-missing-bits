@@ -352,13 +352,4 @@ var_dump($inspector->getStringDuckTypes(STDIN));
 
 `GetStringDuckTypes::getStringDuckTypes()` does not throw any exceptions.
 
-## Works With
-
-`GetStringDuckTypes::getStringDuckTypes()` is supported on these versions of PHP:
-
-PHP Version | Works?
-------------|-------
-5.5 | Yes
-5.6 | Yes
-7.0 | Yes
-HHVM | Yes
+{% include ".i/supports/5.6-7.x.twig" %}
