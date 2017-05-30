@@ -1,8 +1,6 @@
 # CanBeEmpty interface
 
-<div class="callout info">
-Since v1.6.0
-</div>
+{% include ".i/since/1.6.0.twig" %}
 
 ## Description
 

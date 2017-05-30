@@ -1,8 +1,6 @@
 # StackFrame class
 
-<div class="callout info">
-Since v1.4.0
-</div>
+{% include ".i/since/1.4.0.twig" %}
 
 ## Description
 

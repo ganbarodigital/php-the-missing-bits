@@ -1,8 +1,6 @@
 # ReadOnlyForeverException
 
-<div class="callout warning">
-Not yet in a tagged release
-</div>
+{% include ".i/since/1.10.0.twig" %}
 
 ## Description
 

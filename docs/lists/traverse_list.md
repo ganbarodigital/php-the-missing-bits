@@ -1,8 +1,6 @@
 # traverse_list()
 
-<div class="callout info" markdown="1">
-Since v1.8.0
-</div>
+{% include ".i/since/1.8.0.twig" %}
 
 ## Description
 

@@ -1,8 +1,6 @@
 # GetPrintableType class
 
-<div class="callout info" markdown="1">
-Since version 1.1.0
-</div>
+{% include ".i/since/1.1.0.twig" %}
 
 ## Description
 

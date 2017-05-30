@@ -1,8 +1,6 @@
 # IsStringy
 
-<div class="callout warning" markdown="1">
-Not yet in a tagged release
-</div>
+{% include ".i/since/1.10.0.twig" %}
 
 ## Description
 

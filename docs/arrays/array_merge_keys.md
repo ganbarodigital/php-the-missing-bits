@@ -1,8 +1,6 @@
 # array_merge_keys()
 
-<div class="callout info" markdown="1">
-Since version 1.7.0
-</div>
+{% include ".i/since/1.7.0.twig" %}
 
 ## Description
 

@@ -1,8 +1,6 @@
 # GetStringTypes class
 
-<div class="callout info" markdown="1">
-Since v1.3.0
-</div>
+{% include ".i/since/1.3.0.twig" %}
 
 ## Description
 

@@ -1,8 +1,6 @@
 # GetStringDuckTypes::from()
 
-<div class="callout info">
-Since v1.5.0
-</div>
+{% include ".i/since/1.5.0.twig" %}
 
 ## Description
 

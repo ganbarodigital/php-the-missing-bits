@@ -1,8 +1,6 @@
 # WriteProtectTab
 
-<div class="callout info">
-Since v1.2.0
-</div>
+{% include ".i/since/1.2.0.twig" %}
 
 ## Description
 

@@ -1,8 +1,6 @@
 # GetClassTypes class
 
-<div class="callout info">
-Since v1.3.0
-</div>
+{% include ".i/since/1.3.0.twig" %}
 
 ## Description
 
