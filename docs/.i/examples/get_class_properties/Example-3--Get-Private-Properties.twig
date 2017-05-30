@@ -1,0 +1,18 @@
+<h3 id="example-3--get-private-properties">Example 3: Get Private Properties</h3>
+
+<p>This example shows you how to get the private properties of a class.</p>
+
+<pre><code class="language-php">
+$props = get_class_properties(ExampleClass::class, ReflectionProperty::IS_PRIVATE);
+var_dump($props);
+</code></pre>
+<p>The code above produces this output on PHP v5.6.30, PHP v7.0.18, PHP v7.1.4:</p>
+
+<pre>
+array(2) {
+  ["value3"]=>
+  string(26) "I am private static value3"
+  ["trait3"]=>
+  string(26) "I am private static trait3"
+}
+</pre>
