@@ -66,16 +66,16 @@ class get_class_propertiesTest extends \PHPUnit\Framework\TestCase
     /**
      * @covers ::get_class_properties
      */
-    public function test_returns_list_of_static_properties()
+    public function test_returns_list_of_static_public_properties()
     {
         // ----------------------------------------------------------------
         // setup your test
 
         $expectedResult = [
-            'staticProp1' => 1,
-            'staticProp2' => 2,
-            'staticProp3' => 3,
-            'staticProp4' => null,
+            'staticPublicProp1' => 1,
+            'staticPublicProp2' => 2,
+            'staticPublicProp3' => 3,
+            'staticPublicProp4' => null,
         ];
 
         // ----------------------------------------------------------------
@@ -92,16 +92,210 @@ class get_class_propertiesTest extends \PHPUnit\Framework\TestCase
     /**
      * @covers ::get_class_properties
      */
+    public function test_returns_list_of_static_protected_properties()
+    {
+        // ----------------------------------------------------------------
+        // setup your test
+
+        $expectedResult = [
+            'staticProtectedProp1' => 101,
+            'staticProtectedProp2' => 102,
+            'staticProtectedProp3' => 103,
+            'staticProtectedProp4' => null,
+        ];
+
+        // ----------------------------------------------------------------
+        // perform the change
+
+        $actualResult = get_class_properties(
+            get_class_propertiesTest_SeveralStaticProperties::class,
+            ReflectionProperty::IS_PROTECTED
+        );
+
+        // ----------------------------------------------------------------
+        // test the results
+
+        $this->assertEquals($expectedResult, $actualResult);
+    }
+
+    /**
+     * @covers ::get_class_properties
+     */
+    public function test_returns_list_of_static_private_properties()
+    {
+        // ----------------------------------------------------------------
+        // setup your test
+
+        $expectedResult = [
+            'staticPrivateProp1' => 201,
+            'staticPrivateProp2' => 202,
+            'staticPrivateProp3' => 203,
+            'staticPrivateProp4' => null,
+        ];
+
+        // ----------------------------------------------------------------
+        // perform the change
+
+        $actualResult = get_class_properties(
+            get_class_propertiesTest_SeveralStaticProperties::class,
+            ReflectionProperty::IS_PRIVATE
+        );
+
+        // ----------------------------------------------------------------
+        // test the results
+
+        $this->assertEquals($expectedResult, $actualResult);
+    }
+
+    /**
+     * @covers ::get_class_properties
+     */
+    public function test_returns_list_of_static_public_and_protected_properties()
+    {
+        // ----------------------------------------------------------------
+        // setup your test
+
+        $expectedResult = [
+            'staticPublicProp1' => 1,
+            'staticPublicProp2' => 2,
+            'staticPublicProp3' => 3,
+            'staticPublicProp4' => null,
+            'staticProtectedProp1' => 101,
+            'staticProtectedProp2' => 102,
+            'staticProtectedProp3' => 103,
+            'staticProtectedProp4' => null,
+        ];
+
+        // ----------------------------------------------------------------
+        // perform the change
+
+        $actualResult = get_class_properties(
+            get_class_propertiesTest_SeveralStaticProperties::class,
+            ReflectionProperty::IS_PUBLIC | ReflectionProperty::IS_PROTECTED
+        );
+
+        // ----------------------------------------------------------------
+        // test the results
+
+        $this->assertEquals($expectedResult, $actualResult);
+    }
+
+    /**
+     * @covers ::get_class_properties
+     */
+    public function test_returns_list_of_static_public_and_private_properties()
+    {
+        // ----------------------------------------------------------------
+        // setup your test
+
+        $expectedResult = [
+            'staticPublicProp1' => 1,
+            'staticPublicProp2' => 2,
+            'staticPublicProp3' => 3,
+            'staticPublicProp4' => null,
+            'staticPrivateProp1' => 201,
+            'staticPrivateProp2' => 202,
+            'staticPrivateProp3' => 203,
+            'staticPrivateProp4' => null,
+        ];
+
+        // ----------------------------------------------------------------
+        // perform the change
+
+        $actualResult = get_class_properties(
+            get_class_propertiesTest_SeveralStaticProperties::class,
+            ReflectionProperty::IS_PUBLIC | ReflectionProperty::IS_PRIVATE
+        );
+
+        // ----------------------------------------------------------------
+        // test the results
+
+        $this->assertEquals($expectedResult, $actualResult);
+    }
+
+    /**
+     * @covers ::get_class_properties
+     */
+    public function test_returns_list_of_static_protected_and_private_properties()
+    {
+        // ----------------------------------------------------------------
+        // setup your test
+
+        $expectedResult = [
+            'staticProtectedProp1' => 101,
+            'staticProtectedProp2' => 102,
+            'staticProtectedProp3' => 103,
+            'staticProtectedProp4' => null,
+            'staticPrivateProp1' => 201,
+            'staticPrivateProp2' => 202,
+            'staticPrivateProp3' => 203,
+            'staticPrivateProp4' => null,
+        ];
+
+        // ----------------------------------------------------------------
+        // perform the change
+
+        $actualResult = get_class_properties(
+            get_class_propertiesTest_SeveralStaticProperties::class,
+            ReflectionProperty::IS_PROTECTED | ReflectionProperty::IS_PRIVATE
+        );
+
+        // ----------------------------------------------------------------
+        // test the results
+
+        $this->assertEquals($expectedResult, $actualResult);
+    }
+
+    /**
+     * @covers ::get_class_properties
+     */
+    public function test_returns_list_of_static_public_protected_and_private_properties()
+    {
+        // ----------------------------------------------------------------
+        // setup your test
+
+        $expectedResult = [
+            'staticPublicProp1' => 1,
+            'staticPublicProp2' => 2,
+            'staticPublicProp3' => 3,
+            'staticPublicProp4' => null,
+            'staticProtectedProp1' => 101,
+            'staticProtectedProp2' => 102,
+            'staticProtectedProp3' => 103,
+            'staticProtectedProp4' => null,
+            'staticPrivateProp1' => 201,
+            'staticPrivateProp2' => 202,
+            'staticPrivateProp3' => 203,
+            'staticPrivateProp4' => null,
+        ];
+
+        // ----------------------------------------------------------------
+        // perform the change
+
+        $actualResult = get_class_properties(
+            get_class_propertiesTest_SeveralStaticProperties::class,
+            ReflectionProperty::IS_PUBLIC | ReflectionProperty::IS_PROTECTED | ReflectionProperty::IS_PRIVATE
+        );
+
+        // ----------------------------------------------------------------
+        // test the results
+
+        $this->assertEquals($expectedResult, $actualResult);
+    }
+
+    /**
+     * @covers ::get_class_properties
+     */
     public function test_returned_list_includes_parent_classes_static_properties()
     {
         // ----------------------------------------------------------------
         // setup your test
 
         $expectedResult = [
-            'staticProp1' => 1,
-            'staticProp2' => 2,
-            'staticProp3' => 3,
-            'staticProp4' => 4,
+            'staticPublicProp1' => 1,
+            'staticPublicProp2' => 2,
+            'staticPublicProp3' => 3,
+            'staticPublicProp4' => 4,
         ];
 
         // ----------------------------------------------------------------
@@ -147,10 +341,10 @@ class get_class_propertiesTest extends \PHPUnit\Framework\TestCase
         // setup your test
 
         $expectedResult = [
-            'staticProp1' => get_class_propertiesTest_ChildOfStaticsWithStaticTraits::$staticProp1,
-            'staticProp2' => get_class_propertiesTest_ChildOfStaticsWithStaticTraits::$staticProp2,
-            'staticProp3' => get_class_propertiesTest_ChildOfStaticsWithStaticTraits::$staticProp3,
-            'staticProp4' => get_class_propertiesTest_ChildOfStaticsWithStaticTraits::$staticProp4,
+            'staticPublicProp1' => get_class_propertiesTest_ChildOfStaticsWithStaticTraits::$staticPublicProp1,
+            'staticPublicProp2' => get_class_propertiesTest_ChildOfStaticsWithStaticTraits::$staticPublicProp2,
+            'staticPublicProp3' => get_class_propertiesTest_ChildOfStaticsWithStaticTraits::$staticPublicProp3,
+            'staticPublicProp4' => get_class_propertiesTest_ChildOfStaticsWithStaticTraits::$staticPublicProp4,
             'staticTraitProp1' => get_class_propertiesTest_ChildOfStaticsWithStaticTraits::$staticTraitProp1,
         ];
 
@@ -264,17 +458,29 @@ class get_class_propertiesTest_NoStaticProperties
 
 class get_class_propertiesTest_SeveralStaticProperties
 {
-    public static $staticProp1 = 1;
-    public static $staticProp2 = 2;
-    public static $staticProp3 = 3;
-    public static $staticProp4;
+    public static $staticPublicProp1 = 1;
+    public static $staticPublicProp2 = 2;
+    public static $staticPublicProp3 = 3;
+    public static $staticPublicProp4;
 
-    public $objProp1 = 1;
+    protected static $staticProtectedProp1 = 101;
+    protected static $staticProtectedProp2 = 102;
+    protected static $staticProtectedProp3 = 103;
+    protected static $staticProtectedProp4;
+
+    private static $staticPrivateProp1 = 201;
+    private static $staticPrivateProp2 = 202;
+    private static $staticPrivateProp3 = 203;
+    private static $staticPrivateProp4;
+
+    public $objPublicProp = 1;
+    protected $objProtectedProp = 2;
+    private $objPrivateProp = 3;
 }
 
 class get_class_propertiesTest_ChildOfStaticProperties extends get_class_propertiesTest_SeveralStaticProperties
 {
-    public static $staticProp4 = 4;
+    public static $staticPublicProp4 = 4;
 }
 
 trait get_class_propertiesTest_Trait1WithStaticProperty
