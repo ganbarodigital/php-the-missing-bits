@@ -55,20 +55,7 @@ Here's a simple class to examine:
 
 Here is the contract for this function:
 
-    get_class_properties
-     [x] returns empty array if class has no static properties
-     [x] returns list of static public properties
-     [x] returns list of static protected properties
-     [x] returns list of static private properties
-     [x] returns list of static public and protected properties
-     [x] returns list of static public and private properties
-     [x] returns list of static protected and private properties
-     [x] returns list of static public protected and private properties
-     [x] returned list includes parent classes static properties
-     [x] returned list includes traits static properties
-     [x] returned list includes parent classes and traits static properties
-     [x] throws InvalidArgumentException for non strings
-     [x] throws InvalidArgumentException if target is not valid classname
+{% include ".i/contracts/get_class_properties.twig" %}
 
 {% include ".i/boilerplate/function-contract.twig" %}
 
