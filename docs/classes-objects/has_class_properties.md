@@ -58,4 +58,5 @@ Here's a simple class to examine:
 * `has_class_properties()` only works on classes. Use `has_object_properties()` to check for non-static properties.
 * `has_class_properties()` is a convenience wrapper around [`HasClassProperties::check()`](HasClassProperties.check.html)
 
+{% include ".i/contracts/has_class_properties.twig" %}
 {% include ".i/supports/5.6-7.x.twig" %}

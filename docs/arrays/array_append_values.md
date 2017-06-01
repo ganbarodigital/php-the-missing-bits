@@ -29,19 +29,10 @@ It's a good idea to only call `array_append_values()` if both `$target` and `$ex
 * The values from `$extra` are appended
 * The keys from `$extra` are ignored
 
-## Functional Contract
-
-Here is the contract for this function:
-
-    array_append_values
-     [x] can append to array
-     [x] original array is unmodified
-
-{% include ".i/boilerplate/function-contract.twig" %}
-
 ## Examples
 
 {% include ".i/examples/array_append_values/Example-1--Append-To-List.twig" %}
 {% include ".i/examples/array_append_values/Example-2--Append-To-Associative-Array.twig" %}
 
+{% include ".i/contracts/array_append_values.twig" %}
 {% include ".i/supports/5.6-7.x.twig" %}

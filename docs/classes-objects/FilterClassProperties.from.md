@@ -61,4 +61,5 @@ Here's a simple class to examine:
 * `FilterClassProperties::from()` only works on classes. Use [`FilterObjectProperties::from()`](FilterObjectProperties.from.html) to get an object's non-static properties.
 * Discovered properties can be returned in any order.
 
+{% include ".i/contracts/GanbaroDigital/MissingBits/ClassesAndObjects/FilterClassProperties.twig" %}
 {% include ".i/supports/5.6-7.x.twig" %}

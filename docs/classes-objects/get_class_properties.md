@@ -51,14 +51,6 @@ Here's a simple class to examine:
 {% include ".i/examples/get_class_properties/Example-2--Get-Protected-Properties.twig" %}
 {% include ".i/examples/get_class_properties/Example-3--Get-Private-Properties.twig" %}
 
-## Functional Contract
-
-Here is the contract for this function:
-
-{% include ".i/contracts/get_class_properties.twig" %}
-
-{% include ".i/boilerplate/function-contract.twig" %}
-
 ## Notes
 
 * `get_class_properties()` will include all static properties defined by the class's parents, by any traits used by the class or its parents, and by any traits used by those traits.
@@ -66,4 +58,5 @@ Here is the contract for this function:
 * Discovered properties can be returned in any order.
 * `get_class_properties()` is a convenience wrapper around [`FilterClassProperties::from()`](FilterClassProperties.from.html)
 
+{% include ".i/contracts/get_class_properties.twig" %}
 {% include ".i/supports/5.6-7.x.twig" %}

@@ -57,4 +57,5 @@ Here's a simple class to examine:
 * `HasClassProperties::check()` will also check parent classes and all the traits used by this class for static properties.
 * `HasClassProperties::check()` only works on classes. Use [`HasObjectProperties::check()`](HasObjectProperties.html) to check an object for non-static properties.
 
+{% include ".i/contracts/GanbaroDigital/MissingBits/ClassesAndObjects/HasClassProperties.twig" %}
 {% include ".i/supports/5.6-7.x.twig" %}

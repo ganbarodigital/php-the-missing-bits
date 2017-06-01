@@ -56,20 +56,7 @@ Use `ListCheckHelper` in your own classes to save on typing and code duplication
 
 See [`ListCheck`](ListCheck.class.html) for details.
 
-## Trait Contract
-
-Here is the contract for this trait:
-
-    GanbaroDigital\MissingBits\Checks\ListCheckHelper
-     [x] can instantiate class that uses trait
-     [x] is part of ListCheck interface
-     [x] can inspect an array of data via inspectList
-     [x] can inspect a Traversable object via inspectList
-     [x] can inspect a stdClass object via inspectList
-     [x] throws InvalidArgumentException when non list passed to inspectList
-
-{% include ".i/boilerplate/trait-contract.twig" %}
-
+{% include ".i/contracts/GanbaroDigital/MissingBits/Checks/ListCheckHelper.twig" %}
 {% include ".i/supports/5.6-7.x.twig" %}
 
 ## See Also
