@@ -132,22 +132,23 @@ function buildCombinedOutput($capturedOutput)
 function buildExampleDoc($exampleTitle, $exampleId, $preamble, $source, $capturedOutput)
 {
     $retval = <<<EOS
-<h3 id="{$exampleId}">{$exampleTitle}</h3>
+### {$exampleTitle}
 
-<p>{$preamble}</p>
+{$preamble}
 
-<pre><code class="language-php">
+```php
 {$source}
-</code></pre>
+```
 
 EOS;
     foreach ($capturedOutput as $phpVersion => $output) {
         $retval .= <<<EOS
-<p>The code above produces this output on {$phpVersion}:</p>
+The code above produces this output on {$phpVersion}:
 
-<pre>
+```
 {$output}
-</pre>
+```
+
 EOS;
     }
 
