@@ -26,7 +26,7 @@ The input parameters are:
 * All arrays and instances of `stdClass` are also marked as `Traversable` (they are safe to use in a `foreach` loop)
 * For objects, we also include a list of all parent classes
 * For objects, we also include a list of all interfaces that the object's class implements
-* For objects, we check if it implements '__toString()'
+* For objects, we check if it implements `__toString()`
 * For strings that are valid class or interface names, we include the class name, a list of all parent classes, and a list of all interfaces that the class implements
 * For strings, we check if the string is a valid `double` or `integer`
 
