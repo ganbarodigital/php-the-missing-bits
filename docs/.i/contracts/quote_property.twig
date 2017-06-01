@@ -1,4 +1,8 @@
-    quote_property
+## Behavoural Contract
+
+Here is the behavioural contract, enforced by our unit tests:
+
+    quote_property()
      [x] does not add braces to safe property names
      [x] adds braces to unsafe property names
      [x] works with objects that have toString
@@ -8,3 +12,5 @@
      [x] throws InvalidArgumentException for false
      [x] throws InvalidArgumentException for arrays
      [x] throws InvalidArgumentException for resources
+
+{% include ".i/boilerplate/behavioural-contract.twig" %}

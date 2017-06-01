@@ -1,4 +1,10 @@
-    has_object_properties
+## Behavoural Contract
+
+Here is the behavioural contract, enforced by our unit tests:
+
+    has_object_properties()
      [x] returns false if object has no non static properties
      [x] returns true if object has non static properties
      [x] throws InvalidArgumentException for non objects
+
+{% include ".i/boilerplate/behavioural-contract.twig" %}
