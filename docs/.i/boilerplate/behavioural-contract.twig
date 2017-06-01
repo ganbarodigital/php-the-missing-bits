@@ -1,0 +1,23 @@
+<div class="callout attention" markdown="1">
+#### What Are Behavioural Contracts?
+
+Behavioural contracts describe how this code is expected to work. It is a list of the unit tests for this code.
+
+__Future releases of this code will not break this contract.__ If we need to introduce a backwards-compatibility break, we will bump the major version of this package (e.g. v1.x to v2.0).
+
+We may add to the contract in future, for example:
+
+* clarifying existing behaviour (e.g. stricter contract around input or return types)
+* add new behaviours (e.g. extra class methods)
+
+__When you use this code, you can only rely on the behaviours documented by this contract.__
+
+If you:
+
+* find other ways to use this code,
+* or depend on behaviours that are not covered by a unit test,
+* or depend on undocumented internal states of this code,
+
+... your code may not work in the future.
+</div>
+

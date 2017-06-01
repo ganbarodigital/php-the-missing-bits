@@ -12,6 +12,19 @@ if (!file_exists($testdoxFilename)) {
 // in case some of them are no longer needed
 system("rm -r ./docs/.i/contracts/*");
 
+$prefix = <<<EOS
+## Behavoural Contract
+
+Here is the behavioural contract, enforced by our unit tests:
+
+
+EOS;
+$suffix = <<<EOS
+
+{% include ".i/boilerplate/behavioural-contract.twig" %}
+
+EOS;
+
 $fd = fopen($testdoxFilename, 'r');
 
 $contractName=null;
@@ -29,8 +42,11 @@ while ($line = fgets($fd)) {
         $finalPathPart = $folders[$finalIndex];
         unset($folders[$finalIndex]);
 
+        $isClass = false;
+
         // special case - map 'Test' namespace
         if (count($folders) > 4) {
+            $isClass = true;
             if (substr($folders[3], -4) === 'Test') {
                 $folders[3] = substr($folders[3], 0, -4);
             }
@@ -44,6 +60,10 @@ while ($line = fgets($fd)) {
             $finalPathPart = strtolower(substr($finalPathPart, 0, 1)) . substr($finalPathPart, 1);
         }
 
+        if (!$isClass) {
+            $contractName .= '()';
+        }
+
         foreach ($folders as $folder) {
             $path .= "/" . $folder;
             if (!is_dir($path)) {
@@ -53,9 +73,11 @@ while ($line = fgets($fd)) {
         $path .= "/" . $finalPathPart . ".twig";
         file_put_contents(
             $path,
-            '    ' . $contractName . PHP_EOL
+            $prefix
+            . '    ' . $contractName . PHP_EOL
             . implode(PHP_EOL, $contractDetails)
             . PHP_EOL
+            . $suffix
         );
 
         // reset for the next one
