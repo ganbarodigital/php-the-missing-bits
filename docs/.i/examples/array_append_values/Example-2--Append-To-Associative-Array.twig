@@ -1,11 +1,11 @@
-<h3 id="example-2--append-to-associative-array">Example 2: Append To Associative Array</h3>
+### Example 2: Append To Associative Array
 
-<p>This example shows what happens when we use <code>array_append_values()</code>
+This example shows what happens when we use <code>array_append_values()</code>
 to append to an associative array.
 
-As you can see, the result isn't all that useful!</p>
+As you can see, the result isn't all that useful!
 
-<pre><code class="language-php">
+```php
 $target = [
     "fish" => "trout",
     "name" => "harry"
@@ -18,10 +18,10 @@ $extra = [
 
 $newList = array_append_values($target, $extra);
 var_dump($newList);
-</code></pre>
-<p>The code above produces this output on PHP v5.6.30, PHP v7.0.19, PHP v7.1.5:</p>
+```
+The code above produces this output on PHP v5.6.30, PHP v7.0.19, PHP v7.1.5:
 
-<pre>
+```
 array(4) {
   ["fish"]=>
   string(5) "trout"
@@ -32,4 +32,4 @@ array(4) {
   [1]=>
   string(5) "sally"
 }
-</pre>
+```

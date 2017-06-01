@@ -1,20 +1,20 @@
-<h3 id="example-1--get-public-properties">Example 1: Get Public Properties</h3>
+### Example 1: Get Public Properties
 
-<p>This example shows you how to get the public properties of a class.</p>
+This example shows you how to get the public properties of a class.
 
-<pre><code class="language-php">
+```php
 use GanbaroDigital\MissingBits\ClassesAndObjects\FilterClassProperties;
 
 $props = FilterClassProperties::from(ExampleClass::class);
 var_dump($props);
-</code></pre>
-<p>The code above produces this output on PHP v5.6.30, PHP v7.0.19, PHP v7.1.5:</p>
+```
+The code above produces this output on PHP v5.6.30, PHP v7.0.19, PHP v7.1.5:
 
-<pre>
+```
 array(2) {
   ["value1"]=>
   string(25) "I am public static value1"
   ["trait1"]=>
   string(25) "I am public static trait1"
 }
-</pre>
+```

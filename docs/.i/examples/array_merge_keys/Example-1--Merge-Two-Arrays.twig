@@ -1,10 +1,10 @@
-<h3 id="example-1--merge-two-arrays">Example 1: Merge Two Arrays</h3>
+### Example 1: Merge Two Arrays
 
-<p>This example shows what happens when we combine two associative arrays.
+This example shows what happens when we combine two associative arrays.
 Note how the values in <code>$extra</code> overwrite the original values
-in <code>$target</code>.</p>
+in <code>$target</code>.
 
-<pre><code class="language-php">
+```php
 $target = [
     "fish" => "trout",
     "name" => "harry",
@@ -18,10 +18,10 @@ $extra = [
 
 $newList = array_merge_keys($target, $extra);
 var_dump($newList);
-</code></pre>
-<p>The code above produces this output on PHP v5.6.30, PHP v7.0.19, PHP v7.1.5:</p>
+```
+The code above produces this output on PHP v5.6.30, PHP v7.0.19, PHP v7.1.5:
 
-<pre>
+```
 array(3) {
   ["fish"]=>
   string(6) "salmon"
@@ -30,4 +30,4 @@ array(3) {
   ["action"]=>
   string(3) "met"
 }
-</pre>
+```

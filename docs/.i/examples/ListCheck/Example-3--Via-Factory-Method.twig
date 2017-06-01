@@ -1,13 +1,13 @@
-<h3 id="example-3--via-factory-method">Example 3: Via Factory Method</h3>
+### Example 3: Via Factory Method
 
-<p>The `using()` method is a static factory method. It returns a `ListCheck` object.</p>
+The `using()` method is a static factory method. It returns a `ListCheck` object.
 
-<pre><code class="language-php">
+```php
 $list = [ 15, 17 ];
 var_dump(IsInRange::using(10,20)->inspectList($list));
-</code></pre>
-<p>The code above produces this output on PHP v5.6.30, PHP v7.0.19, PHP v7.1.5:</p>
+```
+The code above produces this output on PHP v5.6.30, PHP v7.0.19, PHP v7.1.5:
 
-<pre>
+```
 bool(true)
-</pre>
+```

@@ -1,8 +1,8 @@
-<h3 id="example-1--append-to-list">Example 1: Append To List</h3>
+### Example 1: Append To List
 
-<p>This example shows what happens when we combine two lists.</p>
+This example shows what happens when we combine two lists.
 
-<pre><code class="language-php">
+```php
 $target = [
     "trout",
     "harry"
@@ -15,10 +15,10 @@ $extra = [
 
 $newList = array_append_values($target, $extra);
 var_dump($newList);
-</code></pre>
-<p>The code above produces this output on PHP v5.6.30, PHP v7.0.19, PHP v7.1.5:</p>
+```
+The code above produces this output on PHP v5.6.30, PHP v7.0.19, PHP v7.1.5:
 
-<pre>
+```
 array(4) {
   [0]=>
   string(5) "trout"
@@ -29,4 +29,4 @@ array(4) {
   [3]=>
   string(5) "sally"
 }
-</pre>
+```

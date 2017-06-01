@@ -1,18 +1,18 @@
-<h3 id="example-2--get-protected-properties">Example 2: Get Protected Properties</h3>
+### Example 2: Get Protected Properties
 
-<p>This example shows you how to get the protected properties of a class.</p>
+This example shows you how to get the protected properties of a class.
 
-<pre><code class="language-php">
+```php
 $props = get_class_properties(ExampleClass::class, ReflectionProperty::IS_PROTECTED);
 var_dump($props);
-</code></pre>
-<p>The code above produces this output on PHP v5.6.30, PHP v7.0.19, PHP v7.1.5:</p>
+```
+The code above produces this output on PHP v5.6.30, PHP v7.0.19, PHP v7.1.5:
 
-<pre>
+```
 array(2) {
   ["value2"]=>
   string(28) "I am protected static value2"
   ["trait2"]=>
   string(28) "I am protected static trait2"
 }
-</pre>
+```
