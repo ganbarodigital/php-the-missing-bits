@@ -63,7 +63,7 @@ while ($line = fgets($fd)) {
         $contractDetails = [];
     }
     else if ($line{0} == ' ') {
-        $contractDetails[] = '    ' . trim($line);
+        $contractDetails[] = '     ' . trim($line);
     }
     else {
         $contractName = trim($line);
