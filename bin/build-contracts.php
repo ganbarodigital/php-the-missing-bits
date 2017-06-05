@@ -63,6 +63,13 @@ while ($line = fgets($fd)) {
         if (!$isClass) {
             $contractName .= '()';
         }
+        else {
+            $nameParts = explode('\\', $contractName);
+            if (substr($nameParts[0], -4) === 'Test') {
+                $nameParts[0] = substr($nameParts[0], 0, -4);
+            }
+            $contractName = implode('\\', $nameParts);
+        }
 
         foreach ($folders as $folder) {
             $path .= "/" . $folder;
