@@ -1,0 +1,13 @@
+## Behavoural Contract
+
+Here is the behavioural contract, enforced by our unit tests:
+
+    check_is_array()
+     [x] returns TRUE for array
+     [x] returns FALSE for IteratorAggregate
+     [x] returns FALSE for ArrayIterator
+     [x] returns FALSE for ArrayObject
+     [x] returns FALSE for stdClass
+     [x] returns FALSE for everything else
+
+{% include ".i/boilerplate/behavioural-contract.twig" %}
