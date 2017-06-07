@@ -157,6 +157,11 @@
   - `WriteProtectTab::setReadWrite()` now throws `ReadOnlyForeverException` if `WriteProtectTab::setReadOnlyForever()` has been called
 * Added support for iterating into the contents of lists
   - added `RecursiveTraverse::using()`
+* Added a shim for PHP 7's type hint errors
+  - shim only activates if classes / interfaces not already declared
+  - added `Throwable`
+  - added `Error`
+  - added `TypeError`
 
 ### Refactor
 
