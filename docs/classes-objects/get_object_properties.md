@@ -8,7 +8,10 @@
 `get_object_properties()` - get an object's non-static properties
 
 ```php
-array get_object_properties(object $target, $propTypes = ReflectionProperty::IS_PUBLIC);
+get_object_properties(
+    object $target,
+    int $propTypes = ReflectionProperty::IS_PUBLIC
+) : array
 ```
 
 ## Parameters
@@ -26,7 +29,7 @@ If the object has no non-static properties, `get_object_properties()` returns an
 
 ## Throws
 
-`get_object_properties()` throws an `InvalidArgumentException` if:
+`get_object_properties()` throws a `TypeError` if:
 
 * `$target` is not an object
 
