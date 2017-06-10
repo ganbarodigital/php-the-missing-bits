@@ -11,6 +11,8 @@
 check_is_array(mixed $fieldOrVar) : bool
 ```
 
+`check_is_array()` is a convenience wrapper around [`IsArray::check()`](IsArray.check.html).
+
 ## Parameters
 
 `check_is_array` takes one parameter:
