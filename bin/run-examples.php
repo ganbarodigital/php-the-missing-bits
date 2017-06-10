@@ -5,6 +5,24 @@ require __DIR__ . '/../vendor/autoload.php';
 
 use Symfony\Component\Finder\Finder;
 
+function makePathToFilename($filename)
+{
+    $folders = explode('/', $filename);
+    $folderKeys = array_keys($folders);
+    $finalIndex = end($folderKeys);
+    $finalPathPart = $folders[$finalIndex];
+    unset($folders[$finalIndex]);
+
+    $path = '.';
+
+    foreach ($folders as $folder) {
+        $path .= '/' . $folder;
+        if (!is_dir($path)) {
+            mkdir($path);
+        }
+    }
+}
+
 function buildExamplePreamble($sourceFile)
 {
     $contents = file_get_contents($sourceFile);
@@ -214,6 +232,7 @@ foreach ($examples as $exampleFile) {
     $exampleTitle = ucfirst(str_replace(['--', '-'], [': ', ' '], basename($sourceFile, '.php')));
     $exampleId = strtolower(basename($sourceFile, '.php'));
     $docContents = buildExampleDoc($exampleTitle, $exampleId, $preamble, $source, $combinedOutput);
+    makePathToFilename($destFile);
     file_put_contents($destFile, $docContents);
 }
 
@@ -236,5 +255,6 @@ foreach ($examples as $exampleFile) {
         $contents = ltrim(substr($contents, 6));
     }
 
+    makePathToFilename($destFile);
     file_put_contents($destFile, '<pre><code class="language-php">' . PHP_EOL . $contents . PHP_EOL . '</code></pre>' . PHP_EOL);
 }
