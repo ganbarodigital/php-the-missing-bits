@@ -1,6 +1,7 @@
 # get_printable_type()
 
 {% include ".i/since/1.1.0.twig" %}
+{% include ".i/supports/5.6-7.x-badges.twig" %}
 
 ## Description
 

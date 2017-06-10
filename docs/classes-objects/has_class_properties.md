@@ -1,6 +1,7 @@
 # has_class_properties()
 
 {% include ".i/since/1.10.0.twig" %}
+{% include ".i/supports/5.6-7.x-badges.twig" %}
 
 ## Description
 

@@ -1,6 +1,7 @@
 # GetStrictTypes class
 
 {% include ".i/since/1.3.0.twig" %}
+{% include ".i/supports/5.6-7.x-badges.twig" %}
 
 ## Description
 

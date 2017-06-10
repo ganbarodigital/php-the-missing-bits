@@ -1,6 +1,7 @@
 # quote_index()
 
 {% include ".i/since/1.8.0.twig" %}
+{% include ".i/supports/5.6-7.x-badges.twig" %}
 
 ## Description
 

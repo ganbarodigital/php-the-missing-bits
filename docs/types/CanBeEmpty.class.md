@@ -1,6 +1,7 @@
 # CanBeEmpty interface
 
 {% include ".i/since/1.6.0.twig" %}
+{% include ".i/supports/5.6-7.x-badges.twig" %}
 
 ## Description
 

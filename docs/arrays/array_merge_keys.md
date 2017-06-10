@@ -1,6 +1,7 @@
 # array_merge_keys()
 
 {% include ".i/since/1.7.0.twig" %}
+{% include ".i/supports/5.6-7.x-badges.twig" %}
 
 ## Description
 
