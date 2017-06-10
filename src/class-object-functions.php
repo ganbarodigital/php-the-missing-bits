@@ -46,6 +46,7 @@ use GanbaroDigital\MissingBits\ClassesAndObjects\FilterObjectProperties;
 use GanbaroDigital\MissingBits\ClassesAndObjects\HasClassProperties;
 use GanbaroDigital\MissingBits\ClassesAndObjects\HasObjectProperties;
 use GanbaroDigital\MissingBits\ClassesAndObjects\IsClassProperty;
+use GanbaroDigital\MissingBits\ClassesAndObjects\IsObjectProperty;
 
 /**
  * is this property a class property?
@@ -59,6 +60,20 @@ use GanbaroDigital\MissingBits\ClassesAndObjects\IsClassProperty;
 function check_is_class_property(ReflectionProperty $refProp)
 {
     return IsClassProperty::check($refProp);
+}
+
+/**
+ * is this property a property on an object?
+ *
+ * @param  ReflectionProperty $refProp
+ *         the property to inspect
+ * @return bool
+ *         TRUE if $refProp is an object property
+ *         FALSE otherwise
+ */
+function check_is_object_property(ReflectionProperty $refProp)
+{
+    return IsObjectProperty::check($refProp);
 }
 
 /**

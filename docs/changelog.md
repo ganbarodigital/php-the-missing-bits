@@ -6,6 +6,7 @@
 
 * Added support for inspecting class and object properties
   - added `check_is_class_property()`
+  - added `check_is_object_property()`
   - added `get_class_properties()`
   - added `get_object_properties()`
   - added `has_class_properties()`
