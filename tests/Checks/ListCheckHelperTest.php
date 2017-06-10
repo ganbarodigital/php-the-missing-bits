@@ -48,6 +48,7 @@ use ArrayObject;
 use GanbaroDigital\MissingBits\Checks\Check;
 use GanbaroDigital\MissingBits\Checks\ListCheck;
 use GanbaroDigital\MissingBits\Checks\ListCheckHelper;
+use TypeError;
 
 /**
  * @coversDefaultClass GanbaroDigital\MissingBits\Checks\ListCheckHelper
@@ -168,10 +169,10 @@ class ListCheckHelperTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @covers ::inspectList
-     * @expectedException InvalidArgumentException
+     * @expectedException TypeError
      * @dataProvider provideNonLists
      */
-    public function test_throws_InvalidArgumentException_when_non_list_passed_to_inspectList($list)
+    public function test_throws_TypeErrors_when_non_list_passed_to_inspectList($list)
     {
         // ----------------------------------------------------------------
         // setup your test

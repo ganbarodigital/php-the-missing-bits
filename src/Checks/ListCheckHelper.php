@@ -45,7 +45,7 @@ namespace GanbaroDigital\MissingBits\Checks;
 
 use GanbaroDigital\MissingBits\TypeChecks\IsList;
 use GanbaroDigital\MissingBits\TypeInspectors\GetPrintableType;
-use InvalidArgumentException;
+use TypeError;
 
 /**
  * add ListCheck support to an existing Check class
@@ -65,7 +65,7 @@ trait ListCheckHelper
     {
         // robustness
         if (!IsList::check($list)) {
-            throw new InvalidArgumentException('$list is not a list, is a ' . GetPrintableType::of($list));
+            throw new TypeError('$list is not a list, is a ' . GetPrintableType::of($list));
         }
 
         // a simple foreach() is all that we need here
