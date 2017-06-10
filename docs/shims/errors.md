@@ -26,7 +26,7 @@ Here's why we've added this shim.
 
    Language-supported type hints aren't always able to express the range of types that a function or method can legally accept. Runtime checks are still necessary to plug the gaps. As the language supports richer type hints in future, runtime checks can be phased out when that happens.
 
-   Before PHP 7, standard practice was for these runtime checks to throw the older SPL `IllegalArgumentException`. If we use `IllegalArgumentException` in _PHP: The Missing Bits_, we'll be forcing you to have to check for both `IllegalArgumentException` and `TypeError`. We're not happy with that.
+   Before PHP 7, standard practice was for these runtime checks to throw the older SPL `InvalidArgumentException`. If we use `InvalidArgumentException` in _PHP: The Missing Bits_, we'll be forcing you to have to check for both `InvalidArgumentException` and `TypeError`. We're not happy with that.
 
    _PHP: The Missing Bits_ will throw `TypeError` where appropriate from its runtime checks. This shim makes that possible for anyone who still needs to use PHP 5.x, and doesn't affect anyone already using PHP 7 onwards.
 

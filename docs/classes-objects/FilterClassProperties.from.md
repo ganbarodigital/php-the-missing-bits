@@ -46,7 +46,7 @@ If the class has no static properties, `FilterClassProperties::from()` returns a
 
 * `$target` is not a string, or something that PHP will automatically convert to a string,
 
-`FilterClassProperties::from()` throws an `IllegalArgumentException` if:
+`FilterClassProperties::from()` throws an `InvalidArgumentException` if:
 
 * `$target` refers to a class that has not been defined
 
