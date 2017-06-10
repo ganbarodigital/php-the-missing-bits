@@ -96,47 +96,7 @@ Interface | Purpose
 [`Check`](../checks/Check.class.md) | `true` / `false` inspection of a single data item
 [`ListCheck`](../checks/ListCheck.class.md) | `true` / `false` inspection of a list of data items
 
-## Class Contract
-
-Here is the contract for this class:
-
-    GanbaroDigital\MissingBits\TypeChecks\IsArray
-     [x] can instantiate
-     [x] returns TRUE for array
-     [x] returns FALSE for IteratorAggregate
-     [x] returns FALSE for ArrayIterator
-     [x] returns FALSE for ArrayObject
-     [x] returns FALSE for stdClass
-     [x] returns FALSE for everything else
-     [x] is Check
-     [x] can use as Check
-     [x] is ListCheck
-     [x] can use as ListCheck
-
-Class contracts are built from this class's unit tests.
-
-<div class="callout success">
-Future releases of this class will not break this contract.
-</div>
-
-<div class="callout info" markdown="1">
-Future releases of this class may add to this contract. New additions may include:
-
-* clarifying existing behaviour (e.g. stricter contract around input or return types)
-* add new behaviours (e.g. extra trait methods)
-</div>
-
-<div class="callout warning" markdown="1">
-When you use this class, you can only rely on the behaviours documented by this contract.
-
-If you:
-
-* find other ways to use this class,
-* or depend on behaviours that are not covered by a unit test,
-* or depend on undocumented internal states of this class,
-
-... your code may not work in the future.
-</div>
+{% include ".i/contracts/GanbaroDigital/MissingBits/TypeChecks/IsArray.twig" %}
 
 ## Notes
 
