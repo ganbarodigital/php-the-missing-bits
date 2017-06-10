@@ -46,6 +46,7 @@ namespace GanbaroDigitalTest\MissingBits\ClassesAndObjects;
 use GanbaroDigital\MissingBits\ClassesAndObjects\HasClassProperties;
 use InvalidArgumentException;
 use stdClass;
+use TypeError;
 
  /**
   * @coversDefaultClass GanbaroDigital\MissingBits\ClassesAndObjects\HasClassProperties
@@ -132,7 +133,7 @@ class HasClassPropertiesTest extends \PHPUnit\Framework\TestCase
      * @covers ::check
      * @dataProvider provideNonStrings
      */
-    public function test_throws_InvalidArgumentException_for_non_strings($target, $expectedType)
+    public function test_throws_TypeError_for_non_strings($target, $expectedType)
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -146,7 +147,7 @@ class HasClassPropertiesTest extends \PHPUnit\Framework\TestCase
         try {
             HasClassProperties::check($target);
         }
-        catch (InvalidArgumentException $e) {
+        catch (TypeError $e) {
             $actualMessage = $e->getMessage();
         }
 

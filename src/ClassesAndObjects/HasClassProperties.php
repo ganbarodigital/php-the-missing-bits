@@ -43,12 +43,72 @@
 
 namespace GanbaroDigital\MissingBits\ClassesAndObjects;
 
+use GanbaroDigital\MissingBits\Checks\Check;
+use GanbaroDigital\MissingBits\Checks\ListCheck;
+use GanbaroDigital\MissingBits\Checks\ListCheckHelper;
 use InvalidArgumentException;
 use ReflectionClass;
 use ReflectionProperty;
+use TypeError;
 
-class HasClassProperties
+/**
+ * does a class have static properties?
+ */
+class HasClassProperties implements Check, ListCheck
 {
+    // save us having to implement it ourselves
+    use ListCheckHelper;
+
+    /**
+     * which types of property do we want to check for?
+     * @var int
+     */
+    protected $propTypes;
+
+    /**
+     * create a customised HasClassProperties checker, ready to use
+     *
+     * @param  int $propTypes
+     *         the kind of properties to look for
+     *         default is to look for public properties only
+     * @return HasClassProperties
+     *         a customised Check, ready to use
+     */
+    public function __construct($propTypes = ReflectionProperty::IS_PUBLIC)
+    {
+        $this->propTypes = $propTypes;
+    }
+
+    /**
+     * create a customised HasClassProperties checker, ready to use
+     *
+     * @param  int $propTypes
+     *         the kind of properties to look for
+     *         default is to look for public properties only
+     * @return HasClassProperties
+     *         a customised Check, ready to use
+     */
+    public static function using($propTypes = ReflectionProperty::IS_PUBLIC)
+    {
+        return new static($propTypes);
+    }
+
+    /**
+     * does a class have static properties?
+     *
+     * @param  string $target
+     *         the class to examine
+     * @return boolean
+     *         TRUE if the class has static properties
+     *         FALSE otherwise
+     * @throws InvalidArgumentException
+     *         if $target is not a valid class name
+     */
+    public function inspect($target)
+    {
+        return static::check($target, $this->propTypes);
+    }
+
     /**
      * does a class have static properties?
      *
@@ -67,7 +127,7 @@ class HasClassProperties
     {
         // robustness!!
         if (!check_is_stringy($target)) {
-            throw new InvalidArgumentException('$target is not a string, is a ' . get_printable_type($target));
+            throw new TypeError('$target is not a string, is a ' . get_printable_type($target));
         }
 
         // make sure we have a valid class
@@ -79,5 +139,25 @@ class HasClassProperties
         $refObj = new ReflectionClass($target);
         $resultFilter = [IsClassProperty::class, 'check'];
         return HasFilteredProperties::check($refObj, $propTypes | ReflectionProperty::IS_STATIC, $resultFilter);
+    }
+
+    /**
+     * does a list of classes have static properties?
+     *
+     * @param  mixed $list
+     *         the list of classes to examine
+     * @param  int $propTypes
+     *         the kind of properties to look for
+     *         default is to look for public properties only
+     * @return boolean
+     *         TRUE if the class has static properties
+     *         FALSE otherwise
+     * @throws InvalidArgumentException
+     *         if $target is not a valid class name
+     */
+    public static function checkList($list, $propTypes = ReflectionProperty::IS_PUBLIC)
+    {
+        $check = new static($propTypes);
+        return $check->inspectList($list);
     }
 }

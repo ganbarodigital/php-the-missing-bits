@@ -123,7 +123,7 @@ class has_class_propertiesTest extends \PHPUnit\Framework\TestCase
      * @covers ::has_class_properties
      * @dataProvider provideNonStrings
      */
-    public function test_throws_InvalidArgumentException_for_non_strings($target, $expectedType)
+    public function test_throws_TypeError_for_non_strings($target, $expectedType)
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -137,7 +137,7 @@ class has_class_propertiesTest extends \PHPUnit\Framework\TestCase
         try {
             has_class_properties($target);
         }
-        catch (InvalidArgumentException $e) {
+        catch (TypeError $e) {
             $actualMessage = $e->getMessage();
         }
 
