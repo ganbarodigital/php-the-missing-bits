@@ -8,8 +8,15 @@ We've added extra ways to inspect and understand the static properties of a clas
 
 Function | Purpose
 ---------|--------
+[`check_is_class_property()`](check_is_class_property.html) | is the [`ReflectionProperty`](http://www.php.net/ReflectionProperty) a class property?
 [`get_class_properties()`](get_class_properties.html) | return the static properties of a class
 [`has_class_properties()`](has_class_properties.html) | does the class have static properties at all?
-[`FilterClassProperties::from()`](FilterClassProperties.from.html) | extract the static properties of a class
-[`HasClassProperties::check()`](HasClassProperties.check.html) | does the class have static properties?
-[`IsClassProperty::check()`](IsClassProperty.check.html) | is the [`ReflectionProperty`](http://www.php.net/ReflectionProperty) a class property?
+
+
+## Available Classes
+
+Class | Purpose
+------|--------
+[`FilterClassProperties`](FilterClassProperties.class.html) | extract the static properties of a class
+[`HasClassProperties`](HasClassProperties.class.html) | does the class have static properties?
+[`IsClassProperty`](IsClassProperty.class.html) | is the [`ReflectionProperty`](http://www.php.net/ReflectionProperty) a class property?
