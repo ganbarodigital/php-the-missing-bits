@@ -1,0 +1,12 @@
+<div class="callout attention" markdown="1">
+#### What Are Informal Interfaces?
+
+_Informal interfaces_ contain methods that __you must implement__. However, due to PHP limitations, we can't add these to the actual `interface` code today.
+
+Why is this?
+
+PHP's object-oriented support is largely borrowed from static compiled languages such as Java. As a result, PHP's `interface` currently doesn't provide much support for dynamic concepts - such as a method that deliberately takes different arguments from implementation to implementation.
+
+Some people might argue that this is a violation of [Liskov's Substitution Principle](https://en.wikipedia.org/wiki/Liskov_substitution_principle) from the [SOLID principles](https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)). And we agree with that for objects. But for classes? No. Objects have a type, classes don't.
+
+</div>

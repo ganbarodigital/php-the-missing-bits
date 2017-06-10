@@ -69,7 +69,7 @@ interface Check
 }
 ```
 
-_Informal interfaces_ contain methods that you must implement. However, due to PHP limitations, we can't add these methods to the `interface` at this time.
+{% include ".i/boilerplate/informal-interfaces.twig" %}
 
 ## How To Use
 
