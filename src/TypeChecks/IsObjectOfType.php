@@ -69,7 +69,7 @@ class IsObjectOfType implements Check, ListCheck
      */
     public function __construct($expectedType)
     {
-        $this->expectedType = $type;
+        $this->expectedType = $expectedType;
     }
 
     /**
