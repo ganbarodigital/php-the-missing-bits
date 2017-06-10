@@ -1,6 +1,7 @@
 # IsClassProperty::check()
 
 {% include ".i/since/1.10.0.twig" %}
+{% include ".i/code-metrics/GanbaroDigital/MissingBits/ClassesAndObjects/IsClassProperty.check.twig" %}
 {% include ".i/supports/5.6-7.x-badges.twig" %}
 
 ## Description
@@ -12,7 +13,9 @@
 use GanbaroDigital\MissingBits\ClassesAndObjects\IsClassProperty;
 
 // our method signature
-bool IsClassProperty::check(ReflectionProperty $refProp);
+public static IsClassProperty::check(
+    ReflectionProperty $refProp
+) : bool
 ```
 
 ## Parameters
@@ -31,5 +34,13 @@ bool IsClassProperty::check(ReflectionProperty $refProp);
 ## Throws
 
 `IsClassProperty::check()` does not throw any exceptions.
+
+## Examples
+
+Here's a simple class to examine:
+
+{% include ".i/examples/IsClassProperty/check/ExampleClass.inc.twig" %}
+
+{% include ".i/examples/IsClassProperty/check/Example-1--Check-For-Class-Property.twig" %}
 
 {% include ".i/supports/5.6-7.x.twig" %}

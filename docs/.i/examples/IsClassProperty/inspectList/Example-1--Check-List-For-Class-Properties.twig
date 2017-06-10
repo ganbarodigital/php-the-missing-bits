@@ -1,0 +1,35 @@
+### Example 1: Check List For Class Properties
+
+This example shows you how to check if a list contains only class properties.
+
+```php
+use GanbaroDigital\MissingBits\ClassesAndObjects\IsClassProperty;
+
+$checker = new IsClassProperty;
+
+$refClass = new ReflectionClass(ExampleClass::class);
+$refProp1 = $refClass->getProperty('value1');
+
+// here, $refProp reflects an object's property
+$target = new ExampleClass;
+$refObj = new ReflectionObject($target);
+$refProp2 = $refObj->getProperty('value2');
+
+// this list only contains class properties
+var_dump($checker->inspectList([
+    $refProp1
+]));
+
+// this list contains both class properties
+// and object properties
+var_dump($checker->inspectList([
+    $refProp1,
+    $refProp2
+]));
+```
+The code above produces this output on PHP v5.6.30, PHP v7.0.20, PHP v7.1.6:
+
+```
+bool(true)
+bool(false)
+```

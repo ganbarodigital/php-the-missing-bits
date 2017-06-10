@@ -1,0 +1,38 @@
+### Example 1 Shorthand Notation
+
+This example shows you how to use the shorthand notation, to avoid creating a variable for the checker.
+
+```php
+use GanbaroDigital\MissingBits\ClassesAndObjects\IsClassProperty;
+
+// here, $refProp reflects a static property
+$refClass = new ReflectionClass(ExampleClass::class);
+$refProp = $refClass->getProperty('value1');
+var_dump(IsClassProperty::using()->inspect($refProp));
+
+// here, $refProp reflects an object's property
+$target = new ExampleClass;
+$refObj = new ReflectionObject($target);
+$refProp = $refObj->getProperty('value2');
+var_dump(IsClassProperty::using()->inspect($refProp));
+```
+The code above produces this output on PHP v5.6.30:
+
+```
+PHP Fatal error:  Call to undefined method GanbaroDigital\MissingBits\ClassesAndObjects\IsClassProperty::using() in /home/stuart/Devel-MBP/ganbarodigital/php-the-missing-bits/doc-examples/IsClassProperty/using/Example-1-Shorthand-Notation.php on line 19
+
+Fatal error: Call to undefined method GanbaroDigital\MissingBits\ClassesAndObjects\IsClassProperty::using() in /home/stuart/Devel-MBP/ganbarodigital/php-the-missing-bits/doc-examples/IsClassProperty/using/Example-1-Shorthand-Notation.php on line 19
+```
+The code above produces this output on PHP v7.0.20, PHP v7.1.6:
+
+```
+PHP Fatal error:  Uncaught Error: Call to undefined method GanbaroDigital\MissingBits\ClassesAndObjects\IsClassProperty::using() in /home/stuart/Devel-MBP/ganbarodigital/php-the-missing-bits/doc-examples/IsClassProperty/using/Example-1-Shorthand-Notation.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/stuart/Devel-MBP/ganbarodigital/php-the-missing-bits/doc-examples/IsClassProperty/using/Example-1-Shorthand-Notation.php on line 19
+
+Fatal error: Uncaught Error: Call to undefined method GanbaroDigital\MissingBits\ClassesAndObjects\IsClassProperty::using() in /home/stuart/Devel-MBP/ganbarodigital/php-the-missing-bits/doc-examples/IsClassProperty/using/Example-1-Shorthand-Notation.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/stuart/Devel-MBP/ganbarodigital/php-the-missing-bits/doc-examples/IsClassProperty/using/Example-1-Shorthand-Notation.php on line 19
+```

@@ -1,0 +1,26 @@
+### Example 1: Check For Class Property
+
+This example shows you how to check if a property is a class property.
+
+```php
+use GanbaroDigital\MissingBits\ClassesAndObjects\IsClassProperty;
+
+$checker = new IsClassProperty;
+
+// here, $refProp reflects a static property
+$refClass = new ReflectionClass(ExampleClass::class);
+$refProp = $refClass->getProperty('value1');
+var_dump($checker->inspect($refProp));
+
+// here, $refProp reflects an object's property
+$target = new ExampleClass;
+$refObj = new ReflectionObject($target);
+$refProp = $refObj->getProperty('value2');
+var_dump($checker->inspect($refProp));
+```
+The code above produces this output on PHP v5.6.30, PHP v7.0.20, PHP v7.1.6:
+
+```
+bool(true)
+bool(false)
+```
