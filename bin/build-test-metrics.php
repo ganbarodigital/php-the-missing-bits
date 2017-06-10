@@ -199,7 +199,7 @@ foreach ($classStats as $className => $methods) {
 </div>
 
 EOS;
-        $docFilename = $docPath . '/stats.twig';
+        $docFilename = $docPath . '.twig';
         makePathToFilename($docFilename);
         file_put_contents($docFilename, $stats);
     }
