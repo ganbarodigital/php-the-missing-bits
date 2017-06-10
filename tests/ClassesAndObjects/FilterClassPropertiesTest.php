@@ -46,6 +46,7 @@ namespace GanbaroDigitalTest\MissingBits\ClassesAndObjects;
 use GanbaroDigital\MissingBits\ClassesAndObjects\FilterClassProperties;
 use InvalidArgumentException;
 use stdClass;
+use TypeError;
 
 /**
  * @coversDefaultClass GanbaroDigital\MissingBits\ClassesAndObjects\FilterClassProperties
@@ -178,7 +179,7 @@ class FilterClassPropertiesTest extends \PHPUnit\Framework\TestCase
      * @covers ::from
      * @dataProvider provideNonStrings
      */
-    public function test_throws_InvalidArgumentException_for_non_strings($target, $expectedType)
+    public function test_throws_TypeError_for_non_strings($target, $expectedType)
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -192,7 +193,7 @@ class FilterClassPropertiesTest extends \PHPUnit\Framework\TestCase
         try {
             FilterClassProperties::from($target);
         }
-        catch (InvalidArgumentException $e) {
+        catch (TypeError $e) {
             $actualMessage = $e->getMessage();
         }
 
@@ -236,6 +237,26 @@ class FilterClassPropertiesTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals($expectedMessage, $actualMessage);
     }
+
+    /**
+     * @covers ::__construct
+     */
+    public function test_can_instantiate()
+    {
+        // ----------------------------------------------------------------
+        // setup your test
+
+        // ----------------------------------------------------------------
+        // perform the change
+
+        $unit = new FilterClassProperties;
+
+        // ----------------------------------------------------------------
+        // test the results
+
+        $this->assertInstanceOf(FilterClassProperties::class, $unit);
+    }
+
 
     public function provideNonStrings()
     {

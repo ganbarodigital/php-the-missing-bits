@@ -46,12 +46,61 @@ namespace GanbaroDigital\MissingBits\ClassesAndObjects;
 use InvalidArgumentException;
 use ReflectionClass;
 use ReflectionProperty;
+use TypeError;
 
 /**
  * get a class's static properties
  */
 class FilterClassProperties
 {
+    /**
+     * the kind of properties to look for
+     *
+     * @var int
+     */
+    protected $filter;
+
+    /**
+     * creates a new class properties filter, ready to use
+     *
+     * @param  int $filter
+     *         the kind of properties to look for
+     *         default is to look for public properties only
+     */
+    public function __construct($filter = ReflectionProperty::IS_PUBLIC)
+    {
+        $this->filter = $filter;
+    }
+
+    /**
+     * creates a new class properties filter, ready to use
+     *
+     * @param  int $filter
+     *         the kind of properties to look for
+     *         default is to look for public properties only
+     * @return FilterClassProperties
+     *         a customised FilterClassProperties ready to use
+     */
+    public static function using($filter = ReflectionProperty::IS_PUBLIC)
+    {
+        return new static($filter);
+    }
+
+    /**
+     * get a class's static properties
+     *
+     * @param  string $target
+     *         the class to examine
+     * @return array
+     *         a (possibly empty) read-only list of the class's static properties
+     * @throws InvalidArgumentException
+     *         if $target is not a valid class name
+     */
+    public function filterClassProperties($target)
+    {
+        return self::from($target, $this->filter);
+    }
+
     /**
      * get a class's static properties
      *
@@ -69,7 +118,7 @@ class FilterClassProperties
     {
         // robustness!!
         if (!check_is_stringy($target)) {
-            throw new InvalidArgumentException('$target is not a string, is a ' . get_printable_type($target));
+            throw new TypeError('$target is not a string, is a ' . get_printable_type($target));
         }
 
         // make sure we have a valid class
