@@ -1,0 +1,32 @@
+### Example 2: Has Protected Properties
+
+This example shows you how to check if a list of classes has protected properties.
+
+```php
+use GanbaroDigital\MissingBits\ClassesAndObjects\HasClassProperties;
+
+$checker = new HasClassProperties(ReflectionProperty::IS_PROTECTED);
+
+// all of these classes have protected properties
+// the check will return TRUE
+$props = $checker->inspectList([
+    ExampleClass1::class,
+    ExampleClass2::class
+]);
+var_dump($props);
+
+// ExampleClass3 does *not* have any protected properties
+// the check will return FALSE
+$props = $checker->inspectList([
+    ExampleClass1::class,
+    ExampleClass2::class,
+    ExampleClass3::class,
+]);
+var_dump($props);
+```
+The code above produces this output on PHP v5.6.30, PHP v7.0.20, PHP v7.1.6:
+
+```
+bool(true)
+bool(false)
+```

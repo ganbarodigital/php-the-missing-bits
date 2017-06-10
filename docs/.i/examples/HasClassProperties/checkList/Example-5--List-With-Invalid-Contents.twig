@@ -1,0 +1,24 @@
+### Example 5: List With Invalid Contents
+
+This example shows you what happens if you pass in a list that contains
+anything other than strings.
+
+```php
+use GanbaroDigital\MissingBits\ClassesAndObjects\HasClassProperties;
+
+try {
+    $props = HasClassProperties::checkList([
+        // this is a valid list, but
+        // this is not a valid class name
+        new stdClass
+    ]);
+}
+catch (TypeError $e) {
+    var_dump($e->getMessage());
+}
+```
+The code above produces this output on PHP v5.6.30, PHP v7.0.20, PHP v7.1.6:
+
+```
+string(46) "$target is not a string, is a object<stdClass>"
+```

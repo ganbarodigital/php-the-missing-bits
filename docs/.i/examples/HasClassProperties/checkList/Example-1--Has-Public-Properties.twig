@@ -1,0 +1,30 @@
+### Example 1: Has Public Properties
+
+This example shows you how to check if a list of classes has public properties.
+
+```php
+use GanbaroDigital\MissingBits\ClassesAndObjects\HasClassProperties;
+
+// all of these classes have public properties
+// the check will return TRUE
+$props = HasClassProperties::checkList([
+    ExampleClass1::class,
+    ExampleClass2::class
+]);
+var_dump($props);
+
+// ExampleClass3 does *not* have any public properties
+// the check will return FALSE
+$props = HasClassProperties::checkList([
+    ExampleClass1::class,
+    ExampleClass2::class,
+    ExampleClass3::class,
+]);
+var_dump($props);
+```
+The code above produces this output on PHP v5.6.30, PHP v7.0.20, PHP v7.1.6:
+
+```
+bool(true)
+bool(false)
+```

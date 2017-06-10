@@ -1,0 +1,18 @@
+### Example 3: Has Private Properties
+
+This example shows you how to check if a class has private properties.
+
+```php
+use GanbaroDigital\MissingBits\ClassesAndObjects\HasClassProperties;
+
+$checker = new HasClassProperties(
+    ReflectionProperty::IS_PRIVATE
+);
+$props = $checker->inspect(ExampleClass::class);
+var_dump($props);
+```
+The code above produces this output on PHP v5.6.30, PHP v7.0.20, PHP v7.1.6:
+
+```
+bool(true)
+```

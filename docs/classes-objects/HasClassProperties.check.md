@@ -12,7 +12,7 @@
 use GanbaroDigital\MissingBits\ClassesAndObjects\HasClassProperties;
 
 // our method signature
-HasClassProperties::check(
+public static HasClassProperties::check(
     string $target,
     int $propTypes = ReflectionProperty::IS_PUBLIC
 ) : bool
@@ -40,10 +40,15 @@ HasClassProperties::check(
 
 ## Throws
 
-`HasClassProperties::check()` throws an `InvalidArgumentException` if:
+`HasClassProperties::checkList()` throws a `TypeError` if:
 
 * `$target` is not a string, or something that PHP will automatically convert to a string,
+
+`HasClassProperties::check()` throws an `InvalidArgumentException` if:
+
 * `$target` refers to a class that has not been defined
+
+## Examples
 
 Here's a simple class to examine:
 
@@ -58,5 +63,4 @@ Here's a simple class to examine:
 * `HasClassProperties::check()` will also check parent classes and all the traits used by this class for static properties.
 * `HasClassProperties::check()` only works on classes. Use [`HasObjectProperties::check()`](HasObjectProperties.html) to check an object for non-static properties.
 
-{% include ".i/contracts/GanbaroDigital/MissingBits/ClassesAndObjects/HasClassProperties.twig" %}
 {% include ".i/supports/5.6-7.x.twig" %}

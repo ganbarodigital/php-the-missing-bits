@@ -1,0 +1,20 @@
+### Example 1: Create Reusable Checker
+
+This example shows you how to create a customised, reusable checker
+
+```php
+use GanbaroDigital\MissingBits\ClassesAndObjects\HasClassProperties;
+
+$checker = HasClassProperties::using();
+$props = $checker->inspect(ExampleClass::class);
+var_dump($props);
+
+$props = $checker->inspect(HasClassProperties::class);
+var_dump($props);
+```
+The code above produces this output on PHP v5.6.30, PHP v7.0.20, PHP v7.1.6:
+
+```
+bool(true)
+bool(false)
+```
