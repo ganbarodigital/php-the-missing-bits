@@ -41,10 +41,10 @@
  * @link      http://ganbarodigital.github.io/php-the-missing-bits
  */
 
-class is_listTest extends PHPUnit_Framework_TestCase
+class check_is_listTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @covers ::is_list
+     * @covers ::check_is_list
      */
     public function test_array_returns_true()
     {
@@ -62,7 +62,7 @@ class is_listTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = is_list($list);
+        $actualResult = check_is_list($list);
 
         // ----------------------------------------------------------------
         // test the results
@@ -71,7 +71,7 @@ class is_listTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::is_list
+     * @covers ::check_is_list
      */
     public function test_stdClass_returns_true()
     {
@@ -90,7 +90,7 @@ class is_listTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = is_list($list);
+        $actualResult = check_is_list($list);
 
         // ----------------------------------------------------------------
         // test the results
@@ -99,7 +99,7 @@ class is_listTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::is_list
+     * @covers ::check_is_list
      */
     public function test_Traversable_returns_true()
     {
@@ -118,7 +118,7 @@ class is_listTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = is_list($list);
+        $actualResult = check_is_list($list);
 
         // ----------------------------------------------------------------
         // test the results
@@ -127,7 +127,7 @@ class is_listTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::is_list
+     * @covers ::check_is_list
      */
     public function test_arbitrary_objects_return_true()
     {
@@ -135,12 +135,12 @@ class is_listTest extends PHPUnit_Framework_TestCase
         // setup your test
 
         // this is what we're going to feed into IsList()
-        $list = new is_list_ObjectTarget;
+        $list = new check_is_list_ObjectTarget;
 
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = is_list($list);
+        $actualResult = check_is_list($list);
 
         // ----------------------------------------------------------------
         // test the results
@@ -149,7 +149,7 @@ class is_listTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::is_list
+     * @covers ::check_is_list
      */
     public function test_Closure_returns_false()
     {
@@ -162,7 +162,7 @@ class is_listTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = is_list($list);
+        $actualResult = check_is_list($list);
 
         // ----------------------------------------------------------------
         // test the results
@@ -171,7 +171,7 @@ class is_listTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::is_list
+     * @covers ::check_is_list
      * @dataProvider provideNonLists
      *
      * @param mixed $list
@@ -185,10 +185,12 @@ class is_listTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        is_list($list);
+        $actualResult = check_is_list($list);
 
         // ----------------------------------------------------------------
         // test the results
+
+        $this->assertFalse($actualResult);
     }
 
     /**
@@ -217,7 +219,7 @@ class is_listTest extends PHPUnit_Framework_TestCase
 /**
  * helper class for proving that IsList will iterate over arbitrary objects
  */
-class is_list_ObjectTarget
+class check_is_list_ObjectTarget
 {
     /**
      * token public attribute

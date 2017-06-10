@@ -280,7 +280,7 @@ function check_is_defined_interface($fieldOrVar)
  *         TRUE if every item in $list is a defined interface
  *         FALSE otherwise
  */
-function is_defined_interface_list($list)
+function check_is_defined_interface_list($list)
 {
     return IsDefinedInterface::checkList($list);
 }

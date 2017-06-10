@@ -34,36 +34,34 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *
  * @category  Libraries
- * @package   MissingBits/ListChecks
+ * @package   MissingBits/TypeChecks
  * @author    Stuart Herbert <stuherbert@ganbarodigital.com>
  * @copyright 2016-present Ganbaro Digital Ltd www.ganbarodigital.com
  * @license   http://www.opensource.org/licenses/bsd-license.php  BSD License
  * @link      http://ganbarodigital.github.io/php-the-missing-bits
  */
 
-class is_listy_objectTest extends PHPUnit_Framework_TestCase
+class check_is_array_listTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @covers ::is_listy_object
+     * @covers ::check_is_array_list
      */
-    public function test_stdClass_returns_true()
+    public function test_array_of_arrays_returns_true()
     {
         // ----------------------------------------------------------------
         // setup your test
 
-        // this is what we're going to feed into IsList()
-        $list = (object)[
-            11,
-            12,
-            13,
-            14
+        $list = [
+            [11],
+            [12],
+            [13],
+            [14]
         ];
-        $this->assertInstanceOf(stdClass::class, $list);
 
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = is_listy_object($list);
+        $actualResult = check_is_array_list($list);
 
         // ----------------------------------------------------------------
         // test the results
@@ -72,70 +70,21 @@ class is_listy_objectTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::is_listy_object
+     * @covers ::check_is_array_list
+     * @dataProvider provideListsOfNonArrays
+     *
+     * @param mixed $list
+     *        the list that we're going to use
      */
-    public function test_Traversable_returns_true()
+    public function test_lists_containing_anything_else_returns_false($list)
     {
         // ----------------------------------------------------------------
         // setup your test
 
-        // this is what we're going to feed into IsList()
-        $list = new ArrayObject([
-            11,
-            12,
-            13,
-            14
-        ]);
-        $this->assertInstanceOf(Traversable::class, $list);
-
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = is_listy_object($list);
-
-        // ----------------------------------------------------------------
-        // test the results
-
-        $this->assertTrue($actualResult);
-    }
-
-    /**
-     * @covers ::is_listy_object
-     */
-    public function test_arbitrary_objects_return_true()
-    {
-        // ----------------------------------------------------------------
-        // setup your test
-
-        // this is what we're going to feed into IsList()
-        $list = new is_listy_object_ObjectTarget;
-
-        // ----------------------------------------------------------------
-        // perform the change
-
-        $actualResult = is_listy_object($list);
-
-        // ----------------------------------------------------------------
-        // test the results
-
-        $this->assertTrue($actualResult);
-    }
-
-    /**
-     * @covers ::is_listy_object
-     */
-    public function test_Closure_returns_false()
-    {
-        // ----------------------------------------------------------------
-        // setup your test
-
-        // this is what we're going to feed into IsList()
-        $list = function() {};
-
-        // ----------------------------------------------------------------
-        // perform the change
-
-        $actualResult = is_listy_object($list);
+        $actualResult = check_is_array_list($list);
 
         // ----------------------------------------------------------------
         // test the results
@@ -144,59 +93,76 @@ class is_listy_objectTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::is_listy_object
+     * @covers ::check_is_array_list
      * @dataProvider provideNonLists
-     *
-     * @param mixed $list
-     *        the non-list that we're going to use
      */
-    public function test_anything_else_returns_false($list)
+    public function test_throws_TypeError_if_passed_non_list($list, $expectedType)
     {
         // ----------------------------------------------------------------
         // setup your test
 
+        $expectedMessage = '$list is not a list, is a ' . $expectedType;
+        $actualMessage = null;
+
         // ----------------------------------------------------------------
         // perform the change
 
-        is_listy_object($list);
+        try {
+            check_is_array_list($list);
+        }
+        catch (TypeError $e) {
+            $actualMessage = $e->getMessage();
+        }
 
         // ----------------------------------------------------------------
         // test the results
+
+        // this will only pass:
+        //
+        // 1 - if an exception was thrown at all, and
+        // 2 - if the exception contained the correct message
+        //
+        // this helps us catch cases where the right exception is being
+        // thrown for other reasons
+        $this->assertEquals($expectedMessage, $actualMessage);
     }
 
     /**
-     * a list of values that should fail the IsList check
+     * a list of values that should fail the is_array_list check
      *
      * @return array
      */
+    public function provideListsOfNonArrays()
+    {
+        return [
+            [ [null] ],
+            [ [true] ],
+            [ [false] ],
+            [ [0.0] ],
+            [ [3.1415927] ],
+            [ [-100.19] ],
+            [ [0] ],
+            [ [-100] ],
+            [ [100] ],
+            [ [STDIN] ],
+            [ ["hello, world!"] ],
+        ];
+    }
+
     public function provideNonLists()
     {
         return [
-            [ null ],
-            [ 1, 2, 3, 4 ],
-            [ true ],
-            [ false ],
-            [ 0.0 ],
-            [ 3.1415927 ],
-            [ -100.19 ],
-            [ 0 ],
-            [ -100 ],
-            [ 100 ],
-            [ STDIN ],
-            [ "hello, world!" ],
+            [ null, 'NULL' ],
+            [ true, 'boolean<true>' ],
+            [ false, 'boolean<false>' ],
+            [ 0.0, 'double<0>' ],
+            [ 3.1415927, 'double<3.1415927>' ],
+            [ -100.19, 'double<-100.19>' ],
+            [ 0, 'integer<0>' ],
+            [ -100, 'integer<-100>' ],
+            [ 100, 'integer<100>' ],
+            [ STDIN, 'resource' ],
+            [ 'hello, world!', 'string<hello, world!>']
         ];
     }
-}
-
-/**
- * helper class for proving that IsList will iterate over arbitrary objects
- */
-class is_listy_object_ObjectTarget
-{
-    /**
-     * token public attribute
-     *
-     * @var string
-     */
-    public $alfred = "the butler";
 }

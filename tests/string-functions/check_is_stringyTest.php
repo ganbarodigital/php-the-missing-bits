@@ -41,10 +41,10 @@
  * @link      http://ganbarodigital.github.io/php-the-missing-bits
  */
 
-class is_stringyTest extends PHPUnit_Framework_TestCase
+class check_is_stringyTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @covers ::is_stringy
+     * @covers ::check_is_stringy
      */
     public function test_returns_TRUE_for_strings()
     {
@@ -57,7 +57,7 @@ class is_stringyTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = is_stringy($item);
+        $actualResult = check_is_stringy($item);
 
         // ----------------------------------------------------------------
         // test the results
@@ -66,7 +66,7 @@ class is_stringyTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::is_stringy
+     * @covers ::check_is_stringy
      */
     public function test_returns_TRUE_for_integers()
     {
@@ -79,7 +79,7 @@ class is_stringyTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = is_stringy($item);
+        $actualResult = check_is_stringy($item);
 
         // ----------------------------------------------------------------
         // test the results
@@ -88,7 +88,7 @@ class is_stringyTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::is_stringy
+     * @covers ::check_is_stringy
      */
     public function test_returns_TRUE_for_doubles()
     {
@@ -101,7 +101,7 @@ class is_stringyTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = is_stringy($item);
+        $actualResult = check_is_stringy($item);
 
         // ----------------------------------------------------------------
         // test the results
@@ -110,7 +110,7 @@ class is_stringyTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::is_stringy
+     * @covers ::check_is_stringy
      */
     public function test_returns_TRUE_for_objects_that_implement_toString()
     {
@@ -123,7 +123,7 @@ class is_stringyTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = is_stringy($item);
+        $actualResult = check_is_stringy($item);
 
         // ----------------------------------------------------------------
         // test the results
@@ -132,7 +132,7 @@ class is_stringyTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::is_stringy
+     * @covers ::check_is_stringy
      */
     public function test_returns_FALSE_for_objects_that_do_not_implement_toString()
     {
@@ -145,7 +145,7 @@ class is_stringyTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = is_stringy($item);
+        $actualResult = check_is_stringy($item);
 
         // ----------------------------------------------------------------
         // test the results
@@ -154,7 +154,7 @@ class is_stringyTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::is_stringy
+     * @covers ::check_is_stringy
      */
     public function test_returns_FALSE_for_NULL()
     {
@@ -167,7 +167,7 @@ class is_stringyTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = is_stringy($item);
+        $actualResult = check_is_stringy($item);
 
         // ----------------------------------------------------------------
         // test the results
@@ -176,7 +176,7 @@ class is_stringyTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::is_stringy
+     * @covers ::check_is_stringy
      */
     public function test_returns_FALSE_for_arrays()
     {
@@ -189,7 +189,7 @@ class is_stringyTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = is_stringy($item);
+        $actualResult = check_is_stringy($item);
 
         // ----------------------------------------------------------------
         // test the results
@@ -198,7 +198,7 @@ class is_stringyTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::is_stringy
+     * @covers ::check_is_stringy
      */
     public function test_returns_FALSE_for_TRUE()
     {
@@ -211,7 +211,7 @@ class is_stringyTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = is_stringy($item);
+        $actualResult = check_is_stringy($item);
 
         // ----------------------------------------------------------------
         // test the results
@@ -220,7 +220,7 @@ class is_stringyTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::is_stringy
+     * @covers ::check_is_stringy
      */
     public function test_returns_FALSE_for_FALSE()
     {
@@ -233,7 +233,7 @@ class is_stringyTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = is_stringy($item);
+        $actualResult = check_is_stringy($item);
 
         // ----------------------------------------------------------------
         // test the results
@@ -242,7 +242,7 @@ class is_stringyTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::is_stringy
+     * @covers ::check_is_stringy
      */
     public function test_returns_FALSE_for_callable_arrays()
     {
@@ -255,7 +255,7 @@ class is_stringyTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = is_stringy($item);
+        $actualResult = check_is_stringy($item);
 
         // ----------------------------------------------------------------
         // test the results
@@ -264,7 +264,7 @@ class is_stringyTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::is_stringy
+     * @covers ::check_is_stringy
      */
     public function test_returns_FALSE_for_resources()
     {
@@ -277,7 +277,7 @@ class is_stringyTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = is_stringy($item);
+        $actualResult = check_is_stringy($item);
 
         // ----------------------------------------------------------------
         // test the results
