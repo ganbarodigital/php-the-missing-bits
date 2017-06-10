@@ -70,14 +70,27 @@ class FilterObjectProperties
             throw new InvalidArgumentException('$target is not an object, is a ' . get_printable_type($target));
         }
 
+        // we must remove IS_STATIC from the filter mask
+        // we are only looking for properties on the object
+        if ($filter & ReflectionProperty::IS_STATIC) {
+            $filter = $filter ^ ReflectionProperty::IS_STATIC;
+        }
+
         // if we get here, then we want to do this
         $refObj = new ReflectionObject($target);
-        $resultFilter = function(ReflectionProperty $refProp, &$finalResult) use($target) {
+        $resultFilter = function(ReflectionProperty $refProp, &$finalResult) use($target, $filter) {
             if (!IsObjectProperty::check($refProp)) {
                 return;
             }
 
-            $refProp->setAccessible(true);
+            // now filter out any properties that don't match our initial
+            // filter bitmask
+            //
+            // this can happen when $filer = ReflectionProperty::IS_PUBLIC
+            if (!(int)($refProp->getModifiers() & $filter)) {
+                return;
+            }
+
             $finalResult[$refProp->getName()] = $refProp->getValue($target);
         };
         return FilterProperties::from($refObj, $filter, $resultFilter);
