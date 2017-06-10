@@ -44,8 +44,8 @@
 namespace GanbaroDigitalTest\MissingBits\ClassesAndObjects;
 
 use GanbaroDigital\MissingBits\ClassesAndObjects\HasObjectProperties;
-use InvalidArgumentException;
 use stdClass;
+use TypeError;
 
  /**
   * @coversDefaultClass GanbaroDigital\MissingBits\ClassesAndObjects\HasObjectProperties
@@ -94,7 +94,7 @@ class HasObjectPropertiesTest extends \PHPUnit\Framework\TestCase
      * @covers ::check
      * @dataProvider provideNonObjects
      */
-    public function test_throws_InvalidArgumentException_for_non_objects($target, $expectedType)
+    public function test_throws_TypeError_for_non_objects($target, $expectedType)
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -108,7 +108,7 @@ class HasObjectPropertiesTest extends \PHPUnit\Framework\TestCase
         try {
             HasObjectProperties::check($target);
         }
-        catch (InvalidArgumentException $e) {
+        catch (TypeError $e) {
             $actualMessage = $e->getMessage();
         }
 

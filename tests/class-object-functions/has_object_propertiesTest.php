@@ -85,7 +85,7 @@ class has_object_propertiesTest extends \PHPUnit\Framework\TestCase
      * @covers ::has_object_properties
      * @dataProvider provideNonObjects
      */
-    public function test_throws_InvalidArgumentException_for_non_objects($target, $expectedType)
+    public function test_throws_TypeError_for_non_objects($target, $expectedType)
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -99,7 +99,7 @@ class has_object_propertiesTest extends \PHPUnit\Framework\TestCase
         try {
             has_object_properties($target);
         }
-        catch (InvalidArgumentException $e) {
+        catch (TypeError $e) {
             $actualMessage = $e->getMessage();
         }
 

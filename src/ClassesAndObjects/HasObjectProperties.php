@@ -46,6 +46,7 @@ namespace GanbaroDigital\MissingBits\ClassesAndObjects;
 use InvalidArgumentException;
 use ReflectionObject;
 use ReflectionProperty;
+use TypeError;
 
 class HasObjectProperties
 {
@@ -60,14 +61,14 @@ class HasObjectProperties
      * @return boolean
      *         TRUE if the object has non-static properties
      *         FALSE otherwise
-     * @throws InvalidArgumentException
+     * @throws TypeError
      *         if $target is not an object
      */
     public static function check($target, $propTypes = ReflectionProperty::IS_PUBLIC)
     {
         // robustness!!
         if (!is_object($target)) {
-            throw new InvalidArgumentException('$target is not an object, is a ' . get_printable_type($target));
+            throw new TypeError('$target is not an object, is a ' . get_printable_type($target));
         }
 
         // if we get here, then we want to do this
