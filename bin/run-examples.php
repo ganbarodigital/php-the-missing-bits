@@ -220,7 +220,7 @@ foreach ($examples as $exampleFile) {
         }
 
         $phpVersion = $fullVersions[$target];
-        $command = $supportedPhpVersions[$target] . ' ' . $examplesDir . $sourceFile;
+        $command = $supportedPhpVersions[$target] . ' ' . $examplesDir . $sourceFile . ' 2>&1';
         // echo $command . PHP_EOL;
         $capturedOutput[$phpVersion] = trim(shell_exec($command));
     }
