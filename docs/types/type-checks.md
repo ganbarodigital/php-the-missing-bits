@@ -4,21 +4,51 @@
 
 These functions and classes provide a way to check for common data types.
 
-Click on the function or class below for more details.
+## Available Classes
+
+Class | Purpose
+---------|--------
+[`IsArray`](IsArray.class.html) | can we use the variable with PHP's `array_xxx` functions?
+[`IsAssignable`](IsAssignable.class.html) | can we use the variable with PHP's object notation?
+[`IsBoolean`](IsBoolean.class.html) | something
+[`IsCallable`](IsCallable.class.html) | something
+[`IsCompatibleWith`](IsCompatibleWith.class.html) | something
+[`IsDefinedClass`](IsDefinedClass.class.html) | something
+[`IsDefinedInterface`](IsDefinedInterface.class.html) | something
+[`IsDefinedObjectType`](IsDefinedObjectType.class.html) | something
+[`IsDefinedTrait`](IsDefinedTrait.class.html) | something
+[`IsDouble`](IsDouble.class.html) | something
+[`IsEmpty`](IsEmpty.class.html) | something
+[`IsIndexable`](IsIndexable.class.html) | something
+[`IsInteger`](IsInteger.class.html) | something
+[`IsList`](IsList.class.html) | can we use the variable in a `foreach()` loop?
+[`IsListyObject`](IsListyObject.class.html) | can we use the object in a `foreach()` loop?
+[`IsLogical`](IsLogical.class.html) | something
+[`IsNull`](IsNull.class.html) | something
+[`IsNumeric`](IsNumeric.class.html) | something
+[`IsObject`](IsObject.class.html) | something
+[`IsObjectOfType`](IsObjectOfType.class.html) | something
+[`IsPcreRegex`](IsPcreRegex.class.html) | something
+[`IsResource`](IsResource.class.html) | something
+[`IsStringy`](IsStringy.class.html) | can we use the variable as a string?
+
+## Available Functions
 
 Function | Purpose
 ---------|--------
-[`is_array_list()`](is_array_list.html) | can every item in the list be used as a PHP array?
-[`is_list()`](IsList.html) | can we use the variable in a `foreach()` loop?
-[`is_listy_object()`](IsListyObject.html) | can we use the variable in a `foreach()` loop?
-[`is_stringy()`](IsStringy.html) | can we use the variable as a string?
-[`IsArray::check()`](IsArray.check.html) | can we use the variable with PHP's `array_xxx` functions?
-[`IsArray::checkList()`](IsArray.checkList.html) | can we use every entry in the list with PHP's `array_xxx` functions?
-[`IsAssignable::check()`](IsAssignable.check.html) | can we use the variable with PHP's object notation?
-[`IsAssignable::checkList()`](IsAssignable.checkList.html) | can we use every entry in the list with PHP's object notation?
-[`IsList::check()`](IsList.check.html) | can we use the variable in a `foreach()` loop?
-[`IsList::checkList()`](IsList.checkList.html) | can we use every entry in the list in a `foreach()` loop?
-[`IsListyObject::check()`](IsListyObject.check.html) | can we use the variable in a `foreach()` loop?
-[`IsListyObject::checkList()`](IsListyObject.checkList.html) | can we use every entry in the list in a `foreach()` loop?
-[`IsStringy::check()`](IsStringy.check.html) | can we use the variable as a string?
-[`IsStringy::checkList()`](IsStringy.checkList.html) | can we use every entry in the list as a string?
+[`check_is_array`](check_is_array.class.html) | can we use the variable with PHP's `array_xxx()` functions?
+[`check_is_array_list`](check_is_array_list.class.html) | can we use the variable with PHP's `array_xxx()` functions?
+[`check_is_assignable`](IsAssignable.class.html) | can we use the variable with PHP's object nocheck_is_tation?
+[`check_is_compatible_with`](check_is_compatible_with.class.html) | something
+[`check_is_defined_class`](check_is_defined_class.class.html) | something
+[`check_is_defined_interface`](check_is_defined_interface.class.html) | something
+[`check_is_defined_object_type`](check_is_defined_object_type.class.html) | something
+[`check_is_defined_trait`](check_is_defined_trait.class.html) | something
+[`check_is_double`](check_is_double.class.html) | something
+[`check_is_empty`](check_is_empty.class.html) | something
+[`check_is_indexable`](check_is_indexable.class.html) | something
+[`check_is_list`](check_is_list.class.html) | can we use the variable in a `foreach()` loop?
+[`check_is_listy_object`](check_is_listy_object.class.html) | can we use the object in a `foreach()` loop?
+[`check_is_logical`](check_is_logical.class.html) | something
+[`check_is_pcre_regex`](check_is_pcre_regex.class.html) | something
+[`check_is_stringy`](IsStringy.class.html) | can we use the variable as a string?
