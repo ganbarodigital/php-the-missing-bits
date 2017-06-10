@@ -1,0 +1,25 @@
+### Example 2: Get Protected Properties
+
+This example shows you how to get the protected properties of a class.
+
+```php
+use GanbaroDigital\MissingBits\ClassesAndObjects\FilterClassProperties;
+
+$filter = new FilterClassProperties(
+    ReflectionProperty::IS_PROTECTED
+);
+$props = $filter->filterClassProperties(
+    ExampleClass::class
+);
+var_dump($props);
+```
+The code above produces this output on PHP v5.6.30, PHP v7.0.20, PHP v7.1.6:
+
+```
+array(2) {
+  ["value2"]=>
+  string(28) "I am protected static value2"
+  ["trait2"]=>
+  string(28) "I am protected static trait2"
+}
+```

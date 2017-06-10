@@ -1,0 +1,30 @@
+### Example 1: Create Reusable Filter
+
+This example shows you how to create a reusable filter.
+
+```php
+use GanbaroDigital\MissingBits\ClassesAndObjects\FilterClassProperties;
+
+$filter = new FilterClassProperties(
+    ReflectionProperty::IS_PROTECTED | ReflectionProperty::IS_PRIVATE
+);
+
+var_dump($filter->filterClassProperties(ExampleClass::class));
+var_dump($filter->filterClassProperties(FilterClassProperties::class));
+```
+The code above produces this output on PHP v5.6.30, PHP v7.0.20, PHP v7.1.6:
+
+```
+array(4) {
+  ["value2"]=>
+  string(28) "I am protected static value2"
+  ["value3"]=>
+  string(26) "I am private static value3"
+  ["trait2"]=>
+  string(28) "I am protected static trait2"
+  ["trait3"]=>
+  string(26) "I am private static trait3"
+}
+array(0) {
+}
+```

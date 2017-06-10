@@ -1,7 +1,7 @@
 # FilterClassProperties::from()
 
 {% include ".i/since/1.10.0.twig" %}
-{% include ".i/code-metrics/GanbaroDigital/MissingBits/ClassesAndObjects/FilterClassProperties.from/stats.twig" %}
+{% include ".i/code-metrics/GanbaroDigital/MissingBits/ClassesAndObjects/FilterClassProperties.from.twig" %}
 {% include ".i/supports/5.6-7.x-badges.twig" %}
 
 ## Description
@@ -13,7 +13,7 @@
 use GanbaroDigital\MissingBits\ClassesAndObjects\FilterClassProperties;
 
 // our method signature
-FilterClassProperties::from(
+public static FilterClassProperties::from(
     string $target,
     int $propTypes = ReflectionProperty::IS_PUBLIC
 ) : array
@@ -42,9 +42,12 @@ If the class has no static properties, `FilterClassProperties::from()` returns a
 
 ## Throws
 
-`FilterClassProperties::from()` throws an `InvalidArgumentException` if:
+`FilterClassProperties::from()` throws a `TypeError` if:
 
 * `$target` is not a string, or something that PHP will automatically convert to a string,
+
+`FilterClassProperties::from()` throws an `IllegalArgumentException` if:
+
 * `$target` refers to a class that has not been defined
 
 ## Examples
@@ -63,5 +66,4 @@ Here's a simple class to examine:
 * `FilterClassProperties::from()` only works on classes. Use [`FilterObjectProperties::from()`](FilterObjectProperties.from.html) to get an object's non-static properties.
 * Discovered properties can be returned in any order.
 
-{% include ".i/contracts/GanbaroDigital/MissingBits/ClassesAndObjects/FilterClassProperties.twig" %}
 {% include ".i/supports/5.6-7.x.twig" %}
