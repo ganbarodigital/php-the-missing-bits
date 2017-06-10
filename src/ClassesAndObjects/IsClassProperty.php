@@ -47,6 +47,7 @@ use GanbaroDigital\MissingBits\Checks\ListCheckHelper;
 use GanbaroDigital\MissingBits\Checks\Check;
 use GanbaroDigital\MissingBits\Checks\ListCheck;
 use ReflectionProperty;
+use TypeError;
 
 /**
  * is this property a class property?
@@ -88,7 +89,21 @@ class IsClassProperty implements Check, ListCheck
      */
     public function inspect($refProp)
     {
+        // robustness!
+        if (! $refProp instanceof ReflectionProperty) {
+            throw new TypeError('$refProp is not a ReflectionProperty, is a ' . get_printable_type($refProp));
+        }
         return static::check($refProp);
+    }
+
+    /**
+     * create a new IsClassProperty checker, ready to use
+     *
+     * @return IsClassProperty
+     */
+    public static function using()
+    {
+        return new static();
     }
 
     /**
