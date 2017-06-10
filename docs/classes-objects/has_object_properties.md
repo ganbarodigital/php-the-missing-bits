@@ -8,7 +8,10 @@
 `has_object_properties()` - does an object have non-static properties?
 
 ```php
-bool has_object_properties(object $target, $propTypes = ReflectionProperty::IS_PUBLIC);
+has_object_properties(
+    object $target,
+    $propTypes = ReflectionProperty::IS_PUBLIC
+) : bool
 ```
 
 ## Parameters
@@ -27,7 +30,7 @@ bool has_object_properties(object $target, $propTypes = ReflectionProperty::IS_P
 
 ## Throws
 
-`has_object_properties()` throws an `InvalidArgumentException` if:
+`has_object_properties()` throws a `TypeError` if:
 
 * `$target` is not an object
 
