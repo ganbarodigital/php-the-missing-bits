@@ -45,6 +45,21 @@ use GanbaroDigital\MissingBits\ClassesAndObjects\FilterClassProperties;
 use GanbaroDigital\MissingBits\ClassesAndObjects\FilterObjectProperties;
 use GanbaroDigital\MissingBits\ClassesAndObjects\HasClassProperties;
 use GanbaroDigital\MissingBits\ClassesAndObjects\HasObjectProperties;
+use GanbaroDigital\MissingBits\ClassesAndObjects\IsClassProperty;
+
+/**
+ * is this property a class property?
+ *
+ * @param  ReflectionProperty $refProp
+ *         the property to inspect
+ * @return bool
+ *         TRUE if $refProp is a class property
+ *         FALSE otherwise
+ */
+function check_is_class_property(ReflectionProperty $refProp)
+{
+    return IsClassProperty::check($refProp);
+}
 
 /**
  * get a class's static properties
@@ -117,3 +132,4 @@ function has_object_properties($target, $propTypes = ReflectionProperty::IS_PUBL
 {
     return HasObjectProperties::check($target, $propTypes);
 }
+
