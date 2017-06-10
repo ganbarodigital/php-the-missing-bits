@@ -1,0 +1,18 @@
+### Example 3: Catch Non Lists
+
+This example shows you what happens if you pass a non-list into `check_is_array_list()`.
+
+```php
+try {
+    $list = 'hello, world!';     // this is not really a list!
+    check_is_array_list($list);
+}
+catch (TypeError $e) {
+    echo $e->getMessage() . PHP_EOL;
+}
+```
+The code above produces this output on PHP v5.6.30, PHP v7.0.20, PHP v7.1.6:
+
+```
+$list is not a list, is a string<hello, world!>
+```

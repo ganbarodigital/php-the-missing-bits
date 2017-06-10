@@ -1,0 +1,17 @@
+### Example 2: Check For Non Arrays In List
+
+This example shows you how to catch a list that contains non-arrays.
+
+```php
+$list = [
+    [ 'hello, world!'], // this is okay
+    'hello, world!'     // this is not okay
+];
+$isArray = check_is_array_list($list);
+var_dump($isArray);
+```
+The code above produces this output on PHP v5.6.30, PHP v7.0.20, PHP v7.1.6:
+
+```
+bool(false)
+```
