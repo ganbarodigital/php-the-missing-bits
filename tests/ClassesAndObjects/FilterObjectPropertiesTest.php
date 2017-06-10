@@ -44,8 +44,8 @@
 namespace GanbaroDigitalTest\MissingBits\ClassesAndObjects;
 
 use GanbaroDigital\MissingBits\ClassesAndObjects\FilterObjectProperties;
-use InvalidArgumentException;
 use stdClass;
+use TypeError;
 
 /**
  * @coversDefaultClass GanbaroDigital\MissingBits\ClassesAndObjects\FilterObjectProperties
@@ -189,7 +189,7 @@ class FilterObjectPropertiesTest extends \PHPUnit\Framework\TestCase
      * @covers ::from
      * @dataProvider provideNonObjects
      */
-    public function test_throws_InvalidArgumentException_for_non_objects($target, $expectedType)
+    public function test_throws_TypeError_for_non_objects($target, $expectedType)
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -203,7 +203,7 @@ class FilterObjectPropertiesTest extends \PHPUnit\Framework\TestCase
         try {
             FilterObjectProperties::from($target);
         }
-        catch (InvalidArgumentException $e) {
+        catch (TypeError $e) {
             $actualMessage = $e->getMessage();
         }
 

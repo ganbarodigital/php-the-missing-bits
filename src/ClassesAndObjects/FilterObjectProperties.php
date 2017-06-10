@@ -43,10 +43,13 @@
 
 namespace GanbaroDigital\MissingBits\ClassesAndObjects;
 
-use InvalidArgumentException;
 use ReflectionObject;
 use ReflectionProperty;
+use TypeError;
 
+/**
+ * get an object's non-static properties
+ */
 class FilterObjectProperties
 {
     /**
@@ -67,7 +70,7 @@ class FilterObjectProperties
     {
         // robustness!!
         if (!is_object($target)) {
-            throw new InvalidArgumentException('$target is not an object, is a ' . get_printable_type($target));
+            throw new TypeError('$target is not an object, is a ' . get_printable_type($target));
         }
 
         // we must remove IS_STATIC from the filter mask
