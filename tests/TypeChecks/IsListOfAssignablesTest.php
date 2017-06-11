@@ -44,16 +44,24 @@
 namespace GanbaroDigitalTest\MissingBits\TypeChecks;
 
 use stdClass;
-use GanbaroDigital\MissingBits\Checks\Check;
-use GanbaroDigital\MissingBits\TypeChecks\IsAssignable;
+use GanbaroDigital\MissingBits\Checks\CheckList;
+use GanbaroDigital\MissingBits\TypeChecks\IsListOfAssignables;
+use GanbaroDigitalTest\MissingBits\DataProviders;
+use TypeError;
+
+// the data providers for our tests
+require_once(__DIR__ . '/../_datasets/lists.php');
 
 /**
- * @coversDefaultClass GanbaroDigital\MissingBits\TypeChecks\IsAssignable
+ * @coversDefaultClass GanbaroDigital\MissingBits\TypeChecks\IsListOfAssignables
  */
-class IsAssignableTest extends \PHPUnit\Framework\TestCase
+class IsListOfAssignablesTest extends \PHPUnit\Framework\TestCase
 {
+    // our data providers
+    use DataProviders\ListDataProviders;
+
     /**
-     * @coversNothing
+     * @covers ::__construct
      */
     public function test_can_instantiate()
     {
@@ -63,14 +71,14 @@ class IsAssignableTest extends \PHPUnit\Framework\TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $unit = new IsAssignable;
+        $unit = new IsListOfAssignables;
 
         // ----------------------------------------------------------------
         // test the results
         //
         // explain what you expect to have happened
 
-        $this->assertInstanceOf(IsAssignable::class, $unit);
+        $this->assertInstanceOf(IsListOfAssignables::class, $unit);
     }
 
     /**
@@ -85,17 +93,44 @@ class IsAssignableTest extends \PHPUnit\Framework\TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $unit = IsAssignable::using();
+        $unit = IsListOfAssignables::using();
 
         // ----------------------------------------------------------------
         // test the results
 
-        $this->assertInstanceOf(IsAssignable::class, $unit);
+        $this->assertInstanceOf(IsListOfAssignables::class, $unit);
     }
-
 
     /**
      * @covers ::check
+     * @covers ::inspect
+     * @dataProvider provideNonLists
+     */
+    public function test_throws_TypeError_for_non_lists($nonList)
+    {
+        // ----------------------------------------------------------------
+        // setup your test
+
+        // ----------------------------------------------------------------
+        // perform the change
+
+        $caughtException = false;
+        try {
+            IsListOfAssignables::check($nonList);
+        }
+        catch (TypeError $e) {
+            $caughtException = true;
+        }
+
+        // ----------------------------------------------------------------
+        // test the results
+
+        $this->assertTrue($caughtException);
+    }
+
+    /**
+     * @covers ::check
+     * @covers ::inspect
      */
     public function test_returns_true_for_stdClass()
     {
@@ -108,7 +143,7 @@ class IsAssignableTest extends \PHPUnit\Framework\TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = IsAssignable::check($data);
+        $actualResult = IsListOfAssignables::check([$data]);
 
         // ----------------------------------------------------------------
         // test the results
@@ -118,19 +153,20 @@ class IsAssignableTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @covers ::check
+     * @covers ::inspect
      */
     public function test_returns_true_for_objects_with_public_properties()
     {
         // ----------------------------------------------------------------
         // setup your test
 
-        $data = new IsAssignableTest_HasPublicProps;
+        $data = new IsListOfAssignablesTest_HasPublicProps;
         $expectedResult = true;
 
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = IsAssignable::check($data);
+        $actualResult = IsListOfAssignables::check([$data]);
 
         // ----------------------------------------------------------------
         // test the results
@@ -140,19 +176,20 @@ class IsAssignableTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @covers ::check
+     * @covers ::inspect
      */
     public function test_returns_false_for_objects_without_public_properties()
     {
         // ----------------------------------------------------------------
         // setup your test
 
-        $data = new IsAssignableTest_NoProps;
+        $data = new IsListOfAssignablesTest_NoProps;
         $expectedResult = false;
 
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = IsAssignable::check($data);
+        $actualResult = IsListOfAssignables::check([$data]);
 
         // ----------------------------------------------------------------
         // test the results
@@ -162,6 +199,7 @@ class IsAssignableTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @covers ::check
+     * @covers ::inspect
      * @dataProvider provideNonAssignables
      */
     public function test_returns_false_for_everything_else($data)
@@ -172,7 +210,7 @@ class IsAssignableTest extends \PHPUnit\Framework\TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = IsAssignable::check($data);
+        $actualResult = IsListOfAssignables::check([$data]);
 
         // ----------------------------------------------------------------
         // test the results
@@ -181,9 +219,9 @@ class IsAssignableTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @coversNothing
+     * @covers ::__construct
      */
-    public function test_is_Check()
+    public function test_is_CheckList()
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -191,29 +229,32 @@ class IsAssignableTest extends \PHPUnit\Framework\TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $unit = new IsAssignable();
+        $unit = new IsListOfAssignables();
 
         // ----------------------------------------------------------------
         // test the results
 
-        $this->assertInstanceOf(Check::class, $unit);
+        $this->assertInstanceOf(CheckList::class, $unit);
     }
 
     /**
+     * @covers ::using
      * @covers ::inspect
      */
-    public function test_can_use_as_Check()
+    public function test_can_use_as_CheckList()
     {
         // ----------------------------------------------------------------
         // setup your test
 
-        $unit = new IsAssignable();
-
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult1 = $unit->inspect(new IsAssignableTest_HasPublicProps);
-        $actualResult2 = $unit->inspect(new IsAssignableTest_NoProps);
+        $actualResult1 = IsListOfAssignables::using()->inspect([
+            new IsListOfAssignablesTest_HasPublicProps
+        ]);
+        $actualResult2 = IsListOfAssignables::using()->inspect([
+            new IsListOfAssignablesTest_NoProps
+        ]);
 
         // ----------------------------------------------------------------
         // test the results
@@ -236,12 +277,12 @@ class IsAssignableTest extends \PHPUnit\Framework\TestCase
     }
 }
 
-class IsAssignableTest_HasPublicProps
+class IsListOfAssignablesTest_HasPublicProps
 {
     public $objProp1 = 1;
 }
 
-class IsAssignableTest_NoProps
+class IsListOfAssignablesTest_NoProps
 {
 
 }

@@ -43,62 +43,54 @@
 
 namespace GanbaroDigital\MissingBits\TypeChecks;
 
-use GanbaroDigital\MissingBits\Checks\Check;
-use GanbaroDigital\MissingBits\ClassesAndObjects\HasObjectProperties;
-use stdClass;
+use GanbaroDigital\MissingBits\Checks\CheckList;
+use TypeError;
 
 /**
- * do we have something that can be used by PHP's -> notation?
+ * do we have a list that only contains things
+ * that can be used by PHP's -> notation?
  */
-class IsAssignable implements Check
+class IsListOfAssignables extends CheckList
 {
+    /**
+     * our constructor
+     *
+     * we do not support any customisations
+     */
+    public function __construct()
+    {
+        parent::__construct([
+            new IsAssignable
+        ]);
+    }
+
+    /**
+     * creates a new CheckList, ready to use
+     *
+     * we do not support any customisations
+     *
+     * @return CheckList
+     */
     public static function using()
     {
         return new static();
     }
 
     /**
-     * do we have something that can be used with PHP's object notation
+     * do we have a list that only contains things
+     * that can be used with PHP's object notation
      * for assigning the value of variables?
      *
-     * @param  mixed $fieldOrVar
-     *         the item to examine
+     * @param  mixed $list
+     *         the list
      * @return bool
-     *         true if the item is compatible
+     *         true if everything in $list is compatible
      *         false otherwise
+     * @throws TypeError
+     *         if $list isn't an acceptable list
      */
-    public static function check($fieldOrVar)
+    public static function check($list)
     {
-        // robustness
-        if (!is_object($fieldOrVar)) {
-            return false;
-        }
-
-        // most general case - a databag of some kind
-        if ($fieldOrVar instanceof stdClass) {
-            return true;
-        }
-
-        // do we have an object with public properties?
-        if (HasObjectProperties::check($fieldOrVar)) {
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
-     * do we have something that can be used with PHP's object notation
-     * for assigning the value of variables?
-     *
-     * @param  mixed $fieldOrVar
-     *         the item to examine
-     * @return bool
-     *         true if the item is compatible
-     *         false otherwise
-     */
-    public function inspect($fieldOrVar)
-    {
-        return static::check($fieldOrVar);
+        return static::using()->inspect($list);
     }
 }

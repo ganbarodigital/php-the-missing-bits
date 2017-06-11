@@ -32,10 +32,8 @@
   - added `IsListOfArrays`
   - added `check_is_array()` convenience function
   - added `check_is_array_list()` convenience function
-  - added `IsAssignable::check()`
-  - added `IsAssignable::checkList()`
-  - added `IsAssignable::inspect()`
-  - added `IsAssignable::inspectList()`
+  - added `IsAssignable`
+  - added `IsListOfAssignables`
   - added `check_is_assignable()` convenience function
   - added `check_is_assignable_list()` convenience function
   - added `IsBoolean::check()`
