@@ -36,10 +36,8 @@
   - added `IsListOfAssignables`
   - added `check_is_assignable()` convenience function
   - added `check_is_assignable_list()` convenience function
-  - added `IsBoolean::check()`
-  - added `IsBoolean::checkList()`
-  - added `IsBoolean::inspect()`
-  - added `IsBoolean::inspectList()`
+  - added `IsBoolean`
+  - added `IsListOfBooleans`
   - added `check_is_boolean()` convenience function
   - added `check_is_boolean_list()` convenience function
   - added `IsCallable`

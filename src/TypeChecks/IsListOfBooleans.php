@@ -43,56 +43,50 @@
 
 namespace GanbaroDigital\MissingBits\TypeChecks;
 
-use GanbaroDigital\MissingBits\Checks\Check;
+use GanbaroDigital\MissingBits\Checks\CheckList;
 
 /**
- * do we have something that is a boolean?
+ * do we have a list that contains only booleans?
  */
-class IsBoolean implements Check
+class IsListOfBooleans extends CheckList
 {
     /**
-     * creates a new Check, ready to use
+     * our constructor
+     *
+     * we do not support any customisations
+     */
+    public function __construct()
+    {
+        parent::__construct([
+            new IsBoolean
+        ]);
+    }
+
+    /**
+     * creates a new CheckList
      *
      * we do not support any customisations
      *
-     * @return Check
+     * @return CheckList
      */
     public static function using()
     {
-        return new static;
+        return new static();
     }
 
     /**
-     * do we have something that is a boolean?
+     * do we have a list that contains only booleans?
      *
-     * @param  mixed $fieldOrVar
-     *         the item to be checked
+     * @param  mixed $list
+     *         the list to be checked
      * @return bool
-     *         TRUE if the item is a boolean
+     *         TRUE if everything in the list is a boolean
      *         FALSE otherwise
+     * @throws TypeError
+     *         if $list isn't an acceptable list
      */
-    public static function check($fieldOrVar)
+    public static function check($list)
     {
-        // general cases
-        if (is_bool($fieldOrVar)) {
-            return true;
-        }
-
-        // if we get here, we have run out of ideas
-        return false;
-    }
-
-    /**
-     * do we have something that is a boolean?
-     *
-     * @param  mixed $fieldOrVar
-     *         the item to be checked
-     * @return bool
-     *         TRUE if the item is a boolean
-     *         FALSE otherwise
-     */
-    public function inspect($fieldOrVar)
-    {
-        return static::check($fieldOrVar);
+        return static::using()->inspect($list);
     }
 }
