@@ -45,18 +45,25 @@ namespace GanbaroDigitalTest\MissingBits\TypeChecks;
 
 use ArrayIterator;
 use ArrayObject;
-use GanbaroDigital\MissingBits\Checks\Check;
-use GanbaroDigital\MissingBits\TypeChecks\IsArray;
+use GanbaroDigital\MissingBits\Checks\CheckList;
+use GanbaroDigital\MissingBits\TypeChecks\IsListOfArrays;
+use GanbaroDigitalTest\MissingBits\DataProviders;
 use IteratorAggregate;
 use stdClass;
+use TypeError;
+
+// the data providers for our tests
+require_once(__DIR__ . '/../_datasets/lists.php');
 
 /**
- * @coversDefaultClass GanbaroDigital\MissingBits\TypeChecks\IsArray
+ * @coversDefaultClass GanbaroDigital\MissingBits\TypeChecks\IsListOfArrays
  */
-class IsArrayTest extends \PHPUnit\Framework\TestCase
+class IsListOfArraysTest extends \PHPUnit\Framework\TestCase
 {
+    use DataProviders\ListDataProviders;
+
     /**
-     * @coversNothing
+     * @covers ::__construct
      */
     public function test_can_instantiate()
     {
@@ -66,12 +73,12 @@ class IsArrayTest extends \PHPUnit\Framework\TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $unit = new IsArray();
+        $unit = new IsListOfArrays();
 
         // ----------------------------------------------------------------
         // test the results
 
-        $this->assertTrue($unit instanceof IsArray);
+        $this->assertTrue($unit instanceof IsListOfArrays);
     }
 
     /**
@@ -85,20 +92,20 @@ class IsArrayTest extends \PHPUnit\Framework\TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult1 = IsArray::using()->inspect([]);
-        $actualResult2 = IsArray::using()->inspect(null);
+        $unit = IsListOfArrays::using();
 
         // ----------------------------------------------------------------
         // test the results
 
-        $this->assertTrue($actualResult1);
-        $this->assertFalse($actualResult2);
+        $this->assertTrue($unit instanceof IsListOfArrays);
     }
 
     /**
      * @covers ::check
+     * @covers ::inspect
+     * @dataProvider provideNonLists
      */
-    public function test_supports_direct_static_access()
+    public function test_throws_TypeError_for_non_lists($nonList)
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -106,18 +113,23 @@ class IsArrayTest extends \PHPUnit\Framework\TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult1 = IsArray::check([]);
-        $actualResult2 = IsArray::check(null);
+        $caughtException = false;
+        try {
+            IsListOfArrays::check($nonList);
+        }
+        catch (TypeError $e) {
+            $caughtException = true;
+        }
 
         // ----------------------------------------------------------------
         // test the results
 
-        $this->assertTrue($actualResult1);
-        $this->assertFalse($actualResult2);
+        $this->assertTrue($caughtException);
     }
 
     /**
      * @covers ::check
+     * @covers ::inspect
      */
     public function test_returns_TRUE_for_array()
     {
@@ -130,7 +142,7 @@ class IsArrayTest extends \PHPUnit\Framework\TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = IsArray::check($data);
+        $actualResult = IsListOfArrays::check([$data]);
 
         // ----------------------------------------------------------------
         // test the results
@@ -140,19 +152,20 @@ class IsArrayTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @covers ::check
+     * @covers ::inspect
      */
     public function test_returns_FALSE_for_IteratorAggregate()
     {
         // ----------------------------------------------------------------
         // setup your test
 
-        $data = new IsArrayTest_Target1;
+        $data = new IsListOfArraysTest_Target1;
         $expectedResult = false;
 
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = IsArray::check($data);
+        $actualResult = IsListOfArrays::check([$data]);
 
         // ----------------------------------------------------------------
         // test the results
@@ -162,6 +175,7 @@ class IsArrayTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @covers ::check
+     * @covers ::inspect
      */
     public function test_returns_FALSE_for_ArrayIterator()
     {
@@ -174,7 +188,7 @@ class IsArrayTest extends \PHPUnit\Framework\TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = IsArray::check($data);
+        $actualResult = IsListOfArrays::check([$data]);
 
         // ----------------------------------------------------------------
         // test the results
@@ -184,6 +198,7 @@ class IsArrayTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @covers ::check
+     * @covers ::inspect
      */
     public function test_returns_FALSE_for_ArrayObject()
     {
@@ -196,7 +211,7 @@ class IsArrayTest extends \PHPUnit\Framework\TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = IsArray::check($data);
+        $actualResult = IsListOfArrays::check([$data]);
 
         // ----------------------------------------------------------------
         // test the results
@@ -206,6 +221,7 @@ class IsArrayTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @covers ::check
+     * @covers ::inspect
      */
     public function test_returns_FALSE_for_stdClass()
     {
@@ -218,7 +234,7 @@ class IsArrayTest extends \PHPUnit\Framework\TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = IsArray::check($data);
+        $actualResult = IsListOfArrays::check([$data]);
 
         // ----------------------------------------------------------------
         // test the results
@@ -228,6 +244,7 @@ class IsArrayTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @covers ::check
+     * @covers ::inspect
      * @dataProvider provideEverythingElse
      */
     public function test_returns_FALSE_for_everything_else($item)
@@ -238,7 +255,7 @@ class IsArrayTest extends \PHPUnit\Framework\TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = IsArray::check($item);
+        $actualResult = IsListOfArrays::check([$item]);
 
         // ----------------------------------------------------------------
         // test the results
@@ -249,7 +266,7 @@ class IsArrayTest extends \PHPUnit\Framework\TestCase
     /**
      * @coversNothing
      */
-    public function test_is_Check()
+    public function test_is_CheckList()
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -257,29 +274,36 @@ class IsArrayTest extends \PHPUnit\Framework\TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $unit = new IsArray;
+        $unit = new IsListOfArrays;
 
         // ----------------------------------------------------------------
         // test the results
 
-        $this->assertInstanceOf(Check::class, $unit);
+        $this->assertInstanceOf(CheckList::class, $unit);
     }
 
     /**
+     * @covers ::check
      * @covers ::inspect
      */
-    public function test_can_use_as_Check()
+    public function test_can_use_as_CheckList()
     {
         // ----------------------------------------------------------------
         // setup your test
 
-        $unit = new IsArray;
+        $list1 = [
+            []
+        ];
+
+        $list2 = [
+            STDIN
+        ];
 
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult1 = $unit->inspect([]);
-        $actualResult2 = $unit->inspect(STDIN);
+        $actualResult1 = IsListOfArrays::check($list1);
+        $actualResult2 = IsListOfArrays::check($list2);
 
         // ----------------------------------------------------------------
         // test the results
@@ -297,13 +321,13 @@ class IsArrayTest extends \PHPUnit\Framework\TestCase
             [ 3.1415927 ],
             [ 100 ],
             [ "hello world"],
-            [ new IsArray ],
+            [ new IsListOfArrays ],
         ];
     }
 }
 
 // cribbed directly from the PHP manual
-class IsArrayTest_Target1 implements IteratorAggregate
+class IsListOfArraysTest_Target1 implements IteratorAggregate
 {
     public function getIterator()
     {

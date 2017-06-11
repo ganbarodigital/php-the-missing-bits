@@ -43,63 +43,59 @@
 
 namespace GanbaroDigital\MissingBits\TypeChecks;
 
-use GanbaroDigital\MissingBits\Checks\Check;
+use GanbaroDigital\MissingBits\Checks\CheckList;
+use TypeError;
 
 /**
- * do we have something that is an array? It must be something that can be
+ * do we have a list that contains only arrays?
+ *
+ * Everything in the list must be something that can be
  * used by any of PHP's array_xxx() functions
  */
-class IsArray implements Check
+class IsListOfArrays extends CheckList
 {
     /**
-     * do we have something that is an array?
-     *
-     * by array, we mean something that you can pass to any of PHP's
-     * array_xxx() functions
-     *
-     * @param  mixed $fieldOrVar
-     *         the item to be checked
-     * @return bool
-     *         TRUE if the item is an array
-     *         FALSE otherwise
-     */
-    public static function check($fieldOrVar)
-    {
-        // general cases
-        if (is_array($fieldOrVar)) {
-            return true;
-        }
-
-        // if we get here, we have run out of ideas
-        return false;
-    }
-
-    /**
-     * do we have something that is an array?
-     *
-     * by array, we mean something that you can pass to any of PHP's
-     * array_xxx() functions
-     *
-     * @param  mixed $fieldOrVar
-     *         the item to be checked
-     * @return bool
-     *         TRUE if the item is an array
-     *         FALSE otherwise
-     */
-    public function inspect($fieldOrVar)
-    {
-        return static::check($fieldOrVar);
-    }
-
-    /**
-     * creates a new IsArray check, ready for use
+     * creates a new CheckList, ready to use
      *
      * we do not support any customisations
      *
-     * @return IsArray
+     * @return CheckList
+     */
+    public function __construct()
+    {
+        parent::__construct([
+            new IsArray
+        ]);
+    }
+
+    /**
+     * creates a new CheckList, ready to use
+     *
+     * we do not support any customisations
+     *
+     * @return CheckList
      */
     public static function using()
     {
         return new static();
+    }
+
+    /**
+     * do we have a list that contains only arrays?
+     *
+     * by array, we mean something that you can pass to any of PHP's
+     * array_xxx() functions
+     *
+     * @param  mixed $list
+     *         the list to be checked
+     * @return bool
+     *         TRUE if everythig in $list is an array
+     *         FALSE otherwise
+     * @throws TypeError
+     *         if $list isn't an acceptable list
+     */
+    public static function check($list)
+    {
+        return static::using()->inspect($list);
     }
 }

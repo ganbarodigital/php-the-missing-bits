@@ -28,10 +28,8 @@
   - `IsList` now implements `Check` and `ListCheck`
   - `IsListyObject` now implements `Check` and `ListCheck`
 * Added a whole bunch of type checks, originally from our Defensive library:
-  - added `IsArray::check()`
-  - added `IsArray::checkList()`
-  - added `IsArray::inspect()`
-  - added `IsArray::inspectList()`
+  - added `IsArray`
+  - added `IsListOfArrays`
   - added `check_is_array()` convenience function
   - added `check_is_array_list()` convenience function
   - added `IsAssignable::check()`
