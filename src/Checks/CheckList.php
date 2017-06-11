@@ -43,30 +43,63 @@
 
 namespace GanbaroDigital\MissingBits\Checks;
 
+use GanbaroDigital\MissingBits\TypeChecks\IsList;
+use GanbaroDigital\MissingBits\TypeInspectors\GetPrintableType;
+use TypeError;
+
 /**
- * inspect a list of any values
+ * base class for anything that wants to check a list of values
  */
-interface ListCheck
+class CheckList
 {
     /**
-     * does a value pass inspection?
-     *
-     * @param  mixed $fieldOrVar
-     *         the data to be examined
-     * @return bool
-     *         TRUE if the inspection passes
-     *         FALSE otherwise
+     * the check that we'll apply to everything in the list
+     * @var Check[]
      */
-    public function inspect($fieldOrVar);
+    private $checks;
+
+    /**
+     * create a customised CheckList, ready to use
+     *
+     * @param array $checks
+     *        a list of checks to apply
+     */
+    protected function __construct(array $checks)
+    {
+        $this->checks = $checks;
+    }
 
     /**
      * does a list of values pass inspection?
+     *
+     * we apply the list of checks that you passed into our constructor
      *
      * @param  mixed $list
      *         the list of data to be examined
      * @return bool
      *         TRUE if the inspection passes
      *         FALSE otherwise
+     * @throws TypeError
+     *         if $list isn't a list we can use
      */
-    public function inspectList($list);
+    public function inspect($list)
+    {
+        // robustness
+        if (!IsList::check($list)) {
+            throw new TypeError('$list is not a list, is a ' . GetPrintableType::of($list));
+        }
+
+        // a simple nested foreach() is all that we need here
+        foreach ($list as $name => $item) {
+            foreach ($this->checks as $check) {
+                if (!$check->inspect($item)) {
+                    // no need to continue
+                    return false;
+                }
+            }
+        }
+
+        // if we get here, then all is good
+        return true;
+    }
 }
