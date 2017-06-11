@@ -46,10 +46,8 @@
   - added `IsListOfCallables`
   - added `check_is_callable()` convenience function
   - added `check_is_callable_list()` convenience function
-  - added `IsCompatibleWith::check()`
-  - added `IsCompatibleWith::checkList()`
-  - added `IsCompatibleWith::inspect()`
-  - added `IsCompatibleWith::inspectList()`
+  - added `IsCompatibleWith`
+  - added `IsListCompatibleWith`
   - added `check_is_compatible_with()` convenience function
   - added `check_is_compatible_with_list()` convenience function
   - added `IsDefinedClass::check()`

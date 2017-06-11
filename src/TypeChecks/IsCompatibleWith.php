@@ -44,20 +44,15 @@
 namespace GanbaroDigital\MissingBits\TypeChecks;
 
 use GanbaroDigital\MissingBits\Checks\Check;
-use GanbaroDigital\MissingBits\Checks\ListCheck;
-use GanbaroDigital\MissingBits\Checks\ListCheckHelper;
 use GanbaroDigital\MissingBits\TypeInspectors\GetClassTypes;
 use GanbaroDigital\MissingBits\TypeInspectors\GetPrintableType;
-use InvalidArgumentException;
+use TypeError;
 
 /**
  * is class or object compatible with a given type?
  */
-class IsCompatibleWith implements Check, ListCheck
+class IsCompatibleWith implements Check
 {
-    // saves us having to implement inspectList() ourselves
-    use ListCheckHelper;
-
     /**
      * the classname or object that we want to check for
      * @var string|object
@@ -76,6 +71,19 @@ class IsCompatibleWith implements Check, ListCheck
     }
 
     /**
+     * fluent interface entry point
+     *
+     * @param  string|object $expectedType
+     *         the classname or object that we want to check for
+     * @return IsCompatibleWith
+     *         the customised Check, ready to use
+     */
+    public static function using($expectedType)
+    {
+        return new static($expectedType);
+    }
+
+    /**
      * is $fieldOrVar compatible with $expectedType?
      *
      * @param  mixed $fieldOrVar
@@ -90,7 +98,7 @@ class IsCompatibleWith implements Check, ListCheck
     {
         // robustness
         if (!IsStringy::check($expectedType) && !is_object($expectedType)) {
-            throw new InvalidArgumentException("\$expectedType must be a classname or an object, is a " . GetPrintableType::of($expectedType));
+            throw new TypeError("\$expectedType must be a classname or an object, is a " . GetPrintableType::of($expectedType));
         }
 
         if (is_object($fieldOrVar)) {
@@ -160,23 +168,5 @@ class IsCompatibleWith implements Check, ListCheck
     public function inspect($fieldOrVar)
     {
         return static::check($fieldOrVar, $this->expectedType);
-    }
-
-    /**
-     * is every entry in $list compatible with $expectedType?
-     *
-     * @param  mixed $list
-     *         the list of items to be checked
-     * @param  string $expectedType
-     *         the class or interface that we want to check against
-     * @return bool
-     *         TRUE if every item in $list is a classname or object of
-     *         a given type
-     *         FALSE otherwise
-     */
-    public static function checkList($list, $expectedType)
-    {
-        $check = new static;
-        return $check->inspectList($list, $expectedType);
     }
 }
