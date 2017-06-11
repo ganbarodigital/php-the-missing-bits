@@ -45,23 +45,18 @@ namespace GanbaroDigital\MissingBits\TypeChecks;
 
 use stdClass;
 use GanbaroDigital\MissingBits\Checks\Check;
-use GanbaroDigitalTest\MissingBits\DataProviders;
 use TypeError;
 
-// the data providers for our tests
-require_once(__DIR__ . '/../_datasets/callables.php');
-require_once(__DIR__ . '/../_datasets/lists.php');
+// load the available test datasets
+require_once __DIR__ . '/../Datasets/datasets.inc.php';
 
 /**
  * @coversDefaultClass GanbaroDigital\MissingBits\TypeChecks\IsListOfCallables
  */
 class IsListOfCallablesTest extends \PHPUnit\Framework\TestCase
 {
-    use DataProviders\CallableDataProviders;
-    use DataProviders\ListDataProviders;
-
     /**
-     * @coversNothing
+     * @covers ::__construct
      */
     public function test_can_instantiate()
     {
@@ -101,7 +96,7 @@ class IsListOfCallablesTest extends \PHPUnit\Framework\TestCase
     /**
      * @covers ::check
      * @covers ::inspect
-     * @dataProvider provideNonLists
+     * @dataProvider ListDataset::provideNonLists
      */
     public function test_throws_TypeError_for_non_lists($nonList)
     {
@@ -128,7 +123,7 @@ class IsListOfCallablesTest extends \PHPUnit\Framework\TestCase
     /**
      * @covers ::check
      * @covers ::inspect
-     * @dataProvider provideCallableArrays
+     * @dataProvider CallableDataset::provideCallableArrays
      */
     public function test_returns_TRUE_for_callable_arrays($data)
     {
@@ -149,7 +144,7 @@ class IsListOfCallablesTest extends \PHPUnit\Framework\TestCase
     /**
      * @covers ::check
      * @covers ::inspect
-     * @dataProvider provideCallableFunctions
+     * @dataProvider CallableDataset::provideCallableFunctions
      */
     public function test_returns_TRUE_for_callable_functions($data)
     {
@@ -170,7 +165,7 @@ class IsListOfCallablesTest extends \PHPUnit\Framework\TestCase
     /**
      * @covers ::check
      * @covers ::inspect
-     * @dataProvider provideCallableObjects
+     * @dataProvider CallableDataset::provideCallableObjects
      */
     public function test_returns_TRUE_for_callable_objects($data)
     {
@@ -191,7 +186,7 @@ class IsListOfCallablesTest extends \PHPUnit\Framework\TestCase
     /**
      * @covers ::check
      * @covers ::inspect
-     * @dataProvider provideCallableStrings
+     * @dataProvider CallableDataset::provideCallableStrings
      */
     public function test_returns_TRUE_for_callable_strings($data)
     {
@@ -212,7 +207,7 @@ class IsListOfCallablesTest extends \PHPUnit\Framework\TestCase
     /**
      * @covers ::check
      * @covers ::inspect
-     * @dataProvider provideNonCallables
+     * @dataProvider CallableDataset::provideNonCallables
      */
     public function test_returns_FALSE_for_everything_else($data)
     {

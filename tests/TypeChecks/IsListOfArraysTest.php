@@ -47,21 +47,18 @@ use ArrayIterator;
 use ArrayObject;
 use GanbaroDigital\MissingBits\Checks\CheckList;
 use GanbaroDigital\MissingBits\TypeChecks\IsListOfArrays;
-use GanbaroDigitalTest\MissingBits\DataProviders;
 use IteratorAggregate;
 use stdClass;
 use TypeError;
 
-// the data providers for our tests
-require_once(__DIR__ . '/../_datasets/lists.php');
+// load the available test datasets
+require_once __DIR__ . '/../Datasets/datasets.inc.php';
 
 /**
  * @coversDefaultClass GanbaroDigital\MissingBits\TypeChecks\IsListOfArrays
  */
 class IsListOfArraysTest extends \PHPUnit\Framework\TestCase
 {
-    use DataProviders\ListDataProviders;
-
     /**
      * @covers ::__construct
      */
@@ -103,7 +100,7 @@ class IsListOfArraysTest extends \PHPUnit\Framework\TestCase
     /**
      * @covers ::check
      * @covers ::inspect
-     * @dataProvider provideNonLists
+     * @dataProvider ListDataset::provideNonLists
      */
     public function test_throws_TypeError_for_non_lists($nonList)
     {

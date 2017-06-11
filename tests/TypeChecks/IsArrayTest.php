@@ -50,6 +50,9 @@ use GanbaroDigital\MissingBits\TypeChecks\IsArray;
 use IteratorAggregate;
 use stdClass;
 
+// load the available test datasets
+require_once __DIR__ . '/../Datasets/datasets.inc.php';
+
 /**
  * @coversDefaultClass GanbaroDigital\MissingBits\TypeChecks\IsArray
  */
@@ -228,7 +231,7 @@ class IsArrayTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @covers ::check
-     * @dataProvider provideEverythingElse
+     * @dataProvider ArrayDataset::provideNonArrays
      */
     public function test_returns_FALSE_for_everything_else($item)
     {
@@ -286,19 +289,6 @@ class IsArrayTest extends \PHPUnit\Framework\TestCase
 
         $this->assertTrue($actualResult1);
         $this->assertFalse($actualResult2);
-    }
-
-    public function provideEverythingElse()
-    {
-        return [
-            [ null ],
-            [ true ],
-            [ false ],
-            [ 3.1415927 ],
-            [ 100 ],
-            [ "hello world"],
-            [ new IsArray ],
-        ];
     }
 }
 

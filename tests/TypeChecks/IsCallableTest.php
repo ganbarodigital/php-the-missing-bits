@@ -46,18 +46,15 @@ namespace GanbaroDigitalTest\MissingBits\TypeChecks;
 use stdClass;
 use GanbaroDigital\MissingBits\Checks\Check;
 use GanbaroDigital\MissingBits\TypeChecks\IsCallable;
-use GanbaroDigitalTest\MissingBits\DataProviders;
 
-// the data providers for our tests
-require_once(__DIR__ . '/../_datasets/callables.php');
+// load the available test datasets
+require_once __DIR__ . '/../Datasets/datasets.inc.php';
 
 /**
  * @coversDefaultClass GanbaroDigital\MissingBits\TypeChecks\IsCallable
  */
 class IsCallableTest extends \PHPUnit\Framework\TestCase
 {
-    use DataProviders\CallableDataProviders;
-
     /**
      * @coversNothing
      */
@@ -98,7 +95,7 @@ class IsCallableTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @covers ::check
-     * @dataProvider provideCallableArrays
+     * @dataProvider CallableDataset::provideCallableArrays
      */
     public function test_returns_TRUE_for_callable_arrays($data)
     {
@@ -118,7 +115,7 @@ class IsCallableTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @covers ::check
-     * @dataProvider provideCallableFunctions
+     * @dataProvider CallableDataset::provideCallableFunctions
      */
     public function test_returns_TRUE_for_callable_functions($data)
     {
@@ -138,7 +135,7 @@ class IsCallableTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @covers ::check
-     * @dataProvider provideCallableObjects
+     * @dataProvider CallableDataset::provideCallableObjects
      */
     public function test_returns_TRUE_for_callable_objects($data)
     {
@@ -158,7 +155,7 @@ class IsCallableTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @covers ::check
-     * @dataProvider provideCallableStrings
+     * @dataProvider CallableDataset::provideCallableStrings
      */
     public function test_returns_TRUE_for_callable_strings($data)
     {
@@ -178,7 +175,7 @@ class IsCallableTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @covers ::check
-     * @dataProvider provideNonCallables
+     * @dataProvider CallableDataset::provideNonCallables
      */
     public function test_returns_FALSE_for_everything_else($data)
     {
