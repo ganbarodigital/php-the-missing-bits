@@ -2,19 +2,19 @@
 
 Here is the behavioural contract, enforced by our unit tests:
 
-    GanbaroDigital\MissingBits\TypeChecks\IsArray
+    GanbaroDigital\MissingBits\TypeChecks\IsListOfArrays
      [x] can instantiate
      [x] supports fluent interface
-     [x] supports direct static access
+     [x] throws TypeError for non lists bool(true)
+     [x] throws TypeError for non lists bool(false)
+     [x] throws TypeError for non lists
      [x] returns TRUE for array
      [x] returns FALSE for IteratorAggregate
      [x] returns FALSE for ArrayIterator
      [x] returns FALSE for ArrayObject
      [x] returns FALSE for stdClass
-     [x] returns FALSE for everything else bool(true)
-     [x] returns FALSE for everything else bool(false)
      [x] returns FALSE for everything else
-     [x] is Check
-     [x] can use as Check
+     [x] is CheckList
+     [x] can use as CheckList
 
 {% include ".i/boilerplate/behavioural-contract.twig" %}

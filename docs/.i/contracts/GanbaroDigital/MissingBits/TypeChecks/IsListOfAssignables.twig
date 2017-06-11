@@ -2,14 +2,17 @@
 
 Here is the behavioural contract, enforced by our unit tests:
 
-    GanbaroDigital\MissingBits\TypeChecks\IsAssignable
+    GanbaroDigital\MissingBits\TypeChecks\IsListOfAssignables
      [x] can instantiate
      [x] supports fluent interface
+     [x] throws TypeError for non lists bool(true)
+     [x] throws TypeError for non lists bool(false)
+     [x] throws TypeError for non lists
      [x] returns true for stdClass
      [x] returns true for objects with public properties
      [x] returns false for objects without public properties
      [x] returns false for everything else
-     [x] is Check
-     [x] can use as Check
+     [x] is CheckList
+     [x] can use as CheckList
 
 {% include ".i/boilerplate/behavioural-contract.twig" %}

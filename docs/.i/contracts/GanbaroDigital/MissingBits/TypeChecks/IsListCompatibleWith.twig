@@ -2,12 +2,15 @@
 
 Here is the behavioural contract, enforced by our unit tests:
 
-    GanbaroDigital\MissingBits\TypeChecks\IsCompatibleWith
+    GanbaroDigital\MissingBits\TypeChecks\IsListCompatibleWith
      [x] can instantiate
      [x] supports fluent interface
      [x] supports direct static access
-     [x] is Check
-     [x] can use as Check
+     [x] is CheckList
+     [x] can use as CheckList
+     [x] throws TypeError for non lists bool(true)
+     [x] throws TypeError for non lists bool(false)
+     [x] throws TypeError for non lists
      [x] returns true for classnames compatible with classnames
      [x] returns true for classnames compatible with objects
      [x] returns true for objects compatible with objects

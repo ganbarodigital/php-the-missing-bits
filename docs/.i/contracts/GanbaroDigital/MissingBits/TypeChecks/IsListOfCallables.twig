@@ -2,9 +2,12 @@
 
 Here is the behavioural contract, enforced by our unit tests:
 
-    GanbaroDigital\MissingBits\TypeChecks\IsCallable
+    GanbaroDigital\MissingBits\TypeChecks\IsListOfCallables
      [x] can instantiate
      [x] supports fluent interface
+     [x] throws TypeError for non lists bool(true)
+     [x] throws TypeError for non lists bool(false)
+     [x] throws TypeError for non lists
      [x] returns TRUE for callable arrays callable(static method array)
      [x] returns TRUE for callable arrays callable(object array)
      [x] returns TRUE for callable functions callable(anonymous function)
