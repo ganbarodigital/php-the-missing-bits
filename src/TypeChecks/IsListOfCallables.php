@@ -43,56 +43,50 @@
 
 namespace GanbaroDigital\MissingBits\TypeChecks;
 
-use GanbaroDigital\MissingBits\Checks\Check;
+use GanbaroDigital\MissingBits\Checks\CheckList;
 
 /**
- * do we have something that can be used as a PHP callable?
+ * do we have a list that contains only PHP callables?
  */
-class IsCallable implements Check
+class IsListOfCallables extends CheckList
 {
     /**
-     * creates a new Check
+     * our constructor
      *
-     * we do not support customisations
-     *
-     * @return Check
+     * we do not support any customisations
      */
-    public function using()
+    public function __construct()
+    {
+        parent::__construct([
+            new IsCallable
+        ]);
+    }
+
+    /**
+     * fluent interface entry point
+     *
+     * we do not support any customisations
+     *
+     * @return IsListOfCallables
+     */
+    public static function using()
     {
         return new static();
     }
 
     /**
-     * do we have something that can be used as a PHP callable?
+     * do we have a list of PHP callables?
      *
-     * @param  mixed $fieldOrVar
-     *         the value to check
+     * @param  mixed $list
+     *         the list to check
      * @return bool
-     *         TRUE if $fieldOrVar is a callable
+     *         TRUE if everything in $list is a callable
      *         FALSE otherwise
+     * @throws TypeError
+     *         if $list isn't an acceptable list
      */
-    public static function check($fieldOrVar)
+    public static function check($list)
     {
-        // general cases
-        if (is_callable($fieldOrVar)) {
-            return true;
-        }
-
-        // if we get here, we have run out of ideas
-        return false;
-    }
-
-    /**
-     * do we have something that can be used as a PHP callable?
-     *
-     * @param  mixed $fieldOrVar
-     *         the value to check
-     * @return bool
-     *         TRUE if $fieldOrVar is a callable
-     *         FALSE otherwise
-     */
-    public function inspect($fieldOrVar)
-    {
-        return static::check($fieldOrVar);
+        return static::using()->inspect($list);
     }
 }

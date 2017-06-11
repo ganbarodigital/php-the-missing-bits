@@ -42,10 +42,8 @@
   - added `IsBoolean::inspectList()`
   - added `check_is_boolean()` convenience function
   - added `check_is_boolean_list()` convenience function
-  - added `IsCallable::check()`
-  - added `IsCallable::checkList()`
-  - added `IsCallable::inspect()`
-  - added `IsCallable::inspectList()`
+  - added `IsCallable`
+  - added `IsListOfCallables`
   - added `check_is_callable()` convenience function
   - added `check_is_callable_list()` convenience function
   - added `IsCompatibleWith::check()`
