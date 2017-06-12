@@ -43,63 +43,49 @@
 
 namespace GanbaroDigital\MissingBits\ClassesAndObjects;
 
-use GanbaroDigital\MissingBits\Checks\Check;
-use ReflectionProperty;
-use TypeError;
+use GanbaroDigital\MissingBits\Checks\CheckList;
 
 /**
- * is this property a class property?
+ * is everything in the list a class property?
  */
-class IsClassProperty implements Check
+class IsListOfClassProperties extends CheckList
 {
     /**
-     * is this property a class property?
+     * our constructor
      *
-     * @param  ReflectionProperty $refProp
-     *         the property to inspect
-     * @return bool
-     *         TRUE if $refProp is a class property
-     *         FALSE otherwise
+     * this class doesn't support any customisation
      */
-    public static function check(ReflectionProperty $refProp)
+    public function __construct()
     {
-        if ($refProp->isStatic()) {
-            return true;
-        }
-
-        return false;
+        parent::__construct([new IsClassProperty]);
     }
 
     /**
-     * is this property a class property?
+     * fluent-interface entry point
      *
-     * NOTE: we cannot add a type-hint to $refProp below, as that will cause
-     * a PHP Fatal Error
+     * we don't support any customisations
      *
-     * @param  ReflectionProperty $refProp
-     *         the property to inspect
-     * @return bool
-     *         TRUE if $refProp is a class property
-     *         FALSE otherwise
-     */
-    public function inspect($refProp)
-    {
-        // robustness!
-        if (! $refProp instanceof ReflectionProperty) {
-            throw new TypeError('$refProp is not a ReflectionProperty, is a ' . get_printable_type($refProp));
-        }
-        return static::check($refProp);
-    }
-
-    /**
-     * create a new IsClassProperty checker, ready to use
-     *
-     * we do not support any customisations
-     *
-     * @return IsClassProperty
+     * @return IsClassPropertyList
      */
     public static function using()
     {
         return new static();
+    }
+
+    /**
+     * is this a list of class properties?
+     *
+     * @param  mixed $list
+     *         a list of class properties to check
+     * @return bool
+     *         TRUE if every entry in the list is a ReflectionProperty that
+     *         refers to a static property
+     *         FALSE otherwise
+     * @throws TypeError
+     *         if $list isn't an acceptable list
+     */
+    public static function check($list)
+    {
+        return static::using()->inspect($list);
     }
 }

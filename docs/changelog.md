@@ -18,6 +18,7 @@
   - added `HasObjectProperties::check()`
   - added `HasFilteredProperties` helper class
   - added `IsClassProperty` helper class
+  - added `IsListOfClassProperties` helper class
   - added `IsObjectProperty` helper class
 * Added support for a formal approach to writing IsXXX() classes
   - added `Check` interface
