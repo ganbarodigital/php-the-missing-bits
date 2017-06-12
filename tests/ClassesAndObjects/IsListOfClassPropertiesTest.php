@@ -194,6 +194,7 @@ class IsListOfClassPropertiesTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @covers ::check
+     * @covers ::inspect
      */
     public function test_returns_true_for_static_public_property()
     {
@@ -216,6 +217,7 @@ class IsListOfClassPropertiesTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @covers ::check
+     * @covers ::inspect
      */
     public function test_returns_true_for_static_protected_property()
     {
@@ -238,6 +240,7 @@ class IsListOfClassPropertiesTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @covers ::check
+     * @covers ::inspect
      */
     public function test_returns_true_for_static_private_property()
     {
@@ -260,6 +263,7 @@ class IsListOfClassPropertiesTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @covers ::check
+     * @covers ::inspect
      */
     public function test_returns_false_for_non_static_public_property()
     {
@@ -282,6 +286,7 @@ class IsListOfClassPropertiesTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @covers ::check
+     * @covers ::inspect
      */
     public function test_returns_false_for_non_static_protected_property()
     {
@@ -304,6 +309,7 @@ class IsListOfClassPropertiesTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @covers ::check
+     * @covers ::inspect
      */
     public function test_returns_false_for_non_static_private_property()
     {
