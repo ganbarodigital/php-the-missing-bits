@@ -50,6 +50,8 @@ interface Check
 interface Check
 {
     /**
+     * fluent-interface entry point
+     *
      * create a customised Check, ready to be used
      *
      * @return Check
@@ -75,31 +77,272 @@ interface Check
 
 Every `Check` can be used in three ways:
 
-* a static call to `::check()` for convenience,
-* as a temporary object, calling the `::using()->inspect()` pattern,
-* or as an object, calling the `->inspect()` method
+* a static call to `::check()` (_direct static access_),
+* as a temporary object, calling the `::using()->inspect()` _fluent interface_,
+* or as a reusable object, calling the `->inspect()` method
 
-### Scaffolding
+There should be a global function too that acts as a wrapper around `::check()`. These offer convenience, and act as a bridge to the non-OOP community.
+
+See [Code Design](../code-design.html) to learn more about why Checks (and indeed, many other classes in _PHP: The Missing Bits_) can be used in all these different ways.
+
+### Step 1: Scaffolding
 
 Every Check starts with a bit of boilerplate code:
 
 * add `use GanbaroDigital\MissingBits\Checks\Check` to your PHP file
 * add `implements Check` to your class
 
-### The Check Pattern
+For example:
 
-Every `Check` implements the `Check::check()` pattern:
+```php
+<?php
+
+use GanbaroDigital\MissingBits\Checks\Check;
+
+class IsInRange implements Check
+{
+
+}
+```
+
+### Step 2: Direct Static Access
+
+Every `Check` implements the `Check::check()` to support _direct static access_:
 
 * add a `public static function check()` method to your class. This method inspects `$fieldOrVar`. If you're happy with `$fieldOrVar`, return `true`. If you're not happy with `$data`, return `false`.
 * if your check needs additional input parameters, pass these in as additional parameters to the `check()` method.
 
-### Making It Usable As An Object
+For example:
+
+```php
+<?php
+
+use GanbaroDigital\MissingBits\Checks\Check;
+
+class IsInRange implements Check
+{
+    //
+    // ------------ NEW BIT ! ----------------------
+    //
+
+    /**
+     * is $data within the require range?
+     *
+     * @param  int $data
+     *         the value to check
+     * @param  int $min
+     *         minimum value for allowed range
+     * @param  int $max
+     *         maximum value for allowed range
+     * @return bool
+     *         TRUE if the data is in range
+     *         FALSE otherwise
+     */
+    public static function check($data, $min, $max)
+    {
+        if ($data < $min) {
+            return false;
+        }
+        if ($data > $max) {
+            return false;
+        }
+
+        return true;
+    }
+}
+```
+
+### Step 3: Making It Usable As An Object
 
 Every `Check` can be used as an object:
 
 * add a `public function __construct()` if your check needs additional input parameters
-* add a `public static function using()`, which takes the same parameters as your `__construct()`
 * add a `public function inspect()` which calls your static `::check()` method
+
+For example:
+
+```php
+<?php
+
+use GanbaroDigital\MissingBits\Checks\Check;
+
+class IsInRange implements Check
+{
+    //
+    // ------------ NEW BIT ! ----------------------
+    //
+
+    /**
+     * minimum acceptable value in our range
+     */
+    private $min;
+
+    /**
+     * maximum acceptable value in our range
+     */
+    private $max;
+
+    /**
+     * constructor. used to create a customised check
+     *
+     * @param  int $min
+     *         minimum value for allowed range
+     * @param  int $max
+     *         maximum value for allowed range
+     */
+    public function __construct($min, $max)
+    {
+        $this->min = $min;
+        $this->max = $max;
+    }
+
+    /**
+     * is $data within the require range?
+     *
+     * @param  int $data
+     *         the value to check
+     * @return bool
+     *         TRUE if the data is in range
+     *         FALSE otherwise
+     */
+    public function inspect($data)
+    {
+        return static::check($data, $this->min, $this->max);
+    }
+
+    //
+    // ------------ OLD BIT ! ----------------------
+    //
+
+    /**
+     * is $data within the require range?
+     *
+     * @param  int $data
+     *         the value to check
+     * @param  int $min
+     *         minimum value for allowed range
+     * @param  int $max
+     *         maximum value for allowed range
+     * @return bool
+     *         TRUE if the data is in range
+     *         FALSE otherwise
+     */
+    public static function check($data, $min, $max)
+    {
+        if ($data < $min) {
+            return false;
+        }
+        if ($data > $max) {
+            return false;
+        }
+
+        return true;
+    }
+}
+```
+
+### Step 4: Supporting The Fluent Interface
+
+Every `Check` supports a fluent interface:
+
+* add a `public static function using()`, which takes the same parameters as your `__construct()`
+
+For example:
+
+```php
+<?php
+
+use GanbaroDigital\MissingBits\Checks\Check;
+
+class IsInRange implements Check
+{
+    /**
+     * minimum acceptable value in our range
+     */
+    private $min;
+
+    /**
+     * maximum acceptable value in our range
+     */
+    private $max;
+
+    /**
+     * constructor. used to create a customised check
+     *
+     * @param  int $min
+     *         minimum value for allowed range
+     * @param  int $max
+     *         maximum value for allowed range
+     */
+    public function __construct($min, $max)
+    {
+        $this->min = $min;
+        $this->max = $max;
+    }
+
+    //
+    // ------------ NEW BIT ! ----------------------
+    //
+
+    /**
+     * generates a Check
+     *
+     * @param  int $min
+     *         minimum value for allowed range
+     * @param  int $max
+     *         maximum value for allowed range
+     * @return Check
+     *         returns a check to use
+     */
+    public static function using($min, $max)
+    {
+        return new static($min, $max);
+    }
+
+    //
+    // ------------ OLD BIT ! ----------------------
+    //
+
+    /**
+     * is $data within the require range?
+     *
+     * @param  int $data
+     *         the value to check
+     * @return bool
+     *         TRUE if the data is in range
+     *         FALSE otherwise
+     */
+    public function inspect($data)
+    {
+        return static::check($data, $this->min, $this->max);
+    }
+
+    /**
+     * is $data within the require range?
+     *
+     * @param  int $data
+     *         the value to check
+     * @param  int $min
+     *         minimum value for allowed range
+     * @param  int $max
+     *         maximum value for allowed range
+     * @return bool
+     *         TRUE if the data is in range
+     *         FALSE otherwise
+     */
+    public static function check($data, $min, $max)
+    {
+        if ($data < $min) {
+            return false;
+        }
+        if ($data > $max) {
+            return false;
+        }
+
+        return true;
+    }
+}
+```
 
 ## Putting It All Together
 
@@ -107,8 +350,8 @@ Here's a simple min / max check. It supports all the different ways that a Check
 
 {% include ".i/examples/Check/IsInRange.inc.twig" %}
 
-{% include ".i/examples/Check/Example-1--Static-Check.twig" %}
-{% include ".i/examples/Check/Example-2--Reusable-Object.twig" %}
-{% include ".i/examples/Check/Example-3--Via-Factory-Method.twig" %}
+{{ include (".i/examples/Check/Example-1--Direct-Static-Access.twig") }}
+{{ include (".i/examples/Check/Example-2--Reusable-Object.twig") }}
+{{ include (".i/examples/Check/Example-3--Fluent-Interface.twig") }}
 
-{% include ".i/supports/5.6-7.x.twig" %}
+{{ include (".i/supports/5.6-7.x.twig") }}

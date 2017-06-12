@@ -12,19 +12,23 @@ $filter = new FilterClassProperties(
 var_dump($filter->filterClassProperties(ExampleClass::class));
 var_dump($filter->filterClassProperties(FilterClassProperties::class));
 ```
-The code above produces this output on PHP v5.6.30, PHP v7.0.20, PHP v7.1.6:
+The code above produces this output on PHP v5.6.30:
 
 ```
-array(4) {
-  ["value2"]=>
-  string(28) "I am protected static value2"
-  ["value3"]=>
-  string(26) "I am private static value3"
-  ["trait2"]=>
-  string(28) "I am protected static trait2"
-  ["trait3"]=>
-  string(26) "I am private static trait3"
-}
-array(0) {
-}
+PHP Fatal error:  Call to undefined method GanbaroDigital\MissingBits\ClassesAndObjects\FilterClassProperties::filterClassProperties() in /home/stuart/Devel-MBP/ganbarodigital/php-the-missing-bits/doc-examples/FilterClassProperties/__construct/Example-1--Create-Reusable-Filter.php on line 21
+
+Fatal error: Call to undefined method GanbaroDigital\MissingBits\ClassesAndObjects\FilterClassProperties::filterClassProperties() in /home/stuart/Devel-MBP/ganbarodigital/php-the-missing-bits/doc-examples/FilterClassProperties/__construct/Example-1--Create-Reusable-Filter.php on line 21
+```
+The code above produces this output on PHP v7.0.20, PHP v7.1.6:
+
+```
+PHP Fatal error:  Uncaught Error: Call to undefined method GanbaroDigital\MissingBits\ClassesAndObjects\FilterClassProperties::filterClassProperties() in /home/stuart/Devel-MBP/ganbarodigital/php-the-missing-bits/doc-examples/FilterClassProperties/__construct/Example-1--Create-Reusable-Filter.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/stuart/Devel-MBP/ganbarodigital/php-the-missing-bits/doc-examples/FilterClassProperties/__construct/Example-1--Create-Reusable-Filter.php on line 21
+
+Fatal error: Uncaught Error: Call to undefined method GanbaroDigital\MissingBits\ClassesAndObjects\FilterClassProperties::filterClassProperties() in /home/stuart/Devel-MBP/ganbarodigital/php-the-missing-bits/doc-examples/FilterClassProperties/__construct/Example-1--Create-Reusable-Filter.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/stuart/Devel-MBP/ganbarodigital/php-the-missing-bits/doc-examples/FilterClassProperties/__construct/Example-1--Create-Reusable-Filter.php on line 21
 ```

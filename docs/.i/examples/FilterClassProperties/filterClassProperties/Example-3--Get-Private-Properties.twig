@@ -13,13 +13,23 @@ $props = $filter->filterClassProperties(
 );
 var_dump($props);
 ```
-The code above produces this output on PHP v5.6.30, PHP v7.0.20, PHP v7.1.6:
+The code above produces this output on PHP v5.6.30:
 
 ```
-array(2) {
-  ["value3"]=>
-  string(26) "I am private static value3"
-  ["trait3"]=>
-  string(26) "I am private static trait3"
-}
+PHP Fatal error:  Call to undefined method GanbaroDigital\MissingBits\ClassesAndObjects\FilterClassProperties::filterClassProperties() in /home/stuart/Devel-MBP/ganbarodigital/php-the-missing-bits/doc-examples/FilterClassProperties/filterClassProperties/Example-3--Get-Private-Properties.php on line 20
+
+Fatal error: Call to undefined method GanbaroDigital\MissingBits\ClassesAndObjects\FilterClassProperties::filterClassProperties() in /home/stuart/Devel-MBP/ganbarodigital/php-the-missing-bits/doc-examples/FilterClassProperties/filterClassProperties/Example-3--Get-Private-Properties.php on line 20
+```
+The code above produces this output on PHP v7.0.20, PHP v7.1.6:
+
+```
+PHP Fatal error:  Uncaught Error: Call to undefined method GanbaroDigital\MissingBits\ClassesAndObjects\FilterClassProperties::filterClassProperties() in /home/stuart/Devel-MBP/ganbarodigital/php-the-missing-bits/doc-examples/FilterClassProperties/filterClassProperties/Example-3--Get-Private-Properties.php:20
+Stack trace:
+#0 {main}
+  thrown in /home/stuart/Devel-MBP/ganbarodigital/php-the-missing-bits/doc-examples/FilterClassProperties/filterClassProperties/Example-3--Get-Private-Properties.php on line 20
+
+Fatal error: Uncaught Error: Call to undefined method GanbaroDigital\MissingBits\ClassesAndObjects\FilterClassProperties::filterClassProperties() in /home/stuart/Devel-MBP/ganbarodigital/php-the-missing-bits/doc-examples/FilterClassProperties/filterClassProperties/Example-3--Get-Private-Properties.php:20
+Stack trace:
+#0 {main}
+  thrown in /home/stuart/Devel-MBP/ganbarodigital/php-the-missing-bits/doc-examples/FilterClassProperties/filterClassProperties/Example-3--Get-Private-Properties.php on line 20
 ```

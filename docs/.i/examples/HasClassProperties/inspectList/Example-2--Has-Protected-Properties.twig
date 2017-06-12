@@ -24,9 +24,23 @@ $props = $checker->inspectList([
 ]);
 var_dump($props);
 ```
-The code above produces this output on PHP v5.6.30, PHP v7.0.20, PHP v7.1.6:
+The code above produces this output on PHP v5.6.30:
 
 ```
-bool(true)
-bool(false)
+PHP Fatal error:  Call to undefined method GanbaroDigital\MissingBits\ClassesAndObjects\HasClassProperties::inspectList() in /home/stuart/Devel-MBP/ganbarodigital/php-the-missing-bits/doc-examples/HasClassProperties/inspectList/Example-2--Has-Protected-Properties.php on line 20
+
+Fatal error: Call to undefined method GanbaroDigital\MissingBits\ClassesAndObjects\HasClassProperties::inspectList() in /home/stuart/Devel-MBP/ganbarodigital/php-the-missing-bits/doc-examples/HasClassProperties/inspectList/Example-2--Has-Protected-Properties.php on line 20
+```
+The code above produces this output on PHP v7.0.20, PHP v7.1.6:
+
+```
+PHP Fatal error:  Uncaught Error: Call to undefined method GanbaroDigital\MissingBits\ClassesAndObjects\HasClassProperties::inspectList() in /home/stuart/Devel-MBP/ganbarodigital/php-the-missing-bits/doc-examples/HasClassProperties/inspectList/Example-2--Has-Protected-Properties.php:20
+Stack trace:
+#0 {main}
+  thrown in /home/stuart/Devel-MBP/ganbarodigital/php-the-missing-bits/doc-examples/HasClassProperties/inspectList/Example-2--Has-Protected-Properties.php on line 20
+
+Fatal error: Uncaught Error: Call to undefined method GanbaroDigital\MissingBits\ClassesAndObjects\HasClassProperties::inspectList() in /home/stuart/Devel-MBP/ganbarodigital/php-the-missing-bits/doc-examples/HasClassProperties/inspectList/Example-2--Has-Protected-Properties.php:20
+Stack trace:
+#0 {main}
+  thrown in /home/stuart/Devel-MBP/ganbarodigital/php-the-missing-bits/doc-examples/HasClassProperties/inspectList/Example-2--Has-Protected-Properties.php on line 20
 ```

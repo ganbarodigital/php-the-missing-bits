@@ -12,9 +12,17 @@ $list2 = [ 5, 14 ];
 var_dump($rangeCheck->inspectList($list1));
 var_dump($rangeCheck->inspectList($list2));
 ```
-The code above produces this output on PHP v5.6.30, PHP v7.0.20, PHP v7.1.6:
+The code above produces this output on PHP v5.6.30:
 
 ```
-bool(true)
-bool(false)
+PHP Fatal error:  Interface 'GanbaroDigital\MissingBits\Checks\ListCheck' not found in /home/stuart/Devel-MBP/ganbarodigital/php-the-missing-bits/doc-examples/ListCheck/IsInRange.inc.php on line 8
+
+Fatal error: Interface 'GanbaroDigital\MissingBits\Checks\ListCheck' not found in /home/stuart/Devel-MBP/ganbarodigital/php-the-missing-bits/doc-examples/ListCheck/IsInRange.inc.php on line 8
+```
+The code above produces this output on PHP v7.0.20, PHP v7.1.6:
+
+```
+PHP Fatal error:  Trait 'GanbaroDigital\MissingBits\Checks\ListCheckHelper' not found in /home/stuart/Devel-MBP/ganbarodigital/php-the-missing-bits/doc-examples/ListCheck/IsInRange.inc.php on line 95
+
+Fatal error: Trait 'GanbaroDigital\MissingBits\Checks\ListCheckHelper' not found in /home/stuart/Devel-MBP/ganbarodigital/php-the-missing-bits/doc-examples/ListCheck/IsInRange.inc.php on line 95
 ```

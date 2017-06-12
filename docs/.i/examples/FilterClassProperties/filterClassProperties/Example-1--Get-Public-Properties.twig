@@ -11,13 +11,23 @@ $props = $filter->filterClassProperties(
 );
 var_dump($props);
 ```
-The code above produces this output on PHP v5.6.30, PHP v7.0.20, PHP v7.1.6:
+The code above produces this output on PHP v5.6.30:
 
 ```
-array(2) {
-  ["value1"]=>
-  string(25) "I am public static value1"
-  ["trait1"]=>
-  string(25) "I am public static trait1"
-}
+PHP Fatal error:  Call to undefined method GanbaroDigital\MissingBits\ClassesAndObjects\FilterClassProperties::filterClassProperties() in /home/stuart/Devel-MBP/ganbarodigital/php-the-missing-bits/doc-examples/FilterClassProperties/filterClassProperties/Example-1--Get-Public-Properties.php on line 18
+
+Fatal error: Call to undefined method GanbaroDigital\MissingBits\ClassesAndObjects\FilterClassProperties::filterClassProperties() in /home/stuart/Devel-MBP/ganbarodigital/php-the-missing-bits/doc-examples/FilterClassProperties/filterClassProperties/Example-1--Get-Public-Properties.php on line 18
+```
+The code above produces this output on PHP v7.0.20, PHP v7.1.6:
+
+```
+PHP Fatal error:  Uncaught Error: Call to undefined method GanbaroDigital\MissingBits\ClassesAndObjects\FilterClassProperties::filterClassProperties() in /home/stuart/Devel-MBP/ganbarodigital/php-the-missing-bits/doc-examples/FilterClassProperties/filterClassProperties/Example-1--Get-Public-Properties.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/stuart/Devel-MBP/ganbarodigital/php-the-missing-bits/doc-examples/FilterClassProperties/filterClassProperties/Example-1--Get-Public-Properties.php on line 18
+
+Fatal error: Uncaught Error: Call to undefined method GanbaroDigital\MissingBits\ClassesAndObjects\FilterClassProperties::filterClassProperties() in /home/stuart/Devel-MBP/ganbarodigital/php-the-missing-bits/doc-examples/FilterClassProperties/filterClassProperties/Example-1--Get-Public-Properties.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/stuart/Devel-MBP/ganbarodigital/php-the-missing-bits/doc-examples/FilterClassProperties/filterClassProperties/Example-1--Get-Public-Properties.php on line 18
 ```

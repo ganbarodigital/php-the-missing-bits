@@ -7,7 +7,7 @@ require_once __DIR__ . '/IsInRange.inc.php';
 // defaults
 // --- TARGET STOP ---
 // --- PREAMBLE START ---
-// The `using()` method is a static factory method. It returns a `Check` object.
+// The fluent interface is there for anyone who finds it makes their code more readable.
 // --- PREAMBLE STOP ---
 
 // --- EXAMPLE START ---

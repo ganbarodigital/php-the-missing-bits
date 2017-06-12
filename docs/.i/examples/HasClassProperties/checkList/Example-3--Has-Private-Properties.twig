@@ -28,9 +28,23 @@ $props = HasClassProperties::checkList(
 );
 var_dump($props);
 ```
-The code above produces this output on PHP v5.6.30, PHP v7.0.20, PHP v7.1.6:
+The code above produces this output on PHP v5.6.30:
 
 ```
-bool(true)
-bool(false)
+PHP Fatal error:  Call to undefined method GanbaroDigital\MissingBits\ClassesAndObjects\HasClassProperties::checkList() in /home/stuart/Devel-MBP/ganbarodigital/php-the-missing-bits/doc-examples/HasClassProperties/checkList/Example-3--Has-Private-Properties.php on line 18
+
+Fatal error: Call to undefined method GanbaroDigital\MissingBits\ClassesAndObjects\HasClassProperties::checkList() in /home/stuart/Devel-MBP/ganbarodigital/php-the-missing-bits/doc-examples/HasClassProperties/checkList/Example-3--Has-Private-Properties.php on line 18
+```
+The code above produces this output on PHP v7.0.20, PHP v7.1.6:
+
+```
+PHP Fatal error:  Uncaught Error: Call to undefined method GanbaroDigital\MissingBits\ClassesAndObjects\HasClassProperties::checkList() in /home/stuart/Devel-MBP/ganbarodigital/php-the-missing-bits/doc-examples/HasClassProperties/checkList/Example-3--Has-Private-Properties.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/stuart/Devel-MBP/ganbarodigital/php-the-missing-bits/doc-examples/HasClassProperties/checkList/Example-3--Has-Private-Properties.php on line 18
+
+Fatal error: Uncaught Error: Call to undefined method GanbaroDigital\MissingBits\ClassesAndObjects\HasClassProperties::checkList() in /home/stuart/Devel-MBP/ganbarodigital/php-the-missing-bits/doc-examples/HasClassProperties/checkList/Example-3--Has-Private-Properties.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/stuart/Devel-MBP/ganbarodigital/php-the-missing-bits/doc-examples/HasClassProperties/checkList/Example-3--Has-Private-Properties.php on line 18
 ```
