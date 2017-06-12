@@ -20,6 +20,7 @@
   - added `IsClassProperty` helper class
   - added `IsListOfClassProperties` helper class
   - added `IsObjectProperty` helper class
+  - added `IsListOfObjectProperties` helper class
 * Added support for a formal approach to writing IsXXX() classes
   - added `Check` interface
   - added `CheckList` base class

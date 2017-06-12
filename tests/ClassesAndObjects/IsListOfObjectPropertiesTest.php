@@ -43,17 +43,21 @@
 
 namespace GanbaroDigitalTest\MissingBits\ClassesAndObjects;
 
-use GanbaroDigital\MissingBits\Checks\Check;
-use GanbaroDigital\MissingBits\Checks\ListCheck;
-use GanbaroDigital\MissingBits\ClassesAndObjects\IsObjectProperty;
+use GanbaroDigital\MissingBits\Checks\CheckList;
+use GanbaroDigital\MissingBits\ClassesAndObjects\IsListOfObjectProperties;
 use ReflectionObject;
 use ReflectionProperty;
+use TypeError;
+
+// load the available test datasets
+require_once __DIR__ . '/../Datasets/datasets.inc.php';
 
  /**
-  * @coversDefaultClass GanbaroDigital\MissingBits\ClassesAndObjects\IsObjectProperty
+  * @coversDefaultClass GanbaroDigital\MissingBits\ClassesAndObjects\IsListOfObjectProperties
   */
-class IsObjectPropertyTest extends \PHPUnit\Framework\TestCase
+class IsListOfObjectPropertiesTest extends \PHPUnit\Framework\TestCase
 {
+
     /**
      * @coversNothing
      */
@@ -65,12 +69,12 @@ class IsObjectPropertyTest extends \PHPUnit\Framework\TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $unit = new IsObjectProperty;
+        $unit = new IsListOfObjectProperties;
 
         // ----------------------------------------------------------------
         // test the results
 
-        $this->assertInstanceOf(IsObjectProperty::class, $unit);
+        $this->assertInstanceOf(IsListOfObjectProperties::class, $unit);
     }
 
     /**
@@ -81,14 +85,14 @@ class IsObjectPropertyTest extends \PHPUnit\Framework\TestCase
         // ----------------------------------------------------------------
         // setup your test
 
-        $target = new IsObjectPropertyTest_Target;
+        $target = new IsListOfObjectPropertiesTest_Target;
         $refObj = new ReflectionObject($target);
         $refProp = $refObj->getProperty('objPublic');
 
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = IsObjectProperty::using()->inspect($refProp);
+        $actualResult = IsListOfObjectProperties::using()->inspect([$refProp]);
 
         // ----------------------------------------------------------------
         // test the results
@@ -104,14 +108,61 @@ class IsObjectPropertyTest extends \PHPUnit\Framework\TestCase
         // ----------------------------------------------------------------
         // setup your test
 
-        $target = new IsObjectPropertyTest_Target;
+        $target = new IsListOfObjectPropertiesTest_Target;
         $refObj = new ReflectionObject($target);
         $refProp = $refObj->getProperty('objPublic');
 
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = IsObjectProperty::check($refProp);
+        $actualResult = IsListOfObjectProperties::check([$refProp]);
+
+        // ----------------------------------------------------------------
+        // test the results
+
+        $this->assertTrue($actualResult);
+    }
+
+    /**
+     * @covers ::__construct
+     */
+    public function test_is_CheckList()
+    {
+        // ----------------------------------------------------------------
+        // setup your test
+
+        $target = new IsListOfObjectPropertiesTest_Target;
+        $refObj = new ReflectionObject($target);
+        $refProp = $refObj->getProperty('objPublic');
+
+        // ----------------------------------------------------------------
+        // perform the change
+
+        $unit = new IsListOfObjectProperties();
+
+        // ----------------------------------------------------------------
+        // test the results
+
+        $this->assertInstanceOf(CheckList::class, $unit);
+    }
+
+    /**
+     * @covers ::inspect
+     */
+    public function test_can_use_as_CheckList()
+    {
+        // ----------------------------------------------------------------
+        // setup your test
+
+        $target = new IsListOfObjectPropertiesTest_Target;
+        $refObj = new ReflectionObject($target);
+        $refProp = $refObj->getProperty('objPublic');
+
+        // ----------------------------------------------------------------
+        // perform the change
+
+        $unit = new IsListOfObjectProperties();
+        $actualResult = $unit->inspect([$refProp]);
 
         // ----------------------------------------------------------------
         // test the results
@@ -121,20 +172,47 @@ class IsObjectPropertyTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @covers ::check
+     * @covers ::inspect
+     * @dataProvider ListDataset::provideNonLists
+     */
+    public function test_throws_TypeError_for_non_lists($nonList)
+    {
+        // ----------------------------------------------------------------
+        // setup your test
+
+        // ----------------------------------------------------------------
+        // perform the change
+
+        $caughtException = false;
+        try {
+            IsListOfObjectProperties::check($nonList);
+        }
+        catch (TypeError $e) {
+            $caughtException = true;
+        }
+
+        // ----------------------------------------------------------------
+        // test the results
+
+        $this->assertTrue($caughtException);
+    }
+    /**
+     * @covers ::check
+     * @covers ::inspect
      */
     public function test_returns_true_for_non_static_public_property()
     {
         // ----------------------------------------------------------------
         // setup your test
 
-        $target = new IsObjectPropertyTest_Target;
+        $target = new IsListOfObjectPropertiesTest_Target;
         $refObj = new ReflectionObject($target);
         $refProp = $refObj->getProperty('objPublic');
 
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = IsObjectProperty::check($refProp);
+        $actualResult = IsListOfObjectProperties::check([$refProp]);
 
         // ----------------------------------------------------------------
         // test the results
@@ -144,20 +222,21 @@ class IsObjectPropertyTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @covers ::check
+     * @covers ::inspect
      */
     public function test_returns_true_for_non_static_protected_property()
     {
         // ----------------------------------------------------------------
         // setup your test
 
-        $target = new IsObjectPropertyTest_Target;
+        $target = new IsListOfObjectPropertiesTest_Target;
         $refObj = new ReflectionObject($target);
         $refProp = $refObj->getProperty('objProtected');
 
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = IsObjectProperty::check($refProp);
+        $actualResult = IsListOfObjectProperties::check([$refProp]);
 
         // ----------------------------------------------------------------
         // test the results
@@ -167,20 +246,21 @@ class IsObjectPropertyTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @covers ::check
+     * @covers ::inspect
      */
     public function test_returns_true_for_non_static_private_property()
     {
         // ----------------------------------------------------------------
         // setup your test
 
-        $target = new IsObjectPropertyTest_Target;
+        $target = new IsListOfObjectPropertiesTest_Target;
         $refObj = new ReflectionObject($target);
         $refProp = $refObj->getProperty('objPrivate');
 
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = IsObjectProperty::check($refProp);
+        $actualResult = IsListOfObjectProperties::check([$refProp]);
 
         // ----------------------------------------------------------------
         // test the results
@@ -190,20 +270,21 @@ class IsObjectPropertyTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @covers ::check
+     * @covers ::inspect
      */
     public function test_returns_false_for_static_public_property()
     {
         // ----------------------------------------------------------------
         // setup your test
 
-        $target = new IsObjectPropertyTest_Target;
+        $target = new IsListOfObjectPropertiesTest_Target;
         $refObj = new ReflectionObject($target);
         $refProp = $refObj->getProperty('staticPublic');
 
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = IsObjectProperty::check($refProp);
+        $actualResult = IsListOfObjectProperties::check([$refProp]);
 
         // ----------------------------------------------------------------
         // test the results
@@ -213,20 +294,21 @@ class IsObjectPropertyTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @covers ::check
+     * @covers ::inspect
      */
     public function test_returns_false_for_static_protected_property()
     {
         // ----------------------------------------------------------------
         // setup your test
 
-        $target = new IsObjectPropertyTest_Target;
+        $target = new IsListOfObjectPropertiesTest_Target;
         $refObj = new ReflectionObject($target);
         $refProp = $refObj->getProperty('staticProtected');
 
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = IsObjectProperty::check($refProp);
+        $actualResult = IsListOfObjectProperties::check([$refProp]);
 
         // ----------------------------------------------------------------
         // test the results
@@ -236,74 +318,30 @@ class IsObjectPropertyTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @covers ::check
+     * @covers ::inspect
      */
     public function test_returns_false_for_static_private_property()
     {
         // ----------------------------------------------------------------
         // setup your test
 
-        $target = new IsObjectPropertyTest_Target;
+        $target = new IsListOfObjectPropertiesTest_Target;
         $refObj = new ReflectionObject($target);
         $refProp = $refObj->getProperty('staticPrivate');
 
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = IsObjectProperty::check($refProp);
+        $actualResult = IsListOfObjectProperties::check([$refProp]);
 
         // ----------------------------------------------------------------
         // test the results
 
         $this->assertFalse($actualResult);
     }
-
-    /**
-     * @coversNothing
-     */
-    public function test_is_Check()
-    {
-        // ----------------------------------------------------------------
-        // setup your test
-
-
-        // ----------------------------------------------------------------
-        // perform the change
-
-        $unit = new IsObjectProperty;
-
-        // ----------------------------------------------------------------
-        // test the results
-
-        $this->assertInstanceOf(Check::class, $unit);
-    }
-
-    /**
-     * @covers ::inspect
-     */
-    public function test_can_use_as_Check()
-    {
-        // ----------------------------------------------------------------
-        // setup your test
-
-        $target = new IsObjectPropertyTest_Target;
-        $refObj = new ReflectionObject($target);
-        $refProp = $refObj->getProperty('objPublic');
-
-        $unit = new IsObjectProperty;
-
-        // ----------------------------------------------------------------
-        // perform the change
-
-        $actualResult = $unit->inspect($refProp);
-
-        // ----------------------------------------------------------------
-        // test the results
-
-        $this->assertTrue($actualResult);
-    }
 }
 
-class IsObjectPropertyTest_Target
+class IsListOfObjectPropertiesTest_Target
 {
     public static $staticPublic = 1;
     protected static $staticProtected = 2;

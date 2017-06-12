@@ -43,55 +43,50 @@
 
 namespace GanbaroDigital\MissingBits\ClassesAndObjects;
 
-use GanbaroDigital\MissingBits\Checks\Check;
+use GanbaroDigital\MissingBits\Checks\CheckList;
 use ReflectionProperty;
 
 /**
- * is this property an object property?
+ * is everything in the list an object property?
  */
-class IsObjectProperty implements Check
+class IsListOfObjectProperties extends CheckList
 {
     /**
-     * creates a new IsObjectProperty, ready to use
+     * our constructor
+     *
+     * we do not support any customisations
+     */
+    public function __construct()
+    {
+        parent::__construct([new IsObjectProperty]);
+    }
+
+    /**
+     * fluent-interface entry point
      *
      * we do not support any customisations
      *
-     * @return IsObjectProperty
+     * @return IsObjectPropertyList
      */
-    public function using()
+    public static function using()
     {
         return new static();
     }
 
     /**
-     * is this property an object property?
+     * is this a list of object properties?
      *
-     * @param  ReflectionProperty $refProp
-     *         the property to inspect
+     * @param  mixed $list
+     *         the list to inspect
      * @return bool
-     *         TRUE if $refProp is an object property
+     *         TRUE if everything in the list is a ReflectionProperty that
+     *         refers to an object property
      *         FALSE otherwise
+     * @throws TypeError
+     *         if $list isn't an acceptable list
      */
-    public static function check(ReflectionProperty $refProp)
+    public static function check($list)
     {
-        if (!$refProp->isStatic()) {
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
-     * is this property an object property?
-     *
-     * @param  ReflectionProperty $refProp
-     *         the property to inspect
-     * @return bool
-     *         TRUE if $refProp is an object property
-     *         FALSE otherwise
-     */
-    public function inspect($refProp)
-    {
-        return static::check($refProp);
+        return static::using()->inspect($list);
     }
 }
