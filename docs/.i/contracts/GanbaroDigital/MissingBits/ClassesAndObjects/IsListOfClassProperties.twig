@@ -2,17 +2,20 @@
 
 Here is the behavioural contract, enforced by our unit tests:
 
-    GanbaroDigital\MissingBits\ClassesAndObjects\IsClassProperty
+    GanbaroDigital\MissingBits\ClassesAndObjects\IsListOfClassProperties
      [x] can instantiate
      [x] supports fluent interface
      [x] supports direct static access
+     [x] is CheckList
+     [x] can use as CheckList
+     [x] throws TypeError for non lists bool(true)
+     [x] throws TypeError for non lists bool(false)
+     [x] throws TypeError for non lists
      [x] returns true for static public property
      [x] returns true for static protected property
      [x] returns true for static private property
      [x] returns false for non static public property
      [x] returns false for non static protected property
      [x] returns false for non static private property
-     [x] is Check
-     [x] can use as Check
 
 {% include ".i/boilerplate/behavioural-contract.twig" %}
