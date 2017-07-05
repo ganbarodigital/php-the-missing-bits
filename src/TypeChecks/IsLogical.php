@@ -43,17 +43,23 @@
 
 namespace GanbaroDigital\MissingBits\TypeChecks;
 use GanbaroDigital\MissingBits\Checks\Check;
-use GanbaroDigital\MissingBits\Checks\ListCheck;
-use GanbaroDigital\MissingBits\Checks\ListCheckHelper;
 use GanbaroDigital\MissingBits\TypeInterfaces\Logical;
 
 /**
  * do we have something that can be used as a boolean value?
  */
-class IsLogical implements Check, ListCheck
+class IsLogical implements Check
 {
-    // saves us having to implement inspectList() ourselves
-    use ListCheckHelper;
+    /**
+     * fluent-interface entry point
+     *
+     * we do not support any customisations
+     * @return IsLogical
+     */
+    public static function using()
+    {
+        return new static;
+    }
 
     /**
      * do we have something that can be used as a boolean value?
@@ -71,14 +77,9 @@ class IsLogical implements Check, ListCheck
             return true;
         }
 
-        // we also support the following
-        if (is_null($fieldOrVar)) {
-            return true;
-        }
-
         // we also support objects that co-operate
         if (is_object($fieldOrVar) && $fieldOrVar instanceof Logical) {
-            return $fieldOrVar->isTrue();
+            return true;
         }
 
         // if we get here, we have run out of ideas
@@ -97,20 +98,5 @@ class IsLogical implements Check, ListCheck
     public function inspect($fieldOrVar)
     {
         return static::check($fieldOrVar);
-    }
-
-    /**
-     * is every entry in $list something that can be used as a boolean value?
-     *
-     * @param  mixed $list
-     *         the list of items to be checked
-     * @return bool
-     *         TRUE if every item in $list can be used as a boolean
-     *         FALSE otherwise
-     */
-    public static function checkList($list)
-    {
-        $check = new static;
-        return $check->inspectList($list);
     }
 }

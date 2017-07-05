@@ -44,16 +44,23 @@
 namespace GanbaroDigital\MissingBits\TypeChecks;
 
 use GanbaroDigital\MissingBits\Checks\Check;
-use GanbaroDigital\MissingBits\Checks\ListCheck;
-use GanbaroDigital\MissingBits\Checks\ListCheckHelper;
 
 /**
  * do we have a valid PHP list?
  */
-class IsList implements Check, ListCheck
+class IsList implements Check
 {
-    // saves us having to implement inspectList() ourselves
-    use ListCheckHelper;
+    /**
+     * fluent-interface entry point
+     *
+     * we do not support any customisations
+     *
+     * @return IsList
+     */
+    public static function using()
+    {
+        return new static();
+    }
 
     /**
      * can $list be safely (and sensibly) used in a foreach() loop?
@@ -93,21 +100,5 @@ class IsList implements Check, ListCheck
     public function inspect($list)
     {
         return static::check($list);
-    }
-
-    /**
-     * can all entries in $list be safely (and sensibly) used in a
-     * foreach() loop?
-     *
-     * @param  mixed $list
-     *         the list of lists to inspect
-     * @return bool
-     *         TRUE if all entries in $list can be used in a foreach() loop
-     *         FALSE otherwise
-     */
-    public static function checkList($list)
-    {
-        $check = new static();
-        return $check->inspectList($list);
     }
 }

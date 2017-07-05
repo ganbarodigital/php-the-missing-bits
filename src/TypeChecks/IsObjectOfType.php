@@ -44,17 +44,12 @@
 namespace GanbaroDigital\MissingBits\TypeChecks;
 
 use GanbaroDigital\MissingBits\Checks\Check;
-use GanbaroDigital\MissingBits\Checks\ListCheck;
-use GanbaroDigital\MissingBits\Checks\ListCheckHelper;
 
 /**
  * do we have something that is a specific type of object?
  */
-class IsObjectOfType implements Check, ListCheck
+class IsObjectOfType implements Check
 {
-    // saves us having to implement inspectList() ourselves
-    use ListCheckHelper;
-
     /**
      * what type of object are we looking for?
      * @var string
@@ -70,6 +65,18 @@ class IsObjectOfType implements Check, ListCheck
     public function __construct($expectedType)
     {
         $this->expectedType = $expectedType;
+    }
+
+    /**
+     * fluent-interface entry point
+     *
+     * @param  string $expectedType
+     *         the class or interface that we want to check against
+     * @return IsObjectOfType
+     */
+    public static function using($expectedType)
+    {
+        return new static($expectedType);
     }
 
     /**
@@ -109,22 +116,5 @@ class IsObjectOfType implements Check, ListCheck
     public function inspect($fieldOrVar)
     {
         return static::check($fieldOrVar, $this->expectedType);
-    }
-
-    /**
-     * is every entry in $list an object of a given type?
-     *
-     * @param  mixed $list
-     *         the list of items to be checked
-     * @param  string $expectedType
-     *         the class or interface that we want to check against
-     * @return bool
-     *         TRUE if every item in $list is an object of a given type
-     *         FALSE otherwise
-     */
-    public static function checkList($list, $expectedType)
-    {
-        $check = new static;
-        return $check->inspectList($list, $expectedType);
     }
 }

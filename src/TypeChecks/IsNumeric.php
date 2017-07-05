@@ -44,16 +44,23 @@
 namespace GanbaroDigital\MissingBits\TypeChecks;
 
 use GanbaroDigital\MissingBits\Checks\Check;
-use GanbaroDigital\MissingBits\Checks\ListCheck;
-use GanbaroDigital\MissingBits\Checks\ListCheckHelper;
 
 /**
  * do we have something that can be used as a number?
  */
-class IsNumeric implements Check, ListCheck
+class IsNumeric implements Check
 {
-    // saves us having to implement inspectList() ourselves
-    use ListCheckHelper;
+    /**
+     * fluent-interface entry point
+     *
+     * we do not support any customisations
+     *
+     * @return IsNumeric
+     */
+    public static function using()
+    {
+        return new static;
+    }
 
     /**
      * do we have something that can be used as a number?
@@ -95,20 +102,5 @@ class IsNumeric implements Check, ListCheck
     public function inspect($fieldOrVar)
     {
         return static::check($fieldOrVar);
-    }
-
-    /**
-     * is every entry in $list a number of some kind?
-     *
-     * @param  mixed $list
-     *         the list of items to be checked
-     * @return bool
-     *         TRUE if every item in $list can be used as a number
-     *         FALSE otherwise
-     */
-    public static function checkList($list)
-    {
-        $check = new static;
-        return $check->inspectList($list);
     }
 }

@@ -44,16 +44,23 @@
 namespace GanbaroDigital\MissingBits\TypeChecks;
 
 use GanbaroDigital\MissingBits\Checks\Check;
-use GanbaroDigital\MissingBits\Checks\ListCheck;
-use GanbaroDigital\MissingBits\Checks\ListCheckHelper;
 
 /**
  * do we have a valid type name for an object?
  */
-class IsDefinedObjectType implements Check, ListCheck
+class IsDefinedObjectType implements Check
 {
-    // saves us having to implement inspectList() ourselves
-    use ListCheckHelper;
+    /**
+     * fluent-interface entry point
+     *
+     * we do not support any customisations
+     *
+     * @return IsDefinedObjectType
+     */
+    public static function using()
+    {
+        return new static();
+    }
 
     /**
      * is $fieldOrVar a valid type for an object?
@@ -92,20 +99,5 @@ class IsDefinedObjectType implements Check, ListCheck
     public function inspect($fieldOrVar)
     {
         return static::check($fieldOrVar);
-    }
-
-    /**
-     * is every entry in $list a valid type for an object?
-     *
-     * @param  mixed $list
-     *         the list of items to be checked
-     * @return bool
-     *         TRUE if every item in $list is a a valid type for an object
-     *         FALSE otherwise
-     */
-    public static function checkList($list)
-    {
-        $check = new static;
-        return $check->inspectList($list);
     }
 }

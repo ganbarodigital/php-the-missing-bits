@@ -44,16 +44,23 @@
 namespace GanbaroDigital\MissingBits\TypeChecks;
 
 use GanbaroDigital\MissingBits\Checks\Check;
-use GanbaroDigital\MissingBits\Checks\ListCheck;
-use GanbaroDigital\MissingBits\Checks\ListCheckHelper;
 
 /**
  * do we have the name of an interface that has been defined?
  */
-class IsDefinedInterface implements Check, ListCheck
+class IsDefinedInterface implements Check
 {
-    // saves us having to implement inspectList() ourselves
-    use ListCheckHelper;
+    /**
+     * fluent-interface entry point
+     *
+     * we do not support any customisations
+     *
+     * @return IsDefinedInterface
+     */
+    public function using()
+    {
+        return new static();
+    }
 
     /**
      * do we have the name of an interface that has been defined?
@@ -92,20 +99,5 @@ class IsDefinedInterface implements Check, ListCheck
     public function inspect($fieldOrVar)
     {
         return static::check($fieldOrVar);
-    }
-
-    /**
-     * is every entry in $list a defined interface?
-     *
-     * @param  mixed $list
-     *         the list of items to be checked
-     * @return bool
-     *         TRUE if every item in $list is a defined interface
-     *         FALSE otherwise
-     */
-    public static function checkList($list)
-    {
-        $check = new static;
-        return $check->inspectList($list);
     }
 }

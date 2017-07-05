@@ -44,16 +44,23 @@
 namespace GanbaroDigital\MissingBits\TypeChecks;
 
 use GanbaroDigital\MissingBits\Checks\Check;
-use GanbaroDigital\MissingBits\Checks\ListCheck;
-use GanbaroDigital\MissingBits\Checks\ListCheckHelper;
 
 /**
  * do we have something that is a PHP resource?
  */
-class IsResource implements Check, ListCheck
+class IsResource implements Check
 {
-    // saves us having to implement inspectList() ourselves
-    use ListCheckHelper;
+    /**
+     * fluent-interface entry point
+     *
+     * we do not support any customisations
+     *
+     * @return IsResource
+     */
+    public static function using()
+    {
+        return new static;
+    }
 
     /**
      * do we have something that is a PHP resource?
@@ -87,20 +94,5 @@ class IsResource implements Check, ListCheck
     public function inspect($fieldOrVar)
     {
         return static::check($fieldOrVar);
-    }
-
-    /**
-     * is every entry in $list a PHP resource?
-     *
-     * @param  mixed $list
-     *         the list of items to be checked
-     * @return bool
-     *         TRUE if every item in $list is a PHP resource
-     *         FALSE otherwise
-     */
-    public static function checkList($list)
-    {
-        $check = new static;
-        return $check->inspectList($list);
     }
 }

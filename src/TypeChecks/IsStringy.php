@@ -44,16 +44,23 @@
 namespace GanbaroDigital\MissingBits\TypeChecks;
 
 use GanbaroDigital\MissingBits\Checks\Check;
-use GanbaroDigital\MissingBits\Checks\ListCheck;
-use GanbaroDigital\MissingBits\Checks\ListCheckHelper;
 
 /**
  * is $fieldOrVar something that PHP will accept as a string?
  */
-class IsStringy implements Check, ListCheck
+class IsStringy implements Check
 {
-    // saves us having to implement inspectList() ourselves
-    use ListCheckHelper;
+    /**
+     * fluent-interface entry point
+     *
+     * we do not accept any customisations
+     *
+     * @return IsStringy
+     */
+    public static function using()
+    {
+        return new static;
+    }
 
     /**
      * is $fieldOrVar something that PHP will accept as a string?
@@ -99,20 +106,5 @@ class IsStringy implements Check, ListCheck
     public function inspect($fieldOrVar)
     {
         return static::check($fieldOrVar);
-    }
-
-    /**
-     * are all items in $list something that PHP will accept as a string?
-     *
-     * @param  mixed $list
-     *         the variable to examine
-     * @return bool
-     *         TRUE if PHP will happily use all the items in $list as a string
-     *         FALSE otherwise
-     */
-    public static function checkList($list)
-    {
-        $check = new static();
-        return $check->inspectList($list);
     }
 }

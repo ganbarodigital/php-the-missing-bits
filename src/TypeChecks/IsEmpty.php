@@ -44,8 +44,6 @@
 namespace GanbaroDigital\MissingBits\TypeChecks;
 
 use GanbaroDigital\MissingBits\Checks\Check;
-use GanbaroDigital\MissingBits\Checks\ListCheck;
-use GanbaroDigital\MissingBits\Checks\ListCheckHelper;
 use GanbaroDigital\MissingBits\TypeInterfaces\CanBeEmpty;
 use stdClass;
 use Traversable;
@@ -53,10 +51,19 @@ use Traversable;
 /**
  * do we have something that is empty?
  */
-class IsEmpty implements Check, ListCheck
+class IsEmpty implements Check
 {
-    // saves us having to implement inspectList() ourselves
-    use ListCheckHelper;
+    /**
+     * fluent-interface entry point
+     *
+     * we do not support any customisations
+     *
+     * @return IsEmpty
+     */
+    public static function using()
+    {
+        return new static();
+    }
 
     /**
      * check if an item is empty
@@ -198,20 +205,5 @@ class IsEmpty implements Check, ListCheck
     public function inspect($fieldOrVar)
     {
         return static::check($fieldOrVar);
-    }
-
-    /**
-     * is every entry in $list empty?
-     *
-     * @param  mixed $list
-     *         the list of items to be checked
-     * @return bool
-     *         TRUE if every item in $list is empty
-     *         FALSE otherwise
-     */
-    public static function checkList($list)
-    {
-        $check = new static;
-        return $check->inspectList($list);
     }
 }
