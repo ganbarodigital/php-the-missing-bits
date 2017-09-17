@@ -156,6 +156,10 @@
   - added `Error`
   - added `TypeError`
 
+### Fixes
+
+* `GetNamespace` no longer cares if the class|interface|trait name has been declared to PHP
+
 ### Refactor
 
 Before refactoring, we checked Packagist to make sure that these changes would not break anything that depends upon The Missing Bits.

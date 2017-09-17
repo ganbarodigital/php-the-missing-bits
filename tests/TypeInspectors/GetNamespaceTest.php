@@ -208,30 +208,6 @@ class GetNamespaceTest extends \PHPUnit\Framework\TestCase
     /**
      * @covers ::getNamespace
      * @covers ::from
-     * @dataProvider provideNonDefinedClassesToTest
-     * @expectedException InvalidArgumentException
-     */
-    public function test_throws_InvalidArgumentException_if_class_not_defined($data)
-    {
-        // ----------------------------------------------------------------
-        // setup your test
-
-        $this->assertTrue(is_string($data));
-        $unit = new GetNamespace();
-
-        // ----------------------------------------------------------------
-        // perform the change
-
-        $unit->getNamespace($data);
-
-        // ----------------------------------------------------------------
-        // test the results
-
-    }
-
-    /**
-     * @covers ::getNamespace
-     * @covers ::from
      * @dataProvider provideEverythingElseToTest
      * @expectedException InvalidArgumentException
      */
