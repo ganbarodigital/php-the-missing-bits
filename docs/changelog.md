@@ -155,6 +155,8 @@
   - added `Throwable`
   - added `Error`
   - added `TypeError`
+* Added support for common string transformations
+  - added `UnicodeDecode`
 
 ### Fixes
 
