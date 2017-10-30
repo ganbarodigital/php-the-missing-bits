@@ -157,6 +157,7 @@
   - added `TypeError`
 * Added support for common string transformations
   - added `UnicodeDecode`
+  - added `Utf8ToAscii`
 
 ### Fixes
 
