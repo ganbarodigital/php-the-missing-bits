@@ -49,7 +49,7 @@ namespace GanbaroDigital\MissingBits\StringTransforms;
  * this was added in response to Wordpress's limitations with not handling
  * UTF-8 in post titles and URLs
  */
-class Utf8ToAscii
+class ApproxAscii
 {
     /**
      * convert a UTF-8 string into its nearest pure-ASCII alternative

@@ -48,7 +48,7 @@ namespace GanbaroDigital\MissingBits\StringTransforms;
  *
  * @see https://gist.github.com/aeurielesn/1116358
  */
-class UnicodeDecode
+class DecodeEscapedUnicode
 {
     /**
      * convert a \u encoded string back to UTF-8
