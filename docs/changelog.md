@@ -156,8 +156,10 @@
   - added `Error`
   - added `TypeError`
 * Added support for common string transformations
-  - added `UnicodeDecode`
-  - added `Utf8ToAscii`
+  - added `DecodeEscapedUnicode`
+  - added `ApproxAscii`
+* Added support for writing to the console in a more user-friendly manner
+  - added `ShowProgress`
 
 ### Fixes
 
