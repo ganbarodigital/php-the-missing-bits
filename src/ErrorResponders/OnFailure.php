@@ -51,6 +51,12 @@ namespace GanbaroDigital\MissingBits\ErrorResponders;
 class OnFailure
 {
     /**
+     * your lambda function that will respond to the error
+     * @var callable
+     */
+    protected $action;
+
+    /**
      * create a new OnFailure handler
      *
      * @param callable $action

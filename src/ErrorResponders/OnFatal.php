@@ -50,25 +50,8 @@ use RuntimeException;
  *
  * your $action must throw some kind of Exception
  */
-class OnFatal
+class OnFatal extends onFailure
 {
-    /**
-     * the action to take when things cannot be recovered
-     * @var callable
-     */
-    private $action;
-
-    /**
-     * create a new OnFailure handler
-     *
-     * @param callable $action
-     *        your error actions
-     */
-    public function __construct(callable $action)
-    {
-        $this->action = $action;
-    }
-
     /**
      * the method that runs when we are treated as a PHP `callable`
      *
