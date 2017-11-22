@@ -50,7 +50,7 @@ use RuntimeException;
  *
  * your $action must throw some kind of Exception
  */
-class OnFatal extends onFailure
+class OnFatal extends OnFailure
 {
     /**
      * the method that runs when we are treated as a PHP `callable`
