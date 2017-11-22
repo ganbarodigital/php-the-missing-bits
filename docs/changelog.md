@@ -161,6 +161,9 @@
 * Added support for writing to the console in a more user-friendly manner
   - added `ShowProgress`
   - added `show_progress()` convenience function
+* Added support for inversion-of-control error handling
+  - added `OnFailure`
+  - added `OnFatal`
 
 ### Fixes
 
