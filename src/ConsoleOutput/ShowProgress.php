@@ -85,7 +85,7 @@ class ShowProgress
         // do we need to output anything else?
         $maxString = (string)$maxProgress;
         $maxPerRow = $consoleWidth - 10 - (strlen($maxString) * 2);
-        $remainderPerRow = $currentProgress % $maxPerRow;
+        $remainderPerRow = $maxPerRow - ($currentProgress % $maxPerRow);
 
         // have we reached 100% progress?
         if ($currentProgress == $maxProgress) {
@@ -94,7 +94,7 @@ class ShowProgress
 
             list($format, $formatParams) = self::addProgressCount($currentProgress, $maxProgress, $format, $formatParams);
         }
-        else if ($remainderPerRow === 0) {
+        else if ($remainderPerRow === $maxPerRow) {
             // we have reached the end of the console line
             list($format, $formatParams) = self::addProgressCount($currentProgress, $maxProgress, $format, $formatParams);
         }
