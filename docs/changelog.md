@@ -164,6 +164,9 @@
 * Added support for inversion-of-control error handling
   - added `OnFailure`
   - added `OnFatal`
+* Added support for filtering array contents
+  - added `array_whitelist()`
+  - added `array_filter_contents()`
 
 ### Fixes
 

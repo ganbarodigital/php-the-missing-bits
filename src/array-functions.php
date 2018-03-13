@@ -88,3 +88,83 @@ function array_merge_keys($target, $extra)
     // all done
     return $retval;
 }
+
+/**
+ * build a subset of an array, that only consists of content that has
+ * been explicitly whitelisted
+ *
+ * we only keep:
+ * - keys in $target
+ * - that have a corresponding filter in $filterMap
+ * - where the corresponding filter:
+ *   - is `true`
+ *   - or is a `callable`
+ *
+ * we support child arrays, with corresponding child array filters
+ *
+ * @param  array $target
+ *         the array we want to filter
+ * @param  array $filterMap
+ *         list of whitelisted fields
+ * @return array
+ *         the resulting filtered array
+ */
+function array_whitelist(array $target, array $filterMap)
+{
+    // step 1: drop all filters that are FALSE
+    //
+    // it's a thing, what can I say?
+    $filterMap = array_filter($filterMap);
+
+    // step 2: first pass at fields that are whitelisted
+    //
+    // with simple filterMaps, this will do all the work
+    $retval = array_intersect_key($target, $filterMap);
+
+    // step 3: apply remaining filters
+    foreach ($filterMap as $key => $filter) {
+        switch(true) {
+            case is_callable($filter):
+                $retval[$key] = $filter($retval);
+                break;
+
+            // support for n-depth filters
+            case isset($retval[$key]) && is_array($filter) && (is_array($retval[$key]) || is_object($retval[$key])):
+                $retval[$key] = array_whitelist($retval[$key], $filter);
+                break;
+        }
+
+        // var_dump($key, $filter, $retval, $target);
+    }
+
+    return $retval;
+}
+
+function array_filter_contents(array $target, array $filterMap)
+{
+    $retval = $target;
+
+    foreach ($filterMap as $key => $filter) {
+        // nothing needs doing
+        if (!isset($retval[$key]) || $filter === true) {
+            continue;
+        }
+
+        // we want to remove this field
+        if ($filter === false) {
+            unset($retval[$key]);
+            continue;
+        }
+
+        if (is_callable($filter)) {
+            $retval[$key] = $filter($retval);
+            continue;
+        }
+
+        if (is_array($retval[$key]) && is_array($filter)) {
+            $retval[$key] = array_filter_contents($retval[$key], $filter);
+        }
+    }
+
+    return $retval;
+}
