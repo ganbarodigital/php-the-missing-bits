@@ -168,3 +168,8 @@ function array_filter_contents(array $target, array $filterMap)
 
     return $retval;
 }
+
+function array_quote(array $data, string $separator = ',', string $quote = '"')
+{
+    return $quote . implode($quote . $separator . $quote, $data) . $quote;
+}
