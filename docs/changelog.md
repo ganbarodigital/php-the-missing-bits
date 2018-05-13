@@ -171,6 +171,7 @@
 ### Fixes
 
 * `GetNamespace` no longer cares if the class|interface|trait name has been declared to PHP
+* `StripNamespace` no longer cases if the class|interface|trait name has been delcared to PHP
 
 ### Refactor
 

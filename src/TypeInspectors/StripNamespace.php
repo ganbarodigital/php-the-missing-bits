@@ -91,11 +91,6 @@ class StripNamespace
             throw new InvalidArgumentException("\$item must be an object, or a class/interface/trait name");
         }
 
-        // make sure we have something we can work with
-        if (!class_exists($item) && !interface_exists($item) && !trait_exists($item)) {
-            throw new InvalidArgumentException("{$item} is not a declared class");
-        }
-
         // okay, what do we have?
         $pos = strrpos($item, '\\');
         if ($pos) {
